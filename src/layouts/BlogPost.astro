@@ -9,6 +9,7 @@ const { frontmatter } = Astro.props;
       <header>
         <time datetime={frontmatter.date}>{new Date(frontmatter.date).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
         <h1>{frontmatter.title}</h1>
+        {frontmatter.image && <img src={frontmatter.image} alt={frontmatter.title} style="width:100%; border-radius:var(--radius-lg); margin-top:1.5rem;" />}
       </header>
       <div class="prose">
         <slot />

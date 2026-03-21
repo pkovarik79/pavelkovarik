@@ -9,7 +9,14 @@
       "Bash(mv broker-consulting.webp ceska-sporitelna.webp dopravni-podnik-pardubice.webp dt-vyhybkarna.webp ibv-nbs.webp khk-pardubicky-kraj.webp makovec.webp matikon.webp mm-reality.webp narodni-strojirenskyy-klastr.webp partners.webp proventiacz.webp ptacek.webp rubikon.webp vak-hodonin.webp veacom.webp loga/)",
       "Bash(mv logo-pavel-kovarik-flt.webp pavel-kovarik-profile.webp web/)",
       "Bash(gh auth:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo:*)",
+      "Bash(ls /Users/pkovarik/Desktop/www/pavelkovarik/src/pages/blog/*.mdx)",
+      "Bash(done)",
+      "Bash(npm run:*)",
+      "Bash(kill 24909 23638 23636 23579 23420)"
     ]
   }
 }

@@ -42,8 +42,22 @@ const recentPosts = allPosts
         <h2>Proškolil jsem zaměstnance těchto firem</h2>
       </div>
       <div class="logos">
-        <!-- Sem patří obrázky log klientů z /images/ -->
-        <span style="color:var(--text-3); font-size:.88rem;">Česká spořitelna · Partners · Ptáček · Dopravní podnik Pardubice · Broker Consulting · Proventia · DT Výhybkárna · KHK Pardubický kraj · Rubikon · NSK · M&M Reality · Matikon · VAK Hodonín · VEACOM · IBV NBS · Makovec</span>
+        <img src="/images/loga/ceska-sporitelna.webp" alt="Česká spořitelna" />
+        <img src="/images/loga/partners.webp" alt="Partners" />
+        <img src="/images/loga/ptacek.webp" alt="Ptáček" />
+        <img src="/images/loga/dopravni-podnik-pardubice.webp" alt="Dopravní podnik Pardubice" />
+        <img src="/images/loga/broker-consulting.webp" alt="Broker Consulting" />
+        <img src="/images/loga/proventiacz.webp" alt="Proventia" />
+        <img src="/images/loga/dt-vyhybkarna.webp" alt="DT Výhybkárna" />
+        <img src="/images/loga/khk-pardubicky-kraj.webp" alt="KHK Pardubický kraj" />
+        <img src="/images/loga/rubikon.webp" alt="Rubikon" />
+        <img src="/images/loga/narodni-strojirenskyy-klastr.webp" alt="Národní strojírenský klastr" />
+        <img src="/images/loga/mm-reality.webp" alt="M&M Reality" />
+        <img src="/images/loga/matikon.webp" alt="Matikon" />
+        <img src="/images/loga/vak-hodonin.webp" alt="VAK Hodonín" />
+        <img src="/images/loga/veacom.webp" alt="VEACOM" />
+        <img src="/images/loga/ibv-nbs.webp" alt="IBV NBS" />
+        <img src="/images/loga/makovec.webp" alt="Makovec" />
       </div>
     </div>
   </section>
@@ -172,6 +186,7 @@ const recentPosts = allPosts
       <div class="blog-list narrow">
         {recentPosts.map((post) => (
           <a href={post.url} class="blog-card">
+            {post.frontmatter.image && <img src={post.frontmatter.image} alt={post.frontmatter.title} style="width:100%; border-radius:var(--radius); margin-bottom:.8rem;" />}
             <time datetime={post.frontmatter.date}>{new Date(post.frontmatter.date).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
             <h3>{post.frontmatter.title}</h3>
             <p>{post.frontmatter.description}</p>

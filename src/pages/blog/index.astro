@@ -16,6 +16,7 @@ const posts = allPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - n
       <div class="blog-list narrow">
         {posts.map((post) => (
           <a href={post.url} class="blog-card">
+            {post.frontmatter.image && <img src={post.frontmatter.image} alt={post.frontmatter.title} style="width:100%; border-radius:var(--radius); margin-bottom:.8rem;" />}
             <time datetime={post.frontmatter.date}>{new Date(post.frontmatter.date).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
             <h3>{post.frontmatter.title}</h3>
             <p>{post.frontmatter.description}</p>
