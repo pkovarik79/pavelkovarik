@@ -1,0 +1,120 @@
+---
+layout: ../../layouts/BlogPost.astro
+title: "Microsoft Copilot a bezpečnost dat: mýty a realita pro firmy"
+description: "Jeden účastník AI školení Microsoft Copilot mi minulý týden řekl: „Microsoft Copilot? Nikdy! Nechci, aby nám Microsoft četl smlouvy.\" Druhý přihodil: „A co k..."
+date: "2025-09-10"
+---
+
+Jeden účastník AI školení Microsoft Copilot mi minulý týden řekl: „Microsoft Copilot? Nikdy! Nechci, aby nám Microsoft četl smlouvy." Druhý přihodil: „A co když se naše know-how dostane ke konkurenci?" Třetí jen pokýval hlavou: „To je přesně to, čeho se bojím."
+
+Tyto obavy slýchám na školeních často. Firmy mají strach zavádět Copilota kvůli obavám o bezpečnost dat.
+
+Tyto obavy řeším prakticky na[AI školeních Microsoft Copilot pro firmy](https://pavelkovarik.cz/microsoft-copilot-pro-firmy/).
+
+Za tu dobu, co školím firmy, jsem podobné obavy slyšel u každé nové technologie od cloudu po mobilní telefony. A často pramení z neporozumění tomu, jak daná technologie skutečně funguje. Chápu to, je čím dál těžší se v moderních technologiích vyznat.
+
+## Jaký Copilot vlastně používáte?
+
+Tady je první velká záměna, kterou vidím pořád. Lidé si pletou různé verze Copilotu a pak mají obavy, které nutně nejsou vždy opodstatněné.
+
+Existují totiž dva úplně odlišné Copiloty:
+
+**Copilot na webu (copilot.microsoft.com)**- to je chatbot podobný ChatGPT. Pokud tam zadáte citlivé informace bez firemního přihlášení, opravdu se posílají na servery Microsoftu a můžou být použity k učení modelů.
+
+**Microsoft 365 Copilot**- to je ten, který běží přímo ve vašich aplikacích (Word, Excel, Outlook). Tohle je něco úplně jiného a většina obav se ho netýká.
+
+Když lidé říkají „Copilot", často myslí ten webový chatbot a z toho pramení strach. Ale firemní Microsoft 365 Copilot funguje úplně jinak.
+
+## Microsoft 365 Copilot: ochrana dat v tenant prostředí
+
+Microsoft 365 funguje jako bytový dům. Každá organizace má vlastní byt s vlastními bezpečnostními kartami. Tomu se říká tenant. Je to uzavřený prostor, do kterého má přístup jen vaše firma.
+
+Microsoft 365 Copilot neběží někde u Microsoftu, ale přímo ve vašem bytě, stejně jako váš Outlook, Teams nebo SharePoint.
+
+Když píšete e-mail v Outlooku, neposíláte ho nejdřív Microsoftu na kontrolu, že? E-mail jde přímo od vás k příjemci. Microsoft 365 Copilot funguje podobně.
+
+Data zůstávají v rámci vašeho tenantu, jsou chráněná stejnými mechanismy jako e-maily v Outlooku. Microsoft k nim nemá přístup stejně jako nemá přístup k obsahu vašich e-mailů.
+
+Pokud důvěřujete Outlooku s citlivými informacemi, není důvod bát se Microsoft 365 Copilotu.
+
+## GPT-5 ve vašem prostředí, ne u OpenAI
+
+Microsoft 365 Copilot běží na nejnovějším modelu GPT-5 od OpenAI. Tady se ale někteří lidé vyděsí: „Copak to znamená, že naše data jdou k OpenAI?"
+
+Ne, neznamená.
+
+Microsoft má s OpenAI speciální smlouvu, která umožňuje provozovat GPT modely přímo v prostředí Microsoftu. Váš dotaz se nikdy nedostane na servery OpenAI.
+
+Zůstává ve vašem tenantu, kde ho zpracuje GPT model, který tam Microsoft provozuje.
+
+Je to podobné, jako kdybyste si koupili auto od Škody, ale jezdili s ním jen po vlastním pozemku. Auto je od Škody, ale Škoda neví, kam jezdíte.
+
+Stejně tak GPT-5 model je od OpenAI, ale OpenAI neví, na co se ptáte.
+
+## Copilot na webu vs. ChatGPT vs. Microsoft 365 Copilot
+
+Abychom si to ukázali na příkladu:
+
+**ChatGPT (chatgpt.com)**: Váš dotaz jde na servery OpenAI, které si ho můžou uložit a použít k učení. Nedoporučuje se pro firemní data.
+
+**Copilot na webu bez firemního účtu**: Podobně jako ChatGPT, data se posílají Microsoftu a můžou být použita k vylepšování služby.
+
+**Microsoft 365 Copilot**: Váš dotaz zůstává ve vašem firemním prostředí. Ani Microsoft ani OpenAI k němu nemají přístup a nepoužívají ho k učení.
+
+Představte si to jako rozdíl mezi tím, že zavoláte restauraci a objednáte si jídlo domů (webové chatboty), versus že máte vlastního kuchaře doma, který používa recepty od slavného šéfkuchaře (Microsoft 365 Copilot).
+
+V prvním případě restaurace ví, co jíte. Ve druhém případě slavný šéfkuchař neví nic.
+
+![](/images/blog/Copilot-vs.-ChatGPT.webp)
+
+## Kde se ukládají konverzace
+
+Další častá otázka na AI školeních zní: „Kde se ukládají naše rozhovory s Copilotem?"
+
+Microsoft 365 Copilot si ukládá historii dotazů a odpovědí, aby uživatelé mohli navazovat na předchozí konverzaci. Bez toho by každý dotaz začínal znovu od začátku.
+
+Vše se ukládá ve skryté složce ve vaší firemní poštovní schránce v rámci Microsoft 365 prostředí. Data jsou šifrovaná a nejsou přímo přístupná běžným uživatelům.
+
+Microsoft ani OpenAI tyto konverzace nepoužívají pro trénování svých AI modelů. Vaše data se nikdy nedostanou na servery OpenAI.
+
+## Skutečná rizika při zavádění Copilotu
+
+Ze svých konzultací a školení znám desítky firem, které měly problémy s Microsoft 365 Copilotem. A nikdy to nebyl problém s bezpečností dat nebo únikem informací k Microsoftu či OpenAI.
+
+Vždycky to bylo něco jiného.
+
+Microsoft 365 Copilot dokáže pracovat pouze s daty, k nimž má konkrétní uživatel oprávněný přístup. Pokud má marketér přístup jen ke svým kampaním, Copilot mu ukáže jen ty. Pokud má účetní zakázaný přístup k HR dokumentům, Copilot je neuvidí.
+
+Problém nastává, když firma nemá dobře nastavená přístupová práva. Nejčastěji vidím situace, kdy někdo má přístup k dokumentům, které by podle firemní politiky vidět neměl.
+
+Microsoft 365 Copilot pak tyto dokumenty samozřejmě také ukáže. Ne proto, že by porušoval bezpečnost, ale proto, že respektuje přístupová práva nastavená ve firmě.
+
+## Copilot jako rentgen firemních procesů
+
+Jeden z mých klientů to popsal trefně: „Copilot je jako rentgen. Nepoškodí vás, ale ukáže problémy, které už máte."
+
+Microsoft 365 Copilot nevytváří nové bezpečnostní díry, ale může odkrýt existující chaos v řízení přístupů k datům.
+
+To je vlastně dobře. Lépe zjistit problémy s přístupy teď, než je objevit až když bude pozdě. Copilot vám dá šanci udělat si pořádek v tom, co už dávno mělo být v pořádku.
+
+## Bezpečné zavedení: praktický postup
+
+Skutečná hrozba není Microsoft 365 Copilot, ale situace, kdy ve firmě nevíte, kdo má přístup k čemu. Pokud tohle zvládnete, zavádění Copilotu vám přinese jen výhody.
+
+Ušetří desítky hodin práce týdně při zachování stejné úrovně bezpečnosti dat jako u ostatních firemních nástrojů.
+
+Místo strachu z nové technologie si udělejte audit přístupových práv. Projděte si, kdo má přístup k jakým složkám, zkontrolujte sdílené dokumenty a upravte nastavení podle aktuálních potřeb.
+
+Většinou stačí pár hodin práce IT administrátora. Pokud si nejste jistí správným postupem,[obraťte se na konzultaci k zavedení Copilotu do firmy](https://pavelkovarik.cz/microsoft-copilot-pro-firmy/).
+
+## FAQ: Nejčastější otázky
+
+**Je Microsoft 365 Copilot bezpečný?**Ano, je stejně bezpečný jako ostatní aplikace v Microsoft 365. Používá identické bezpečnostní mechanismy a běží ve vašem tenant prostředí.
+
+**Jaký je rozdíl mezi Copilotem na webu a Microsoft 365 Copilotem?**Copilot na webu posílá data na servery Microsoftu. Microsoft 365 Copilot běží ve vašem firemním prostředí a Microsoft k vašim datům nemá přístup.
+
+**Používá Microsoft 365 Copilot naše data k učení AI modelů?**Ne, Microsoft ani OpenAI nepoužívají vaše firemní data z Microsoft 365 Copilotu k trénování svých modelů. Je to technicky ošetřeno a smluvně zaručeno.
+
+Microsoft 365 Copilot není nepřítel. Je to nástroj, který vám může výrazně usnadnit práci. Stačí jen vědět, jak na to.
+
+**Pokud si nejste jistí, zda je vaše firma připravená na bezpečné zavedení Copilotu,[ozvěte se](https://pavelkovarik.cz/kontakt/). Společně vše projdeme a na školení vám ukážu, jak Copilot využít naplno – bezpečně a efektivně.**

@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Lektor umělé inteligence pro firmy. Praktická školení AI nástrojů pro firemní týmy po celé ČR.' } = Astro.props;
+const path = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={new URL(path, Astro.site).href} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav">
+      <a href="/" class="nav-logo">Pavel Kovařík</a>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="/skoleni/">Školení</a></li>
+        <li><a href="/ai-pro-verejnou-spravu/">Veřejná správa</a></li>
+        <li><a href="/dotace-ai-skoleni-digi-pro-firmu/">Dotace</a></li>
+        <li><a href="/kdo-jsem/">O mně</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/kontakt/" class="nav-cta">Kontakt</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <span>&copy; {new Date().getFullYear()} Ing. Pavel Kovařík &middot; Brno &middot; <a href="tel:+420770126519">+420 770 126 519</a></span>
+        <ul class="footer-links">
+          <li><a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="/kontakt/">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nav-toggle')?.addEventListener('click', () => {
+      document.getElementById('nav-menu')?.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

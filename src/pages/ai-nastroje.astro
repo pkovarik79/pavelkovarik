@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/global.css';
+
+const tools = [
+  { cat: "AI asistenti", items: [
+    { name: "Apertus (Public AI)", url: "https://publicai.co", desc: "Evropský otevřený asistent s důrazem na transparentnost. Vhodný pro veřejný sektor." },
+    { name: "ChatGPT", url: "https://chatgpt.com", desc: "Univerzální asistent pro většinu pracovních úkolů. Texty, soubory, obrázky, data." },
+    { name: "Claude", url: "https://claude.ai", desc: "Silný v přesné formulaci a logickém uspořádání delších textů. Analýzy a směrnice." },
+    { name: "DeepSeek", url: "https://deepseek.com", desc: "Výkonný nástroj pro technické texty a práci s kódem. Nízké náklady." },
+    { name: "Google Gemini", url: "https://gemini.google.com", desc: "Multimodální asistent. Analyzuje video, pracuje v Google ekosystému." },
+    { name: "Grok", url: "https://grok.com", desc: "Asistent zaměřený na aktuální dění a obsah na síti X." },
+    { name: "K2 Think", url: "https://k2think.ai", desc: "Asistent pro krokové uvažování a kontrolu výpočtů." },
+    { name: "Kimi", url: "https://kimi.moonshot.cn", desc: "Specialista na velmi dlouhé texty a hlubší analýzu." },
+    { name: "Le Chat (Mistral)", url: "https://chat.mistral.ai", desc: "Rychlý chat na evropských modelech. Krátké texty a shrnutí." },
+    { name: "Manus", url: "https://manus.im", desc: "Zadáte úkol a on ho zkusí celý udělat. Opakující se výstupy." },
+    { name: "Meta AI", url: "https://meta.ai", desc: "Asistent v Messengeru, Instagramu, WhatsAppu a na webu." },
+    { name: "Microsoft Copilot", url: "https://copilot.microsoft.com", desc: "Součást Wordu, Outlooku, Excelu a PowerPointu. Pracuje s firemními dokumenty." },
+    { name: "Perplexity", url: "https://www.perplexity.ai", desc: "Chatbot zaměřený na vyhledávání se zdroji a odkazy." },
+    { name: "Qwen Chat", url: "https://chat.qwen.ai", desc: "Multimodální asistent pro text, obrázky i soubory." },
+  ]},
+  { cat: "Chatboti a automatizace", items: [
+    { name: "Botpress", url: "https://botpress.com", desc: "Stavba chatbotů pro web a komunikační kanály." },
+    { name: "Chatbase", url: "https://www.chatbase.co", desc: "Chatbot nad vlastními dokumenty pro web." },
+    { name: "Cohere Command", url: "https://cohere.com/command", desc: "Modely a nástroje pro stavbu konverzačních agentů." },
+    { name: "Copilot Studio", url: "https://www.microsoft.com/microsoft-365/copilot/copilot-studio", desc: "Tvorba chatbotů a automatizací v ekosystému Microsoft." },
+  ]},
+];
+---
+
+<Base title="AI nástroje pro firmy | Pavel Kovařík" description="Kurátorovaný přehled ověřených AI nástrojů, které používám ve školeních. Kategorizované podle využití.">
+
+  <section class="hero hero-center wrap">
+    <span class="hero-label">Přehled nástrojů</span>
+    <h1>AI nástroje pro firmy</h1>
+    <p class="lead">Kurátorovaný přehled ověřených AI nástrojů, které používám ve školeních. Kategorizované podle využití s praktickými tipy.</p>
+  </section>
+
+  {tools.map(group => (
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>{group.cat}</h2>
+        </div>
+        <div class="grid grid-3">
+          {group.items.map(tool => (
+            <a href={tool.url} target="_blank" rel="noopener" class="card" style="text-decoration:none;">
+              <h3>{tool.name}</h3>
+              <p>{tool.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2>Chcete s nástroji pracovat efektivněji?</h2>
+        <p>Na školení si je vyzkoušíte na praktických úkolech z vaší firmy.</p>
+        <a href="/kontakt/" class="btn btn-p">Poptat školení</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

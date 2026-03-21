@@ -1,0 +1,112 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/global.css';
+---
+
+<Base title="Kontakt a poptávka školení | Pavel Kovařík" description="Do 24 hodin se Vám ozvu s návrhem obsahu školení a možnými termíny.">
+
+  <section class="hero hero-center wrap">
+    <h1>Kontakt a poptávka školení</h1>
+    <p class="lead">Do 24 hodin se Vám ozvu s návrhem obsahu školení a možnými termíny.</p>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="grid grid-3">
+        <div class="card" style="text-align:center;">
+          <div class="feat-icon" style="margin:0 auto 1rem; font-size:1.4rem;">📞</div>
+          <h3>Zavolejte mi</h3>
+          <p>Nejrychlejší cesta pro domluvu termínu nebo rychlý dotaz.</p>
+          <a href="tel:+420770126519" class="btn btn-s mt-3" style="width:100%;justify-content:center;">+420 770 126 519</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="feat-icon" style="margin:0 auto 1rem; font-size:1.4rem;">✉️</div>
+          <h3>Napište e-mail</h3>
+          <p>Preferujete písemnou komunikaci? Napište mi své požadavky.</p>
+          <a href="mailto:mail@pavelkovarik.cz" class="btn btn-s mt-3" style="width:100%;justify-content:center;">mail@pavelkovarik.cz</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="feat-icon" style="margin:0 auto 1rem; font-size:1.4rem;">💼</div>
+          <h3>Spojme se</h3>
+          <p>Sledujte novinky ze světa AI nebo mi napište zprávu přímo tam.</p>
+          <a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener" class="btn btn-s mt-3" style="width:100%;justify-content:center;">Profil LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap narrow">
+      <div class="sec-head">
+        <h2>Nezávazná poptávka školení AI</h2>
+        <p>Stačí stručně. Detaily doladíme později.</p>
+      </div>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="name">Jméno a příjmení *</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="company">Firma / organizace</label>
+          <input type="text" id="company" name="company" />
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefon</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+        <div class="form-group">
+          <label for="message">Zpráva *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Stručně popište, o jaké školení máte zájem, kolik lidí chcete proškolit a případně preferovaný termín."></textarea>
+        </div>
+        <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;">Odeslat poptávku</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap narrow" style="text-align:center;">
+      <h2>Nenašli jste, co hledáte?</h2>
+      <p class="text-muted">Podívejte se na kompletní přehled školení, která nabízím.</p>
+      <a href="/skoleni/" class="btn btn-s mt-3">Přehled školení</a>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  }
+  .form-group label {
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .form-group input,
+  .form-group textarea {
+    padding: .7rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: .95rem;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    transition: border-color .15s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+  }
+</style>

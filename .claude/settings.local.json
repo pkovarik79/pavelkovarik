@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m json.tool)",
+      "Bash(npx astro:*)",
+      "Bash(npm -v)",
+      "Bash(npm install:*)",
+      "Bash(mv blog-*.webp Copilot-vs.-ChatGPT.webp Jak-vybrat-AI-skoleni-pro-firmy-ktere-prinese-realne-vysledky.webp Public-vs.-Enterprise-1024x512.webp Tri-klicove-kroky-pro-zavedeni-AI-ve-firme-1024x512.webp blog/)",
+      "Bash(mv broker-consulting.webp ceska-sporitelna.webp dopravni-podnik-pardubice.webp dt-vyhybkarna.webp ibv-nbs.webp khk-pardubicky-kraj.webp makovec.webp matikon.webp mm-reality.webp narodni-strojirenskyy-klastr.webp partners.webp proventiacz.webp ptacek.webp rubikon.webp vak-hodonin.webp veacom.webp loga/)",
+      "Bash(mv logo-pavel-kovarik-flt.webp pavel-kovarik-profile.webp web/)",
+      "Bash(gh auth:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

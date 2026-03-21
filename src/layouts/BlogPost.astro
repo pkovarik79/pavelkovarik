@@ -1,0 +1,18 @@
+---
+import Base from './Base.astro';
+const { frontmatter } = Astro.props;
+---
+
+<Base title={`${frontmatter.title} | Pavel Kovařík`} description={frontmatter.description}>
+  <article class="article">
+    <div class="wrap narrow">
+      <header>
+        <time datetime={frontmatter.date}>{new Date(frontmatter.date).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <h1>{frontmatter.title}</h1>
+      </header>
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </article>
+</Base>
