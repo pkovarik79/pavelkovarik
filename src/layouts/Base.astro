@@ -22,35 +22,96 @@ const path = Astro.url.pathname;
   <link rel="sitemap" href="/sitemap-index.xml" />
 </head>
 <body>
-  <header class="wrap">
-    <nav class="nav">
-      <a href="/" class="nav-logo">Pavel Kovařík</a>
-      <ul class="nav-links" id="nav-menu">
-        <li><a href="/skoleni/">Školení</a></li>
-        <li><a href="/ai-pro-verejnou-spravu/">Veřejná správa</a></li>
-        <li><a href="/dotace-ai-skoleni-digi-pro-firmu/">Dotace</a></li>
-        <li><a href="/kdo-jsem/">O mně</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/kontakt/" class="nav-cta">Kontakt</a></li>
-      </ul>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
+  <header class="pk-header">
+    <div class="wrap">
+      <a href="/" class="pk-logo">
+        <img src="/images/web/logo-pavel-kovarik-flt.webp" alt="Pavel Kovařík logo" />
+        <span class="pk-logo-text">PAVEL KOVAŘÍK</span>
+      </a>
+
+      <nav class="pk-nav">
+        <ul class="pk-nav-list" id="nav-menu">
+          <li class="pk-nav-item"><a href="/">Domů</a></li>
+          <li class="pk-nav-item">
+            <a href="/skoleni/" class="pk-nav-cta">Školení</a>
+            <ul class="pk-dropdown">
+              <li><a href="/skoleni/">Praktické školení AI pro firmy</a></li>
+              <li><a href="/ai-pro-verejnou-spravu/">AI pro veřejnou správu</a></li>
+              <li><a href="/microsoft-copilot/">Microsoft Copilot</a></li>
+              <li><a href="/ai-pro-manazery/">AI pro manažery</a></li>
+              <li><a href="/skoleni-na-miru/">Školení na míru</a></li>
+            </ul>
+          </li>
+          <li class="pk-nav-item">
+            <a href="/materialy/">Materiály</a>
+            <ul class="pk-dropdown">
+              <li><a href="/prompty/">Prompty</a></li>
+              <li><a href="/ai-nastroje/">AI nástroje</a></li>
+            </ul>
+          </li>
+          <li class="pk-nav-item"><a href="/blog/">Blog</a></li>
+          <li class="pk-nav-item"><a href="/kdo-jsem/">Kdo jsem</a></li>
+          <li class="pk-nav-item"><a href="/kontakt/">Kontakt</a></li>
+        </ul>
+
+        <a href="tel:+420770126519" class="pk-nav-phone">+420 770 126 519</a>
+        <a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener" class="pk-nav-phone">LinkedIn</a>
+
+        <button class="pk-nav-toggle" id="nav-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
   </header>
 
   <main>
     <slot />
   </main>
 
-  <footer class="footer">
+  <footer class="pk-footer">
     <div class="wrap">
-      <div class="footer-inner">
-        <span>&copy; {new Date().getFullYear()} Ing. Pavel Kovařík &middot; Brno &middot; <a href="tel:+420770126519">+420 770 126 519</a></span>
-        <ul class="footer-links">
-          <li><a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="/kontakt/">Kontakt</a></li>
-        </ul>
+      <div class="pk-footer-grid">
+        <div class="pk-footer-col">
+          <h4>Pavel Kovařík</h4>
+          <p class="pk-footer-motto">Školím firmy, které chtějí AI používat efektivně, prakticky a bezpečně.</p>
+          <p><a href="mailto:mail@pavelkovarik.cz">mail@pavelkovarik.cz</a></p>
+          <p><a href="tel:+420770126519">+420 770 126 519</a></p>
+          <p><a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener">LinkedIn profil</a></p>
+          <a href="/kontakt/" class="btn btn-p mt-3">Poptat AI školení</a>
+        </div>
+
+        <div class="pk-footer-col">
+          <h4>Tematická školení</h4>
+          <a href="/skoleni/">AI pro firmy</a>
+          <a href="/ai-pro-verejnou-spravu/">AI pro veřejnou správu</a>
+          <a href="/marketing-pr-ai/">Marketing &amp; PR s AI</a>
+          <a href="/ai-pro-manazery/">AI pro manažery</a>
+          <a href="/ai-bezpecnost/">AI bezpečnost</a>
+          <a href="/skoleni-na-miru/">Školení na míru</a>
+        </div>
+
+        <div class="pk-footer-col">
+          <h4>Školení na AI nástroje</h4>
+          <a href="/chatgpt-pro-firmy/">ChatGPT pro firmy</a>
+          <a href="/claude-pro-firmy/">Claude pro firmy</a>
+          <a href="/gemini-pro-firmy/">Gemini pro firmy</a>
+          <a href="/microsoft-copilot/">Copilot pro firmy</a>
+        </div>
+
+        <div class="pk-footer-col">
+          <h4>Rychlé odkazy</h4>
+          <a href="/">Domů</a>
+          <a href="/kdo-jsem/">Kdo jsem</a>
+          <a href="/ai-nastroje/">AI nástroje</a>
+          <a href="/prompty/">Knihovna promptů</a>
+          <a href="/blog/">Blog</a>
+        </div>
+      </div>
+
+      <div class="pk-footer-bottom">
+        <span>&copy; {new Date().getFullYear()} Ing. Pavel Kovařík</span>
+        <span>IČO: 76233006, nejsem plátce DPH</span>
+        <a href="/gdpr/">Ochrana osobních údajů (GDPR)</a>
       </div>
     </div>
   </footer>

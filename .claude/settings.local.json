@@ -16,7 +16,8 @@
       "Bash(ls /Users/pkovarik/Desktop/www/pavelkovarik/src/pages/blog/*.mdx)",
       "Bash(done)",
       "Bash(npm run:*)",
-      "Bash(kill 24909 23638 23636 23579 23420)"
+      "Bash(kill 24909 23638 23636 23579 23420)",
+      "WebFetch(domain:pavelkovarik.cz)"
     ]
   }
 }
