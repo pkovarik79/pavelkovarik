@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Push vs Pull learning</title>
+  <desc id="desc">Porovnání pasivního a aktivního způsobu učení.</desc>
+  <rect width="1200" height="630" rx="32" fill="#f8fafc" />
+  <rect x="65" y="65" width="470" height="500" rx="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="4" />
+  <rect x="665" y="65" width="470" height="500" rx="26" fill="#ffffff" stroke="#93c5fd" stroke-width="4" />
+  <text x="300" y="145" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="34" font-weight="700" fill="#475569">Push</text>
+  <text x="900" y="145" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="34" font-weight="700" fill="#1d4ed8">Pull</text>
+  <circle cx="300" cy="265" r="62" fill="#e2e8f0" />
+  <rect x="220" y="365" width="160" height="18" rx="9" fill="#94a3b8" />
+  <rect x="200" y="400" width="200" height="18" rx="9" fill="#cbd5e1" />
+  <rect x="230" y="435" width="140" height="18" rx="9" fill="#cbd5e1" />
+  <path d="M150 265h95" stroke="#64748b" stroke-width="8" stroke-linecap="round" />
+  <path d="M165 245l-35 20 35 20" fill="#64748b" />
+  <circle cx="900" cy="265" r="62" fill="#dbeafe" />
+  <rect x="820" y="365" width="160" height="18" rx="9" fill="#2563eb" />
+  <rect x="800" y="400" width="200" height="18" rx="9" fill="#93c5fd" />
+  <rect x="830" y="435" width="140" height="18" rx="9" fill="#93c5fd" />
+  <path d="M955 265h95" stroke="#2563eb" stroke-width="8" stroke-linecap="round" />
+  <path d="M1035 245l35 20-35 20" fill="#2563eb" />
+</svg>

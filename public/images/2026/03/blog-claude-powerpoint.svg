@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Claude for PowerPoint</title>
+  <desc id="desc">Ilustrace doplňku Claude při úpravě firemní prezentace.</desc>
+  <rect width="1200" height="700" rx="32" fill="#fff7ed" />
+  <rect x="60" y="60" width="1080" height="580" rx="28" fill="#ffffff" stroke="#fdba74" stroke-width="4" />
+  <rect x="100" y="110" width="230" height="480" rx="20" fill="#fff7ed" />
+  <rect x="360" y="110" width="700" height="480" rx="20" fill="#f8fafc" />
+  <text x="125" y="155" font-family="Outfit, Arial, sans-serif" font-size="28" font-weight="700" fill="#9a3412">Claude</text>
+  <text x="390" y="155" font-family="Outfit, Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">PowerPoint</text>
+  <rect x="125" y="195" width="170" height="18" rx="9" fill="#fdba74" />
+  <rect x="125" y="230" width="140" height="18" rx="9" fill="#fed7aa" />
+  <rect x="125" y="265" width="160" height="18" rx="9" fill="#fed7aa" />
+  <rect x="125" y="335" width="140" height="42" rx="21" fill="#ea580c" />
+  <text x="195" y="362" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="17" font-weight="700" fill="#ffffff">Upravit</text>
+  <rect x="410" y="190" width="600" height="320" rx="18" fill="#ffffff" stroke="#cbd5e1" stroke-width="3" />
+  <rect x="450" y="235" width="240" height="20" rx="10" fill="#ea580c" />
+  <rect x="450" y="285" width="480" height="16" rx="8" fill="#cbd5e1" />
+  <rect x="450" y="320" width="440" height="16" rx="8" fill="#cbd5e1" />
+  <rect x="450" y="355" width="470" height="16" rx="8" fill="#cbd5e1" />
+  <rect x="450" y="415" width="180" height="44" rx="22" fill="#fed7aa" />
+  <text x="540" y="443" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="18" font-weight="700" fill="#9a3412">Firemní slide</text>
+</svg>

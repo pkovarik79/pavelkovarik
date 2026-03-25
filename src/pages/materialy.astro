@@ -1,41 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import '../styles/global.css';
+import ImportedWpContent from '../components/ImportedWpContent.astro';
 ---
 
 <Base title="Materiály a zdroje k AI | Pavel Kovařík" description="Praktické nástroje, prompty a návody, které využívám na školeních. Vše na jednom místě a zdarma.">
-
-  <section class="hero hero-center wrap">
-    <span class="hero-label">Materiály zdarma</span>
-    <h1>Materiály a zdroje k AI</h1>
-    <p class="lead">Praktické nástroje, prompty a návody, které využívám na školeních. Vše na jednom místě a zdarma pro vaše použití.</p>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="grid grid-2">
-        <a href="/ai-nastroje/" class="card" style="text-decoration:none;">
-          <h3>AI nástroje pro firmy</h3>
-          <p>Kurátorský výběr ověřených AI aplikací, které skutečně fungují. Rozdělené do kategorií s praktickými tipy.</p>
-          <span class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zobrazit nástroje</span>
-        </a>
-        <a href="/prompty/" class="card" style="text-decoration:none;">
-          <h3>Knihovna AI promptů</h3>
-          <p>Databáze funkčních příkazů pro ChatGPT a Copilot. Šablony pro marketing, e-maily, analýzu dat a manažerskou práci.</p>
-          <span class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zobrazit prompty</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="cta-box">
-        <h2>Hledáte způsob, jak AI zavést ve firmě?</h2>
-        <p>Materiály jsou skvělý začátek. Pokud ale chcete ušetřit čas a vyhnout se slepým uličkám, ozvěte se.</p>
-        <a href="/kontakt/" class="btn btn-p">Kontaktovat</a>
-      </div>
-    </div>
-  </section>
-
+  <ImportedWpContent filePath="wp_content/pages/materialy.json" />
 </Base>

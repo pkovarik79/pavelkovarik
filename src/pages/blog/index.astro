@@ -1,17 +1,20 @@
 ---
 import Base from '../../layouts/Base.astro';
 import '../../styles/global.css';
+import ImportedWpContent from '../../components/ImportedWpContent.astro';
 
-const allPosts = await Astro.glob('./*.mdx');
+const allPosts = await Astro.glob('../*.mdx');
 const posts = allPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 ---
 
 <Base title="Blog | Pavel Kovařík" description="Návody, trendy a zkušenosti ze zavádění umělé inteligence v českých firmách.">
+  <ImportedWpContent filePath="wp_content/pages/blog.json" />
+
   <section class="sec">
     <div class="wrap">
       <div class="sec-head">
-        <h1 style="font-size: clamp(1.7rem,4vw,2.4rem);">AI blog pro firmy</h1>
-        <p>Návody, trendy a zkušenosti ze zavádění umělé inteligence v českých firmách.</p>
+        <h2 style="font-size: clamp(1.7rem,4vw,2.4rem);">Všechny články</h2>
+        <p>Kompletní archiv článků o AI pro firmy, management i každodenní praxi.</p>
       </div>
       <div class="blog-list narrow">
         {posts.map((post) => (

@@ -1,0 +1,26 @@
+---
+const allPosts = await Astro.glob('../*.mdx');
+
+export function getStaticPaths() {
+  return allPosts.map((post) => ({
+    params: { slug: post.url.replace(/^\/|\/$/g, '') },
+  }));
+}
+
+const { slug } = Astro.params;
+const destination = `/${slug}/`;
+---
+
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="refresh" content={`0;url=${destination}`} />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href={new URL(destination, Astro.site).href} />
+  <title>Přesměrování…</title>
+</head>
+<body>
+  <p><a href={destination}>Pokračovat na článek</a></p>
+</body>
+</html>

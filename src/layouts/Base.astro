@@ -19,6 +19,9 @@ const path = Astro.url.pathname;
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="sitemap" href="/sitemap-index.xml" />
 </head>
 <body>
@@ -34,11 +37,12 @@ const path = Astro.url.pathname;
           <li class="pk-nav-item">
             <a href="/skoleni/" class="pk-nav-cta">Školení <span style="font-size:.7em; margin-left:.2rem;">&#9662;</span></a>
             <ul class="pk-dropdown">
-              <li><a href="/skoleni/">Praktické školení AI pro firmy</a></li>
+              <li><a href="/prakticke-skoleni-ai-pro-firmy/">Praktické školení AI pro firmy</a></li>
               <li><a href="/ai-pro-verejnou-spravu/">AI pro veřejnou správu</a></li>
-              <li><a href="/microsoft-copilot/">Microsoft Copilot</a></li>
+              <li><a href="/microsoft-copilot-pro-firmy/">Microsoft Copilot</a></li>
               <li><a href="/ai-pro-manazery/">AI pro manažery</a></li>
               <li><a href="/skoleni-na-miru/">Školení na míru</a></li>
+              <li><a href="/vibe-coding/">Vibe Coding</a></li>
             </ul>
           </li>
           <li class="pk-nav-item">
@@ -85,8 +89,9 @@ const path = Astro.url.pathname;
           <a href="/ai-pro-verejnou-spravu/">AI pro veřejnou správu</a>
           <a href="/marketing-pr-ai/">Marketing &amp; PR s AI</a>
           <a href="/ai-pro-manazery/">AI pro manažery</a>
-          <a href="/ai-bezpecnost/">AI bezpečnost</a>
+          <a href="/pravo-v-ai/">Právo v AI</a>
           <a href="/skoleni-na-miru/">Školení na míru</a>
+          <a href="/vibe-coding/">Vibe Coding</a>
         </div>
 
         <div class="pk-footer-col">
@@ -94,7 +99,7 @@ const path = Astro.url.pathname;
           <a href="/chatgpt-pro-firmy/">ChatGPT pro firmy</a>
           <a href="/claude-pro-firmy/">Claude pro firmy</a>
           <a href="/gemini-pro-firmy/">Gemini pro firmy</a>
-          <a href="/microsoft-copilot/">Copilot pro firmy</a>
+          <a href="/microsoft-copilot-pro-firmy/">Copilot pro firmy</a>
         </div>
 
         <div class="pk-footer-col">
@@ -110,14 +115,28 @@ const path = Astro.url.pathname;
       <div class="pk-footer-bottom">
         <span>&copy; {new Date().getFullYear()} Ing. Pavel Kovařík</span>
         <span>IČO: 76233006, nejsem plátce DPH</span>
-        <a href="/gdpr/">Ochrana osobních údajů (GDPR)</a>
+        <a href="/gdpr-ochrana-osobnich-udaju/">Ochrana osobních údajů (GDPR)</a>
       </div>
     </div>
   </footer>
 
+  <button class="scroll-top" id="scroll-top" aria-label="Nahoru">&#9650;</button>
+
   <script>
     document.getElementById('nav-toggle')?.addEventListener('click', () => {
       document.getElementById('nav-menu')?.classList.toggle('open');
+    });
+
+    const scrollBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        scrollBtn?.classList.add('visible');
+      } else {
+        scrollBtn?.classList.remove('visible');
+      }
+    });
+    scrollBtn?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>

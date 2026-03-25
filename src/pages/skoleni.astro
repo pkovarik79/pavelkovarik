@@ -4,93 +4,234 @@ import '../styles/global.css';
 ---
 
 <Base title="Školení AI pro firmy | Pavel Kovařík" description="Kompletní přehled školení umělé inteligence pro firmy, úřady a manažery. Prakticky, bezpečně a na míru.">
-  <section class="hero hero-center wrap">
-    <span class="hero-label">Přehled školení</span>
-    <h1>Vyberte si školení AI pro váš tým</h1>
-    <p class="lead">Každé školení přizpůsobím vašim procesům, oboru a zkušenostem týmu. Prezenčně po celé ČR nebo online.</p>
+
+  <!-- HERO -->
+  <section class="pk-page-hero">
+    <div class="wrap">
+      <span class="pk-hero-label">PŘEHLED ŠKOLENÍ</span>
+      <h1>Kurzy AI pro firmy</h1>
+      <p>Vyberte si AI školení podle role, tématu a cíle. Najdete tu praktické kurzy pro firmy, management, marketing, veřejnou správu i Microsoft Copilot.</p>
+      <a href="#skoleni" class="btn" style="background:#fff; color:var(--pk-primary); margin-top:1.5rem;">Zobrazit všechna školení</a>
+    </div>
   </section>
 
+  <!-- ČESKÁ ASOCIACE -->
   <section class="sec">
     <div class="wrap">
-      <div class="grid grid-2">
-        <div class="card">
-          <span class="card-badge">Nejpopulárnější</span>
-          <h3>Praktické školení AI od A do Z</h3>
-          <p>Kompletní úvod do AI nástrojů pro celý tým. ChatGPT, Claude, Gemini, bezpečnost dat, AI Act.</p>
-          <div class="card-price">19 900 Kč</div>
-          <p class="card-price-note">8 hodin · až 15 osob</p>
-          <a href="/prakticke-skoleni-ai-pro-firmy/" class="btn btn-p mt-3" style="width:100%;justify-content:center;">Zjistit více</a>
-        </div>
-        <div class="card">
-          <h3>Microsoft Copilot pro firmy</h3>
-          <p>Jednodenní workshop zaměřený na efektivní využití Copilot v celém Microsoft 365.</p>
-          <div class="card-price">18 900 Kč</div>
-          <p class="card-price-note">8 hodin · 12–15 osob</p>
-          <a href="/microsoft-copilot-pro-firmy/" class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zjistit více</a>
-        </div>
-        <div class="card">
-          <h3>Marketing a PR s AI</h3>
-          <p>Canva, Midjourney, HeyGen, Descript a další nástroje pro rychlejší tvorbu obsahu.</p>
-          <a href="/marketing-pr-ai/" class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zjistit více</a>
-        </div>
-        <div class="card">
-          <h3>AI pro manažery</h3>
-          <p>Rychlý přehled pro vedoucí pracovníky. Co AI umí, kde pomůže, jak bezpečně začít.</p>
-          <a href="/ai-pro-manazery/" class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zjistit více</a>
-        </div>
-        <div class="card">
-          <h3>AI bezpečnost a právo</h3>
-          <p>GDPR, AI Act a práce s daty vysvětlené srozumitelně na praktických příkladech.</p>
-          <a href="/pravo-v-ai/" class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zjistit více</a>
-        </div>
-        <div class="card">
-          <h3>AI pro veřejnou správu</h3>
-          <p>Bezpečné a srozumitelné školení pro úřady, města a obce. V souladu s GDPR a AI Act.</p>
-          <a href="/ai-pro-verejnou-spravu/" class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zjistit více</a>
-        </div>
-        <div class="card">
-          <h3>Školení na míru</h3>
-          <p>Obsah připravený přímo pro váš obor, role a úkoly ve firmě.</p>
-          <a href="/skoleni-na-miru/" class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zjistit více</a>
-        </div>
-        <div class="card">
-          <h3>Dotace na školení AI</h3>
-          <p>Program DIGI pro firmu. Informace o dotacích na vzdělávání zaměstnanců v oblasti AI.</p>
-          <a href="/dotace-ai-skoleni-digi-pro-firmu/" class="btn btn-s mt-3" style="width:100%;justify-content:center;">Zjistit více</a>
-        </div>
+      <div style="max-width:700px; margin:0 auto; text-align:center; background:var(--pk-primary-light); border-radius:var(--pk-radius-lg); padding:2.5rem; border:1px solid var(--pk-border);">
+        <div style="color:#f59e0b; font-size:1.5rem; margin-bottom:.8rem;">★★★★★</div>
+        <h3 style="color:var(--pk-primary); margin-bottom:.6rem;">Školení v souladu s doporučeními České asociace umělé inteligence</h3>
+        <p class="text-muted" style="font-size:.95rem;">Obsah vychází z ověřených postupů, respektuje pravidla GDPR i nařízení AI Act a zároveň je postavený na reálných úkolech z firemní praxe.</p>
       </div>
     </div>
   </section>
 
-  <section class="sec sec-alt">
+  <!-- INTRO TEXT -->
+  <section style="padding:0 0 2rem;">
+    <div class="wrap" style="text-align:center;">
+      <p class="text-muted" style="max-width:700px; margin:0 auto;">Na této stránce najdete přehled školení AI pro firmy – od základního praktického kurzu až po specializované programy pro management, marketing, veřejnou správu nebo Microsoft Copilot. Snadno si tak vyberete formát, který nejlépe odpovídá vaší firmě.</p>
+    </div>
+  </section>
+
+  <!-- KURZY -->
+  <section class="sec" id="skoleni">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Školení zaměřená na konkrétní nástroje</h2>
+        <h2>Kurzy AI pro firmy</h2>
       </div>
-      <div class="grid grid-3">
-        <a href="/chatgpt-pro-firmy/" class="card" style="text-decoration:none;">
-          <h3>ChatGPT pro firmy</h3>
-          <p>Kompletní průvodce ChatGPT pro firemní prostředí.</p>
-        </a>
-        <a href="/claude-pro-firmy/" class="card" style="text-decoration:none;">
-          <h3>Claude pro firmy</h3>
-          <p>Školení zaměřené na Claude AI od Anthropicu.</p>
-        </a>
-        <a href="/gemini-pro-firmy/" class="card" style="text-decoration:none;">
-          <h3>Gemini pro firmy</h3>
-          <p>Google Gemini a napojení na Google Workspace.</p>
-        </a>
+      <div class="grid grid-2">
+        <!-- Praktické školení AI -->
+        <div class="card" style="display:flex; flex-direction:column;">
+          <span class="card-badge" style="background:#dc2626; color:#fff; align-self:flex-start;">NEJPOPULÁRNĚJŠÍ</span>
+          <h3 style="margin-top:.8rem;">Praktické školení AI pro firmy</h3>
+          <p class="text-muted" style="font-weight:600; margin-bottom:.3rem;">Osmihodinový kurz, který skutečně funguje</p>
+          <p class="text-muted" style="flex-grow:1;">Pro úplné začátečníky i mírně pokročilé. Věci, které okamžitě využijete v práci. Součástí jsou i základní pravidla pro práci s AI s ohledem na GDPR a AI Act.</p>
+          <div style="display:flex; gap:1.5rem; color:var(--pk-text-3); font-size:.88rem; margin:1rem 0;">
+            <span>⏱ 8 hodin</span>
+            <span>👥 Až 15 osob</span>
+            <span>💰 19 900 Kč</span>
+          </div>
+          <div style="display:flex; gap:.6rem;">
+            <a href="/prakticke-skoleni-ai-pro-firmy/" class="btn btn-p" style="flex:1; min-width:auto;">Zjistit více</a>
+            <a href="/kontakt/" class="btn btn-s" style="flex:1; min-width:auto;">Poptat školení</a>
+          </div>
+        </div>
+
+        <!-- AI pro veřejnou správu -->
+        <div class="card" style="display:flex; flex-direction:column;">
+          <span class="card-badge" style="background:var(--pk-primary); color:#fff; align-self:flex-start;">PRO ÚŘADY</span>
+          <h3 style="margin-top:.8rem;">Praktické školení AI pro města, obce a veřejnou správu</h3>
+          <p class="text-muted" style="font-weight:600; margin-bottom:.3rem;">AI pro úřady, města a obce bezpečně</p>
+          <p class="text-muted" style="flex-grow:1;">Praktické použití AI v agendách úřadů, důraz na bezpečnost dat, postupy a příklady z české praxe.</p>
+          <div style="display:flex; gap:1.5rem; color:var(--pk-text-3); font-size:.88rem; margin:1rem 0;">
+            <span>⏱ 8 hodin</span>
+            <span>👥 Až 15 osob</span>
+            <span>💰 19 900 Kč</span>
+          </div>
+          <div style="display:flex; gap:.6rem;">
+            <a href="/ai-pro-verejnou-spravu/" class="btn btn-p" style="flex:1; min-width:auto;">Zjistit více</a>
+            <a href="/kontakt/" class="btn btn-s" style="flex:1; min-width:auto;">Poptat školení</a>
+          </div>
+        </div>
+
+        <!-- Microsoft Copilot -->
+        <div class="card" style="display:flex; flex-direction:column;">
+          <span class="card-badge" style="background:var(--pk-primary); color:#fff; align-self:flex-start;">MICROSOFT 365</span>
+          <h3 style="margin-top:.8rem;">Microsoft Copilot školení pro firmy</h3>
+          <p class="text-muted" style="font-weight:600; margin-bottom:.3rem;">AI přímo v nástrojích, které už používáte</p>
+          <p class="text-muted" style="flex-grow:1;">Copilot v Excelu, Wordu, Outlooku, Teams i PowerPointu. Praktické ukázky na vašem obsahu.</p>
+          <div style="display:flex; gap:1.5rem; color:var(--pk-text-3); font-size:.88rem; margin:1rem 0;">
+            <span>⏱ 8 hodin</span>
+            <span>👥 Až 15 osob</span>
+            <span>💰 24 900 Kč</span>
+          </div>
+          <div style="display:flex; gap:.6rem;">
+            <a href="/microsoft-copilot-pro-firmy/" class="btn btn-p" style="flex:1; min-width:auto;">Zjistit více</a>
+            <a href="/kontakt/" class="btn btn-s" style="flex:1; min-width:auto;">Poptat školení</a>
+          </div>
+        </div>
+
+        <!-- Marketing & PR -->
+        <div class="card" style="display:flex; flex-direction:column;">
+          <span class="card-badge" style="background:var(--pk-primary); color:#fff; align-self:flex-start;">MARKETING</span>
+          <h3 style="margin-top:.8rem;">Marketing & PR s AI – expertní školení pro firmy</h3>
+          <p class="text-muted" style="font-weight:600; margin-bottom:.3rem;">AI pro tvorbu obsahu a marketingové týmy</p>
+          <p class="text-muted" style="flex-grow:1;">Texty, reklamy, sociální sítě, grafika, video a SEO s pomocí AI nástrojů. Praktické ukázky na vašem obsahu.</p>
+          <div style="display:flex; gap:1.5rem; color:var(--pk-text-3); font-size:.88rem; margin:1rem 0;">
+            <span>⏱ 8 hodin</span>
+            <span>👥 Až 10 osob</span>
+            <span>💰 29 900 Kč</span>
+          </div>
+          <div style="display:flex; gap:.6rem;">
+            <a href="/marketing-pr-ai/" class="btn btn-p" style="flex:1; min-width:auto;">Zjistit více</a>
+            <a href="/kontakt/" class="btn btn-s" style="flex:1; min-width:auto;">Poptat školení</a>
+          </div>
+        </div>
+
+        <!-- AI pro manažery -->
+        <div class="card" style="display:flex; flex-direction:column;">
+          <span class="card-badge" style="background:var(--pk-primary); color:#fff; align-self:flex-start;">MANAŽEŘI</span>
+          <h3 style="margin-top:.8rem;">AI pro manažery – rozhodování a řízení rizik (online)</h3>
+          <p class="text-muted" style="font-weight:600; margin-bottom:.3rem;">Rychlý přehled pro vedení firmy</p>
+          <p class="text-muted" style="flex-grow:1;">Školení pro vedení firem, které chce rychle pochopit, kde AI opravdu pomůže, jaká jsou rizika a jak začít bez zbytečných chyb.</p>
+          <div style="display:flex; gap:1.5rem; color:var(--pk-text-3); font-size:.88rem; margin:1rem 0;">
+            <span>⏱ 4 hodiny</span>
+            <span>👥 Až 10 osob</span>
+            <span>💰 9 800 Kč</span>
+          </div>
+          <div style="display:flex; gap:.6rem;">
+            <a href="/ai-pro-manazery/" class="btn btn-p" style="flex:1; min-width:auto;">Zjistit více</a>
+            <a href="/kontakt/" class="btn btn-s" style="flex:1; min-width:auto;">Poptat školení</a>
+          </div>
+        </div>
+
+        <!-- AI bezpečnost -->
+        <div class="card" style="display:flex; flex-direction:column;">
+          <span class="card-badge" style="background:var(--pk-primary); color:#fff; align-self:flex-start;">BEZPEČNOST</span>
+          <h3 style="margin-top:.8rem;">AI bezpečnost a pravidla pro firmy (online)</h3>
+          <p class="text-muted" style="font-weight:600; margin-bottom:.3rem;">Praktické minimum pro bezpečnější práci s AI</p>
+          <p class="text-muted" style="flex-grow:1;">Stručné a praktické školení k tomu, co do AI patří, co už ne, jak pracovat s daty a jak si ve firmě nastavit rozumná pravidla bez zbytečné byrokracie.</p>
+          <div style="display:flex; gap:1.5rem; color:var(--pk-text-3); font-size:.88rem; margin:1rem 0;">
+            <span>⏱ 2 hodiny</span>
+            <span>👥 Až 30 osob</span>
+            <span>💰 9 800 Kč</span>
+          </div>
+          <div style="display:flex; gap:.6rem;">
+            <a href="/pravo-v-ai/" class="btn btn-p" style="flex:1; min-width:auto;">Zjistit více</a>
+            <a href="/kontakt/" class="btn btn-s" style="flex:1; min-width:auto;">Poptat školení</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ŠKOLENÍ NA MÍRU -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div style="max-width:800px; margin:0 auto; text-align:center; background:var(--pk-primary-light); border-radius:var(--pk-radius-lg); padding:3rem; border:1px solid var(--pk-border);">
+        <span class="card-badge" style="background:var(--pk-primary); color:#fff;">✓ INDIVIDUÁLNÍ PŘÍSTUP</span>
+        <h2 style="margin-top:1rem;">Potřebujete školení přesně pro vaši firmu?</h2>
+        <p class="text-muted" style="max-width:600px; margin:.8rem auto 1.5rem;">Školení na míru kombinuje témata podle vašich potřeb. Zaměřím se na vaše konkrétní procesy, nástroje a cíle. Obsah i délku nastavíme podle toho, co potřebujete.</p>
+        <div style="display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;">
+          <a href="/skoleni-na-miru/" class="btn btn-p">Zjistit více o školení na míru</a>
+          <a href="/kontakt/" class="btn btn-s">Poptat školení</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGA KLIENTŮ -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Proškolil jsem zaměstnance těchto firem</h2>
+      </div>
+      <div class="logos-grid">
+        <img src="/images/loga/ceska-sporitelna.webp" alt="Česká spořitelna" />
+        <img src="/images/loga/partners.webp" alt="Partners" />
+        <img src="/images/loga/ptacek.webp" alt="Ptáček" />
+        <img src="/images/loga/dopravni-podnik-pardubice.webp" alt="Dopravní podnik Pardubice" />
+        <img src="/images/loga/broker-consulting.webp" alt="Broker Consulting" />
+        <img src="/images/loga/proventiacz.webp" alt="Proventia" />
+        <img src="/images/loga/dt-vyhybkarna.webp" alt="DT Výhybkárna" />
+        <img src="/images/loga/khk-pardubicky-kraj.webp" alt="KHK Pardubický kraj" />
+        <img src="/images/loga/rubikon.webp" alt="Rubikon" />
+        <img src="/images/loga/narodni-strojirenskyy-klastr.webp" alt="Národní strojírenský klastr" />
+        <img src="/images/loga/mm-reality.webp" alt="M&M Reality" />
+        <img src="/images/loga/matikon.webp" alt="Matikon" />
+        <img src="/images/loga/vak-hodonin.webp" alt="VAK Hodonín" />
+        <img src="/images/loga/veacom.webp" alt="VEACOM" />
+        <img src="/images/loga/ibv-nbs.webp" alt="IBV NBS" />
+        <img src="/images/loga/makovec.webp" alt="Makovec" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec sec-alt">
+    <div class="wrap narrow">
+      <div class="sec-head">
+        <h2>Časté otázky o školení AI</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Jak dlouho školení trvá?</summary>
+          <div class="faq-body">Praktické školení AI pro firmy trvá obvykle 8 hodin. U jiných formátů záleží na tématu a domluvě.</div>
+        </details>
+        <details>
+          <summary>Kolik školení stojí?</summary>
+          <div class="faq-body">Praktické školení AI pro firmy stojí 19 900 Kč za osmihodinový program pro skupinu do 15 osob. U specializovaných školení se cena odvíjí od tématu a rozsahu.</div>
+        </details>
+        <details>
+          <summary>Je školení vhodné pro úplné začátečníky?</summary>
+          <div class="faq-body">Ano. Obsah i tempo přizpůsobím tomu, jaké zkušenosti už váš tým s AI má.</div>
+        </details>
+        <details>
+          <summary>Kde školení probíhá?</summary>
+          <div class="faq-body">Přímo u vás ve firmě, kdekoliv po Česku, nebo online.</div>
+        </details>
+        <details>
+          <summary>Nevíme, které školení vybrat</summary>
+          <div class="faq-body">Stačí mi stručně popsat, co ve firmě řešíte, a doporučím vám vhodný formát. Konzultace je zdarma a nezávazná.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="sec">
     <div class="wrap">
       <div class="cta-box">
-        <h2>Nevíte, jaký formát zvolit?</h2>
-        <p>Stačí mi stručně popsat, co ve firmě řešíte, a doporučím vám vhodný formát.</p>
-        <a href="/kontakt/" class="btn btn-p">Nezávazná konzultace</a>
+        <h2>Nejste si jistí, které školení vybrat?</h2>
+        <p>Stačí mi stručně popsat vaši firmu, tým a cíle. Doporučím vám školení, které bude dávat největší smysl.</p>
+        <div style="display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;">
+          <a href="/kontakt/" class="btn btn-p">Nezávazná konzultace</a>
+          <a href="/skoleni/" class="btn btn-s">Zobrazit všechna školení</a>
+        </div>
+        <p style="margin-top:1.5rem; font-size:.92rem; color:rgba(255,255,255,.8);">📞 +420 770 126 519 · ✉️ mail@pavelkovarik.cz</p>
+        <p style="font-size:.82rem; color:rgba(255,255,255,.6);">✓ Odpovím do 24 hodin ✓ Konzultace zdarma ✓ Bez závazků</p>
       </div>
     </div>
   </section>
+
 </Base>

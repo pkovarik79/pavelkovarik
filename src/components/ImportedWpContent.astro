@@ -1,0 +1,87 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  filePath: string;
+}
+
+const { filePath } = Astro.props;
+
+const root = process.cwd();
+const fullPath = path.isAbsolute(filePath) ? filePath : path.join(root, filePath);
+const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+
+const logoMap: Record<string, string> = {
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/ceska-sporitelna.jpg': '/images/loga/ceska-sporitelna.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/partners.jpg': '/images/loga/partners.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/ptacek.jpg': '/images/loga/ptacek.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/dopravni-podnik-pardubice.jpg': '/images/loga/dopravni-podnik-pardubice.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/broker-consulting.jpg': '/images/loga/broker-consulting.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/proventiacz.jpg': '/images/loga/proventiacz.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/dt-vyhybkarna.jpg': '/images/loga/dt-vyhybkarna.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/khk-pardubicky-kraj.jpg': '/images/loga/khk-pardubicky-kraj.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/rubikon.jpg': '/images/loga/rubikon.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/narodni-strojirenskyy-klastr.jpg': '/images/loga/narodni-strojirenskyy-klastr.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/mm-reality.jpg': '/images/loga/mm-reality.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/matikon.jpg': '/images/loga/matikon.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/vak-hodonin.jpg': '/images/loga/vak-hodonin.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/veacom.jpg': '/images/loga/veacom.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/ibv-nbs.jpg': '/images/loga/ibv-nbs.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2026/02/makovec.jpg': '/images/loga/makovec.webp',
+};
+
+const routeMap: Record<string, string> = {
+  'https://pavelkovarik.cz/': '/',
+  'https://pavelkovarik.cz/blog/': '/blog/',
+  'https://pavelkovarik.cz/ai-nastroje/': '/ai-nastroje/',
+  'https://pavelkovarik.cz/prompty/': '/prompty/',
+  'https://pavelkovarik.cz/materialy/ai-nastroje/': '/ai-nastroje/',
+  'https://pavelkovarik.cz/materialy/prompty/': '/prompty/',
+  'https://pavelkovarik.cz/materialy/': '/materialy/',
+  'https://pavelkovarik.cz/skoleni/': '/skoleni/',
+  'https://pavelkovarik.cz/kontakt/': '/kontakt/',
+  'https://pavelkovarik.cz/prakticke-skoleni-ai-pro-firmy/': '/prakticke-skoleni-ai-pro-firmy/',
+  'https://pavelkovarik.cz/microsoft-copilot-pro-firmy/': '/microsoft-copilot-pro-firmy/',
+  'https://pavelkovarik.cz/marketing-pr-s-ai/': '/marketing-pr-ai/',
+  'https://pavelkovarik.cz/skoleni-marketing-pr-s-ai/': '/marketing-pr-ai/',
+  'https://pavelkovarik.cz/marketing-pr-ai/': '/marketing-pr-ai/',
+  'https://pavelkovarik.cz/linkedin-byznys-osobni-znacka-ai/': '/marketing-pr-ai/',
+  'https://pavelkovarik.cz/ai-pro-verejnou-spravu/': '/ai-pro-verejnou-spravu/',
+  'https://pavelkovarik.cz/skoleni-na-miru/': '/skoleni-na-miru/',
+  'https://pavelkovarik.cz/pravo-v-ai/': '/pravo-v-ai/',
+  'https://pavelkovarik.cz/gdpr/': '/gdpr-ochrana-osobnich-udaju/',
+  'https://pavelkovarik.cz/gdpr-ochrana-osobnich-udaju/': '/gdpr-ochrana-osobnich-udaju/',
+  '/materialy/ai-nastroje/': '/ai-nastroje/',
+  '/materialy/prompty/': '/prompty/',
+  '/marketing-pr-s-ai/': '/marketing-pr-ai/',
+  '/skoleni-marketing-pr-s-ai/': '/marketing-pr-ai/',
+  '/linkedin-byznys-osobni-znacka-ai/': '/marketing-pr-ai/',
+  '/microsoft-copilot/': '/microsoft-copilot-pro-firmy/',
+  '/gdpr/': '/gdpr-ochrana-osobnich-udaju/',
+};
+
+let content = String(data.content ?? '');
+
+for (const [from, to] of Object.entries(logoMap)) {
+  content = content.replaceAll(from, to);
+}
+
+for (const [from, to] of Object.entries(routeMap)) {
+  content = content.replaceAll(from, to);
+}
+
+content = content.replaceAll('https://pavelkovarik.cz', '');
+
+const scripts: string[] = [];
+content = content.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, (_match, scriptBody) => {
+  scripts.push(scriptBody.trim());
+  return '';
+});
+---
+
+<Fragment set:html={content} />
+
+{scripts.map((scriptBody) => (
+  <script is:inline set:html={scriptBody}></script>
+))}

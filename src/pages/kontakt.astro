@@ -41,7 +41,7 @@ import '../styles/global.css';
         <h2>Nezávazná poptávka školení AI</h2>
         <p>Stačí stručně. Detaily doladíme později.</p>
       </div>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+      <form class="contact-form" id="contact-form">
         <div class="form-group">
           <label for="name">Jméno a příjmení *</label>
           <input type="text" id="name" name="name" required />
@@ -63,6 +63,8 @@ import '../styles/global.css';
           <textarea id="message" name="message" rows="5" required placeholder="Stručně popište, o jaké školení máte zájem, kolik lidí chcete proškolit a případně preferovaný termín."></textarea>
         </div>
         <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;">Odeslat poptávku</button>
+        <h3 class="form-message form-message-success" aria-live="polite">Odesláno!</h3>
+        <h3 class="form-message form-message-error" aria-live="polite">Chybí údaje</h3>
       </form>
     </div>
   </section>
@@ -109,4 +111,49 @@ import '../styles/global.css';
     outline: none;
     border-color: var(--brand);
   }
+  .form-message {
+    display: none;
+  }
 </style>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const successMessage = form?.querySelector('.form-message-success');
+  const errorMessage = form?.querySelector('.form-message-error');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const name = String(formData.get('name') ?? '').trim();
+    const company = String(formData.get('company') ?? '').trim();
+    const email = String(formData.get('email') ?? '').trim();
+    const phone = String(formData.get('phone') ?? '').trim();
+    const message = String(formData.get('message') ?? '').trim();
+
+    const isValid = name && email && message;
+    successMessage?.setAttribute('style', 'display:none;');
+    errorMessage?.setAttribute('style', 'display:none;');
+
+    if (!isValid) {
+      errorMessage?.setAttribute('style', 'display:block;');
+      return;
+    }
+
+    const subject = encodeURIComponent(`Poptávka AI školení: ${company || name}`);
+    const body = encodeURIComponent(
+      [
+        `Jméno: ${name}`,
+        `Firma / organizace: ${company || '-'}`,
+        `E-mail: ${email}`,
+        `Telefon: ${phone || '-'}`,
+        '',
+        'Zpráva:',
+        message,
+      ].join('\n')
+    );
+
+    successMessage?.setAttribute('style', 'display:block;');
+    window.location.href = `mailto:mail@pavelkovarik.cz?subject=${subject}&body=${body}`;
+  });
+</script>
