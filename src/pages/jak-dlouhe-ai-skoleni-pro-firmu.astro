@@ -1,0 +1,15 @@
+---
+import ImportedWpPostBody from '../components/ImportedWpPostBody.astro';
+import BlogPost from '../layouts/BlogPost.astro';
+
+const frontmatter = {
+  title: 'Jak dlouhé AI školení vybrat pro firmu? Co rozhoduje o tom, co si lidé ze školení doopravdy odnesou',
+  description: 'Jednodenní, dvoudenní, nebo delší program? Praktický pohled na to, jak délka AI školení ovlivňuje skutečný přenos do firemní praxe.',
+  date: '2026-03-06',
+  image: '/images/blog/blog-cover-delka-skoleni-ai.webp',
+};
+---
+
+<BlogPost frontmatter={frontmatter}>
+  <ImportedWpPostBody filePath="wp_content/posts/jak-dlouhe-ai-skoleni-pro-firmu.json" />
+</BlogPost>

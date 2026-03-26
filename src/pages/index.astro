@@ -1,8 +1,26 @@
 ---
 import Base from '../layouts/Base.astro';
+import { importedPosts } from '../data/importedPosts';
 import '../styles/global.css';
 
-const allPosts = await Astro.glob('./*.mdx');
+const mdxPosts = Object.values(import.meta.glob('./*.mdx', { eager: true })).map((post: any) => ({
+  url: post.url,
+  frontmatter: post.frontmatter,
+}));
+
+const allPosts = [
+  ...mdxPosts,
+  ...importedPosts.map((post) => ({
+    url: post.url,
+    frontmatter: {
+      title: post.title,
+      description: post.description,
+      date: post.date,
+      image: post.image,
+    },
+  })),
+];
+
 const sortedPosts = allPosts
   .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 

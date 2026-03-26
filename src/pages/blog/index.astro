@@ -1,9 +1,22 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { importedPosts } from '../../data/importedPosts';
 import '../../styles/global.css';
 
-const allPosts = await Astro.glob('../*.mdx');
-const posts = allPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+const mdxPosts = Object.values(import.meta.glob('../*.mdx', { eager: true })).map((post: any) => ({
+  url: post.url,
+  frontmatter: post.frontmatter,
+}));
+
+const posts = [...mdxPosts, ...importedPosts.map((post) => ({
+  url: post.url,
+  frontmatter: {
+    title: post.title,
+    description: post.description,
+    date: post.date,
+    image: post.image,
+  },
+}))].sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 const featuredLinks = [
   {
     kicker: '01',

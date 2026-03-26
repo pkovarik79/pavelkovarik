@@ -1,0 +1,15 @@
+---
+import ImportedWpPostBody from '../components/ImportedWpPostBody.astro';
+import BlogPost from '../layouts/BlogPost.astro';
+
+const frontmatter = {
+  title: 'Proč už nestačí být první na Googlu: SEO, AEO a GEO v roce 2026',
+  description: 'Jak AI v roce 2026 mění vyhledávání? Přehled SEO, AEO a GEO, dopad AI odpovědí na prokliky i návštěvnost a konkrétní kroky, které by dnes firmy měly řešit.',
+  date: '2026-03-13',
+  image: '/images/blog/blog-cover-seo-aeo-geo-v-dobe-ai.webp',
+};
+---
+
+<BlogPost frontmatter={frontmatter}>
+  <ImportedWpPostBody filePath="wp_content/posts/seo-aeo-geo-2026.json" />
+</BlogPost>

@@ -1,0 +1,15 @@
+---
+import ImportedWpPostBody from '../components/ImportedWpPostBody.astro';
+import BlogPost from '../layouts/BlogPost.astro';
+
+const frontmatter = {
+  title: 'Umělá inteligence v HR 2026: Od chytrého náboru až po bezpečnou datovou analytiku',
+  description: 'Jak bezpečně zavést AI do personalistiky v roce 2026? Praktický průvodce pro nábor, onboarding i analytiku, včetně přehledu nástrojů a hlavních rizik.',
+  date: '2026-03-11',
+  image: '/images/blog/blog-cover-ai-v-hr-2026.webp',
+};
+---
+
+<BlogPost frontmatter={frontmatter}>
+  <ImportedWpPostBody filePath="wp_content/posts/ai-v-hr-2026-pruvodce.json" />
+</BlogPost>

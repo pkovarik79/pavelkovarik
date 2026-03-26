@@ -1,0 +1,15 @@
+---
+import ImportedWpPostBody from '../components/ImportedWpPostBody.astro';
+import BlogPost from '../layouts/BlogPost.astro';
+
+const frontmatter = {
+  title: 'Kolik stojí AI školení pro firmu a jak v roce 2026 poznat smysluplnou investici',
+  description: 'Přehled cen firemních AI školení v roce 2026. Srovnání modelů nacenění, výpočet návratnosti investice a tipy pro HR manažery.',
+  date: '2026-02-14',
+  image: '/images/blog/ai-skoleni-cena.webp',
+};
+---
+
+<BlogPost frontmatter={frontmatter}>
+  <ImportedWpPostBody filePath="wp_content/posts/cena-ai-skoleni.json" />
+</BlogPost>

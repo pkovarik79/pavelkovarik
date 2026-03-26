@@ -1,14 +1,15 @@
 ---
+import { importedPosts } from '../../data/importedPosts';
+
 export async function getStaticPaths() {
-  const allMdxPosts = await Astro.glob('../*.mdx');
-  const importedAstroPosts = ['claude-ai-prezentace'];
+  const allMdxPosts = Object.values(import.meta.glob('../*.mdx', { eager: true }));
 
   return [
-    ...allMdxPosts.map((post) => ({
+    ...allMdxPosts.map((post: any) => ({
       params: { slug: post.url.replace(/^\/|\/$/g, '') },
     })),
-    ...importedAstroPosts.map((slug) => ({
-      params: { slug },
+    ...importedPosts.map((post) => ({
+      params: { slug: post.slug },
     })),
   ];
 }
