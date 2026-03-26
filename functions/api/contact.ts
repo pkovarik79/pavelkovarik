@@ -38,6 +38,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     const company = String(payload.company ?? '').trim();
     const email = String(payload.email ?? '').trim();
     const phone = String(payload.phone ?? '').trim();
+    const teamSize = String(payload.teamSize ?? '').trim();
+    const interests = Array.isArray(payload.interests)
+      ? payload.interests.map((item) => String(item).trim()).filter(Boolean)
+      : [];
     const message = String(payload.message ?? '').trim();
     const website = String(payload.website ?? '').trim();
 
@@ -45,8 +49,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       return json({ ok: true });
     }
 
-    if (!name || !email || !message) {
-      return json({ ok: false, error: 'Vyplňte prosím jméno, e-mail a zprávu.' }, 400);
+    if (!name || !email || !phone || !company) {
+      return json({ ok: false, error: 'Vyplňte prosím jméno, e-mail, telefon a firmu.' }, 400);
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -64,9 +68,11 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       `Firma / organizace: ${company || '-'}`,
       `E-mail: ${email}`,
       `Telefon: ${phone || '-'}`,
+      `Velikost skupiny: ${teamSize || '-'}`,
+      `Zájem o školení: ${interests.length ? interests.join(', ') : '-'}`,
       '',
-      'Zpráva:',
-      message,
+      'Poznámka / dotaz:',
+      message || '-',
     ].join('\n');
 
     const html = `
@@ -77,9 +83,11 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
           <tr><td style="padding:8px 0;font-weight:700">Firma / organizace</td><td style="padding:8px 0">${escapeHtml(company || '-')}</td></tr>
           <tr><td style="padding:8px 0;font-weight:700">E-mail</td><td style="padding:8px 0"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
           <tr><td style="padding:8px 0;font-weight:700">Telefon</td><td style="padding:8px 0">${escapeHtml(phone || '-')}</td></tr>
+          <tr><td style="padding:8px 0;font-weight:700">Velikost skupiny</td><td style="padding:8px 0">${escapeHtml(teamSize || '-')}</td></tr>
+          <tr><td style="padding:8px 0;font-weight:700">Zájem o školení</td><td style="padding:8px 0">${escapeHtml(interests.length ? interests.join(', ') : '-')}</td></tr>
         </table>
-        <h2 style="font-size:18px;margin:0 0 10px;color:#0e2c6b">Zpráva</h2>
-        <div style="white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;padding:16px">${escapeHtml(message)}</div>
+        <h2 style="font-size:18px;margin:0 0 10px;color:#0e2c6b">Poznámka / dotaz</h2>
+        <div style="white-space:pre-wrap;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;padding:16px">${escapeHtml(message || '-')}</div>
       </div>
     `;
 
