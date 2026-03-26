@@ -41,7 +41,7 @@ import '../styles/global.css';
         <h2>Nezávazná poptávka školení AI</h2>
         <p>Stačí stručně. Detaily doladíme později.</p>
       </div>
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" novalidate>
         <div class="form-group">
           <label for="name">Jméno a příjmení *</label>
           <input type="text" id="name" name="name" required />
@@ -58,13 +58,18 @@ import '../styles/global.css';
           <label for="phone">Telefon</label>
           <input type="tel" id="phone" name="phone" />
         </div>
+        <div class="form-group form-honeypot" aria-hidden="true">
+          <label for="website">Webová stránka</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
         <div class="form-group">
           <label for="message">Zpráva *</label>
           <textarea id="message" name="message" rows="5" required placeholder="Stručně popište, o jaké školení máte zájem, kolik lidí chcete proškolit a případně preferovaný termín."></textarea>
         </div>
-        <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;">Odeslat poptávku</button>
-        <h3 class="form-message form-message-success" aria-live="polite">Odesláno!</h3>
-        <h3 class="form-message form-message-error" aria-live="polite">Chybí údaje</h3>
+        <button type="submit" class="btn btn-p" id="contact-submit" style="width:100%;justify-content:center;">Odeslat poptávku</button>
+        <p class="form-note">Odesláním formuláře souhlasíte se zpracováním údajů za účelem vyřízení poptávky.</p>
+        <h3 class="form-message form-message-success" aria-live="polite">Děkuji, zpráva byla odeslána. Ozvu se co nejdříve.</h3>
+        <h3 class="form-message form-message-error" aria-live="polite">Nepodařilo se odeslat formulář.</h3>
       </form>
     </div>
   </section>
@@ -90,6 +95,13 @@ import '../styles/global.css';
     flex-direction: column;
     gap: .35rem;
   }
+  .form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
   .form-group label {
     font-size: .88rem;
     font-weight: 600;
@@ -113,15 +125,35 @@ import '../styles/global.css';
   }
   .form-message {
     display: none;
+    font-size: 1rem;
+    margin: .25rem 0 0;
+  }
+  .form-message-success {
+    color: #0f8a45;
+  }
+  .form-message-error {
+    color: #c53030;
+  }
+  .form-note {
+    font-size: .9rem;
+    color: var(--pk-text-3);
   }
 </style>
 
 <script>
   const form = document.getElementById('contact-form');
+  const submitButton = document.getElementById('contact-submit');
   const successMessage = form?.querySelector('.form-message-success');
   const errorMessage = form?.querySelector('.form-message-error');
 
-  form?.addEventListener('submit', (event) => {
+  const setMessage = (type, text) => {
+    if (successMessage) successMessage.textContent = type === 'success' ? text : '';
+    if (errorMessage) errorMessage.textContent = type === 'error' ? text : '';
+    successMessage?.setAttribute('style', type === 'success' ? 'display:block;' : 'display:none;');
+    errorMessage?.setAttribute('style', type === 'error' ? 'display:block;' : 'display:none;');
+  };
+
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const formData = new FormData(form);
@@ -130,30 +162,48 @@ import '../styles/global.css';
     const email = String(formData.get('email') ?? '').trim();
     const phone = String(formData.get('phone') ?? '').trim();
     const message = String(formData.get('message') ?? '').trim();
+    const website = String(formData.get('website') ?? '').trim();
 
     const isValid = name && email && message;
-    successMessage?.setAttribute('style', 'display:none;');
-    errorMessage?.setAttribute('style', 'display:none;');
+    setMessage('', '');
 
     if (!isValid) {
-      errorMessage?.setAttribute('style', 'display:block;');
+      setMessage('error', 'Vyplňte prosím jméno, e-mail a zprávu.');
       return;
     }
 
-    const subject = encodeURIComponent(`Poptávka AI školení: ${company || name}`);
-    const body = encodeURIComponent(
-      [
-        `Jméno: ${name}`,
-        `Firma / organizace: ${company || '-'}`,
-        `E-mail: ${email}`,
-        `Telefon: ${phone || '-'}`,
-        '',
-        'Zpráva:',
-        message,
-      ].join('\n')
-    );
+    submitButton?.setAttribute('disabled', 'disabled');
+    submitButton?.setAttribute('aria-busy', 'true');
 
-    successMessage?.setAttribute('style', 'display:block;');
-    window.location.href = `mailto:mail@pavelkovarik.cz?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          company,
+          email,
+          phone,
+          message,
+          website,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || 'Nepodařilo se odeslat formulář.');
+      }
+
+      form.reset();
+      setMessage('success', 'Děkuji, zpráva byla odeslána. Ozvu se co nejdříve.');
+    } catch (error) {
+      setMessage('error', error instanceof Error ? error.message : 'Nepodařilo se odeslat formulář.');
+    } finally {
+      submitButton?.removeAttribute('disabled');
+      submitButton?.removeAttribute('aria-busy');
+    }
   });
 </script>
