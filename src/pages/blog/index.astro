@@ -1,14 +1,58 @@
 ---
 import Base from '../../layouts/Base.astro';
 import '../../styles/global.css';
-import ImportedWpContent from '../../components/ImportedWpContent.astro';
 
 const allPosts = await Astro.glob('../*.mdx');
 const posts = allPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+const featuredLinks = [
+  {
+    kicker: '01',
+    title: 'Nejlepší AI asistent v roce 2026',
+    description: 'Srovnání ChatGPT, Gemini a Claude. Vyberte si model podle toho, co reálně potřebujete vyřešit.',
+    href: '/nejlepsi-ai-asistent-2026-srovnani-chatgpt-gemini-claude-a-dalsich/',
+  },
+  {
+    kicker: '02',
+    title: 'Jak zavést AI do praxe v roce 2026',
+    description: 'Konec experimentování. Praktický návod, jak zavést AI do firmy tak, aby měla měřitelný dopad a jasnou návratnost.',
+    href: '/zavedeni-ai-2026/',
+  },
+  {
+    kicker: '03',
+    title: 'Seznam AI nástrojů',
+    description: 'Aplikace, které sám používám a testuji. Jen to, co dává smysl, průběžně aktualizováno.',
+    href: '/ai-nastroje/',
+  },
+];
 ---
 
 <Base title="Blog | Pavel Kovařík" description="Návody, trendy a zkušenosti ze zavádění umělé inteligence v českých firmách.">
-  <ImportedWpContent filePath="wp_content/pages/blog.json" />
+  <section class="pk-page-hero pk-blog-hero">
+    <div class="wrap">
+      <span class="pk-hero-label">BLOG</span>
+      <h1>Blog o AI (umělé inteligenci)</h1>
+      <p>Zkušenosti z praxe, školení a testování nástrojů: ChatGPT, Gemini, Copilot, Perplexity a další. Workflow, bezpečnost i dopady AI na každodenní práci.</p>
+    </div>
+  </section>
+
+  <section class="sec pk-blog-hub">
+    <div class="wrap">
+      <p class="pk-blog-intro">Tenhle blog o AI je rozcestník mých článků, tipů a zkušeností.</p>
+
+      <div class="pk-blog-start">
+        <h2>Začněte tady</h2>
+        <div class="pk-blog-start-grid">
+          {featuredLinks.map((item) => (
+            <article class="pk-blog-start-card">
+              <span class="pk-blog-kicker">{item.kicker}</span>
+              <h3><a href={item.href}>{item.title}</a></h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="sec">
     <div class="wrap">
@@ -16,15 +60,34 @@ const posts = allPosts.sort((a, b) => new Date(b.frontmatter.date).getTime() - n
         <h2 style="font-size: clamp(1.7rem,4vw,2.4rem);">Všechny články</h2>
         <p>Kompletní archiv článků o AI pro firmy, management i každodenní praxi.</p>
       </div>
-      <div class="blog-list narrow">
+      <div class="blog-grid pk-blog-grid">
         {posts.map((post) => (
           <a href={post.url} class="blog-card">
-            {post.frontmatter.image && <img src={post.frontmatter.image} alt={post.frontmatter.title} style="width:100%; border-radius:var(--radius); margin-bottom:.8rem;" />}
-            <time datetime={post.frontmatter.date}>{new Date(post.frontmatter.date).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-            <h3>{post.frontmatter.title}</h3>
-            <p>{post.frontmatter.description}</p>
+            {post.frontmatter.image && <img src={post.frontmatter.image} alt={post.frontmatter.title} />}
+            <div class="blog-card-body">
+              <h3>{post.frontmatter.title}</h3>
+              <time datetime={post.frontmatter.date}>{new Date(post.frontmatter.date).toLocaleDateString('cs-CZ')}</time>
+              <p>{post.frontmatter.description}</p>
+              <span class="read-more">Přečíst článek »</span>
+            </div>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="pk-blog-cta">
+        <span class="pk-blog-cta-badge">CHCETE TO VYZKOUŠET?</span>
+        <h2>Ukážu vašemu týmu, jak AI skutečně funguje v praxi</h2>
+        <p>Praktické školení AI pro firmy. Bez zbytečné teorie, jen nástroje které váš tým začne používat hned druhý den.</p>
+        <div class="pk-blog-cta-actions">
+          <a href="/kontakt/" class="btn btn-p">Nezávazná konzultace</a>
+          <a href="tel:+420770126519" class="btn btn-s pk-blog-cta-phone">Zavolat: +420 770 126 519</a>
+        </div>
+        <div class="pk-blog-cta-contact">+420 770 126 519 · mail@pavelkovarik.cz</div>
+        <div class="pk-blog-cta-note">Odpovím do 24 hodin · Školení přizpůsobené vašemu týmu · Proškolil jsem 1000+ zaměstnanců</div>
       </div>
     </div>
   </section>
