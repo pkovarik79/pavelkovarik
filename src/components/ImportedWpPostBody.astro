@@ -1,0 +1,72 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  filePath: string;
+}
+
+const { filePath } = Astro.props;
+
+const root = process.cwd();
+const fullPath = path.isAbsolute(filePath) ? filePath : path.join(root, filePath);
+const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+
+const routeMap: Record<string, string> = {
+  'https://pavelkovarik.cz/': '/',
+  'https://pavelkovarik.cz/blog/': '/blog/',
+  'https://pavelkovarik.cz/ai-nastroje/': '/ai-nastroje/',
+  'https://pavelkovarik.cz/prompty/': '/prompty/',
+  'https://pavelkovarik.cz/materialy/ai-nastroje/': '/ai-nastroje/',
+  'https://pavelkovarik.cz/materialy/prompty/': '/prompty/',
+  'https://pavelkovarik.cz/materialy/': '/materialy/',
+  'https://pavelkovarik.cz/skoleni/': '/skoleni/',
+  'https://pavelkovarik.cz/kontakt/': '/kontakt/',
+  'https://pavelkovarik.cz/prakticke-skoleni-ai-pro-firmy/': '/prakticke-skoleni-ai-pro-firmy/',
+  'https://pavelkovarik.cz/microsoft-copilot-pro-firmy/': '/microsoft-copilot-pro-firmy/',
+  'https://pavelkovarik.cz/marketing-pr-s-ai/': '/marketing-pr-ai/',
+  'https://pavelkovarik.cz/skoleni-marketing-pr-s-ai/': '/marketing-pr-ai/',
+  'https://pavelkovarik.cz/marketing-pr-ai/': '/marketing-pr-ai/',
+  'https://pavelkovarik.cz/linkedin-byznys-osobni-znacka-ai/': '/marketing-pr-ai/',
+  'https://pavelkovarik.cz/ai-pro-verejnou-spravu/': '/ai-pro-verejnou-spravu/',
+  'https://pavelkovarik.cz/skoleni-na-miru/': '/skoleni-na-miru/',
+  'https://pavelkovarik.cz/pravo-v-ai/': '/pravo-v-ai/',
+  'https://pavelkovarik.cz/gdpr/': '/gdpr-ochrana-osobnich-udaju/',
+  'https://pavelkovarik.cz/gdpr-ochrana-osobnich-udaju/': '/gdpr-ochrana-osobnich-udaju/',
+  '/materialy/ai-nastroje/': '/ai-nastroje/',
+  '/materialy/prompty/': '/prompty/',
+  '/marketing-pr-s-ai/': '/marketing-pr-ai/',
+  '/skoleni-marketing-pr-s-ai/': '/marketing-pr-ai/',
+  '/linkedin-byznys-osobni-znacka-ai/': '/marketing-pr-ai/',
+  '/microsoft-copilot/': '/microsoft-copilot-pro-firmy/',
+  '/gdpr/': '/gdpr-ochrana-osobnich-udaju/',
+};
+
+let content = String(data.content ?? '');
+
+content = content.replaceAll('<!-- wp:html -->', '');
+content = content.replaceAll('<!-- /wp:html -->', '');
+
+for (const [from, to] of Object.entries(routeMap)) {
+  content = content.replaceAll(from, to);
+}
+
+content = content.replace(
+  /https:\/\/pavelkovarik\.cz\/wp-content\/uploads\/(\d{4})\/(\d{2})\/([^"' )]+)/g,
+  (_match, year, month, file) => `/images/${year}/${month}/${file}`,
+);
+
+content = content.replaceAll('https://pavelkovarik.cz', '');
+
+const scripts: string[] = [];
+content = content.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, (_match, scriptBody) => {
+  scripts.push(scriptBody.trim());
+  return '';
+});
+---
+
+<Fragment set:html={content} />
+
+{scripts.map((scriptBody) => (
+  <script is:inline set:html={scriptBody}></script>
+))}

@@ -6,12 +6,12 @@ const { frontmatter } = Astro.props;
 <Base title={`${frontmatter.title} | Pavel Kovařík`} description={frontmatter.description}>
   <article class="article">
     <div class="wrap narrow">
-      <header>
-        <time datetime={frontmatter.date}>{new Date(frontmatter.date).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+      <header class="article-header">
         <h1>{frontmatter.title}</h1>
-        {frontmatter.image && <img src={frontmatter.image} alt={frontmatter.title} style="width:100%; border-radius:var(--radius-lg); margin-top:1.5rem;" />}
+        <time datetime={frontmatter.date}>{new Date(frontmatter.date).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        {frontmatter.image && <img class="article-cover" src={frontmatter.image} alt={frontmatter.title} />}
       </header>
-      <div class="prose">
+      <div class="prose article-content">
         <slot />
       </div>
     </div>

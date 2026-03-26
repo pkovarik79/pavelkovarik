@@ -1,0 +1,15 @@
+---
+import ImportedWpPostBody from '../components/ImportedWpPostBody.astro';
+import BlogPost from '../layouts/BlogPost.astro';
+
+const frontmatter = {
+  title: 'Claude AI pro prezentace: jak připravit přesvědčivý obsah a ušetřit čas',
+  description: 'Jak s Claude připravit prezentaci rychleji a s jasnější logikou? Praktický postup, rozdíl mezi chatem a PowerPoint add-inem a 21 promptů, které můžete rovnou použít.',
+  date: '2026-03-15',
+  image: '/images/blog/claude-prezentace.webp',
+};
+---
+
+<BlogPost frontmatter={frontmatter}>
+  <ImportedWpPostBody filePath="wp_content/posts/claude-ai-prezentace.json" />
+</BlogPost>
