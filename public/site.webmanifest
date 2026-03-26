@@ -1,0 +1,19 @@
+{
+  "name": "Pavel Kovarík",
+  "short_name": "Pavel Kovarík",
+  "icons": [
+    {
+      "src": "/favicon-32x32-v5.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon-v5.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#3d5cd9",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
