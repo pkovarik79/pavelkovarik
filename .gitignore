@@ -17,6 +17,4 @@ Thumbs.db
 .env
 .env.*
 
-# WP export (source data, not needed in production)
-wp_content/
-{src/
+# WP export is required at build time for imported legacy content
