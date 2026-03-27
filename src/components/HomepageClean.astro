@@ -1,0 +1,1163 @@
+---
+import { importedPosts } from '../data/importedPosts';
+import { trainingLogos } from '../data/trainingOverview';
+
+const benefits = [
+  {
+    title: 'Efektivita v praxi',
+    text: 'Naučím vás používat AI na maximum a automatizovat rutinu.',
+    icon: 'rocket',
+  },
+  {
+    title: 'Ochrana know-how',
+    text: 'Bezpečnost dat je priorita. Nastavíme jasná firemní pravidla.',
+    icon: 'shield',
+  },
+  {
+    title: 'Nástroje na míru',
+    text: 'Žádná teorie. Scénáře z vašeho oboru od HR až po management.',
+    icon: 'target',
+  },
+  {
+    title: 'Konkurenční výhoda',
+    text: 'Vaše firma bude o krok napřed díky efektivnímu využití AI.',
+    icon: 'star',
+  },
+];
+
+const practicalBenefits = [
+  'Ušetříte 5-10 hodin týdně na rutinní práci',
+  'Bezpečné postupy bez úniku citlivých dat',
+  'Soulad s GDPR a AI Act',
+  'Okamžitě použitelné znalosti pro celý tým',
+];
+
+const practicalAudience = [
+  'Firmy začínající s nasazením AI',
+  'Zaměstnance, kteří chtějí AI využívat naplno',
+  'HR a management hledající efektivní řešení',
+  'Ty, kdo chtějí pokročilé znalosti AI nástrojů',
+];
+
+const specializedCourses = [
+  {
+    title: 'Microsoft Copilot školení pro firmy',
+    text: 'Využijte AI v Excelu, Wordu, Outlooku a Teams. Ovládněte nástroje, za které už ve firmě platíte.',
+    href: '/microsoft-copilot-pro-firmy/',
+    accent: 'blue',
+  },
+  {
+    title: 'AI pro manažery – rozhodování a řízení rizik',
+    text: 'Rychlý přehled pro vedoucí pracovníky, kteří nemají čas na deep dive. Co AI umí, kde pomůže, jak bezpečně začít.',
+    href: '/ai-pro-manazery/',
+    accent: 'blue',
+  },
+  {
+    title: 'AI bezpečnost & pravidla pro firmu',
+    text: 'Legislativa vysvětlená lidsky. Naučte se pracovat s AI bezpečně a v souladu s předpisy.',
+    href: '/pravo-v-ai/',
+    accent: 'blue',
+  },
+  {
+    title: 'Marketing & PR s AI – expertní školení pro firmy',
+    text: 'Tvorba obsahu, grafiky a videí rychlostí blesku. Sociální sítě, SEO, automatizace.',
+    href: '/marketing-pr-ai/',
+    accent: 'blue',
+  },
+  {
+    title: 'Praktické školení AI pro města, obce a veřejnou správu',
+    text: 'Efektivní úřad bezpečně a lidsky. Speciální postupy pro města, obce a instituce.',
+    href: '/ai-pro-verejnou-spravu/',
+    accent: 'blue',
+  },
+  {
+    title: 'Školení na míru',
+    text: 'Obsah připravený přímo pro váš obor. Analýza vašich procesů a nasazení AI tam, kde dává smysl.',
+    href: '/skoleni-na-miru/',
+    accent: 'gold',
+    badge: 'INDIVIDUÁLNÍ PŘÍSTUP',
+  },
+];
+
+const featuredPost = {
+  title: 'Jak vybrat AI školení pro firmy, které přinese reálné výsledky',
+  description: 'Na co se ptát při výběru lektora a jak poznat kvalitní školení.',
+  href: '/jak-vybrat-ai-skoleni-pro-firmy/',
+  image: '/images/blog/Jak-vybrat-AI-skoleni-pro-firmy-ktere-prinese-realne-vysledky.webp',
+  badge: 'Doporučený článek',
+};
+
+const latestPosts = importedPosts.slice(0, 2);
+
+const testimonials = [
+  {
+    quote: '„Lektor dokáže i náročná témata vysvětlit srozumitelně a na praktických příkladech.“',
+    author: 'Jitka Zelenková',
+    role: 'Dopravní podnik města Pardubice',
+  },
+  {
+    quote: '„Školení ukázalo, jak efektivně a do hloubky využívat ChatGPT i další nástroje.“',
+    author: 'Miroslava Pytlíková',
+    role: 'Veacom',
+  },
+  {
+    quote: '„Ocenili jsme hlavně srozumitelný výklad, praktické ukázky a konkrétní příklady.“',
+    author: 'Ing. Petra Fialová',
+    role: 'VAK Hodonín',
+  },
+];
+
+const reasons = [
+  {
+    title: '20 let zkušeností v byznysu',
+    text: 'Rozumím fungování firem i tomu, co lidé v práci opravdu řeší.',
+  },
+  {
+    title: 'Rozumím firemním procesům',
+    text: 'Neukazuji jen nástroje, ale i to, jak je smysluplně zapojit do každodenní práce.',
+  },
+  {
+    title: 'Učím jen to, co funguje v praxi',
+    text: 'Vycházím z reálného používání AI, ne z teorie a ukázkových scénářů.',
+  },
+  {
+    title: 'Otevřeně mluvím i o rizicích',
+    text: 'Ukážu vám možnosti, limity i pravidla pro bezpečnější používání AI ve firmě.',
+  },
+];
+
+const steps = [
+  {
+    number: '1',
+    title: 'Ujasníme si zadání',
+    text: 'Nejprve si vyjasníme, co ve vaší firmě dává největší smysl.',
+  },
+  {
+    number: '2',
+    title: 'Připravím školení',
+    text: 'Poté připravím školení podle vašich cílů, oboru a úrovně účastníků.',
+  },
+  {
+    number: '3',
+    title: 'Dostanete podklady',
+    text: 'Nakonec dostanete materiály, prompty a doporučení pro další práci.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Jak dlouho školení trvá?',
+    answer: 'Praktické školení AI pro firmy trvá obvykle 8 hodin. U jiných formátů záleží na tématu a domluvě.',
+  },
+  {
+    question: 'Kolik školení stojí?',
+    answer: 'Praktické školení AI pro firmy stojí 19 900 Kč za osmihodinový program pro skupinu do 15 osob. U specializovaných školení se cena odvíjí od tématu a rozsahu.',
+  },
+  {
+    question: 'Je školení vhodné i pro začátečníky?',
+    answer: 'Ano. Obsah i tempo přizpůsobím tomu, jaké zkušenosti už váš tým s AI má.',
+  },
+  {
+    question: 'Přizpůsobíte školení našemu oboru?',
+    answer: 'Ano. Obsah upravuji podle vaší firmy, rolí účastníků i situací, které ve firmě řešíte.',
+  },
+  {
+    question: 'Kde školení probíhá?',
+    answer: 'Přímo u vás ve firmě, kdekoliv po Česku, nebo online.',
+  },
+  {
+    question: 'Kolik lidí se může zúčastnit?',
+    answer: 'U praktického školení AI pro firmy je kapacita do 15 osob. U jiných formátů záleží na typu školení.',
+  },
+  {
+    question: 'Řešíte i bezpečnost dat a pravidla pro používání AI?',
+    answer: 'Ano. Součástí školení jsou i doporučení k bezpečnější práci s AI, citlivými daty a interními pravidly.',
+  },
+  {
+    question: 'Jaké nástroje budeme používat?',
+    answer: 'Podle toho, co ve vaší firmě dává smysl. Nejčastěji pracujeme s nástroji jako ChatGPT, Microsoft Copilot, Gemini, Claude nebo Canva AI.',
+  },
+  {
+    question: 'Dostaneme po školení materiály?',
+    answer: 'Ano. Dostanete přehledné podklady, prompty, doporučené nástroje i tipy pro další práci.',
+  },
+  {
+    question: 'Nevíme, jaký formát zvolit',
+    answer: 'To nevadí. Stačí mi stručně popsat, co ve firmě řešíte, a doporučím vám vhodný formát. Napsat mi můžete přes stránku Kontakt.',
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
+const itemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Školení podle zaměření',
+  description: 'Odborné kurzy umělé inteligence zaměřené na konkrétní odvětví a profese.',
+  itemListElement: specializedCourses.map((course, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: course.title,
+    url: `https://pavelkovarik.cz${course.href}`,
+  })),
+};
+
+const formatDate = (date: string) =>
+  new Intl.DateTimeFormat('cs-CZ', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  }).format(new Date(date));
+---
+
+<div class="hp">
+  <section class="hp-hero">
+    <div class="wrap hp-hero-grid">
+      <div class="hp-hero-copy">
+        <h1>Školení AI pro firmy</h1>
+        <p class="hp-hero-lead">S umělou inteligencí ušetříte hodiny práce týdně, když víte jak na to. Jako lektor to naučím vaše lidi. Srozumitelně, prakticky a na míru vaší firmě.</p>
+        <div class="hp-stats">
+          <div class="hp-stat">
+            <div class="hp-stat-num">1000+</div>
+            <div class="hp-stat-label">proškolených<br />zaměstnanců</div>
+          </div>
+          <div class="hp-stat">
+            <div class="hp-stat-num">100%</div>
+            <div class="hp-stat-label">praktické<br />zaměření</div>
+          </div>
+        </div>
+        <div class="hp-divider"></div>
+        <div class="hp-actions">
+          <a href="/kontakt/" class="btn btn-p">Objednat AI školení</a>
+          <a href="/skoleni/" class="btn btn-s">Zjistit více</a>
+        </div>
+      </div>
+      <div class="hp-hero-photo">
+        <img src="/images/web/pavel-kovarik-profile.webp" alt="Pavel Kovařík" />
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head hp-logos-head">
+        <h2>Proškolil jsem zaměstnance těchto firem</h2>
+      </div>
+      <div class="hp-logo-grid">
+        {trainingLogos.map((logo) => (
+          <div class="hp-logo-card">
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Co vašemu týmu školení přinese</h2>
+      </div>
+      <div class="grid grid-4">
+        {benefits.map((benefit) => (
+          <article class="hp-benefit">
+            <div class="hp-benefit-icon">
+              {benefit.icon === 'rocket' && (
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.13.09-2.91a2.18 2.18 0 0 0-3.09-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2s-7 10-8.95 12a22 22 0 0 1-1.05 1z"></path></svg>
+              )}
+              {benefit.icon === 'shield' && (
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              )}
+              {benefit.icon === 'target' && (
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+              )}
+              {benefit.icon === 'star' && (
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              )}
+            </div>
+            <h3>{benefit.title}</h3>
+            <p>{benefit.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="hp-popular-badge">NEJPOPULÁRNĚJŠÍ VOLBA</div>
+      <div class="sec-head hp-practical-head">
+        <h2>Praktické školení AI pro firmy</h2>
+        <p>Naučte své zaměstnance efektivně využívat AI nástroje. Prakticky, bezpečně a s okamžitými výsledky pro celý tým.</p>
+      </div>
+
+      <article class="hp-practical-card">
+        <div class="hp-practical-meta">
+          <div class="hp-meta-row">✓ Proškolil jsem týmy <strong>České spořitelny, Partners, Ptáček, Makovec</strong> a dalších</div>
+          <div class="hp-meta-row">📍 <strong>Brno, Praha, celá ČR</strong> i online</div>
+        </div>
+
+        <div class="grid grid-2 hp-practical-grid">
+          <div>
+            <h3 class="hp-col-title">Co školení přináší</h3>
+            <ul class="hp-check-list">
+              {practicalBenefits.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 class="hp-col-title">Pro koho je určené</h3>
+            <ul class="hp-check-list">
+              {practicalAudience.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        <div class="hp-price">
+          <div class="hp-price-main">19 900 Kč</div>
+          <div class="hp-price-sub">Od 1 330 Kč na zaměstnance</div>
+          <p class="hp-price-note">za osmihodinové školení (až 15 osob)</p>
+          <div class="hp-actions hp-price-actions">
+            <a href="/kontakt/" class="btn btn-p">Nezávazná poptávka</a>
+            <a href="/prakticke-skoleni-ai-pro-firmy/" class="btn btn-s">Více informací</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Školení podle zaměření</h2>
+        <p>Pokročilé kurzy zaměřené na konkrétní odvětví a profese. Maximální efektivita pro vaše potřeby.</p>
+      </div>
+      <div class="grid grid-3 hp-course-grid">
+        {specializedCourses.map((course) => (
+          <article class:list={['hp-course-card', course.accent === 'gold' && 'is-gold']}>
+            {course.badge && <div class="hp-course-badge">{course.badge}</div>}
+            <h3>{course.title}</h3>
+            <p>{course.text}</p>
+            <a href={course.href} class="btn btn-s hp-course-btn">Zjistit více</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap hp-blog-wrap">
+      <div class="sec-head">
+        <h2>AI blog pro firmy</h2>
+        <p>Návody, trendy a zkušenosti ze zavádění umělé inteligence v českých firmách.</p>
+      </div>
+
+      <a href={featuredPost.href} class="hp-blog-featured">
+        <img src={featuredPost.image} alt={featuredPost.title} class="hp-blog-featured-image" />
+        <div class="hp-blog-featured-copy">
+          <span class="hp-blog-badge">{featuredPost.badge}</span>
+          <h3>{featuredPost.title}</h3>
+          <p>{featuredPost.description}</p>
+        </div>
+      </a>
+
+      <div class="grid grid-2 hp-blog-grid">
+        {latestPosts.map((post) => (
+          <a href={post.url} class="hp-blog-card">
+            <img src={post.image} alt={post.title} class="hp-blog-card-image" />
+            <div class="hp-blog-card-body">
+              <span class="hp-blog-date">{formatDate(post.date)}</span>
+              <h3>{post.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="hp-blog-footer">
+        <a href="/blog/" class="btn btn-s hp-blog-footer-btn">Všechny články</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Co říkají účastníci mých školení</h2>
+        <p>Zpětná vazba z praxe od lidí z firem, marketingu, HR i veřejné správy.</p>
+      </div>
+
+      <div class="hp-quote-featured">
+        <p class="hp-quote-featured-text">„Toto je z kategorie must have.“</p>
+        <div class="hp-quote-featured-author">Ing. Zdeněk Gonsorčík, Ph.D.</div>
+        <div class="hp-quote-featured-role">bankovnictví</div>
+      </div>
+
+      <div class="grid grid-3 hp-testimonials">
+        {testimonials.map((item) => (
+          <article class="quote">
+            <p class="quote-text">{item.quote}</p>
+            <div class="quote-author">{item.author}</div>
+            <div class="quote-role">{item.role}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap hp-about">
+      <div class="hp-v-badge">20 LET V BYZNYSU</div>
+      <div class="sec-head hp-about-head">
+        <h2>Pavel Kovařík – lektor AI pro firmy</h2>
+        <p class="hp-about-sub">Pomáhám firmám zavádět AI do běžné práce srozumitelně, prakticky a bezpečně</p>
+      </div>
+
+      <div class="hp-about-box">
+        <p>Od roku 2004 se pohybuji v byznysu – nejprve ve firmách, od roku 2008 jako samostatný konzultant v PR a marketingu. Rozumím tomu, jak ve firmách fungují procesy, komunikace i každodenní provoz. Proškolil jsem už přes 1 000 zaměstnanců v různých oborech a firmám pomáhám zavádět AI tak, aby opravdu šetřila čas, zjednodušovala práci a nezvyšovala zmatek. Ukazuji jen to, co se dá reálně použít v běžné praxi.</p>
+      </div>
+
+      <div class="hp-bonus-box">Bonus ke každému školení: <strong>Knihovna 50+ AI promptů + přehled nástrojů</strong> připravených pro okamžité použití</div>
+
+      <div class="sec-head hp-why-head">
+        <h3>Proč zvolit moje AI školení</h3>
+      </div>
+      <div class="grid grid-2 hp-reasons">
+        {reasons.map((item) => (
+          <article class="hp-reason">
+            <div class="hp-reason-check">✓</div>
+            <div>
+              <strong>{item.title}</strong>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="sec-head hp-steps-head">
+        <h3>Jak spolupráce probíhá</h3>
+      </div>
+      <div class="grid grid-3 hp-steps">
+        {steps.map((step) => (
+          <article class="hp-step">
+            <div class="hp-step-num">{step.number}</div>
+            <strong>{step.title}</strong>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap hp-faq-wrap">
+      <div class="sec-head">
+        <h2>Časté otázky o školení AI</h2>
+        <p>To nejdůležitější na jednom místě – délka, cena, formát i to, jak školení přizpůsobuji vaší firmě.</p>
+      </div>
+      <div class="faq">
+        {faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <div class="faq-body">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="hp-final-cta">
+    <div class="wrap hp-final-cta-inner">
+      <h2>Chcete, aby váš tým začal AI opravdu používat v práci?</h2>
+      <p>Navrhnu vám školení podle toho, co ve vaší firmě dává největší smysl.</p>
+      <div class="hp-actions hp-final-actions">
+        <a href="/kontakt/" class="btn hp-final-primary">Poptat AI školení</a>
+        <a href="/skoleni/" class="btn hp-final-secondary">Vybrat si školení</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)}></script>
+<script type="application/ld+json" set:html={JSON.stringify(itemListJsonLd)}></script>
+
+<style>
+  .hp {
+    overflow: hidden;
+  }
+
+  .hp-hero {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 5rem 0 3.75rem;
+  }
+
+  .hp-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3.75rem;
+    align-items: center;
+  }
+
+  .hp-hero-copy h1 {
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.25rem;
+  }
+
+  .hp-hero-lead {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    color: var(--pk-text-2);
+    line-height: 1.65;
+    max-width: 720px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hp-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hp-stat {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+  }
+
+  .hp-stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--pk-primary);
+    line-height: 1;
+  }
+
+  .hp-stat-label {
+    font-size: .96rem;
+    color: var(--pk-text-2);
+    line-height: 1.3;
+  }
+
+  .hp-divider {
+    width: 60px;
+    height: 5px;
+    background: var(--pk-primary);
+    border-radius: 999px;
+    margin-bottom: 1.75rem;
+  }
+
+  .hp-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hp-hero-photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hp-hero-photo img {
+    width: min(100%, 400px);
+    border-radius: 999px;
+    border: 10px solid #fff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .12);
+  }
+
+  .hp-logos-head {
+    margin-bottom: 2.5rem;
+  }
+
+  .hp-logos-head h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+  }
+
+  .hp-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .hp-logo-card {
+    min-height: 126px;
+    border: 1px solid var(--pk-border);
+    border-radius: 16px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .hp-logo-card img {
+    max-height: 62px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: .72;
+  }
+
+  .hp-benefit {
+    background: #fff;
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, .06);
+    text-align: center;
+  }
+
+  .hp-benefit-icon {
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 1.25rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f6ff;
+  }
+
+  .hp-benefit-icon svg {
+    width: 34px;
+    height: 34px;
+    stroke: var(--pk-primary);
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .hp-benefit h3 {
+    font-size: 1.1rem;
+    margin-bottom: .75rem;
+  }
+
+  .hp-benefit p {
+    color: var(--pk-text-2);
+    font-size: .98rem;
+    line-height: 1.6;
+  }
+
+  .hp-popular-badge,
+  .hp-v-badge {
+    display: inline-flex;
+    margin: 0 auto 1.5rem;
+    padding: .7rem 1.4rem;
+    border-radius: 999px;
+    background: var(--pk-green);
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .hp-popular-badge {
+    justify-content: center;
+    display: table;
+    font-size: .95rem;
+    letter-spacing: .02em;
+  }
+
+  .hp-practical-head h2,
+  .hp-about-head h2 {
+    font-size: clamp(2.4rem, 4.6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .hp-practical-head p,
+  .hp-about-sub {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    color: var(--pk-text-2);
+    max-width: 860px;
+  }
+
+  .hp-practical-card,
+  .hp-about-box {
+    background: #fff;
+    border: 1px solid var(--pk-border);
+    border-radius: 28px;
+    padding: 2.25rem;
+    box-shadow: 0 20px 55px rgba(61, 92, 217, .08);
+  }
+
+  .hp-practical-meta {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hp-meta-row {
+    padding: 1rem 1.25rem;
+    background: #f4f7fd;
+    border-radius: 16px;
+    text-align: center;
+    color: var(--pk-text-2);
+    font-size: 1rem;
+  }
+
+  .hp-practical-grid {
+    margin-bottom: 2rem;
+  }
+
+  .hp-col-title {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hp-check-list {
+    list-style: disc;
+    padding-left: 1.4rem;
+    color: var(--pk-text-2);
+    display: grid;
+    gap: .9rem;
+  }
+
+  .hp-check-list li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .hp-price {
+    border-top: 1px solid var(--pk-border);
+    padding-top: 2rem;
+    text-align: center;
+  }
+
+  .hp-price-main {
+    font-size: clamp(3rem, 5vw, 4.2rem);
+    font-weight: 800;
+    color: var(--pk-primary);
+    line-height: 1;
+    margin-bottom: .5rem;
+  }
+
+  .hp-price-sub {
+    color: var(--pk-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+  }
+
+  .hp-price-note {
+    color: var(--pk-text-2);
+    margin-bottom: 1.5rem;
+  }
+
+  .hp-price-actions {
+    justify-content: center;
+  }
+
+  .hp-course-grid {
+    align-items: stretch;
+  }
+
+  .hp-course-card {
+    background: #fff;
+    border: 1px solid var(--pk-border);
+    border-left: 4px solid var(--pk-primary);
+    border-radius: 24px;
+    padding: 1.9rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  .hp-course-card.is-gold {
+    border-left-color: #d5af36;
+  }
+
+  .hp-course-badge {
+    align-self: flex-start;
+    padding: .6rem 1rem;
+    background: #e7bf36;
+    color: #1a202c;
+    border-radius: 999px;
+    font-size: .95rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+  }
+
+  .hp-course-card h3 {
+    font-size: clamp(1.35rem, 2vw, 1.6rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hp-course-card p {
+    color: var(--pk-text-2);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hp-course-btn {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  .hp-blog-wrap {
+    max-width: 1080px;
+  }
+
+  .hp-blog-featured {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.75rem;
+    border: 2px solid var(--pk-primary);
+    border-radius: 24px;
+    background: #fff;
+    color: inherit;
+    margin-bottom: 2rem;
+  }
+
+  .hp-blog-featured:hover {
+    color: inherit;
+  }
+
+  .hp-blog-featured-image {
+    width: 100%;
+    height: 176px;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+
+  .hp-blog-badge {
+    display: inline-flex;
+    padding: .45rem .9rem;
+    border-radius: 999px;
+    background: var(--pk-primary);
+    color: #fff;
+    font-size: .95rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .hp-blog-featured h3 {
+    font-size: clamp(1.45rem, 2.5vw, 2rem);
+    margin-bottom: .8rem;
+  }
+
+  .hp-blog-featured p {
+    color: var(--pk-text-2);
+  }
+
+  .hp-blog-card {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+    align-items: center;
+    border: 1px solid var(--pk-border);
+    border-radius: 20px;
+    background: #fff;
+    padding: 1rem;
+    color: inherit;
+  }
+
+  .hp-blog-card:hover {
+    color: inherit;
+  }
+
+  .hp-blog-card-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .hp-blog-date {
+    display: inline-block;
+    color: var(--pk-primary);
+    font-weight: 700;
+    margin-bottom: .6rem;
+  }
+
+  .hp-blog-card-body h3 {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+
+  .hp-blog-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .hp-blog-footer-btn {
+    min-width: 220px;
+  }
+
+  .hp-quote-featured {
+    text-align: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  .hp-quote-featured-text {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .hp-quote-featured-author {
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: .35rem;
+  }
+
+  .hp-quote-featured-role {
+    color: var(--pk-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .hp-testimonials {
+    margin-top: .5rem;
+  }
+
+  .hp-about {
+    max-width: 1080px;
+  }
+
+  .hp-v-badge {
+    background: var(--pk-green);
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hp-about-head {
+    margin-bottom: 2rem;
+  }
+
+  .hp-bonus-box {
+    margin: 1.5rem auto 3rem;
+    max-width: 840px;
+    background: #fff;
+    border: 1px solid var(--pk-border);
+    border-radius: 20px;
+    padding: 1.35rem 1.5rem;
+    color: var(--pk-text-2);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, .04);
+  }
+
+  .hp-why-head,
+  .hp-steps-head {
+    margin-bottom: 2rem;
+  }
+
+  .hp-why-head h3,
+  .hp-steps-head h3 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+  }
+
+  .hp-reason {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--pk-border);
+  }
+
+  .hp-reasons .hp-reason:nth-child(-n + 2) {
+    border-top: none;
+  }
+
+  .hp-reason-check {
+    color: var(--pk-green);
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .hp-reason strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+  }
+
+  .hp-reason p {
+    color: var(--pk-text-2);
+  }
+
+  .hp-step {
+    background: #fff;
+    border: 1px solid var(--pk-border);
+    border-radius: 22px;
+    padding: 2rem 1.6rem;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, .04);
+  }
+
+  .hp-step-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--pk-primary-light);
+    color: var(--pk-primary);
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+  }
+
+  .hp-step strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: .75rem;
+  }
+
+  .hp-step p {
+    color: var(--pk-text-2);
+  }
+
+  .hp-faq-wrap {
+    max-width: 1080px;
+  }
+
+  .hp-final-cta {
+    background: linear-gradient(135deg, var(--pk-primary) 0%, var(--pk-primary-dark) 100%);
+    color: #fff;
+    padding: 5rem 0;
+  }
+
+  .hp-final-cta-inner {
+    text-align: center;
+  }
+
+  .hp-final-cta h2 {
+    color: #fff;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .hp-final-cta p {
+    color: rgba(255, 255, 255, .86);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    max-width: 760px;
+    margin: 0 auto 2rem;
+  }
+
+  .hp-final-actions {
+    justify-content: center;
+  }
+
+  .hp-final-primary {
+    background: #fff;
+    color: var(--pk-primary);
+  }
+
+  .hp-final-primary:hover {
+    color: var(--pk-primary-dark);
+  }
+
+  .hp-final-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, .85);
+  }
+
+  .hp-final-secondary:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  @media (max-width: 1024px) {
+    .hp-logo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hp-blog-featured {
+      grid-template-columns: 1fr;
+    }
+
+    .hp-reasons .hp-reason:nth-child(2) {
+      border-top: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hp-hero {
+      padding: 2rem 0 3rem;
+    }
+
+    .hp-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .hp-hero-photo {
+      order: -1;
+    }
+
+    .hp-hero-photo img {
+      max-width: 280px;
+    }
+
+    .hp-stats,
+    .hp-actions,
+    .hp-final-actions {
+      justify-content: center;
+    }
+
+    .hp-stat {
+      justify-content: center;
+    }
+
+    .hp-divider {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hp-logo-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .hp-logo-card {
+      min-height: 96px;
+      padding: .75rem;
+    }
+
+    .hp-logo-card img {
+      max-height: 46px;
+    }
+
+    .hp-practical-card,
+    .hp-about-box {
+      padding: 1.4rem;
+      border-radius: 22px;
+    }
+
+    .hp-blog-card {
+      grid-template-columns: 1fr;
+    }
+
+    .hp-blog-card-image {
+      height: 170px;
+    }
+
+    .hp-reason {
+      border-top: 1px solid var(--pk-border) !important;
+    }
+  }
+</style>
