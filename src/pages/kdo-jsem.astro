@@ -67,7 +67,7 @@ const principles = [
         <h2>Praktická školení AI pro firmy</h2>
         <p>Proškolil jsem už přes 1 000 zaměstnanců ve firmách a institucích napříč obory. Školím prakticky, srozumitelně a s ohledem na reálný provoz firmy.</p>
         <div class="about-mini-quote">
-          <p>Toto je z kategorie must have.</p>
+          <p>„Toto je z kategorie must have.“</p>
           <strong>Ing. Zdeněk Gonsorčík, Ph.D.</strong>
         </div>
       </div>
@@ -406,27 +406,75 @@ const principles = [
 
   @media (max-width: 768px) {
     .about-hero {
-      padding: 3.2rem 0 5.8rem;
+      padding: 3rem 0 5rem;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2.1rem, 10vw, 2.65rem);
+    }
+
+    .about-hero-subtitle {
+      font-size: 1.02rem;
+      line-height: 1.55;
+      max-width: 320px;
+      margin-bottom: 1.25rem;
     }
 
     .about-proof-card,
-    .about-journey-box {
+    .about-journey-box,
+    .about-cta-inner {
       padding: 1.55rem 1.25rem;
     }
 
     .about-meta-bar {
       flex-direction: column;
       align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.35rem;
     }
 
     .about-meta-bar span {
       width: 100%;
       justify-content: center;
-      max-width: 340px;
+      max-width: 320px;
+      font-size: .9rem;
+    }
+
+    .about-hero-actions {
+      gap: .8rem;
+    }
+
+    .about-proof {
+      margin-top: -2.6rem;
+    }
+
+    .about-proof-card {
+      border-radius: 14px;
+      padding: 1.35rem 1.15rem;
+    }
+
+    .about-proof-card h2 {
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+
+    .about-proof-card p,
+    .about-mini-quote p,
+    .about-mini-quote strong {
+      font-size: .95rem;
     }
 
     .about-principle-card {
-      padding: 1.6rem;
+      padding: 1.4rem 1.2rem;
+    }
+
+    .about-principle-card h3 {
+      font-size: 1.1rem;
+    }
+
+    .about-principle-card p {
+      font-size: .96rem;
+      line-height: 1.65;
     }
 
     .about-logos-grid {
@@ -442,8 +490,60 @@ const principles = [
       max-height: 46px;
     }
 
+    .about-journey-box {
+      padding: 1.85rem 1.25rem;
+      border-radius: 14px;
+    }
+
+    .about-journey-box h2 {
+      font-size: 1.55rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .about-journey-box p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: .85rem;
+    }
+
     .about-info-box {
       padding: 1.35rem 1.1rem;
+      margin-top: 1.25rem;
+    }
+
+    .about-info-box h3 {
+      font-size: 1.08rem;
+    }
+
+    .about-info-box p {
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+
+    .about-cta {
+      padding: 3.2rem 0;
+    }
+
+    .about-cta h2 {
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+
+    .about-cta p {
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .about-cta-contact {
+      font-size: .98rem;
+      line-height: 1.5;
+    }
+
+    .about-cta-note {
+      font-size: .92rem;
+      line-height: 1.55;
     }
   }
 </style>
