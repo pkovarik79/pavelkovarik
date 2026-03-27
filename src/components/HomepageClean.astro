@@ -260,7 +260,15 @@ const formatDate = (date: string) =>
       <div class="hp-logo-grid">
         {trainingLogos.map((logo) => (
           <div class="hp-logo-card">
-            <img src={logo.src} alt={logo.alt} loading="lazy" />
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              loading="lazy"
+              class:list={[
+                'hp-logo-image',
+                ['Partners', 'Proventia', 'Krajská hospodářská komora Pardubického kraje', 'Rubikon', 'VEACOM', 'IBV NBS', 'Makovec'].includes(logo.alt) && 'is-small-logo',
+              ]}
+            />
           </div>
         ))}
       </div>
@@ -650,13 +658,17 @@ const formatDate = (date: string) =>
     transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
 
-  .hp-logo-card img {
-    max-height: 74px;
-    max-width: 78%;
+  .hp-logo-image {
+    max-height: 88px;
+    max-width: 86%;
     width: auto;
     filter: grayscale(100%);
     opacity: .72;
     transition: filter .2s ease, opacity .2s ease, transform .2s ease;
+  }
+
+  .hp-logo-image.is-small-logo {
+    transform: scale(1.16);
   }
 
   .hp-logo-card:hover {
@@ -665,10 +677,14 @@ const formatDate = (date: string) =>
     border-color: #d6e0ff;
   }
 
-  .hp-logo-card:hover img {
+  .hp-logo-card:hover .hp-logo-image {
     filter: grayscale(0);
     opacity: 1;
-    transform: scale(1.01);
+    transform: scale(1.03);
+  }
+
+  .hp-logo-card:hover .hp-logo-image.is-small-logo {
+    transform: scale(1.2);
   }
 
   .hp-benefit {
@@ -1304,9 +1320,9 @@ const formatDate = (date: string) =>
       padding: .75rem;
     }
 
-    .hp-logo-card img {
-      max-height: 54px;
-      max-width: 82%;
+    .hp-logo-image {
+      max-height: 62px;
+      max-width: 84%;
     }
 
     .hp-practical-card,
