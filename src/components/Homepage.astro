@@ -1,0 +1,484 @@
+---
+const logos = [
+  { src: '/images/loga/ceska-sporitelna.webp', alt: 'Česká spořitelna' },
+  { src: '/images/loga/partners.webp', alt: 'Partners' },
+  { src: '/images/loga/ptacek.webp', alt: 'Ptáček' },
+  { src: '/images/loga/dopravni-podnik-pardubice.webp', alt: 'Dopravní podnik města Pardubice' },
+  { src: '/images/loga/broker-consulting.webp', alt: 'Broker Consulting' },
+  { src: '/images/loga/proventiacz.webp', alt: 'Proventia' },
+  { src: '/images/loga/dt-vyhybkarna.webp', alt: 'DT Výhýbkárna a strojírna' },
+  { src: '/images/loga/khk-pardubicky-kraj.webp', alt: 'Krajská hospodářská komora Pardubického kraje' },
+  { src: '/images/loga/rubikon.webp', alt: 'Rubikon' },
+  { src: '/images/loga/narodni-strojirenskyy-klastr.webp', alt: 'Národní strojírenský klastr' },
+  { src: '/images/loga/mm-reality.webp', alt: 'M&M Reality' },
+  { src: '/images/loga/matikon.webp', alt: 'Matikon' },
+  { src: '/images/loga/vak-hodonin.webp', alt: 'VAK' },
+  { src: '/images/loga/veacom.webp', alt: 'VEACOM' },
+  { src: '/images/loga/ibv-nbs.webp', alt: 'IBV NBS' },
+  { src: '/images/loga/makovec.webp', alt: 'Makovec' },
+];
+---
+
+<div class="pk-homepage">
+  <section class="hero-section">
+    <div class="pk-container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Školení AI pro firmy</h1>
+          <p>
+            S umělou inteligencí ušetříte hodiny práce týdně, když víte jak na to.
+            Jako lektor to naučím vaše lidi. Srozumitelně, prakticky a na míru vaší firmě.
+          </p>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-number">1000+</span>
+              <span class="hero-stat-text">proškolených<br />zaměstnanců</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-number">100%</span>
+              <span class="hero-stat-text">praktické<br />zaměření</span>
+            </div>
+          </div>
+
+          <div class="hero-divider"></div>
+
+          <div class="hero-buttons">
+            <a href="/kontakt/" class="pk-btn pk-btn-primary">Objednat AI školení</a>
+            <a href="/skoleni/" class="pk-btn pk-btn-secondary">Zjistit více</a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img src="/images/web/pavel-kovarik-profile.webp" alt="Pavel Kovařík" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="logos-section" id="reference">
+    <div class="pk-container">
+      <h2 class="logos-title">Proškolil jsem zaměstnance těchto firem</h2>
+      <div class="logos-grid">
+        {logos.map((logo) => (
+          <div class="logo-item">
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits-section">
+    <div class="pk-container">
+      <h2 class="benefits-title">Co vašemu týmu školení přinese</h2>
+      <div class="benefits-grid">
+        <article class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.71-2.13.09-2.91a2.18 2.18 0 0 0-3.09-.09z"></path>
+              <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2s-7 10-8.95 12a22 22 0 0 1-1.05 1z"></path>
+            </svg>
+          </div>
+          <h3>Efektivita v praxi</h3>
+          <p>Naučím vás používat AI na maximum a automatizovat rutinu.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3>Ochrana know-how</h3>
+          <p>Bezpečnost dat je priorita. Nastavíme jasná firemní pravidla.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+          </div>
+          <h3>Nástroje na míru</h3>
+          <p>Žádná teorie. Scénáře z vašeho oboru – od HR až po management.</p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <h3>Konkurenční výhoda</h3>
+          <p>Vaše firma bude o krok napřed díky efektivnímu využití AI.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .pk-homepage {
+    --pk-primary: #3d5cd9;
+    --pk-primary-dark: #2a49c7;
+    --pk-text-main: #1a202c;
+    --pk-text-muted: #4a5568;
+    --pk-bg-alt: #f8fafc;
+    --pk-radius: 12px;
+    --pk-radius-card: 16px;
+    --pk-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--pk-text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .pk-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hero-section {
+    margin: 0;
+    padding: 80px 0 60px;
+    background: linear-gradient(135deg, var(--pk-bg-alt) 0%, #f1f5f9 100%);
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    margin-bottom: 25px;
+    font-size: clamp(1.7rem, 8vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    hyphens: none;
+    word-break: normal;
+  }
+
+  .hero-text p {
+    margin-bottom: 25px;
+    font-size: clamp(1.05rem, 3vw, 1.25rem);
+    color: var(--pk-text-muted);
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-stat-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--pk-primary);
+    line-height: 1;
+  }
+
+  .hero-stat-text {
+    font-size: 0.9rem;
+    color: var(--pk-text-muted);
+    line-height: 1.3;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 5px;
+    margin: 30px 0;
+    background: var(--pk-primary);
+    border-radius: 10px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .pk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    height: 56px;
+    border: 2px solid var(--pk-primary);
+    border-radius: var(--pk-radius);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+
+  .pk-btn-primary {
+    background: var(--pk-primary);
+    color: #fff;
+  }
+
+  .pk-btn-primary:hover {
+    background: var(--pk-primary-dark);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(61, 92, 217, 0.2);
+  }
+
+  .pk-btn-secondary {
+    background: #fff;
+    color: var(--pk-primary);
+  }
+
+  .pk-btn-secondary:hover {
+    background: var(--pk-bg-alt);
+    color: var(--pk-primary);
+    transform: translateY(-2px);
+  }
+
+  .hero-image-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image-wrap img {
+    width: 100%;
+    max-width: 400px;
+    border: 10px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  }
+
+  #reference {
+    scroll-margin-top: 110px;
+  }
+
+  .logos-section {
+    margin: 0;
+    padding: 60px 0;
+    background: #fff;
+  }
+
+  .logos-title {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--pk-text-main);
+  }
+
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .logo-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--pk-primary);
+  }
+
+  .logo-item img {
+    max-width: 100%;
+    max-height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  .logo-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .benefits-section {
+    margin: 0;
+    padding: 80px 0;
+    background: var(--pk-bg-alt);
+  }
+
+  .benefits-title {
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 32px 20px;
+    text-align: center;
+    background: #fff;
+    border-bottom: 4px solid #edf2f7;
+    border-radius: var(--pk-radius-card);
+    box-shadow: var(--pk-shadow);
+    transition: all 0.3s ease;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(61, 92, 217, 0.1);
+    border-bottom-color: var(--pk-primary);
+  }
+
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+    padding: 10px;
+    color: var(--pk-primary);
+    background: rgba(61, 92, 217, 0.05);
+    border-radius: 50%;
+    box-sizing: content-box;
+    transition: 0.3s ease;
+  }
+
+  .benefit-card:hover .benefit-icon {
+    background: var(--pk-primary);
+    color: #fff;
+    transform: rotate(5deg);
+  }
+
+  .benefit-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .benefit-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .benefit-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--pk-text-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #reference {
+      scroll-margin-top: 140px;
+    }
+
+    .hero-section {
+      padding: 20px 0 40px;
+    }
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .hero-image-wrap {
+      order: -1;
+      margin-bottom: 20px;
+    }
+
+    .hero-image-wrap img {
+      max-width: 280px;
+    }
+
+    .hero-divider {
+      margin: 20px auto;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pk-btn {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .hero-stats {
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .logos-section {
+      padding: 40px 0;
+    }
+
+    .logos-title {
+      margin-bottom: 30px;
+      font-size: 1.3rem;
+    }
+
+    .logos-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .logo-item {
+      min-height: 70px;
+      padding: 10px;
+    }
+
+    .logo-item img {
+      max-height: 50px;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .benefits-title {
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+  }
+</style>
