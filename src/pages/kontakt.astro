@@ -20,9 +20,9 @@ const trainingOptions = [
       <p class="contact-hero-lead">Do 24 hodin se Vám ozvu s návrhem obsahu školení a možnými termíny.</p>
 
       <div class="contact-stat-pills">
-        <span>🕒 Odpověď do 24 hodin</span>
-        <span>🏢 On-line i u vás ve firmě</span>
-        <span>✔️ Nezávazná poptávka</span>
+        <span><i></i>Odpověď do 24 hodin</span>
+        <span><i></i>On-line i u vás ve firmě</span>
+        <span><i></i>Nezávazná poptávka</span>
       </div>
     </div>
   </section>
@@ -31,7 +31,7 @@ const trainingOptions = [
     <div class="wrap">
       <div class="grid grid-3 contact-cards-grid">
         <article class="card contact-card">
-          <div class="contact-card-icon">📞</div>
+          <div class="contact-card-icon">01</div>
           <h3>Zavolejte mi</h3>
           <p>Nejrychlejší cesta pro domluvu termínu nebo rychlý dotaz.</p>
           <a href="tel:+420770126519" class="btn btn-p contact-card-button">+420 770 126 519</a>
@@ -39,7 +39,7 @@ const trainingOptions = [
         </article>
 
         <article class="card contact-card">
-          <div class="contact-card-icon">✉️</div>
+          <div class="contact-card-icon">02</div>
           <h3>Napište e-mail</h3>
           <p>Preferujete písemnou komunikaci? Napište mi své požadavky.</p>
           <a href="mailto:mail@pavelkovarik.cz" class="btn btn-p contact-card-button">mail@pavelkovarik.cz</a>
@@ -47,7 +47,7 @@ const trainingOptions = [
         </article>
 
         <article class="card contact-card">
-          <div class="contact-card-icon">in</div>
+          <div class="contact-card-icon">03</div>
           <h3>Spojme se</h3>
           <p>Sledujte novinky ze světa AI nebo mi napište zprávu přímo tam.</p>
           <a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener" class="btn btn-p contact-card-button">Profil LinkedIn</a>
@@ -228,6 +228,15 @@ const trainingOptions = [
     font-size: .95rem;
   }
 
+  .contact-stat-pills i {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.78);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
   .contact-cards-section {
     margin-top: -5rem;
     position: relative;
@@ -252,10 +261,12 @@ const trainingOptions = [
     align-items: center;
     justify-content: center;
     border-radius: 18px;
-    background: linear-gradient(135deg, #eef3ff 0%, #e7efff 100%);
-    color: var(--pk-primary);
-    font-size: 1.55rem;
+    background: #f8fafc;
+    border: 1px solid var(--pk-border);
+    color: var(--pk-text);
+    font-size: 1rem;
     font-weight: 800;
+    letter-spacing: .04em;
   }
 
   .contact-card h3 {
