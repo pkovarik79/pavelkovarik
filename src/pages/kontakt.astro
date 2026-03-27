@@ -20,9 +20,25 @@ const trainingOptions = [
       <p class="contact-hero-lead">Do 24 hodin se Vám ozvu s návrhem obsahu školení a možnými termíny.</p>
 
       <div class="contact-stat-pills">
-        <span>Odpověď do 24 hodin</span>
-        <span>On-line i u vás ve firmě</span>
-        <span>Nezávazná poptávka</span>
+        <span><i class="contact-pill-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 2"></path>
+          </svg>
+        </i>Odpověď do 24 hodin</span>
+        <span><i class="contact-pill-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7h10v7H3z"></path>
+            <path d="M13 10h4l4 3v1h-8z"></path>
+            <path d="M7 18h.01"></path>
+            <path d="M17 18h.01"></path>
+          </svg>
+        </i>On-line i u vás ve firmě</span>
+        <span><i class="contact-pill-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </i>Nezávazná poptávka</span>
       </div>
     </div>
   </section>
@@ -31,7 +47,11 @@ const trainingOptions = [
     <div class="wrap">
       <div class="grid grid-3 contact-cards-grid">
         <article class="card contact-card">
-          <div class="contact-card-icon">01</div>
+          <div class="contact-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.4.6 3.7.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.7.1.4 0 .8-.3 1.1l-2.2 2.2z"></path>
+            </svg>
+          </div>
           <h3>Zavolejte mi</h3>
           <p>Nejrychlejší cesta pro domluvu termínu nebo rychlý dotaz.</p>
           <a href="tel:+420770126519" class="btn btn-p contact-card-button">+420 770 126 519</a>
@@ -39,7 +59,11 @@ const trainingOptions = [
         </article>
 
         <article class="card contact-card">
-          <div class="contact-card-icon">02</div>
+          <div class="contact-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.3l8 5.3 8-5.3V7H4zm16 10V9.7l-7.4 4.9a1 1 0 0 1-1.2 0L4 9.7V17h16z"></path>
+            </svg>
+          </div>
           <h3>Napište e-mail</h3>
           <p>Preferujete písemnou komunikaci? Napište mi své požadavky.</p>
           <a href="mailto:mail@pavelkovarik.cz" class="btn btn-p contact-card-button">mail@pavelkovarik.cz</a>
@@ -47,7 +71,11 @@ const trainingOptions = [
         </article>
 
         <article class="card contact-card">
-          <div class="contact-card-icon">03</div>
+          <div class="contact-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.38a1.56 1.56 0 0 1 0 3.12zM5.6 9.7h2.67V18H5.6V9.7zm4.34 0h2.56v1.14h.04c.36-.68 1.23-1.39 2.53-1.39 2.7 0 3.2 1.78 3.2 4.08V18H15.6v-3.96c0-.94-.02-2.15-1.31-2.15-1.31 0-1.51 1.02-1.51 2.08V18H9.94V9.7z"></path>
+            </svg>
+          </div>
           <h3>Spojme se</h3>
           <p>Sledujte novinky ze světa AI nebo mi napište zprávu přímo tam.</p>
           <a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener" class="btn btn-p contact-card-button">Profil LinkedIn</a>
@@ -219,12 +247,29 @@ const trainingOptions = [
   .contact-stat-pills span {
     display: inline-flex;
     align-items: center;
+    gap: .7rem;
     padding: .8rem 1.2rem;
     border-radius: 999px;
     background: rgba(255,255,255,.12);
     border: 1px solid rgba(255,255,255,.18);
     font-weight: 700;
     font-size: .95rem;
+  }
+
+  .contact-pill-icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .contact-pill-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .contact-cards-section {
@@ -253,10 +298,13 @@ const trainingOptions = [
     border-radius: 18px;
     background: #f8fafc;
     border: 1px solid var(--pk-border);
-    color: var(--pk-text);
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: .04em;
+    color: var(--pk-primary);
+  }
+
+  .contact-card-icon svg {
+    width: 28px;
+    height: 28px;
+    display: block;
   }
 
   .contact-card h3 {
