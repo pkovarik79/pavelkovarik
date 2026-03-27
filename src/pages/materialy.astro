@@ -10,10 +10,9 @@ const iconPaths: Record<string, string> = {
 };
 ---
 
-<Base title="Materiály a zdroje k AI | Pavel Kovařík" description="Praktické nástroje, prompty a návody, které využívám na školeních. Vše na jednom místě a zdarma.">
+<Base title="Materiály a AI nástroje zdarma – Pavel Kovařík" description="Praktické nástroje, prompty a návody, které využívám na školeních. Vše na jednom místě a zdarma.">
   <section class="pk-page-hero materials-hero">
     <div class="wrap">
-      <span class="pk-hero-label">Know-how</span>
       <h1>Materiály a zdroje k AI</h1>
       <p>Praktické nástroje, prompty a návody, které využívám na školeních. Vše na jednom místě a zdarma pro vaše použití.</p>
     </div>
@@ -23,7 +22,7 @@ const iconPaths: Record<string, string> = {
     <div class="wrap">
       <div class="materials-grid">
         {hub.cards.map((card) => (
-          <article class="materials-card">
+          <article class={`materials-card ${card.title.includes('prompty') ? 'materials-card-accent' : ''}`}>
             <div class="materials-card-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d={iconPaths[card.icon]} />
@@ -72,20 +71,20 @@ const iconPaths: Record<string, string> = {
 
   <style>
     .materials-hero {
-      padding-bottom: 7rem;
+      padding: 4.3rem 0 5.4rem;
     }
 
     .materials-shell {
       background: var(--pk-bg-alt);
-      padding: 0 0 4rem;
+      padding: 0 0 3.6rem;
     }
 
     .materials-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem;
-      margin-top: -4.5rem;
-      margin-bottom: 3rem;
+      gap: 1.4rem;
+      max-width: 980px;
+      margin: -3.15rem auto 2.35rem;
       position: relative;
       z-index: 2;
     }
@@ -93,29 +92,33 @@ const iconPaths: Record<string, string> = {
     .materials-card,
     .materials-coming {
       background: #fff;
-      border: 1px solid var(--pk-border-2);
-      border-radius: 1.5rem;
-      box-shadow: var(--pk-shadow);
+      border: 1px solid rgba(15,23,42,.09);
+      border-radius: 1.35rem;
+      box-shadow: 0 10px 26px rgba(15,23,42,.05);
     }
 
     .materials-card {
-      padding: 3rem;
+      padding: 2.2rem 2.15rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      min-height: 24rem;
+      gap: .85rem;
+      min-height: 20rem;
+    }
+
+    .materials-card-accent {
+      border-color: rgba(61,92,217,.75);
     }
 
     .materials-card h2 {
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(1.28rem, 2vw, 1.9rem);
+      letter-spacing: -0.02em;
       margin: 0;
     }
 
     .materials-card p {
-      font-size: 1.15rem;
+      font-size: 1rem;
       color: var(--pk-text-2);
-      line-height: 1.7;
+      line-height: 1.72;
       margin: 0;
     }
 
@@ -124,14 +127,14 @@ const iconPaths: Record<string, string> = {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
     }
 
     .materials-card-icon {
-      width: 5.75rem;
-      height: 5.75rem;
-      border-radius: 1.35rem;
+      width: 4.25rem;
+      height: 4.25rem;
+      border-radius: 1rem;
       background: linear-gradient(135deg, #eef3ff 0%, #dfe8ff 100%);
       display: inline-flex;
       align-items: center;
@@ -139,61 +142,64 @@ const iconPaths: Record<string, string> = {
     }
 
     .materials-card-icon svg {
-      width: 2.3rem;
-      height: 2.3rem;
+      width: 1.8rem;
+      height: 1.8rem;
       fill: var(--pk-primary);
     }
 
     .materials-coming {
-      padding: 3rem;
+      padding: 2.4rem 2rem;
       text-align: center;
-      margin-bottom: 3rem;
+      max-width: 980px;
+      margin: 0 auto 2.4rem;
     }
 
     .materials-coming-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      margin-bottom: .85rem;
     }
 
     .materials-coming h2 {
-      font-size: clamp(2rem, 3vw, 2.8rem);
-      margin: 0 0 1rem;
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
+      margin: 0 0 .85rem;
     }
 
     .materials-coming p {
-      max-width: 42rem;
+      max-width: 38rem;
       margin: 0 auto;
       color: var(--pk-text-2);
-      font-size: 1.15rem;
+      font-size: 1rem;
+      line-height: 1.72;
     }
 
     .materials-tags {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0.85rem;
-      margin: 1.75rem 0;
+      gap: 0.75rem;
+      margin: 1.35rem 0;
     }
 
     .materials-tags span {
-      padding: 0.7rem 1.15rem;
+      padding: 0.58rem .95rem;
       border-radius: 999px;
       background: var(--pk-bg-alt2);
       color: var(--pk-text-2);
       font-weight: 600;
+      font-size: .92rem;
     }
 
     .materials-linkedin {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 1.15rem;
+      font-size: 1rem;
       font-weight: 700;
     }
 
     .materials-linkedin span {
-      width: 1.55rem;
-      height: 1.55rem;
+      width: 1.45rem;
+      height: 1.45rem;
       border-radius: 0.3rem;
       background: var(--pk-primary);
       color: #fff;
@@ -208,20 +214,21 @@ const iconPaths: Record<string, string> = {
       background: linear-gradient(135deg, var(--pk-primary) 0%, var(--pk-primary-dark) 100%);
       color: #fff;
       text-align: center;
-      padding: 4.5rem 0;
+      padding: 4rem 0;
     }
 
     .materials-cta h2 {
       color: #fff;
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin: 0 0 1rem;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin: 0 0 .85rem;
     }
 
     .materials-cta p {
-      max-width: 52rem;
-      margin: 0 auto 1.75rem;
+      max-width: 46rem;
+      margin: 0 auto 1.5rem;
       color: rgba(255, 255, 255, 0.92);
-      font-size: 1.2rem;
+      font-size: 1.08rem;
+      line-height: 1.72;
     }
 
     .materials-cta-actions {
@@ -254,16 +261,16 @@ const iconPaths: Record<string, string> = {
 
     @media (max-width: 768px) {
       .materials-hero {
-        padding-bottom: 5.5rem;
+        padding: 3.5rem 0 4.6rem;
       }
 
       .materials-grid {
-        margin-top: -3rem;
+        margin-top: -2.35rem;
       }
 
       .materials-card,
       .materials-coming {
-        padding: 2rem;
+        padding: 1.65rem 1.4rem;
       }
 
       .materials-card {
