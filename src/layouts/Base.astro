@@ -8,6 +8,7 @@ interface Props {
 
 const { title, description = 'Lektor umělé inteligence pro firmy. Praktická školení AI nástrojů pro firemní týmy po celé ČR.' } = Astro.props;
 const path = Astro.url.pathname;
+const canonicalUrl = new URL(path, Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -17,7 +18,15 @@ const path = Astro.url.pathname;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={new URL(path, Astro.site).href} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Pavel Kovařík" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
