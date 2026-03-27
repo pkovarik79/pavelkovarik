@@ -356,10 +356,14 @@ p:last-child { margin-bottom: 0; }
   grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
   gap: 40px;
   padding-bottom: 64px;
+  align-items: start;
 }
 .pk-footer-col {
   display: flex;
   flex-direction: column;
+}
+.pk-footer-col-brand {
+  margin-top: -6px;
 }
 .pk-footer-col h4 {
   margin: 0 0 20px;
@@ -386,8 +390,12 @@ p:last-child { margin-bottom: 0; }
   flex-direction: column;
   gap: 12px;
 }
+.pk-footer-contacts {
+  align-items: flex-start;
+}
 .pk-footer-link {
   display: inline-flex;
+  align-items: center;
   width: fit-content;
   color: #475569;
   font-size: 15px;
@@ -448,6 +456,9 @@ p:last-child { margin-bottom: 0; }
     grid-template-columns: 1fr;
     gap: 40px;
     padding-bottom: 48px;
+  }
+  .pk-footer-col-brand {
+    margin-top: 0;
   }
   .pk-footer .btn.btn-p {
     width: 100%;
