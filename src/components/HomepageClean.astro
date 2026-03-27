@@ -400,6 +400,7 @@ const formatDate = (date: string) =>
       </div>
 
       <div class="hp-quote-featured">
+        <div class="hp-quote-mark">“</div>
         <p class="hp-quote-featured-text">„Toto je z kategorie must have.“</p>
         <div class="hp-quote-featured-author">Ing. Zdeněk Gonsorčík, Ph.D.</div>
         <div class="hp-quote-featured-role">bankovnictví</div>
@@ -419,6 +420,7 @@ const formatDate = (date: string) =>
 
   <section class="sec">
     <div class="wrap hp-about">
+      <div class="hp-about-shell">
       <div class="hp-v-badge">20 LET V BYZNYSU</div>
       <div class="sec-head hp-about-head">
         <h2>Pavel Kovařík – lektor AI pro firmy</h2>
@@ -457,6 +459,7 @@ const formatDate = (date: string) =>
             <p>{step.text}</p>
           </article>
         ))}
+      </div>
       </div>
     </div>
   </section>
@@ -648,7 +651,8 @@ const formatDate = (date: string) =>
   }
 
   .hp-logo-card img {
-    max-height: 62px;
+    max-height: 74px;
+    max-width: 78%;
     width: auto;
     filter: grayscale(100%);
     opacity: .72;
@@ -771,8 +775,10 @@ const formatDate = (date: string) =>
   }
 
   .hp-practical-card {
-    max-width: 930px;
+    max-width: 880px;
     margin: 0 auto;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+    box-shadow: 0 16px 42px rgba(61, 92, 217, .08);
   }
 
   .hp-practical-meta {
@@ -792,6 +798,13 @@ const formatDate = (date: string) =>
 
   .hp-practical-grid {
     margin-bottom: 2rem;
+  }
+
+  .hp-practical-grid > div {
+    padding: 1.3rem 1.25rem 1.1rem;
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid #edf2fb;
   }
 
   .hp-col-title {
@@ -868,12 +881,13 @@ const formatDate = (date: string) =>
 
   .hp-course-badge {
     align-self: flex-start;
-    padding: .6rem 1rem;
-    background: #e7bf36;
+    padding: .45rem .85rem;
+    background: #f2df9b;
     color: #1a202c;
     border-radius: 999px;
-    font-size: .95rem;
-    font-weight: 800;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .03em;
     margin-bottom: 1rem;
   }
 
@@ -893,12 +907,17 @@ const formatDate = (date: string) =>
   .hp-course-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 28px rgba(15, 23, 42, .06);
-    border-color: #dce5ff;
+    border-color: #5d7aff;
+    background: linear-gradient(180deg, #fff 0%, #f9fbff 100%);
   }
 
   .hp-course-btn {
     margin-top: auto;
     align-self: flex-start;
+    min-width: 170px;
+    height: 46px;
+    padding: .75rem 1.15rem;
+    font-size: .94rem;
   }
 
   .hp-blog-wrap {
@@ -969,7 +988,7 @@ const formatDate = (date: string) =>
     color: inherit;
     transform: translateY(-2px);
     box-shadow: 0 14px 28px rgba(15, 23, 42, .06);
-    border-color: #dce5ff;
+    border-color: #5d7aff;
   }
 
   .hp-blog-card-image {
@@ -1003,16 +1022,25 @@ const formatDate = (date: string) =>
 
   .hp-quote-featured {
     text-align: center;
-    padding: 1rem 1rem 2.25rem;
-    max-width: 760px;
+    padding: 1.2rem 1rem 1.6rem;
+    max-width: 640px;
     margin: 0 auto;
+    position: relative;
+  }
+
+  .hp-quote-mark {
+    font-size: 4.25rem;
+    line-height: 1;
+    color: rgba(61, 92, 217, .18);
+    font-weight: 800;
+    margin-bottom: .25rem;
   }
 
   .hp-quote-featured-text {
-    font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+    font-size: clamp(1.45rem, 2.6vw, 2.15rem);
     font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 1rem;
+    line-height: 1.18;
+    margin-bottom: .8rem;
   }
 
   .hp-quote-featured-author {
@@ -1022,9 +1050,9 @@ const formatDate = (date: string) =>
   }
 
   .hp-quote-featured-role {
-    color: var(--pk-primary);
-    font-size: 1rem;
-    font-weight: 700;
+    color: var(--pk-text-2);
+    font-size: .95rem;
+    font-weight: 600;
   }
 
   .hp-testimonials {
@@ -1043,18 +1071,26 @@ const formatDate = (date: string) =>
     max-width: 980px;
   }
 
+  .hp-about-shell {
+    background: linear-gradient(180deg, #fff 0%, #fbfcff 100%);
+    border: 1px solid #edf2fb;
+    border-radius: 28px;
+    padding: 2rem 2rem 2.3rem;
+    box-shadow: 0 16px 42px rgba(15, 23, 42, .05);
+  }
+
   .hp-v-badge {
     background: var(--pk-green);
     font-size: .9rem;
-    margin-bottom: 1rem;
+    margin-bottom: .8rem;
   }
 
   .hp-about-head {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .hp-bonus-box {
-    margin: 1rem auto 2rem;
+    margin: 1rem auto 1.7rem;
     max-width: 100%;
     background: #fff;
     border: 1px solid var(--pk-border);
@@ -1066,7 +1102,8 @@ const formatDate = (date: string) =>
 
   .hp-why-head,
   .hp-steps-head {
-    margin-bottom: 1.1rem;
+    margin-bottom: .8rem;
+    margin-top: 1.4rem;
   }
 
   .hp-why-head h3,
@@ -1085,6 +1122,10 @@ const formatDate = (date: string) =>
 
   .hp-reasons .hp-reason:nth-child(-n + 2) {
     border-top: none;
+  }
+
+  .hp-reasons {
+    margin-bottom: 1.25rem;
   }
 
   .hp-reason-check {
@@ -1149,6 +1190,7 @@ const formatDate = (date: string) =>
 
   .hp-final-cta-inner {
     text-align: center;
+    max-width: 880px;
   }
 
   .hp-final-cta h2 {
@@ -1263,12 +1305,18 @@ const formatDate = (date: string) =>
     }
 
     .hp-logo-card img {
-      max-height: 46px;
+      max-height: 54px;
+      max-width: 82%;
     }
 
     .hp-practical-card,
     .hp-about-box {
       padding: 1.4rem;
+      border-radius: 22px;
+    }
+
+    .hp-about-shell {
+      padding: 1.4rem 1.25rem 1.6rem;
       border-radius: 22px;
     }
 
