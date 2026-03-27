@@ -1392,14 +1392,43 @@ const formatDate = (date: string) =>
   }
 
   @media (max-width: 768px) {
+    .hp .sec {
+      padding: 3.2rem 0;
+    }
+
+    .hp .sec-head {
+      margin-bottom: 1.75rem;
+    }
+
+    .hp .sec-head h2 {
+      font-size: clamp(1.75rem, 7vw, 2.15rem);
+      line-height: 1.15;
+    }
+
+    .hp .sec-head p {
+      font-size: 1rem;
+      max-width: 30rem;
+    }
+
     .hp-hero {
-      padding: 2rem 0 3rem;
+      padding: 1.75rem 0 2.7rem;
     }
 
     .hp-hero-grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 1.6rem;
       text-align: center;
+    }
+
+    .hp-hero-copy h1 {
+      font-size: clamp(2.05rem, 11vw, 2.9rem);
+      margin-bottom: 1rem;
+    }
+
+    .hp-hero-lead {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
     }
 
     .hp-hero-photo {
@@ -1407,7 +1436,8 @@ const formatDate = (date: string) =>
     }
 
     .hp-hero-photo img {
-      max-width: 280px;
+      max-width: 240px;
+      border-width: 8px;
     }
 
     .hp-stats,
@@ -1416,33 +1446,52 @@ const formatDate = (date: string) =>
       justify-content: center;
     }
 
+    .hp-stats {
+      gap: 1.2rem;
+      margin-bottom: 1.25rem;
+    }
+
     .hp-stat {
       justify-content: center;
+      gap: .55rem;
+    }
+
+    .hp-stat-num {
+      font-size: 1.7rem;
+    }
+
+    .hp-stat-label {
+      font-size: .88rem;
+    }
+
+    .hp-actions {
+      gap: .8rem;
     }
 
     .hp-divider {
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 1.25rem;
     }
 
     .hp-logo-grid {
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: .8rem;
     }
 
     .hp-logo-card {
-      min-height: 74px;
-      padding: .55rem;
+      min-height: 70px;
+      padding: .5rem;
     }
 
     .hp-logo-image {
-      max-height: 42px;
-      max-width: 78%;
+      max-height: 38px;
+      max-width: 76%;
     }
 
     .hp-practical-card {
-      padding: 1.4rem;
-      border-radius: 22px;
+      padding: 1.2rem;
+      border-radius: 20px;
     }
 
     .hp-about-shell {
@@ -1457,8 +1506,18 @@ const formatDate = (date: string) =>
       grid-template-columns: 1fr;
     }
 
+    .hp-blog-featured {
+      padding: .95rem;
+      gap: 1rem;
+      border-radius: 18px;
+    }
+
+    .hp-blog-featured-image {
+      height: 136px;
+    }
+
     .hp-blog-card-image {
-      height: 170px;
+      height: 132px;
     }
 
     .hp-about-copy {
@@ -1468,6 +1527,52 @@ const formatDate = (date: string) =>
     .hp-about-copy p {
       font-size: 1rem;
       line-height: 1.75;
+    }
+
+    .hp-benefit,
+    .hp-testimonials .quote,
+    .hp-step {
+      padding: 1.2rem 1rem;
+    }
+
+    .hp-step-num {
+      margin-bottom: .9rem;
+    }
+
+    .hp-faq-wrap .faq {
+      gap: .75rem;
+    }
+
+    .hp-faq-wrap .faq summary {
+      padding: .95rem 1rem;
+      font-size: .95rem;
+    }
+
+    .hp-faq-wrap .faq details[open] .faq-body {
+      padding: 0 1rem .9rem;
+    }
+
+    .hp-faq-wrap .faq .faq-body {
+      padding: 0 1rem;
+    }
+
+    .hp-faq-toggle {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .hp-final-cta {
+      padding: 3.6rem 0;
+    }
+
+    .hp-final-cta h2 {
+      font-size: clamp(1.8rem, 9vw, 2.4rem);
+      margin-bottom: .85rem;
+    }
+
+    .hp-final-cta p {
+      font-size: 1rem;
+      margin-bottom: 1.4rem;
     }
   }
 </style>
