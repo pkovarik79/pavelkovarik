@@ -1,0 +1,160 @@
+---
+import { trainingCourses, trainingFaqs, trainingLogos } from '../data/trainingOverview';
+---
+
+<div class="pk-rozcestnik">
+  <section class="hero">
+    <div class="container">
+      <span class="badge">PŘEHLED ŠKOLENÍ</span>
+      <h1>Kurzy AI pro firmy</h1>
+      <p class="hero-subtitle">Vyberte si AI školení podle role, tématu a cíle. Najdete tu praktické kurzy pro firmy, management, marketing, veřejnou správu i Microsoft Copilot.</p>
+      <div class="btn-group">
+        <a href="#kurzy" class="btn btn-white">Zobrazit všechna školení</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="verified-card">
+      <div class="stars">★★★★★</div>
+      <h3>Školení v souladu s doporučeními České asociace umělé inteligence</h3>
+      <p>Obsah vychází z ověřených postupů, respektuje pravidla GDPR i nařízení AI Act a zároveň je postavený na reálných úkolech z firemní praxe.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="intro-text">
+        <p>Na této stránce najdete přehled školení AI pro firmy – od základního praktického kurzu až po specializované programy pro management, marketing, veřejnou správu nebo Microsoft Copilot. Snadno si tak vyberete formát, který nejlépe odpovídá vaší firmě.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pk-courses" id="kurzy">
+    <div class="container">
+      <h2>Kurzy AI pro firmy</h2>
+
+      <div class="grid grid-2 training-row">
+        {trainingCourses.slice(0, 2).map((course) => (
+          <div class:list={['card', 'card-large', course.featured && 'is-featured']}>
+            <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
+            <h3 class="course-title">{course.title}</h3>
+            <div class="course-subtitle">{course.subtitle}</div>
+            <div class="course-description">{course.description}</div>
+            <div class="course-meta">
+              {course.meta.map((item) => <span>{item}</span>)}
+            </div>
+            <div class="btn-group course-actions">
+              <a href={course.href} class="btn btn-primary">Zjistit více</a>
+              <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="grid grid-2 training-row">
+        {trainingCourses.slice(2, 4).map((course) => (
+          <div class="card">
+            <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
+            <h3 class="course-title">{course.title}</h3>
+            <div class="course-subtitle">{course.subtitle}</div>
+            <div class="course-description">{course.description}</div>
+            <div class="course-meta">
+              {course.meta.map((item) => <span>{item}</span>)}
+            </div>
+            <div class="btn-group course-actions">
+              <a href={course.href} class="btn btn-primary">Zjistit více</a>
+              <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="grid grid-2">
+        {trainingCourses.slice(4).map((course) => (
+          <div class="card">
+            <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
+            <h3 class="course-title">{course.title}</h3>
+            <div class="course-subtitle">{course.subtitle}</div>
+            <div class="course-description">{course.description}</div>
+            <div class="course-meta">
+              {course.meta.map((item) => <span>{item}</span>)}
+            </div>
+            {course.note && (
+              <div class="bonus-box">
+                {course.note.split('\n').map((line) => (
+                  <>
+                    {line}
+                    <br />
+                  </>
+                ))}
+              </div>
+            )}
+            <div class="btn-group course-actions">
+              <a href={course.href} class="btn btn-primary">Zjistit více</a>
+              <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section pk-custom-training">
+    <div class="container">
+      <div class="custom-box">
+        <div class="custom-badge">✓ INDIVIDUÁLNÍ PŘÍSTUP</div>
+        <h3>Potřebujete školení přesně pro vaši firmu?</h3>
+        <p>Školení na míru kombinuje témata podle vašich potřeb. Zaměřím se na vaše konkrétní procesy, nástroje a cíle. Obsah i délku nastavíme podle toho, co potřebujete.</p>
+        <div class="btn-group">
+          <a href="/skoleni-na-miru/" class="btn btn-primary">Zjistit více o školení na míru</a>
+          <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="logos-section">
+    <div class="container">
+      <h2 class="logos-title">Proškolil jsem zaměstnance těchto firem</h2>
+      <div class="logos-grid">
+        {trainingLogos.map((logo) => (
+          <div class="logo-item">
+            <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h2>Časté otázky o školení AI</h2>
+      <div class="faq-section">
+        {trainingFaqs.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-question">{item.question}</summary>
+            <div class="faq-answer">{item.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section pk-final-cta">
+    <div class="container">
+      <div class="cta-final">
+        <h2>Nejste si jistí, které školení vybrat?</h2>
+        <p>Stačí mi stručně popsat vaši firmu, tým a cíle. Doporučím vám školení, které bude dávat největší smysl.</p>
+        <div class="btn-group">
+          <a href="/kontakt/" class="btn btn-white">Nezávazná konzultace</a>
+          <a href="#kurzy" class="btn btn-outline">Zobrazit všechna školení</a>
+        </div>
+        <div class="cta-contact">
+          📞 +420 770 126 519 · ✉️ <a href="mailto:mail@pavelkovarik.cz">mail@pavelkovarik.cz</a>
+        </div>
+        <p class="cta-note">✓ Odpovím do 24 hodin ✓ Konzultace zdarma ✓ Bez závazků</p>
+      </div>
+    </div>
+  </section>
+</div>

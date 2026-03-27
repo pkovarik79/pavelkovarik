@@ -21,55 +21,64 @@ const path = Astro.url.pathname;
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="shortcut icon" href="/favicon-v5.ico" type="image/x-icon" />
-  <link rel="icon" href="/favicon-v5.ico" sizes="any" />
-  <link rel="icon" type="image/svg+xml" href="/favicon-v5.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-v5.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-v5.png" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/cropped-fav-icon-pavel-kovarik-32x32.webp" sizes="32x32" />
+  <link rel="icon" href="/cropped-fav-icon-pavel-kovarik-192x192.webp" sizes="192x192" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/cropped-fav-icon-pavel-kovarik-180x180.webp" />
+  <meta name="msapplication-TileImage" content="/cropped-fav-icon-pavel-kovarik-270x270.webp" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#3d5cd9" />
   <link rel="sitemap" href="/sitemap-index.xml" />
 </head>
 <body>
   <header class="pk-header">
-    <div class="wrap">
+    <div class="pk-header-container">
       <a href="/" class="pk-logo">
         <img src="/images/web/logo-pavel-kovarik-flt.webp" alt="Pavel Kovařík – AI školení pro firmy" />
       </a>
 
-      <nav class="pk-nav">
-        <ul class="pk-nav-list" id="nav-menu">
-          <li class="pk-nav-item"><a href="/">Domů</a></li>
-          <li class="pk-nav-item">
-            <a href="/skoleni/" class="pk-nav-cta">Školení <span style="font-size:.7em; margin-left:.2rem;">&#9662;</span></a>
-            <ul class="pk-dropdown">
-              <li><a href="/prakticke-skoleni-ai-pro-firmy/">Praktické školení AI pro firmy</a></li>
-              <li><a href="/ai-pro-verejnou-spravu/">AI pro veřejnou správu</a></li>
-              <li><a href="/microsoft-copilot-pro-firmy/">Microsoft Copilot</a></li>
-              <li><a href="/ai-pro-manazery/">AI pro manažery</a></li>
-              <li><a href="/skoleni-na-miru/">Školení na míru</a></li>
-              <li><a href="/vibe-coding/">Vibe Coding</a></li>
-            </ul>
+      <nav class="pk-nav" id="pk-mobile-menu">
+        <ul class="pk-nav-list">
+          <li><a href="/" class="pk-nav-link">Domů</a></li>
+          <li class="pk-menu-item-wrapper">
+            <a href="/skoleni/" class="pk-btn-training">
+              Školení
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
+              </svg>
+            </a>
+            <div class="pk-dropdown-box">
+              <a href="/prakticke-skoleni-ai-pro-firmy/" class="pk-dropdown-link">Praktické školení AI pro firmy</a>
+              <a href="/ai-pro-verejnou-spravu/" class="pk-dropdown-link">AI pro veřejnou správu</a>
+              <a href="/microsoft-copilot-pro-firmy/" class="pk-dropdown-link">Microsoft Copilot</a>
+              <a href="/ai-pro-manazery/" class="pk-dropdown-link">AI pro manažery</a>
+              <a href="/skoleni-na-miru/" class="pk-dropdown-link">Školení na míru</a>
+            </div>
           </li>
-          <li class="pk-nav-item">
-            <a href="/materialy/">Materiály <span style="font-size:.7em;">&#9662;</span></a>
-            <ul class="pk-dropdown">
-              <li><a href="/prompty/">Prompty</a></li>
-              <li><a href="/ai-nastroje/">AI nástroje</a></li>
-            </ul>
+          <li class="pk-menu-item-wrapper pk-mobile-collapse">
+            <a href="/materialy/" class="pk-nav-link pk-nav-link-dropdown">
+              Materiály
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
+              </svg>
+            </a>
+            <div class="pk-dropdown-box">
+              <a href="/ai-nastroje/" class="pk-dropdown-link">AI nástroje pro firmy</a>
+              <a href="/prompty/" class="pk-dropdown-link">Knihovna promptů</a>
+            </div>
           </li>
-          <li class="pk-nav-item"><a href="/blog/">Blog</a></li>
-          <li class="pk-nav-item"><a href="/kdo-jsem/">Kdo jsem</a></li>
-          <li class="pk-nav-item"><a href="/kontakt/">Kontakt</a></li>
+          <li><a href="/blog/" class="pk-nav-link">Blog</a></li>
+          <li><a href="/kdo-jsem/" class="pk-nav-link">Kdo jsem</a></li>
+          <li><a href="/kontakt/" class="pk-nav-link">Kontakt</a></li>
         </ul>
-
-        <a href="tel:+420770126519" class="pk-nav-phone">+420 770 126 519</a>
-        <a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener" class="pk-nav-phone">LinkedIn</a>
-
-        <button class="pk-nav-toggle" id="nav-toggle" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
       </nav>
+
+      <div class="pk-contact-cta">
+        <a href="tel:+420770126519" class="pk-cta-item">+420 770 126 519</a>
+        <a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener" class="pk-cta-item">LinkedIn</a>
+      </div>
+
+      <button class="pk-mobile-toggle" id="pk-mobile-toggle" aria-label="Menu">☰</button>
     </div>
   </header>
 
@@ -80,47 +89,57 @@ const path = Astro.url.pathname;
   <footer class="pk-footer">
     <div class="wrap">
       <div class="pk-footer-grid">
-        <div class="pk-footer-col">
-          <h4>Pavel Kovařík</h4>
+        <div class="pk-footer-col pk-footer-col-brand">
+          <div class="pk-footer-brand-title">Pavel Kovařík</div>
           <p class="pk-footer-motto">Školím firmy, které chtějí AI používat efektivně, prakticky a bezpečně.</p>
-          <p class="pk-footer-contact"><a href="mailto:mail@pavelkovarik.cz">mail@pavelkovarik.cz</a></p>
-          <p class="pk-footer-contact"><a href="tel:+420770126519">+420 770 126 519</a></p>
-          <p class="pk-footer-contact"><a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener">LinkedIn profil</a></p>
+          <div class="pk-footer-contacts">
+            <a href="mailto:mail@pavelkovarik.cz" class="pk-footer-link">mail@pavelkovarik.cz</a>
+            <a href="tel:+420770126519" class="pk-footer-link">+420 770 126 519</a>
+            <a href="https://www.linkedin.com/in/pkovarik/" target="_blank" rel="noopener" class="pk-footer-link">LinkedIn profil</a>
+          </div>
           <a href="/kontakt/" class="btn btn-p mt-3">Poptat AI školení</a>
         </div>
 
         <div class="pk-footer-col">
           <h4>Tematická školení</h4>
-          <a href="/skoleni/">AI pro firmy</a>
-          <a href="/ai-pro-verejnou-spravu/">AI pro veřejnou správu</a>
-          <a href="/marketing-pr-ai/">Marketing &amp; PR s AI</a>
-          <a href="/ai-pro-manazery/">AI pro manažery</a>
-          <a href="/pravo-v-ai/">AI bezpečnost</a>
-          <a href="/skoleni-na-miru/">Školení na míru</a>
+          <div class="pk-footer-nav">
+            <a href="/prakticke-skoleni-ai-pro-firmy/" class="pk-footer-link">AI pro firmy</a>
+            <a href="/ai-pro-verejnou-spravu/" class="pk-footer-link">AI pro veřejnou správu</a>
+            <a href="/marketing-pr-ai/" class="pk-footer-link">Marketing &amp; PR s AI</a>
+            <a href="/ai-pro-manazery/" class="pk-footer-link">AI pro manažery</a>
+            <a href="/pravo-v-ai/" class="pk-footer-link">AI bezpečnost</a>
+            <a href="/skoleni-na-miru/" class="pk-footer-link">Školení na míru</a>
+          </div>
         </div>
 
         <div class="pk-footer-col">
           <h4>Školení na AI nástroje</h4>
-          <a href="/chatgpt-pro-firmy/">ChatGPT pro firmy</a>
-          <a href="/claude-pro-firmy/">Claude pro firmy</a>
-          <a href="/gemini-pro-firmy/">Gemini pro firmy</a>
-          <a href="/microsoft-copilot-pro-firmy/">Copilot pro firmy</a>
+          <div class="pk-footer-nav">
+            <a href="/chatgpt-pro-firmy/" class="pk-footer-link">ChatGPT pro firmy</a>
+            <a href="/claude-pro-firmy/" class="pk-footer-link">Claude pro firmy</a>
+            <a href="/gemini-pro-firmy/" class="pk-footer-link">Gemini pro firmy</a>
+            <a href="/microsoft-copilot-pro-firmy/" class="pk-footer-link">Copilot pro firmy</a>
+          </div>
         </div>
 
         <div class="pk-footer-col">
           <h4>Rychlé odkazy</h4>
-          <a href="/">Domů</a>
-          <a href="/kdo-jsem/">Kdo jsem</a>
-          <a href="/ai-nastroje/">AI nástroje</a>
-          <a href="/prompty/">Knihovna promptů</a>
-          <a href="/blog/">Blog</a>
+          <div class="pk-footer-nav">
+            <a href="/" class="pk-footer-link">Domů</a>
+            <a href="/kdo-jsem/" class="pk-footer-link">Kdo jsem</a>
+            <a href="/ai-nastroje/" class="pk-footer-link">AI nástroje</a>
+            <a href="/prompty/" class="pk-footer-link">Knihovna promptů</a>
+            <a href="/blog/" class="pk-footer-link">Blog</a>
+          </div>
         </div>
       </div>
 
       <div class="pk-footer-bottom">
-        <span>&copy; {new Date().getFullYear()} Ing. Pavel Kovařík</span>
-        <span>IČO: 76233006, nejsem plátce DPH</span>
-        <a href="/gdpr-ochrana-osobnich-udaju/">Ochrana osobních údajů (GDPR)</a>
+        <div>&copy; <span id="pk-year">{new Date().getFullYear()}</span> Ing. Pavel Kovařík</div>
+        <div class="pk-footer-legal">
+          <span>IČO: 76233006, nejsem plátce DPH</span>
+          <a href="/gdpr-ochrana-osobnich-udaju/" class="pk-footer-link">Ochrana osobních údajů (GDPR)</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -128,8 +147,25 @@ const path = Astro.url.pathname;
   <button class="scroll-top" id="scroll-top" aria-label="Nahoru">&#9650;</button>
 
   <script>
-    document.getElementById('nav-toggle')?.addEventListener('click', () => {
-      document.getElementById('nav-menu')?.classList.toggle('open');
+    const mobileMenu = document.getElementById('pk-mobile-menu');
+    const mobileToggle = document.getElementById('pk-mobile-toggle');
+
+    mobileToggle?.addEventListener('click', () => {
+      const isActive = mobileMenu?.classList.toggle('active');
+      if (mobileToggle) {
+        mobileToggle.textContent = isActive ? '✕' : '☰';
+      }
+    });
+
+    document.querySelectorAll('.pk-nav-link, .pk-dropdown-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (mobileMenu?.classList.contains('active')) {
+          mobileMenu.classList.remove('active');
+          if (mobileToggle) {
+            mobileToggle.textContent = '☰';
+          }
+        }
+      });
     });
 
     const scrollBtn = document.getElementById('scroll-top');

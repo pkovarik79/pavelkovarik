@@ -63,6 +63,11 @@ const routeMap: Record<string, string> = {
 
 let content = String(data.content ?? '');
 
+content = content.replace(/<link\b[^>]*>/gi, '');
+content = content.replace(/<script\b[^>]*\bsrc="[^"]*"[^>]*>\s*<\/script>/gi, '');
+content = content.replace(/<a([^>]*?)href="\/cdn-cgi\/l\/email-protection[^"]*"([^>]*)>/gi, '<a$1href="mailto:mail@pavelkovarik.cz"$2>');
+content = content.replace(/<a([^>]*?)class="__cf_email__"([^>]*)data-cfemail="[^"]*"([^>]*)>\[[^\]]+\]<\/a>/gi, '<a$1$2$3>mail@pavelkovarik.cz</a>');
+
 for (const [from, to] of Object.entries(logoMap)) {
   content = content.replaceAll(from, to);
 }
@@ -75,12 +80,19 @@ content = content.replaceAll('https://pavelkovarik.cz', '');
 
 const scripts: string[] = [];
 content = content.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, (_match, scriptBody) => {
-  scripts.push(scriptBody.trim());
+  const cleanedScript = scriptBody.trim();
+  if (cleanedScript.length > 0 && !cleanedScript.includes('cloudflare-static/email-decode')) {
+    scripts.push(cleanedScript);
+  }
   return '';
 });
 ---
 
-<Fragment set:html={content} />
+<main class="imported-wp-page">
+  <div class="page-content imported-wp-page__content">
+    <Fragment set:html={content} />
+  </div>
+</main>
 
 {scripts.map((scriptBody) => (
   <script is:inline set:html={scriptBody}></script>

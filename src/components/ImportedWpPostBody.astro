@@ -50,6 +50,7 @@ let content = String(data.content ?? '');
 
 content = content.replaceAll('<!-- wp:html -->', '');
 content = content.replaceAll('<!-- /wp:html -->', '');
+content = content.replace(/<link\b[^>]*>/gi, '');
 
 for (const [from, to] of Object.entries(routeMap)) {
   content = content.replaceAll(from, to);
