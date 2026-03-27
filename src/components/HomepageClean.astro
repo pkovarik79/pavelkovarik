@@ -320,13 +320,23 @@ const formatDate = (date: string) =>
 
         <div class="grid grid-2 hp-practical-grid">
           <div>
-            <h3 class="hp-col-title">Co školení přináší</h3>
+            <h3 class="hp-col-title">
+              <span class="hp-col-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 7h-3V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a1 1 0 0 0-1 1v10a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1ZM9 5h6v2H9Zm10 13a1 1 0 0 1-1 1h-5v-5h6Zm-8 1H6a1 1 0 0 1-1-1v-4h6Zm0-7H5V9h6Zm8 0h-6V9h6Z" /></svg>
+              </span>
+              Co školení přináší
+            </h3>
             <ul class="hp-check-list">
               {practicalBenefits.map((item) => <li>{item}</li>)}
             </ul>
           </div>
           <div>
-            <h3 class="hp-col-title">Pro koho je určené</h3>
+            <h3 class="hp-col-title">
+              <span class="hp-col-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-3.999-4A4 4 0 0 0 16 11Zm0-6a2 2 0 1 1-2 2 2 2 0 0 1 2-2ZM8 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0-6a2 2 0 1 1-2 2 2 2 0 0 1 2-2Zm8 7c-3.314 0-6 2.239-6 5a1 1 0 0 0 2 0c0-1.654 1.794-3 4-3s4 1.346 4 3a1 1 0 0 0 2 0c0-2.761-2.686-5-6-5ZM8 14c-3.314 0-6 2.239-6 5a1 1 0 0 0 2 0c0-1.654 1.794-3 4-3 .805 0 1.571.18 2.245.504a1 1 0 1 0 .87-1.8A7.18 7.18 0 0 0 8 14Z" /></svg>
+              </span>
+              Pro koho je určené
+            </h3>
             <ul class="hp-check-list">
               {practicalAudience.map((item) => <li>{item}</li>)}
             </ul>
@@ -830,17 +840,49 @@ const formatDate = (date: string) =>
     margin-bottom: 1rem;
   }
 
+  .hp-col-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef2ff;
+    color: var(--pk-primary);
+    flex-shrink: 0;
+  }
+
+  .hp-col-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+
   .hp-check-list {
-    list-style: disc;
-    padding-left: 1.4rem;
+    list-style: none;
+    padding-left: 0;
     color: var(--pk-text-2);
     display: grid;
     gap: .9rem;
   }
 
   .hp-check-list li {
+    position: relative;
+    padding-left: 1.65rem;
     font-size: 1rem;
     line-height: 1.6;
+  }
+
+  .hp-check-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .6em;
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    background: var(--pk-primary);
+    transform: translateY(-50%);
   }
 
   .hp-price {
