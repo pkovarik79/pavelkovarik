@@ -1,6 +1,7 @@
 ---
 import fs from 'node:fs';
 import path from 'node:path';
+import { importedPosts } from '../data/importedPosts';
 
 interface Props {
   filePath: string;
@@ -11,8 +12,11 @@ const { filePath } = Astro.props;
 const root = process.cwd();
 const fullPath = path.isAbsolute(filePath) ? filePath : path.join(root, filePath);
 const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+const isHomepage = fullPath.endsWith('homepage-full.json');
 
 const logoMap: Record<string, string> = {
+  'https://pavelkovarik.cz/wp-content/uploads/2025/04/pavel-kovarik-profile.webp': '/images/web/pavel-kovarik-profile.webp',
+  'https://pavelkovarik.cz/wp-content/uploads/2025/07/Jak-vybrat-AI-skoleni-pro-firmy-ktere-prinese-realne-vysledky.webp': '/images/blog/Jak-vybrat-AI-skoleni-pro-firmy-ktere-prinese-realne-vysledky.webp',
   'https://pavelkovarik.cz/wp-content/uploads/2026/02/ceska-sporitelna.jpg': '/images/loga/ceska-sporitelna.webp',
   'https://pavelkovarik.cz/wp-content/uploads/2026/02/partners.jpg': '/images/loga/partners.webp',
   'https://pavelkovarik.cz/wp-content/uploads/2026/02/ptacek.jpg': '/images/loga/ptacek.webp',
@@ -57,11 +61,50 @@ const routeMap: Record<string, string> = {
   '/marketing-pr-s-ai/': '/marketing-pr-ai/',
   '/skoleni-marketing-pr-s-ai/': '/marketing-pr-ai/',
   '/linkedin-byznys-osobni-znacka-ai/': '/marketing-pr-ai/',
+  '/blog': '/blog/',
+  '/kontakt': '/kontakt/',
+  '/skoleni': '/skoleni/',
   '/microsoft-copilot/': '/microsoft-copilot-pro-firmy/',
   '/gdpr/': '/gdpr-ochrana-osobnich-udaju/',
 };
 
 let content = String(data.content ?? '');
+
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+
+const formatCzDate = (dateString: string) =>
+  new Intl.DateTimeFormat('cs-CZ', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  }).format(new Date(dateString));
+
+if (isHomepage) {
+  const latestPostsHtml = importedPosts
+    .slice(0, 2)
+    .map(
+      (post) => `
+        <a href="${post.url}" class="pk-blog-card">
+          <img decoding="async" src="${post.image}" class="pk-blog-card-img" alt="${escapeHtml(post.title)}">
+          <div class="pk-blog-card-content">
+            <span class="pk-blog-card-date">${formatCzDate(post.date)}</span>
+            <h3 class="pk-blog-card-title">${escapeHtml(post.title)}</h3>
+          </div>
+        </a>
+      `.trim(),
+    )
+    .join('');
+
+  content = content.replace(
+    '<div class="pk-blog-grid" id="pk-blog-latest"></div>',
+    `<div class="pk-blog-grid" id="pk-blog-latest">${latestPostsHtml}</div>`,
+  );
+}
 
 content = content.replace(/<link\b[^>]*>/gi, '');
 content = content.replace(/<script\b[^>]*\bsrc="[^"]*"[^>]*>\s*<\/script>/gi, '');
@@ -78,11 +121,16 @@ for (const [from, to] of Object.entries(routeMap)) {
 
 content = content.replaceAll('https://pavelkovarik.cz', '');
 
-const scripts: string[] = [];
-content = content.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, (_match, scriptBody) => {
+const scripts: Array<{ body: string; type?: string }> = [];
+content = content.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (_match, attrs, scriptBody) => {
   const cleanedScript = scriptBody.trim();
-  if (cleanedScript.length > 0 && !cleanedScript.includes('cloudflare-static/email-decode')) {
-    scripts.push(cleanedScript);
+  if (
+    cleanedScript.length > 0 &&
+    !cleanedScript.includes('cloudflare-static/email-decode') &&
+    !cleanedScript.includes('/wp-json/wp/v2/posts')
+  ) {
+    const typeMatch = attrs.match(/\btype=(["'])(.*?)\1/i);
+    scripts.push({ body: cleanedScript, type: typeMatch?.[2] });
   }
   return '';
 });
@@ -94,6 +142,6 @@ content = content.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, (_match, scri
   </div>
 </main>
 
-{scripts.map((scriptBody) => (
-  <script is:inline set:html={scriptBody}></script>
-))}
+{scripts.map(({ body, type }) =>
+  type ? <script is:inline type={type} set:html={body}></script> : <script is:inline set:html={body}></script>,
+)}
