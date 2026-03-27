@@ -655,10 +655,12 @@ const formatDate = (date: string) =>
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1.5rem;
+    max-width: 1120px;
+    margin: 0 auto;
   }
 
   .hp-logo-card {
-    min-height: 126px;
+    min-height: 112px;
     border: 1px solid var(--pk-border);
     border-radius: 16px;
     background: #fff;
@@ -670,8 +672,8 @@ const formatDate = (date: string) =>
   }
 
   .hp-logo-image {
-    max-height: 76px;
-    max-width: 80%;
+    max-height: 64px;
+    max-width: 74%;
     width: auto;
     filter: grayscale(100%);
     opacity: .72;
@@ -679,7 +681,7 @@ const formatDate = (date: string) =>
   }
 
   .hp-logo-image.is-small-logo {
-    transform: scale(1.08);
+    transform: scale(1.02);
   }
 
   .hp-logo-card:hover {
@@ -691,11 +693,11 @@ const formatDate = (date: string) =>
   .hp-logo-card:hover .hp-logo-image {
     filter: grayscale(0);
     opacity: 1;
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
 
   .hp-logo-card:hover .hp-logo-image.is-small-logo {
-    transform: scale(1.11);
+    transform: scale(1.05);
   }
 
   .hp-benefit {
@@ -841,9 +843,9 @@ const formatDate = (date: string) =>
   }
 
   .hp-col-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 18px;
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -853,8 +855,8 @@ const formatDate = (date: string) =>
   }
 
   .hp-col-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     fill: currentColor;
   }
 
@@ -892,7 +894,7 @@ const formatDate = (date: string) =>
   }
 
   .hp-price-main {
-    font-size: clamp(3rem, 5vw, 4.2rem);
+    font-size: clamp(2.5rem, 4.2vw, 3.45rem);
     font-weight: 800;
     color: var(--pk-primary);
     line-height: 1;
@@ -901,13 +903,14 @@ const formatDate = (date: string) =>
 
   .hp-price-sub {
     color: var(--pk-primary);
-    font-size: 1.1rem;
+    font-size: .98rem;
     font-weight: 700;
     margin-bottom: .5rem;
   }
 
   .hp-price-note {
     color: var(--pk-text-2);
+    font-size: .95rem;
     margin-bottom: 1.5rem;
   }
 
@@ -1174,10 +1177,14 @@ const formatDate = (date: string) =>
     line-height: 1.85;
   }
 
-  .hp-why-head,
+  .hp-why-head {
+    margin-bottom: 1.05rem;
+    margin-top: 3rem;
+  }
+
   .hp-steps-head {
-    margin-bottom: .8rem;
-    margin-top: 2.5rem;
+    margin-bottom: 1.05rem;
+    margin-top: 3.25rem;
   }
 
   .hp-why-head h3,
@@ -1256,7 +1263,31 @@ const formatDate = (date: string) =>
   }
 
   .hp-faq-wrap {
-    max-width: 1080px;
+    max-width: 860px;
+  }
+
+  .hp-faq-wrap .faq {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .hp-faq-wrap .faq details {
+    border: 1px solid var(--pk-border);
+    border-radius: 20px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .hp-faq-wrap .faq summary {
+    padding: 1.2rem 1.4rem;
+    font-size: 1rem;
+  }
+
+  .hp-faq-wrap .faq .faq-body {
+    padding: 0 1.4rem 1.05rem;
   }
 
   .hp-final-cta {
@@ -1377,12 +1408,12 @@ const formatDate = (date: string) =>
     }
 
     .hp-logo-card {
-      min-height: 96px;
+      min-height: 90px;
       padding: .75rem;
     }
 
     .hp-logo-image {
-      max-height: 56px;
+      max-height: 48px;
       max-width: 84%;
     }
 
