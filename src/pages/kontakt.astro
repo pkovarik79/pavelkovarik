@@ -35,7 +35,7 @@ const trainingOptions = [
           <h3>Zavolejte mi</h3>
           <p>Nejrychlejší cesta pro domluvu termínu nebo rychlý dotaz.</p>
           <a href="tel:+420770126519" class="btn btn-p contact-card-button">+420 770 126 519</a>
-          <div class="contact-card-meta">Po–Pá 9:00 - 17:00</div>
+          <div class="contact-card-meta">Po-Pá 9:00 - 17:00</div>
         </article>
 
         <article class="card contact-card">
@@ -131,8 +131,6 @@ const trainingOptions = [
           <p class="form-note">Odesláním formuláře souhlasíte se <a href="/gdpr-ochrana-osobnich-udaju/">zpracováním osobních údajů</a>.</p>
           <p class="form-note form-note-secondary">Formulář je chráněný jednoduchou antispam kontrolou. Odeslané údaje použiji pouze pro vyřízení poptávky.</p>
           <p class="contact-billing"><strong>Fakturační údaje:</strong> Ing. Bc. Pavel Kovařík, IČO: 76233006, Hromádkova 4020/22, 636 00 Brno</p>
-          <h3 class="form-message form-message-success" aria-live="polite">Děkuji, zpráva byla odeslána. Ozvu se co nejdříve.</h3>
-          <h3 class="form-message form-message-error" aria-live="polite">Nepodařilo se odeslat formulář.</h3>
         </form>
       </div>
     </div>
@@ -145,6 +143,24 @@ const trainingOptions = [
       <a href="/skoleni/" class="btn contact-btn-light">Zobrazit nabídku školení</a>
     </div>
   </section>
+
+  <div class="pk-modal" id="pkSuccessModal" aria-hidden="true">
+    <div class="pk-modal-content" role="dialog" aria-modal="true" aria-labelledby="pk-success-title">
+      <span class="pk-modal-icon" aria-hidden="true">✓</span>
+      <h3 id="pk-success-title">Odesláno!</h3>
+      <p>Díky! Vaši objednávku jsem obdržel.<br />Ozvu se vám do 24 hodin.</p>
+      <button type="button" class="btn btn-p pk-modal-button" data-modal-close="pkSuccessModal">Skvělé, zavřít</button>
+    </div>
+  </div>
+
+  <div class="pk-modal" id="pkErrorModal" aria-hidden="true">
+    <div class="pk-modal-content" role="dialog" aria-modal="true" aria-labelledby="pk-error-title">
+      <span class="pk-modal-icon" aria-hidden="true">!</span>
+      <h3 id="pk-error-title">Chybí údaje</h3>
+      <p id="pk-error-text">Zkontrolujte prosím formulář. Některá povinná pole nejsou vyplněna.</p>
+      <button type="button" class="btn btn-p pk-modal-button" data-modal-close="pkErrorModal">Zkontrolovat formulář</button>
+    </div>
+  </div>
 </Base>
 
 <style>
@@ -368,20 +384,6 @@ const trainingOptions = [
     min-width: 0;
   }
 
-  .form-message {
-    display: none;
-    font-size: 1rem;
-    margin: .25rem 0 0;
-  }
-
-  .form-message-success {
-    color: #0f8a45;
-  }
-
-  .form-message-error {
-    color: #c53030;
-  }
-
   .form-note {
     font-size: .95rem;
     color: var(--pk-text-3);
@@ -415,6 +417,64 @@ const trainingOptions = [
   .contact-btn-light:hover {
     color: var(--pk-primary-dark);
     background: #f8fafc;
+  }
+
+  .pk-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(5px);
+    padding: 1.5rem;
+  }
+
+  .pk-modal.is-open {
+    display: flex;
+  }
+
+  .pk-modal-content {
+    width: min(100%, 450px);
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
+  }
+
+  .pk-modal-content h3 {
+    margin-bottom: .65rem;
+    font-size: 1.6rem;
+  }
+
+  .pk-modal-content p {
+    margin-bottom: 1.6rem;
+    color: var(--pk-text-2);
+    font-size: 1.05rem;
+  }
+
+  .pk-modal-icon {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  #pkSuccessModal .pk-modal-icon,
+  #pkSuccessModal h3 {
+    color: #10b981;
+  }
+
+  #pkErrorModal .pk-modal-icon,
+  #pkErrorModal h3 {
+    color: #ef4444;
+  }
+
+  .pk-modal-button {
+    min-width: 0;
   }
 
   @media (max-width: 900px) {
@@ -456,15 +516,42 @@ const trainingOptions = [
 <script>
   const form = document.getElementById('contact-form');
   const submitButton = document.getElementById('contact-submit');
-  const successMessage = form?.querySelector('.form-message-success');
-  const errorMessage = form?.querySelector('.form-message-error');
+  const successModal = document.getElementById('pkSuccessModal');
+  const errorModal = document.getElementById('pkErrorModal');
+  const errorText = document.getElementById('pk-error-text');
 
-  const setMessage = (type, text) => {
-    if (successMessage) successMessage.textContent = type === 'success' ? text : '';
-    if (errorMessage) errorMessage.textContent = type === 'error' ? text : '';
-    successMessage?.setAttribute('style', type === 'success' ? 'display:block;' : 'display:none;');
-    errorMessage?.setAttribute('style', type === 'error' ? 'display:block;' : 'display:none;');
+  const openModal = (modal) => {
+    modal?.classList.add('is-open');
+    modal?.setAttribute('aria-hidden', 'false');
   };
+
+  const closeModal = (modal) => {
+    modal?.classList.remove('is-open');
+    modal?.setAttribute('aria-hidden', 'true');
+  };
+
+  document.querySelectorAll('[data-modal-close]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const modalId = button.getAttribute('data-modal-close');
+      if (!modalId) return;
+      closeModal(document.getElementById(modalId));
+    });
+  });
+
+  [successModal, errorModal].forEach((modal) => {
+    modal?.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal(modal);
+      }
+    });
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeModal(successModal);
+      closeModal(errorModal);
+    }
+  });
 
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -480,10 +567,14 @@ const trainingOptions = [
     const interests = formData.getAll('interests').map((value) => String(value).trim()).filter(Boolean);
 
     const isValid = name && email && phone && company;
-    setMessage('', '');
+    closeModal(successModal);
+    closeModal(errorModal);
 
     if (!isValid) {
-      setMessage('error', 'Vyplňte prosím jméno, e-mail, telefon a firmu.');
+      if (errorText) {
+        errorText.textContent = 'Zkontrolujte prosím formulář. Některá povinná pole nejsou vyplněna.';
+      }
+      openModal(errorModal);
       return;
     }
 
@@ -515,9 +606,12 @@ const trainingOptions = [
       }
 
       form.reset();
-      setMessage('success', 'Děkuji, zpráva byla odeslána. Ozvu se co nejdříve.');
+      openModal(successModal);
     } catch (error) {
-      setMessage('error', error instanceof Error ? error.message : 'Nepodařilo se odeslat formulář.');
+      if (errorText) {
+        errorText.textContent = error instanceof Error ? error.message : 'Nepodařilo se odeslat formulář.';
+      }
+      openModal(errorModal);
     } finally {
       submitButton?.removeAttribute('disabled');
       submitButton?.removeAttribute('aria-busy');
