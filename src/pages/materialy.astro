@@ -7,6 +7,8 @@ const hub = getMaterialHubData();
 const iconPaths: Record<string, string> = {
   layers: 'M12 4 3 8l9 4 9-4-9-8Zm0 10L3 10v4l9 4 9-4v-4l-9 4Zm0 6-9-4v4l9 4 9-4v-4l-9 4Z',
   terminal: 'M5 6h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm2.2 3.1L10 12l-2.8 2.9 1.3 1.2 4-4.1-4-4.1-1.3 1.2Zm5.8 6.9h5v-2h-5v2Z',
+  bulb: 'M12 2a6.5 6.5 0 0 0-3.98 11.64c.52.4.83 1 .83 1.65V16a1 1 0 0 0 1 1h4.3a1 1 0 0 0 1-1v-.71c0-.64.3-1.24.82-1.64A6.5 6.5 0 0 0 12 2Zm-1.5 16h3a2 2 0 0 1-3 0Zm-.5-3.03c0-1.03-.47-2.01-1.29-2.66A4.5 4.5 0 1 1 15.3 12.3c-.83.65-1.3 1.63-1.3 2.67h-4Z',
+  linkedin: 'M6.94 8.5V19H3.56V8.5h3.38ZM5.25 3A2 2 0 1 1 5.2 7a2 2 0 0 1 .05-4ZM20.44 19h-3.37v-5.1c0-1.22-.02-2.8-1.7-2.8-1.7 0-1.97 1.33-1.97 2.7V19H10V8.5h3.23v1.43h.04c.45-.85 1.55-1.74 3.2-1.74 3.42 0 4.05 2.25 4.05 5.18V19Z',
 };
 ---
 
@@ -39,14 +41,22 @@ const iconPaths: Record<string, string> = {
       </div>
 
       <section class="materials-coming">
-        <div class="materials-coming-icon" aria-hidden="true">💡</div>
+        <div class="materials-coming-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d={iconPaths.bulb} />
+          </svg>
+        </div>
         <h2>{hub.upcomingTitle}</h2>
         <p>{hub.upcomingDescription}</p>
         <div class="materials-tags">
           {hub.upcomingTags.map((tag) => <span>{tag}</span>)}
         </div>
         <a href={hub.linkedinHref} target="_blank" rel="noopener" class="materials-linkedin">
-          <span aria-hidden="true">in</span>
+          <span aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d={iconPaths.linkedin} />
+            </svg>
+          </span>
           Sledujte novinky na LinkedInu
         </a>
       </section>
@@ -148,87 +158,98 @@ const iconPaths: Record<string, string> = {
     }
 
     .materials-coming {
-      padding: 2.4rem 2rem;
+      padding: 2rem 2rem 2.1rem;
       text-align: center;
       max-width: 980px;
-      margin: 0 auto 2.4rem;
+      margin: 0 auto 2.1rem;
     }
 
     .materials-coming-icon {
-      font-size: 2rem;
-      margin-bottom: .85rem;
+      width: 2.6rem;
+      height: 2.6rem;
+      margin: 0 auto .75rem;
+      color: var(--pk-primary);
+      opacity: 0.8;
+    }
+
+    .materials-coming-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
     }
 
     .materials-coming h2 {
-      font-size: clamp(1.45rem, 2.2vw, 2rem);
-      margin: 0 0 .85rem;
+      font-size: clamp(1.34rem, 2vw, 1.78rem);
+      margin: 0 0 .65rem;
     }
 
     .materials-coming p {
-      max-width: 38rem;
+      max-width: 36rem;
       margin: 0 auto;
       color: var(--pk-text-2);
-      font-size: 1rem;
-      line-height: 1.72;
+      font-size: 0.98rem;
+      line-height: 1.65;
     }
 
     .materials-tags {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin: 1.35rem 0;
+      gap: 0.65rem;
+      margin: 1.1rem 0 1.2rem;
     }
 
     .materials-tags span {
-      padding: 0.58rem .95rem;
+      padding: 0.48rem .82rem;
       border-radius: 999px;
       background: var(--pk-bg-alt2);
       color: var(--pk-text-2);
       font-weight: 600;
-      font-size: .92rem;
+      font-size: .88rem;
     }
 
     .materials-linkedin {
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
-      font-size: 1rem;
+      gap: 0.55rem;
+      font-size: 0.98rem;
       font-weight: 700;
     }
 
     .materials-linkedin span {
-      width: 1.45rem;
-      height: 1.45rem;
-      border-radius: 0.3rem;
-      background: var(--pk-primary);
-      color: #fff;
+      width: 1.15rem;
+      height: 1.15rem;
+      color: var(--pk-primary);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 800;
+    }
+
+    .materials-linkedin svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
     }
 
     .materials-cta {
       background: linear-gradient(135deg, var(--pk-primary) 0%, var(--pk-primary-dark) 100%);
       color: #fff;
       text-align: center;
-      padding: 4rem 0;
+      padding: 3.3rem 0 3.45rem;
     }
 
     .materials-cta h2 {
       color: #fff;
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      margin: 0 0 .85rem;
+      font-size: clamp(1.58rem, 2.5vw, 2.05rem);
+      margin: 0 0 .75rem;
     }
 
     .materials-cta p {
-      max-width: 46rem;
-      margin: 0 auto 1.5rem;
+      max-width: 41rem;
+      margin: 0 auto 1.25rem;
       color: rgba(255, 255, 255, 0.92);
-      font-size: 1.08rem;
-      line-height: 1.72;
+      font-size: 1rem;
+      line-height: 1.65;
     }
 
     .materials-cta-actions {
@@ -236,7 +257,7 @@ const iconPaths: Record<string, string> = {
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .materials-cta-contact {
@@ -245,7 +266,7 @@ const iconPaths: Record<string, string> = {
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
     }
 
@@ -283,6 +304,14 @@ const iconPaths: Record<string, string> = {
 
       .materials-cta-contact span {
         display: none;
+      }
+
+      .materials-coming {
+        margin-bottom: 1.8rem;
+      }
+
+      .materials-cta {
+        padding: 2.9rem 0 3rem;
       }
     }
   </style>
