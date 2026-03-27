@@ -20,9 +20,9 @@ const trainingOptions = [
       <p class="contact-hero-lead">Do 24 hodin se Vám ozvu s návrhem obsahu školení a možnými termíny.</p>
 
       <div class="contact-stat-pills">
-        <span><i></i>Odpověď do 24 hodin</span>
-        <span><i></i>On-line i u vás ve firmě</span>
-        <span><i></i>Nezávazná poptávka</span>
+        <span>Odpověď do 24 hodin</span>
+        <span>On-line i u vás ve firmě</span>
+        <span>Nezávazná poptávka</span>
       </div>
     </div>
   </section>
@@ -100,7 +100,7 @@ const trainingOptions = [
             </div>
 
             <fieldset class="form-group form-group-full contact-checklist">
-              <legend>O jaké školení máte zájem? (můžete vybrat více možností)</legend>
+              <legend>O jaké školení máte zájem? (Můžete vybrat více možností.)</legend>
               <div class="contact-checklist-grid">
                 {trainingOptions.map((option) => (
                   <label class="contact-check-item">
@@ -219,22 +219,12 @@ const trainingOptions = [
   .contact-stat-pills span {
     display: inline-flex;
     align-items: center;
-    gap: .55rem;
     padding: .8rem 1.2rem;
     border-radius: 999px;
     background: rgba(255,255,255,.12);
     border: 1px solid rgba(255,255,255,.18);
     font-weight: 700;
     font-size: .95rem;
-  }
-
-  .contact-stat-pills i {
-    width: .5rem;
-    height: .5rem;
-    border-radius: 999px;
-    background: rgba(255,255,255,.78);
-    display: inline-block;
-    flex-shrink: 0;
   }
 
   .contact-cards-section {
@@ -366,7 +356,7 @@ const trainingOptions = [
   .contact-checklist-grid {
     display: grid;
     gap: .65rem;
-    margin-top: .25rem;
+    margin-top: .7rem;
   }
 
   .contact-check-item {
@@ -375,6 +365,10 @@ const trainingOptions = [
     gap: .72rem;
     font-size: .96rem;
     color: var(--pk-text);
+  }
+
+  .contact-check-item span {
+    font-weight: 500;
   }
 
   .contact-check-item input {
