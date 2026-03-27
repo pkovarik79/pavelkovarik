@@ -88,9 +88,9 @@ const trainingOptions = [
             </div>
 
             <div class="form-group form-group-full">
-              <label for="teamSize">Kolik lidí chcete proškolit?</label>
+              <label for="teamSize">Kolik lidí</label>
               <select id="teamSize" name="teamSize">
-                <option value="">Vyberte velikost skupiny</option>
+                <option value="">Vyberte počet lidí</option>
                 <option value="1 až 6 osob">1 až 6 osob</option>
                 <option value="7 až 15 osob">7 až 15 osob</option>
                 <option value="16 až 30 osob">16 až 30 osob</option>
@@ -235,72 +235,75 @@ const trainingOptions = [
   }
 
   .contact-cards-grid {
-    gap: 1.8rem;
+    gap: 1.35rem;
   }
 
   .contact-card {
     text-align: center;
-    padding: 2.5rem 2rem;
-    box-shadow: 0 18px 42px rgba(61,92,217,.16);
+    padding: 2rem 1.55rem;
+    box-shadow: 0 12px 28px rgba(61,92,217,.13);
   }
 
   .contact-card-icon {
-    width: 76px;
-    height: 76px;
-    margin: 0 auto 1.25rem;
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 22px;
+    border-radius: 18px;
     background: linear-gradient(135deg, #eef3ff 0%, #e7efff 100%);
     color: var(--pk-primary);
-    font-size: 2rem;
+    font-size: 1.55rem;
     font-weight: 800;
   }
 
   .contact-card h3 {
-    font-size: clamp(1.35rem, 2.2vw, 1.65rem);
-    margin-bottom: .6rem;
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
+    margin-bottom: .45rem;
   }
 
   .contact-card p {
-    font-size: 1rem;
-    line-height: 1.75;
-    min-height: 5.2rem;
+    font-size: .98rem;
+    line-height: 1.65;
+    min-height: 4.3rem;
   }
 
   .contact-card-button {
     width: 100%;
     justify-content: center;
-    margin-top: .9rem;
+    margin-top: .65rem;
+    min-height: 48px;
+    padding-inline: 1rem;
+    font-size: .96rem;
   }
 
   .contact-card-meta {
-    margin-top: 1rem;
+    margin-top: .8rem;
     color: var(--pk-text-3);
-    font-size: .95rem;
+    font-size: .92rem;
   }
 
   .contact-form-shell {
-    max-width: 930px;
+    max-width: 840px;
     margin: 0 auto;
     background: #fff;
     border: 1px solid var(--pk-border);
-    border-radius: 22px;
-    padding: 2.4rem 2.5rem;
+    border-radius: 18px;
+    padding: 2rem 2rem;
     box-shadow: 0 4px 20px rgba(15,23,42,.05);
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1rem;
   }
 
   .contact-form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1.15rem 1.25rem;
   }
 
   .form-group {
@@ -315,7 +318,7 @@ const trainingOptions = [
 
   .form-group label,
   .contact-checklist legend {
-    font-size: .98rem;
+    font-size: .94rem;
     font-weight: 700;
     color: var(--pk-text);
   }
@@ -324,12 +327,12 @@ const trainingOptions = [
   .form-group select,
   .form-group textarea {
     width: 100%;
-    padding: .95rem 1.1rem;
+    padding: .82rem 1rem;
     border: 1px solid #d1d5db;
-    border-radius: 12px;
+    border-radius: 10px;
     background: #f9fafb;
     color: var(--pk-text);
-    font-size: 1rem;
+    font-size: .98rem;
     font-family: inherit;
     transition: border-color .2s, box-shadow .2s, background-color .2s;
   }
@@ -351,21 +354,21 @@ const trainingOptions = [
 
   .contact-checklist-grid {
     display: grid;
-    gap: .9rem;
+    gap: .75rem;
     margin-top: .4rem;
   }
 
   .contact-check-item {
     display: flex;
     align-items: center;
-    gap: .8rem;
-    font-size: 1rem;
+    gap: .72rem;
+    font-size: .96rem;
     color: var(--pk-text);
   }
 
   .contact-check-item input {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     accent-color: var(--pk-primary);
     flex-shrink: 0;
   }
@@ -382,10 +385,12 @@ const trainingOptions = [
     width: 100%;
     justify-content: center;
     min-width: 0;
+    min-height: 50px;
+    font-size: .98rem;
   }
 
   .form-note {
-    font-size: .95rem;
+    font-size: .9rem;
     color: var(--pk-text-3);
     text-align: center;
     margin-top: .25rem;
@@ -398,7 +403,7 @@ const trainingOptions = [
   .contact-billing {
     text-align: center;
     color: var(--pk-text-2);
-    font-size: .98rem;
+    font-size: .93rem;
     margin-top: .2rem;
   }
 
@@ -504,11 +509,15 @@ const trainingOptions = [
     }
 
     .contact-form-shell {
-      padding: 1.5rem 1.2rem;
+      padding: 1.35rem 1rem;
     }
 
     .contact-card {
-      padding: 2rem 1.4rem;
+      padding: 1.65rem 1.2rem;
+    }
+
+    .contact-card p {
+      min-height: 0;
     }
   }
 </style>
