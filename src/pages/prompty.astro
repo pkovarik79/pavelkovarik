@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import { getPromptLibraryData } from '../lib/wp-materials';
 
 const promptLibrary = getPromptLibraryData();
+const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '').trim();
 ---
 
 <Base title="Knihovna AI promptů pro firmy | Pavel Kovařík" description="Praktické AI prompty, které používám ve školeních. Kategorizované podle použití, okamžitě použitelné šablony.">
@@ -16,7 +17,7 @@ const promptLibrary = getPromptLibraryData();
     </section>
 
     <section class="prompt-shell" id="prompt-library">
-      <div class="wrap">
+      <div class="wrap prompt-wrap">
         <div class="prompt-controls">
           <div class="prompt-search-row">
             <label class="prompt-search-label" for="prompt-search">Hledat</label>
@@ -44,7 +45,7 @@ const promptLibrary = getPromptLibraryData();
         <div class="prompt-groups">
           {promptLibrary.categories.map((category) => (
             <section class="prompt-group" data-category={category.slug}>
-              <h2 class="prompt-group-title">{category.title}</h2>
+              <h2 class="prompt-group-title">{stripLeadingEmoji(category.title)}</h2>
 
               {category.introHtml && (
                 <div class="prompt-group-intro prose-lite" set:html={category.introHtml}></div>
@@ -55,8 +56,11 @@ const promptLibrary = getPromptLibraryData();
                   <summary>{prompt.title}</summary>
                   <div class="prompt-card-body">
                     {prompt.description && <p class="prompt-card-desc">{prompt.description}</p>}
+                    <div class="prompt-card-toolbar">
+                      <span class="prompt-card-label">Prompt</span>
+                      <button type="button" class="prompt-copy" data-copy={prompt.content}>Kopírovat</button>
+                    </div>
                     <pre class="prompt-card-content">{prompt.content}</pre>
-                    <button type="button" class="prompt-copy" data-copy={prompt.content}>Kopírovat</button>
                   </div>
                 </details>
               ))}
@@ -96,14 +100,14 @@ const promptLibrary = getPromptLibraryData();
           group.querySelectorAll('.prompt-card').forEach((card) => {
             const haystack = normalize(card.getAttribute('data-search'));
             const visible = filterMatch && (!query || haystack.includes(query));
-            card.hidden = !visible;
+            card.style.display = visible ? '' : 'none';
             if (visible) {
               visibleInGroup += 1;
               visibleCount += 1;
             }
           });
 
-          group.hidden = visibleInGroup === 0;
+          group.style.display = visibleInGroup > 0 ? '' : 'none';
         });
 
         if (clear) {
@@ -124,23 +128,27 @@ const promptLibrary = getPromptLibraryData();
       });
 
       search?.addEventListener('input', refresh);
+      search?.addEventListener('input', () => {
+        const query = normalize(search instanceof HTMLInputElement ? search.value : '');
+        if (clear) {
+          clear.hidden = !query;
+        }
+      });
 
       clear?.addEventListener('click', () => {
         if (search instanceof HTMLInputElement) {
           search.value = '';
           search.focus();
         }
-        activeFilter = 'all';
-        filters.forEach((item, index) => item.classList.toggle('is-active', index === 0));
         refresh();
       });
 
       root.querySelectorAll('.prompt-copy').forEach((button) => {
         button.addEventListener('click', async () => {
           const text = button.getAttribute('data-copy') || '';
+          const original = button.textContent;
           try {
             await navigator.clipboard.writeText(text);
-            const original = button.textContent;
             button.textContent = 'Zkopírováno';
             button.classList.add('is-copied');
             window.setTimeout(() => {
@@ -148,7 +156,20 @@ const promptLibrary = getPromptLibraryData();
               button.classList.remove('is-copied');
             }, 1800);
           } catch {
-            button.textContent = 'Kopírování selhalo';
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.top = '-1000px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            button.textContent = 'Zkopírováno';
+            button.classList.add('is-copied');
+            window.setTimeout(() => {
+              button.textContent = original;
+              button.classList.remove('is-copied');
+            }, 1800);
           }
         });
       });
@@ -161,6 +182,10 @@ const promptLibrary = getPromptLibraryData();
     .prompt-shell {
       padding: 2.6rem 0 4rem;
       background: var(--pk-bg-alt);
+    }
+
+    .prompt-wrap {
+      max-width: 1040px;
     }
 
     .prompt-controls {
@@ -242,19 +267,24 @@ const promptLibrary = getPromptLibraryData();
     }
 
     .prompt-group {
-      margin-bottom: 2.8rem;
+      margin-bottom: 1.35rem;
+      padding: 1.1rem 1.1rem 1rem;
+      background: #fff;
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 1.05rem;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
     }
 
     .prompt-group-title {
-      font-size: 1.42rem;
-      color: var(--pk-primary);
-      padding-bottom: 0.55rem;
-      border-bottom: 3px solid var(--pk-primary);
-      margin: 0 0 1.1rem;
+      font-size: 1.12rem;
+      color: #1e293b;
+      padding-bottom: 0;
+      border-bottom: none;
+      margin: 0 0 0.9rem;
     }
 
     .prompt-group-intro {
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.95rem;
     }
 
     .prose-lite > *:last-child {
@@ -284,37 +314,39 @@ const promptLibrary = getPromptLibraryData();
     }
 
     .prose-lite {
-      background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%);
-      border: 2px solid rgba(61, 92, 217, 0.18);
-      border-radius: 1rem;
-      padding: 1.25rem 1.25rem 1.1rem;
+      background: #f8fafc;
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 0.95rem;
+      padding: 1rem 1.05rem 0.95rem;
+      box-shadow: none;
     }
 
     .prompt-card {
-      background: #fff;
-      border: 1px solid var(--pk-border);
-      border-radius: 1rem;
-      margin-bottom: 0.8rem;
+      background: #f8fafc;
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 0.95rem;
+      margin-bottom: 0.72rem;
       transition: 0.2s ease;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      box-shadow: none;
       overflow: hidden;
     }
 
     .prompt-card:hover {
-      border-color: var(--pk-primary);
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07);
+      border-color: rgba(61, 92, 217, 0.28);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
     }
 
     .prompt-card summary {
       list-style: none;
       cursor: pointer;
-      padding: 1.05rem 1.2rem;
-      color: var(--pk-primary);
-      font-size: 1.02rem;
-      font-weight: 800;
+      padding: 0.95rem 1.15rem;
+      color: #334155;
+      font-size: 1rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background: #f8fafc;
     }
 
     .prompt-card summary::-webkit-details-marker {
@@ -322,8 +354,8 @@ const promptLibrary = getPromptLibraryData();
     }
 
     .prompt-card summary::after {
-      content: '▼';
-      font-size: 0.74rem;
+      content: '▾';
+      font-size: 0.8rem;
       color: var(--pk-text-3);
       transition: transform 0.2s ease;
     }
@@ -332,42 +364,77 @@ const promptLibrary = getPromptLibraryData();
       transform: rotate(180deg);
     }
 
+    .prompt-card[open] {
+      background: #fff;
+      border-color: rgba(61, 92, 217, 0.18);
+    }
+
+    .prompt-card[open] summary {
+      background: #f3f6fa;
+    }
+
     .prompt-card-body {
-      padding: 0 1.2rem 1.2rem;
+      padding: 1.2rem;
+      border-top: 1px solid rgba(226, 232, 240, 0.9);
+      background: #fff;
     }
 
     .prompt-card-desc {
       color: var(--pk-text-2);
-      font-style: italic;
       margin: 0 0 1rem;
+      line-height: 1.65;
+    }
+
+    .prompt-card-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .prompt-card-label {
+      color: #64748b;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .prompt-card-content {
-      background: #f8fafc;
-      border: 1px solid var(--pk-border);
+      background: #243042;
+      border: 1px solid #243042;
       border-radius: 0.8rem;
-      padding: 1rem;
+      padding: 1.15rem 1.2rem;
       white-space: pre-wrap;
-      line-height: 1.75;
-      font-size: 0.92rem;
-      color: var(--pk-text);
+      line-height: 1.82;
+      font-size: 0.95rem;
+      color: #e5edf8;
       overflow-x: auto;
-      margin: 0 0 0.85rem;
+      margin: 0;
       font-family: 'SFMono-Regular', 'Consolas', 'Monaco', monospace;
     }
 
     .prompt-copy {
-      border: none;
-      background: var(--pk-primary);
-      color: #fff;
-      border-radius: 0.7rem;
-      padding: 0.72rem 1rem;
-      font-weight: 800;
+      border: 1px solid rgba(61, 92, 217, 0.18);
+      background: #fff;
+      color: var(--pk-primary);
+      border-radius: 0.65rem;
+      padding: 0.58rem 0.95rem;
+      font-weight: 700;
       cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .prompt-copy:hover {
+      border-color: rgba(61, 92, 217, 0.34);
+      background: #f8fbff;
     }
 
     .prompt-copy.is-copied {
       background: var(--pk-green);
+      border-color: var(--pk-green);
+      color: #fff;
     }
 
     .prompt-empty {
@@ -377,6 +444,10 @@ const promptLibrary = getPromptLibraryData();
     }
 
     @media (max-width: 768px) {
+      .prompt-group {
+        padding: 0.9rem 0.9rem 0.8rem;
+      }
+
       .prompt-search-row {
         grid-template-columns: 1fr;
       }

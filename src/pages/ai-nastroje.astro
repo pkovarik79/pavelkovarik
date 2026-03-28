@@ -117,7 +117,7 @@ const toolCatalog = getAiToolsData();
           const haystack = normalize(card.getAttribute('data-search'));
           const inQuery = !qNorm || haystack.includes(qNorm);
           const show = inCat && inQuery;
-          card.hidden = !show;
+          card.style.display = show ? '' : 'none';
           if (show) visible += 1;
         });
 
@@ -144,6 +144,10 @@ const toolCatalog = getAiToolsData();
           const category = getActiveCat();
           const value = searchInput.value || '';
 
+          if (searchClear) {
+            searchClear.hidden = !normalize(value);
+          }
+
           if (timeoutId) {
             clearTimeout(timeoutId);
           }
@@ -159,8 +163,7 @@ const toolCatalog = getAiToolsData();
           searchInput.value = '';
           searchInput.focus();
         }
-        filters.forEach((item, index) => item.classList.toggle('active', index === 0));
-        apply('all', '');
+        apply(getActiveCat(), '');
       });
 
       apply('all', '');
