@@ -1,4 +1,5 @@
 export interface TrainingCourse {
+  category: 'core' | 'specialized';
   badge: string;
   badgeClass: string;
   title: string;
@@ -22,6 +23,7 @@ export interface TrainingLogo {
 
 export const trainingCourses: TrainingCourse[] = [
   {
+    category: 'core',
     badge: 'NEJPOPULÁRNĚJŠÍ',
     badgeClass: 'popular',
     title: 'Praktické školení AI pro firmy',
@@ -32,6 +34,7 @@ export const trainingCourses: TrainingCourse[] = [
     featured: true,
   },
   {
+    category: 'core',
     badge: 'PRO ÚŘADY',
     badgeClass: 'verejna-sprava',
     title: 'Praktické školení AI pro města, obce a veřejnou správu',
@@ -41,6 +44,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/ai-pro-verejnou-spravu/',
   },
   {
+    category: 'core',
     badge: 'COPILOT',
     badgeClass: 'copilot',
     title: 'Microsoft Copilot školení pro firmy',
@@ -50,6 +54,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/microsoft-copilot-pro-firmy/',
   },
   {
+    category: 'core',
     badge: 'MARKETING',
     badgeClass: 'marketing',
     title: 'Marketing & PR s AI – expertní školení pro firmy',
@@ -59,6 +64,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/marketing-pr-ai/',
   },
   {
+    category: 'core',
     badge: 'MANAŽEŘI',
     badgeClass: 'manazery',
     title: 'AI pro manažery – rozhodování a řízení rizik',
@@ -68,6 +74,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/ai-pro-manazery/',
   },
   {
+    category: 'core',
     badge: 'BEZPEČNOST',
     badgeClass: 'pravo',
     title: 'AI bezpečnost a pravidla pro firmy',
@@ -77,6 +84,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/pravo-v-ai/',
   },
   {
+    category: 'specialized',
     badge: 'CHATGPT',
     badgeClass: 'chatgpt',
     title: 'Školení ChatGPT pro firmy',
@@ -86,6 +94,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/chatgpt-pro-firmy/',
   },
   {
+    category: 'specialized',
     badge: 'CLAUDE',
     badgeClass: 'claude',
     title: 'Školení Claude pro firmy',
@@ -95,6 +104,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/claude-pro-firmy/',
   },
   {
+    category: 'specialized',
     badge: 'GEMINI',
     badgeClass: 'gemini',
     title: 'Školení Google Gemini pro firmy',
@@ -104,6 +114,17 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/gemini-pro-firmy/',
   },
   {
+    category: 'specialized',
+    badge: 'VIBE CODING',
+    badgeClass: 'vibe',
+    title: 'Vibe Coding – tvořte aplikace s AI, i bez programování',
+    subtitle: 'Od nápadu k webu, nástroji nebo automatizaci',
+    description: 'Školení vibe codingu pro firmy a týmy, které chtějí s AI vytvářet vlastní aplikace, weby a interní řešení bez zbytečné technické bariéry.',
+    meta: ['8 hodin', 'do 15 osob', 'u vás ve firmě', '19 900 Kč'],
+    href: '/vibe-coding/',
+  },
+  {
+    category: 'specialized',
     badge: 'VIBE CODING',
     badgeClass: 'vibe',
     title: 'Workshop vibe codingu pro firmy',
@@ -111,15 +132,6 @@ export const trainingCourses: TrainingCourse[] = [
     description: 'Celodenní workshop pro týmy, které chtějí zrychlit tvorbu jednoduchých aplikací a prototypů bez čekání na vývoj.',
     meta: ['celý den', 'do 15 osob', 'online / ve firmě', 'na dotaz'],
     href: '/workshop-vibe-codingu-pro-firmy/',
-  },
-  {
-    badge: 'NA MÍRU',
-    badgeClass: 'custom',
-    title: 'AI školení na míru pro vaši firmu',
-    subtitle: 'Obsah složený podle vašich rolí, procesů a cílů',
-    description: 'Když potřebujete kombinaci více témat nebo školení přizpůsobené konkrétnímu týmu, oboru a situaci ve firmě.',
-    meta: ['délka podle zadání', 'role a týmy na míru', 'online / ve firmě', 'individuální nabídka'],
-    href: '/skoleni-na-miru/',
   },
 ];
 

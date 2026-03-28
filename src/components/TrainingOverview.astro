@@ -1,5 +1,8 @@
 ---
 import { trainingCourses, trainingFaqs, trainingLogos } from '../data/trainingOverview';
+
+const coreCourses = trainingCourses.filter((course) => course.category === 'core');
+const specializedCourses = trainingCourses.filter((course) => course.category === 'specialized');
 ---
 
 <div class="pk-rozcestnik">
@@ -37,8 +40,35 @@ import { trainingCourses, trainingFaqs, trainingLogos } from '../data/trainingOv
         <p>Všechna školení najdete přehledně na jednom místě. Začněte tím, které nejlépe odpovídá vašemu cíli, roli nebo používanému nástroji.</p>
       </div>
 
-      <div class="training-list">
-        {trainingCourses.map((course) => (
+      <div class="pk-course-group">
+        <h3 class="pk-course-group-title">Hlavní školení pro firmy a organizace</h3>
+        <div class="training-list">
+          {coreCourses.map((course) => (
+            <article class:list={['training-list-item', course.featured && 'is-featured']}>
+              <div class="training-list-main">
+                <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
+                <h3 class="course-title">{course.title}</h3>
+                <div class="course-subtitle">{course.subtitle}</div>
+                <div class="course-description">{course.description}</div>
+                <div class="course-meta">
+                  {course.meta.map((item) => <span>{item}</span>)}
+                </div>
+                {course.note && <div class="bonus-box">{course.note}</div>}
+              </div>
+
+              <div class="training-list-side">
+                <a href={course.href} class="btn btn-primary">Zjistit více</a>
+                <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="pk-course-group">
+        <h3 class="pk-course-group-title">Další specializovaná školení a workshopy</h3>
+        <div class="training-list">
+          {specializedCourses.map((course) => (
           <article class:list={['training-list-item', course.featured && 'is-featured']}>
             <div class="training-list-main">
               <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
@@ -56,7 +86,8 @@ import { trainingCourses, trainingFaqs, trainingLogos } from '../data/trainingOv
               <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
             </div>
           </article>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   </section>

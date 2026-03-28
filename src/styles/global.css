@@ -2052,6 +2052,14 @@ p:last-child { margin-bottom: 0; }
   display: grid;
   gap: 16px;
 }
+.pk-rozcestnik .pk-course-group + .pk-course-group {
+  margin-top: 28px;
+}
+.pk-rozcestnik .pk-course-group-title {
+  margin-bottom: 14px;
+  font-size: 1.12rem;
+  color: var(--text);
+}
 .pk-rozcestnik .training-list-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
