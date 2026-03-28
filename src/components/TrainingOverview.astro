@@ -33,68 +33,29 @@ import { trainingCourses, trainingFaqs, trainingLogos } from '../data/trainingOv
   <section class="section pk-courses" id="kurzy">
     <div class="container">
       <h2>Kurzy AI pro firmy</h2>
-
-      <div class="grid grid-2 training-row">
-        {trainingCourses.slice(0, 2).map((course) => (
-          <div class:list={['card', 'card-large', course.featured && 'is-featured']}>
-            <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
-            <h3 class="course-title">{course.title}</h3>
-            <div class="course-subtitle">{course.subtitle}</div>
-            <div class="course-description">{course.description}</div>
-            <div class="course-meta">
-              {course.meta.map((item) => <span>{item}</span>)}
-            </div>
-            <div class="btn-group course-actions">
-              <a href={course.href} class="btn btn-primary">Zjistit více</a>
-              <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
-            </div>
-          </div>
-        ))}
+      <div class="intro-text pk-courses-intro">
+        <p>Všechna školení najdete přehledně na jednom místě. Začněte tím, které nejlépe odpovídá vašemu cíli, roli nebo používanému nástroji.</p>
       </div>
 
-      <div class="grid grid-2 training-row">
-        {trainingCourses.slice(2, 4).map((course) => (
-          <div class="card">
-            <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
-            <h3 class="course-title">{course.title}</h3>
-            <div class="course-subtitle">{course.subtitle}</div>
-            <div class="course-description">{course.description}</div>
-            <div class="course-meta">
-              {course.meta.map((item) => <span>{item}</span>)}
-            </div>
-            <div class="btn-group course-actions">
-              <a href={course.href} class="btn btn-primary">Zjistit více</a>
-              <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div class="grid grid-2">
-        {trainingCourses.slice(4).map((course) => (
-          <div class="card">
-            <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
-            <h3 class="course-title">{course.title}</h3>
-            <div class="course-subtitle">{course.subtitle}</div>
-            <div class="course-description">{course.description}</div>
-            <div class="course-meta">
-              {course.meta.map((item) => <span>{item}</span>)}
-            </div>
-            {course.note && (
-              <div class="bonus-box">
-                {course.note.split('\n').map((line) => (
-                  <>
-                    {line}
-                    <br />
-                  </>
-                ))}
+      <div class="training-list">
+        {trainingCourses.map((course) => (
+          <article class:list={['training-list-item', course.featured && 'is-featured']}>
+            <div class="training-list-main">
+              <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
+              <h3 class="course-title">{course.title}</h3>
+              <div class="course-subtitle">{course.subtitle}</div>
+              <div class="course-description">{course.description}</div>
+              <div class="course-meta">
+                {course.meta.map((item) => <span>{item}</span>)}
               </div>
-            )}
-            <div class="btn-group course-actions">
+              {course.note && <div class="bonus-box">{course.note}</div>}
+            </div>
+
+            <div class="training-list-side">
               <a href={course.href} class="btn btn-primary">Zjistit více</a>
               <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
