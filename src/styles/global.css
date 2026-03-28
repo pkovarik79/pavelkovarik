@@ -962,19 +962,27 @@ p:last-child { margin-bottom: 0; }
   margin-top: 2.5rem;
   background: linear-gradient(135deg, var(--pk-primary) 0%, var(--pk-primary-dark) 100%);
   color: #fff;
+  padding: 5rem 1.5rem;
+}
+
+.lp-final-cta .wrap {
+  max-width: 760px;
   text-align: center;
-  padding: 3.6rem 1.5rem;
 }
 
 .lp-final-cta h2 {
   color: #fff;
-  margin-bottom: 0.8rem;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
 }
 
 .lp-final-cta p {
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 880px;
-  margin: 0 auto 1.4rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  max-width: 760px;
+  margin: 0 auto 2rem;
 }
 
 .lp-final-cta .lp-actions {
@@ -996,6 +1004,46 @@ p:last-child { margin-bottom: 0; }
 .lp-faq-wrap {
   max-width: 780px;
   margin: 0 auto;
+}
+
+.lp-faq-wrap .faq {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  display: grid;
+  gap: 0.9rem;
+  background: transparent;
+}
+
+.lp-faq-wrap .faq details {
+  border: 1px solid var(--pk-border);
+  border-radius: 20px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: var(--pk-shadow);
+}
+
+.lp-faq-wrap .faq summary {
+  padding: 1rem 1.2rem;
+  font-size: 0.98rem;
+}
+
+.lp-faq-wrap .faq .faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  padding: 0 1.2rem;
+  opacity: 0;
+  transition: grid-template-rows .24s ease, opacity .24s ease, padding .24s ease;
+}
+
+.lp-faq-wrap .faq .faq-body > * {
+  overflow: hidden;
+}
+
+.lp-faq-wrap .faq details[open] .faq-body {
+  grid-template-rows: 1fr;
+  padding: 0 1.2rem 0.95rem;
+  opacity: 1;
 }
 
 @media (max-width: 1024px) {
@@ -1057,6 +1105,37 @@ p:last-child { margin-bottom: 0; }
   .lp-step,
   .lp-quote-card {
     padding: 1.45rem 1.2rem;
+  }
+
+  .lp-faq-wrap .faq {
+    gap: 0.75rem;
+  }
+
+  .lp-faq-wrap .faq summary {
+    padding: 0.95rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .lp-faq-wrap .faq .faq-body {
+    padding: 0 1rem;
+  }
+
+  .lp-faq-wrap .faq details[open] .faq-body {
+    padding: 0 1rem 0.9rem;
+  }
+
+  .lp-final-cta {
+    padding: 3.6rem 1rem;
+  }
+
+  .lp-final-cta h2 {
+    font-size: clamp(1.8rem, 9vw, 2.4rem);
+    margin-bottom: 0.85rem;
+  }
+
+  .lp-final-cta p {
+    font-size: 1rem;
+    margin-bottom: 1.4rem;
   }
 }
 
