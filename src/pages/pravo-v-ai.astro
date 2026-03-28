@@ -1,8 +1,274 @@
 ---
 import Base from '../layouts/Base.astro';
-import ImportedWpContent from '../components/ImportedWpContent.astro';
+import '../styles/global.css';
+
+const topics = [
+  ['GDPR a AI nástroje', 'Co je ještě v pořádku a kde už při práci s osobními údaji vzniká problém.'],
+  ['AI texty, obrázky a videa', 'Jak přemýšlet o autorských právech, komerčním použití a rizikových situacích.'],
+  ['AI Act v praxi', 'Co dnes AI Act znamená pro firmy a proč dává smysl řešit AI gramotnost zaměstnanců.'],
+  ['Deepfaky a manipulace', 'Kde hrozí reputační a právní problémy při práci s hlasem, obrazem a podobiznou.'],
+  ['Bezpečnost dat', 'Na co si dát pozor při práci s firemními dokumenty, citlivými údaji a cloudovými nástroji.'],
+  ['Praktická pravidla pro firmu', 'Jak dát lidem jednoduchý a použitelný rámec místo chaosu a zbytečné byrokracie.'],
+];
+
+const audiences = [
+  ['Pro firmy, kde lidé už AI používají', 'Potřebujete sjednotit pravidla a dát zaměstnancům jistotu, co je bezpečné a co už ne.'],
+  ['Pro management a vedoucí týmů', 'Chcete snížit riziko chyb, reputačních problémů a nejasností kolem odpovědnosti.'],
+  ['Pro HR, marketing, obchod i administrativu', 'Školení míří na role, které běžně pracují s dokumenty, texty, daty a firemní komunikací.'],
+];
+
+const beforeItems = [
+  'Každý používá AI jinak a ve firmě chybí společná pravidla.',
+  'Lidé si nejsou jistí, co do nástrojů mohou zadávat a co už ne.',
+  'Autorská práva, GDPR a AI Act se míchají dohromady bez jasného rozlišení.',
+  'Rizikové situace se řeší až ve chvíli, kdy už vznikne problém.',
+];
+
+const afterItems = [
+  'Lidé vědí, kde je bezpečný prostor pro použití AI a kde je potřeba stopka.',
+  'Firma má jednodušší rámec pro práci s daty, dokumenty a AI výstupy.',
+  'Management snáz rozpozná, kdy jde o běžné školení a kdy už je potřeba právník.',
+  'Tým má konkrétní příklady a doporučení, které může použít hned po školení.',
+];
+
+const quotes = [
+  ['„Přesně tohle jsme potřebovali. Ne právnickou teorii, ale srozumitelný výklad, co je ve firmě ještě v pořádku a kde už si koledujeme o problém.“', 'Petr Šimek', 'jednatel společnosti'],
+  ['„Školení nám pomohlo sjednotit pohled na práci s AI napříč týmy. Největší přínos byl v tom, že lidé konečně chápou hranice a rizika v běžné praxi.“', 'Jana Vrbová', 'HR manažerka'],
+  ['„Oceňuji, že se mluvilo o GDPR, autorských právech i AI Actu lidsky a bez paragrafového balastu. Přesně to sedlo našemu týmu.“', 'Martin Havel', 'marketingový ředitel'],
+];
+
+const onsiteIncludes = [
+  'Krátká domluva před školením',
+  'Dvouhodinové školení u vás ve firmě',
+  'Praktické příklady z běžné firemní praxe',
+  'Shrnutí hlavních rizik a doporučení',
+  'Doprava po celé ČR zdarma',
+];
+
+const onlineIncludes = [
+  'Krátká domluva před školením',
+  'Dvouhodinové online školení',
+  'Praktické příklady a upozornění na rizika',
+  'Shrnutí hlavních pravidel a doporučení',
+  'Možnost dotazů v průběhu školení',
+];
+
+const faqItems = [
+  ['Co je školení AI - právo, bezpečnost a autorská práva?', 'Je to dvouhodinové firemní školení, které srozumitelně vysvětluje základní pravidla pro bezpečnější používání AI v práci. Zaměřuje se na GDPR, AI Act, autorská práva, citlivá data, firemní dokumenty a běžné rizikové situace při práci s nástroji typu ChatGPT, Copilot nebo Gemini.'],
+  ['Kolik školení stojí?', 'Školení stojí 14 900 Kč v prezenční variantě a 9 800 Kč v online variantě. Obě verze jsou určené pro skupinu do 30 účastníků a trvají 2 hodiny.'],
+  ['Je to právní poradenství?', 'Ne. Jde o vzdělávací školení pro firmy, které srozumitelně vysvětluje hlavní právní a bezpečnostní souvislosti používání AI. Pokud firma řeší konkrétní právní případ nebo odpovědnost, je potřeba obrátit se na specializovaného právníka.'],
+  ['Co mohou zaměstnanci zadávat do AI a co už ne?', 'Do AI je bezpečnější zadávat obecné zadání, anonymizované informace, veřejně dostupné podklady nebo texty bez citlivých dat. Naopak by tam bez jasných pravidel neměly mířit osobní údaje, neveřejné firemní informace, citlivé smlouvy ani interní dokumenty.'],
+  ['Má školení souvislost s AI Act?', 'Ano. Školení pomáhá firmám zlepšovat AI gramotnost zaměstnanců a nastavit odpovědnější používání umělé inteligence. Nejde o právní seminář do hloubky, ale o praktický výklad toho, co firmy potřebují vědět pro běžnou práci.'],
+  ['Je školení vhodné i pro firmy, kde už lidé používají ChatGPT nebo Copilot?', 'Ano. Právě tam bývá největší potřeba sjednotit základní pravidla a vyjasnit, co je ještě bezpečné a co už může být problém.'],
+  ['Jaký je rozdíl mezi online a prezenční variantou?', 'Obsah školení je v obou variantách stejný. Rozdíl je hlavně ve formě a ceně. Online varianta je vhodná pro firmy, které chtějí lidi proškolit na dálku, prezenční varianta se hodí tam, kde chcete mít celou skupinu pohromadě přímo ve firmě.'],
+  ['Kdy už je potřeba obrátit se na právníka?', 'Ve chvíli, kdy firma řeší konkrétní právní odpovědnost, komerční použití rizikového AI obsahu, práci s citlivými osobními údaji nebo zavedení AI do důležitých firemních procesů. Školení dává základní orientaci, ale nenahrazuje právní stanovisko.'],
+];
+
+const visibleFaqItems = faqItems.slice(0, 5);
+const extraFaqItems = faqItems.slice(5);
 ---
 
-<Base title="Právo v AI pro nepravníky | Pavel Kovařík" description="Praktická přednáška pro firmy o GDPR, AI Actu, autorských právech a bezpečnější práci s AI v běžné firemní praxi.">
-  <ImportedWpContent filePath="wp_content/pages/pravo-v-ai.json" />
+<Base title="AI - právo, bezpečnost a autorská práva | Pavel Kovařík" description="Praktické firemní školení o GDPR, AI Actu, autorských právech a bezpečné práci s AI. Srozumitelně, bez právnického balastu a na situacích z běžné praxe.">
+  <div class="lp-page">
+    <section class="lp-hero">
+      <div class="wrap">
+        <span class="lp-badge">DVOUHODINOVÉ ŠKOLENÍ PRO FIRMY</span>
+        <h1>AI - právo, bezpečnost a autorská práva</h1>
+        <p class="lp-subtitle">Praktické školení o tom, co mohou lidé zadávat do AI, kde vzniká riziko a co dnes v praxi znamenají GDPR, AI Act, autorská práva a bezpečnost dat.</p>
+        <div class="lp-meta">
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            </i>
+            2 hodiny
+          </span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16 20v-1.2a3.8 3.8 0 0 0-3.8-3.8H7.8A3.8 3.8 0 0 0 4 18.8V20"></path><circle cx="10" cy="8" r="3"></circle><path d="M20 20v-1.2a3.4 3.4 0 0 0-2.4-3.3"></path><path d="M15.8 5.2A3 3 0 0 1 15.8 11"></path></svg>
+            </i>
+            Až 30 účastníků
+          </span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="2"></rect><path d="M8 19h8"></path><path d="M12 15v4"></path></svg>
+            </i>
+            Online nebo ve firmě
+          </span>
+        </div>
+        <div class="lp-actions">
+          <a href="/kontakt/" class="btn btn-p">Poptat školení</a>
+          <a href="#cena" class="btn btn-s">Zjistit cenu</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-verified-wrap">
+      <div class="lp-verified">
+        <div class="lp-stars">★★★★★</div>
+        <h3>Jasný přehled pro firmy, které chtějí používat AI bezpečněji</h3>
+        <p>Školení je určené pro firmy, které chtějí dát zaměstnancům srozumitelný rámec pro bezpečnější používání AI. Zaměřuji se na běžné situace z firemní praxe, ne na složitý právní výklad.</p>
+      </div>
+    </div>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Co se lidé během školení dozvědí</h2>
+        <p class="lp-section-intro">Cílem není zahltit účastníky paragrafy, ale dát jim jasnější představu, kde je při používání AI bezpečný prostor a kde už je potřeba větší opatrnost.</p>
+        <div class="lp-card-grid-6">
+          {topics.map(([title, text], index) => (
+            <div class="lp-card center">
+              <div class="lp-icon">{index + 1}</div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Pro koho je školení určené</h2>
+        <div class="lp-card-grid-3">
+          {audiences.map(([title, text]) => (
+            <div class="lp-card center">
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Kde bývá ve firmách největší chaos a co se po školení změní</h2>
+        <div class="lp-compare">
+          <div class="lp-compare-card is-before">
+            <h3>Před školením</h3>
+            <ul class="lp-compare-list">
+              {beforeItems.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="lp-compare-card is-after">
+            <h3>Po školení</h3>
+            <ul class="lp-compare-list">
+              {afterItems.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Co říkají účastníci</h2>
+        <div class="lp-quote-grid">
+          {quotes.map(([text, name, role]) => (
+            <div class="lp-quote-card">
+              <p>{text}</p>
+              <strong>{name}</strong>
+              <span class="lp-quote-role">{role}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="cena">
+      <div class="wrap">
+        <div class="lp-pricing-shell">
+          <h2 style="margin-bottom:0.55rem;">Varianty školení a cena</h2>
+          <p class="lp-section-intro" style="margin-top:0; margin-bottom:0;">Obsah je v obou variantách stejný. Liší se jen formou setkání a cenou.</p>
+          <div class="lp-price-grid">
+            <div class="lp-price-card">
+              <div class="lp-price-tags">
+                <span class="lp-price-tag">Ve firmě</span>
+                <span class="lp-price-tag">2 hodiny</span>
+              </div>
+              <div class="lp-price-value">14&nbsp;900&nbsp;Kč</div>
+              <p class="lp-price-per">To je 497&nbsp;Kč na účastníka<span>při 30 účastnících</span></p>
+              <p class="lp-price-note">pro skupinu do 30 osob • 2 hodiny • ve firmě</p>
+              <div class="lp-price-box">
+                <p>V ceně je zahrnuto:</p>
+                <ul class="lp-check-list">
+                  {onsiteIncludes.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+            <div class="lp-price-card" style="border-width:3px;">
+              <div class="lp-price-tags">
+                <span class="lp-price-tag">Online</span>
+                <span class="lp-price-tag">2 hodiny</span>
+              </div>
+              <div class="lp-price-value">9&nbsp;800&nbsp;Kč</div>
+              <p class="lp-price-per">To je 330&nbsp;Kč na účastníka<span>při 30 účastnících</span></p>
+              <p class="lp-price-note">pro skupinu do 30 osob • 2 hodiny • online</p>
+              <div class="lp-price-box">
+                <p>V ceně je zahrnuto:</p>
+                <ul class="lp-check-list">
+                  {onlineIncludes.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="lp-actions" style="margin-top:1.2rem;">
+            <a href="/kontakt/" class="btn btn-p">Poptat školení</a>
+            <a href="/skoleni/" class="btn btn-s">Zobrazit všechna školení</a>
+          </div>
+          <p class="lp-price-footnote">Uvedené ceny platí pro skupinu do 30 účastníků. Nejsem plátce DPH, takže uvedená cena je konečná.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Časté otázky ke školení</h2>
+        <div class="faq-section">
+          <div class="faq">
+            {visibleFaqItems.map(([question, answer]) => (
+              <details>
+                <summary>{question}</summary>
+                <div class="faq-body">
+                  <div class="faq-body-inner">
+                    <p>{answer}</p>
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+          {extraFaqItems.length > 0 && (
+            <>
+              <div class="faq faq-extra" hidden>
+                {extraFaqItems.map(([question, answer]) => (
+                  <details>
+                    <summary>{question}</summary>
+                    <div class="faq-body">
+                      <div class="faq-body-inner">
+                        <p>{answer}</p>
+                      </div>
+                    </div>
+                  </details>
+                ))}
+              </div>
+              <button class="lp-faq-more" type="button" data-more-label="Zobrazit další otázky" data-less-label="Skrýt další otázky">Zobrazit další otázky</button>
+            </>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec lp-final-cta">
+      <div class="wrap">
+        <h2>Chcete dát lidem ve firmě jasnější pravidla pro práci s AI?</h2>
+        <p>Napište mi nebo zavolejte. Krátce probereme, jestli je pro vás vhodnější online, nebo prezenční varianta a pro jak velkou skupinu má školení být.</p>
+        <div class="lp-actions">
+          <a href="/kontakt/" class="btn btn-p">Poptat školení</a>
+          <a href="mailto:mail@pavelkovarik.cz" class="btn btn-s">Napsat e-mail</a>
+        </div>
+        <div class="lp-contact-line">+420 770 126 519 · <a href="mailto:mail@pavelkovarik.cz">mail@pavelkovarik.cz</a></div>
+        <p class="lp-small-note">Odpovídám zpravidla do 24 hodin. Krátká konzultace k výběru vhodné varianty je zdarma.</p>
+      </div>
+    </section>
+  </div>
 </Base>
