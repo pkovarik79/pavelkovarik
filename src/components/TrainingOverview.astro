@@ -123,12 +123,18 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
     <div class="container">
       <h2>Časté otázky o školení AI</h2>
       <div class="faq-section">
-        {trainingFaqs.map((item) => (
-          <details class="faq-item">
-            <summary class="faq-question">{item.question}</summary>
-            <div class="faq-answer">{item.answer}</div>
-          </details>
-        ))}
+        <div class="faq">
+          {trainingFaqs.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   </section>
