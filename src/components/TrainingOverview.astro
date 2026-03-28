@@ -35,10 +35,7 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
 
   <section class="section pk-courses" id="kurzy">
     <div class="container">
-      <h2>Kurzy AI pro firmy</h2>
-      <div class="intro-text pk-courses-intro">
-        <p>Všechna školení najdete přehledně na jednom místě. Začněte tím, které nejlépe odpovídá vašemu cíli, roli nebo používanému nástroji.</p>
-      </div>
+      <div class="pk-courses-divider" aria-hidden="true"></div>
 
       <div class="pk-course-group">
         <h3 class="pk-course-group-title">Hlavní školení pro firmy a organizace</h3>
@@ -50,15 +47,16 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
                 <h3 class="course-title">{course.title}</h3>
                 <div class="course-subtitle">{course.subtitle}</div>
                 <div class="course-description">{course.description}</div>
-                <div class="course-meta">
-                  {course.meta.map((item) => <span>{item}</span>)}
-                </div>
                 {course.note && <div class="bonus-box">{course.note}</div>}
-              </div>
-
-              <div class="training-list-side">
-                <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
-                <a href="/kontakt/" class="course-link">Poptat školení</a>
+                <div class="course-footer">
+                  <div class="course-meta">
+                    {course.meta.map((item) => <span>{item}</span>)}
+                  </div>
+                  <div class="training-list-side">
+                    <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
+                    <a href="/kontakt/" class="course-link">Poptat školení</a>
+                  </div>
+                </div>
               </div>
             </article>
           ))}
@@ -75,15 +73,16 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
               <h3 class="course-title">{course.title}</h3>
               <div class="course-subtitle">{course.subtitle}</div>
               <div class="course-description">{course.description}</div>
-              <div class="course-meta">
-                {course.meta.map((item) => <span>{item}</span>)}
-              </div>
               {course.note && <div class="bonus-box">{course.note}</div>}
-            </div>
-
-            <div class="training-list-side">
-              <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
-              <a href="/kontakt/" class="course-link">Poptat školení</a>
+              <div class="course-footer">
+                <div class="course-meta">
+                  {course.meta.map((item) => <span>{item}</span>)}
+                </div>
+                <div class="training-list-side">
+                  <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
+                  <a href="/kontakt/" class="course-link">Poptat školení</a>
+                </div>
+              </div>
             </div>
           </article>
           ))}
