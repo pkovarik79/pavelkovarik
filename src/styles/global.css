@@ -2053,11 +2053,12 @@ p:last-child { margin-bottom: 0; }
   gap: 16px;
 }
 .pk-rozcestnik .pk-course-group + .pk-course-group {
-  margin-top: 28px;
+  margin-top: 34px;
 }
 .pk-rozcestnik .pk-course-group-title {
-  margin-bottom: 14px;
-  font-size: 1.12rem;
+  margin-bottom: 16px;
+  font-size: 1.55rem;
+  line-height: 1.2;
   color: var(--text);
 }
 .pk-rozcestnik .training-list-item {
@@ -2085,15 +2086,33 @@ p:last-child { margin-bottom: 0; }
   min-width: 0;
 }
 .pk-rozcestnik .training-list-side {
-  display: grid;
-  gap: 10px;
+  display: flex;
+  gap: 16px;
   align-content: center;
-}
-.pk-rozcestnik .training-list-side .btn {
-  min-width: 190px;
+  align-items: center;
+  justify-content: flex-end;
+  white-space: nowrap;
 }
 .pk-rozcestnik .pk-courses-intro {
   margin-bottom: 28px;
+}
+.pk-rozcestnik .course-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+.pk-rozcestnik .course-link:hover {
+  color: var(--brand);
+}
+.pk-rozcestnik .course-link::after {
+  content: '→';
+  font-size: .95em;
+}
+.pk-rozcestnik .course-link-primary {
+  color: var(--brand);
 }
 .pk-rozcestnik .card {
   display: flex;
@@ -2151,7 +2170,7 @@ p:last-child { margin-bottom: 0; }
 }
 .pk-rozcestnik .course-title {
   margin-bottom: .45rem;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   line-height: 1.3;
   color: var(--text);
 }
@@ -2338,10 +2357,12 @@ p:last-child { margin-bottom: 0; }
   }
   .pk-rozcestnik .training-list-side {
     width: 100%;
+    justify-content: flex-start;
+    gap: 14px;
+    flex-wrap: wrap;
   }
-  .pk-rozcestnik .training-list-side .btn {
-    width: 100%;
-    min-width: 0;
+  .pk-rozcestnik .pk-course-group-title {
+    font-size: 1.28rem;
   }
   .pk-rozcestnik .verified-card,
   .pk-rozcestnik .custom-box,
