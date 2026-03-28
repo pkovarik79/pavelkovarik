@@ -257,15 +257,22 @@ const faqItems = [
       </div>
     </section>
 
-    <section class="sec" style="background:#fff;">
+    <section class="sec sec-alt">
       <div class="wrap">
-        <h2>Časté otázky k AI školení pro manažery</h2>
+        <div class="sec-head">
+          <h2>Časté otázky k AI školení pro manažery</h2>
+          <p>To nejdůležitější na jednom místě - délka, cena, formát i to, jak školení přizpůsobuji vašemu managementu.</p>
+        </div>
         <div class="lp-faq-wrap">
           <div class="faq">
             {faqItems.map(([q, a]) => (
               <details>
                 <summary>{q}</summary>
-                <div class="faq-body">{a}</div>
+                <div class="faq-body">
+                  <div class="faq-body-inner">
+                    <p>{a}</p>
+                  </div>
+                </div>
               </details>
             ))}
           </div>

@@ -1020,7 +1020,6 @@ p:last-child { margin-bottom: 0; }
   border-radius: 20px;
   background: #fff;
   overflow: hidden;
-  box-shadow: var(--pk-shadow);
 }
 
 .lp-faq-wrap .faq summary {
@@ -1038,6 +1037,10 @@ p:last-child { margin-bottom: 0; }
 
 .lp-faq-wrap .faq .faq-body > * {
   overflow: hidden;
+}
+
+.lp-faq-wrap .faq .faq-body-inner p {
+  margin: 0;
 }
 
 .lp-faq-wrap .faq details[open] .faq-body {
