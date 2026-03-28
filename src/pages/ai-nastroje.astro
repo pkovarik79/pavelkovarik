@@ -74,17 +74,18 @@ const toolCatalog = getAiToolsData();
   </div>
 
   <script>
-    const root = document.querySelector('#ai-nastroje');
-    if (root && !root.dataset.init) {
+    function initAiToolsPage() {
+      const root = document.querySelector('#ai-nastroje');
+      if (!root || root.dataset.init === '1') return;
       root.dataset.init = '1';
 
       const grid = root.querySelector('.tools-grid');
       const cards = Array.from(root.querySelectorAll('.tool-card'));
-      const filters = root.querySelectorAll('.filter-btn');
-      const searchInput = root.querySelector('#tool-search');
-      const searchClear = root.querySelector('#tool-clear');
-      const emptyState = root.querySelector('#tool-empty');
-
+      const filters = Array.from(root.querySelectorAll('.filter-btn'));
+      const searchInput = root.querySelector('.search-input');
+      const searchClear = root.querySelector('.search-clear');
+      const emptyState = root.querySelector('.empty-state');
+      const emptyMessage = emptyState?.querySelector('p');
       const collator = new Intl.Collator('cs', { sensitivity: 'base' });
 
       cards
@@ -114,19 +115,36 @@ const toolCatalog = getAiToolsData();
 
         cards.forEach((card) => {
           const inCat = cat === 'all' || card.getAttribute('data-cat') === cat;
-          const haystack = normalize(card.getAttribute('data-search'));
+          const title = card.querySelector('h4 a')?.textContent || '';
+          const desc = card.querySelector('p')?.textContent || '';
+          const haystack = normalize(`${title} ${desc}`);
           const inQuery = !qNorm || haystack.includes(qNorm);
           const show = inCat && inQuery;
+
           card.style.display = show ? '' : 'none';
           if (show) visible += 1;
         });
 
-        if (searchClear) {
-          searchClear.hidden = !qNorm;
-        }
+        if (searchClear) searchClear.hidden = !qNorm;
 
         if (emptyState) {
           emptyState.hidden = visible > 0;
+        }
+
+        if (emptyMessage) {
+          if (visible > 0) {
+            emptyMessage.textContent = 'Pro toto hledání jsem nic nenašel.';
+          } else if (cat !== 'all' && qNorm) {
+            const activeLabel =
+              root.querySelector('.filter-btn.active')?.textContent?.trim() || 'aktivní kategorii';
+            emptyMessage.textContent = `V kategorii „${activeLabel}“ nic neodpovídá hledání. Zkuste změnit filtr nebo kliknout na „Vymazat“.`;
+          } else if (cat !== 'all') {
+            const activeLabel =
+              root.querySelector('.filter-btn.active')?.textContent?.trim() || 'aktivní kategorii';
+            emptyMessage.textContent = `V kategorii „${activeLabel}“ teď nic není. Zkuste přepnout na „Vše“.`;
+          } else {
+            emptyMessage.textContent = 'Pro toto hledání jsem nic nenašel.';
+          }
         }
       };
 
@@ -134,25 +152,24 @@ const toolCatalog = getAiToolsData();
         button.addEventListener('click', () => {
           filters.forEach((item) => item.classList.remove('active'));
           button.classList.add('active');
-          apply(button.getAttribute('data-cat') || 'all', searchInput instanceof HTMLInputElement ? searchInput.value : '');
+          apply(
+            button.getAttribute('data-cat') || 'all',
+            searchInput instanceof HTMLInputElement ? searchInput.value : '',
+          );
         });
       });
 
       if (searchInput instanceof HTMLInputElement) {
         let timeoutId = null;
+
         searchInput.addEventListener('input', () => {
           const category = getActiveCat();
           const value = searchInput.value || '';
 
-          if (searchClear) {
-            searchClear.hidden = !normalize(value);
-          }
+          if (searchClear) searchClear.hidden = !normalize(value);
+          if (timeoutId) clearTimeout(timeoutId);
 
-          if (timeoutId) {
-            clearTimeout(timeoutId);
-          }
-
-          timeoutId = setTimeout(() => {
+          timeoutId = window.setTimeout(() => {
             apply(category, value);
           }, 80);
         });
@@ -168,6 +185,9 @@ const toolCatalog = getAiToolsData();
 
       apply('all', '');
     }
+
+    initAiToolsPage();
+    document.addEventListener('astro:page-load', initAiToolsPage);
   </script>
 
   <style>

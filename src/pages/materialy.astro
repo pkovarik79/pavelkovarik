@@ -90,7 +90,7 @@ const iconPaths: Record<string, string> = {
 
   <style>
     .materials-hero {
-      padding: 4.3rem 0 5.4rem;
+      padding: 4.3rem 0 6.6rem;
     }
 
     .materials-hero-badge {
@@ -117,7 +117,7 @@ const iconPaths: Record<string, string> = {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.4rem;
       max-width: 980px;
-      margin: -3.15rem auto 2.35rem;
+      margin: -4.15rem auto 2.35rem;
       position: relative;
       z-index: 2;
     }
@@ -136,10 +136,26 @@ const iconPaths: Record<string, string> = {
       flex-direction: column;
       gap: .85rem;
       min-height: 20rem;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
     }
 
     .materials-card-accent {
       border-color: rgba(61,92,217,.75);
+    }
+
+    .materials-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(61,92,217,.72);
+      box-shadow: 0 22px 42px rgba(61,92,217,.16);
+    }
+
+    .materials-card:hover .materials-card-icon {
+      background: linear-gradient(135deg, var(--pk-primary) 0%, var(--pk-primary-dark) 100%);
+      box-shadow: 0 14px 26px rgba(61,92,217,.22);
+    }
+
+    .materials-card:hover .materials-card-icon svg {
+      fill: #fff;
     }
 
     .materials-card h2 {
@@ -315,11 +331,11 @@ const iconPaths: Record<string, string> = {
 
     @media (max-width: 768px) {
       .materials-hero {
-        padding: 3.5rem 0 4.6rem;
+        padding: 3.5rem 0 5.2rem;
       }
 
       .materials-grid {
-        margin-top: -2.35rem;
+        margin-top: -2.8rem;
       }
 
       .materials-card,
