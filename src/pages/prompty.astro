@@ -1,9 +1,332 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getPromptLibraryData } from '../lib/wp-materials';
+import { getPromptLibraryData, type PromptCategory } from '../lib/wp-materials';
 
-const promptLibrary = getPromptLibraryData();
+const promptLibraryBase = getPromptLibraryData();
 const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '').trim();
+
+const extraPromptCategories: PromptCategory[] = [
+  {
+    title: 'Základy a nastavení',
+    slug: 'nastaveni',
+    introHtml:
+      '<p>Šablony pro první nastavení, jasnější zadání a bezpečné mantinely. Hodí se jako start, když chcete, aby AI od začátku odpovídala praktičtěji a ve vašem stylu.</p>',
+    prompts: [
+      {
+        title: 'Základní schéma promptu pro běžný chat',
+        description:
+          'Jednoduchá osnova, která z obyčejného požadavku udělá srozumitelné zadání. Hodí se pro texty, shrnutí, rešerše i běžnou kancelářskou práci.',
+        content: `Potřebuji, abys mi pomohl s tímto úkolem: [STRUČNĚ POPIŠ ÚKOL].
+
+Kontext:
+[VYSVĚTLI, PROČ TO ŘEŠÍŠ, PRO KOHO JE VÝSTUP A K ČEMU MÁ SLOUŽIT]
+
+Vstupy:
+[VLOŽ PODKLADY, BODY, DATA, ODKAZY NEBO TEXT]
+
+Požadovaný výstup:
+[NAPIŠ, JESTLI CHCEŠ ODSTAVEC, BODY, TABULKU, NÁVRH, E-MAIL NEBO POSTUP]
+
+Pravidla:
+- piš česky a srozumitelně
+- používej krátké věty a aktivní slovesa
+- pokud něco chybí, nejdřív se doptáš
+- nic si nedomýšlej bez opory ve vstupu`,
+      },
+      {
+        title: 'Vlastní pokyny pro ChatGPT nebo Claude',
+        description:
+          'Obecná sada instrukcí do vlastních pokynů. Pomůže z AI udělat praktičtějšího asistenta pro každodenní práci s texty, podklady a rozhodováním.',
+        content: `Piš věcně, přirozenou češtinou a bez přímých překladů z angličtiny.
+
+Cíl:
+Pomáhej mi s běžnou prací, hlavně s texty, dokumenty, zápisy, podklady pro rozhodování, e-maily, shrnutími, prezentacemi a prací s daty.
+
+Když pracuješ s fakty, čísly, legislativou nebo odbornými informacemi:
+- odděl ověřená fakta od odhadů
+- napiš, z čeho vycházíš
+- když si nejsi jistý, řekni to narovinu
+
+Když je zadání nejasné:
+- nejdřív se zeptej na chybějící kontext
+- nic si nedomýšlej
+
+U složitějších úkolů:
+- navrhni stručný postup v bodech
+- pak výstup rovnou zpracuj
+
+Piš tak, aby výsledek šel rovnou použít v praxi.`,
+      },
+      {
+        title: 'Modelové představení uživatele pro delší chat',
+        description:
+          'Krátký blok, který vložíte na začátek konverzace, když chcete, aby AI držela váš kontext, roli a očekávaný styl výstupu.',
+        content: `Pracuji v organizaci, kde řeším texty, dokumenty, podklady, interní i externí komunikaci, prezentace a občas i práci s daty.
+
+Potřebuji:
+- srozumitelné a praktické odpovědi
+- výstupy, které půjdou rovnou použít
+- žádné marketingové fráze ani prázdná vata
+
+Piš:
+- věcně
+- stručně
+- v aktivním rodě
+- s důrazem na logiku a použitelnost
+
+Pokud ti bude chybět důležitý kontext, nejdřív se doptej.`,
+      },
+    ],
+  },
+  {
+    title: 'Bezpečná práce s AI',
+    slug: 'bezpecnost',
+    introHtml:
+      '<p>Praktické prompty pro situace, kdy potřebujete ohlídat citlivé údaje, ověřování faktů nebo připravit bezpečnější podklady pro práci s AI.</p>',
+    prompts: [
+      {
+        title: 'Kontrola podkladu před vložením do AI',
+        description:
+          'Rychlý bezpečnostní checkpoint. Pomůže odhalit citlivé údaje, interní informace a pasáže, které by do veřejného nástroje neměly jít.',
+        content: `Zkontroluj tento text nebo dokument z pohledu bezpečného použití v AI nástroji.
+
+Úkol:
+1) Označ části, které mohou obsahovat citlivé nebo interní údaje.
+2) Rozděl rizika do tří úrovní: nízké, střední, vysoké.
+3) Navrhni, co anonymizovat, odstranit nebo přeformulovat.
+4) Na závěr napiš doporučení:
+- lze použít beze změn
+- lze použít po úpravách
+- nepoužívat ve veřejném AI nástroji
+
+Pravidla:
+- nic nepřepisuj bez označení
+- buď konkrétní
+- pokud si nejsi jistý, napiš proč`,
+      },
+      {
+        title: 'Anonymizace textu nebo dokumentu',
+        description:
+          'Připraví bezpečnější verzi textu pro další práci. Vhodné před shrnováním, přepisem nebo analýzou ve veřejném modelu.',
+        content: `Převeď tento text do anonymizované verze, která se hodí pro práci v AI.
+
+Postup:
+1) Nahraď osobní údaje, názvy konkrétních osob, adresy, e-maily, telefonní čísla, identifikátory a citlivé detaily neutrálními zástupkami.
+2) Zachovej smysl textu i logiku situace.
+3) Na konci napiš krátký seznam toho, co bylo anonymizováno.
+
+Výstup:
+- nejdřív anonymizovaný text
+- potom přehled úprav v bodech
+
+Pokud je v textu něco, co nejde bezpečně anonymizovat bez ztráty významu, označ to jako „vyžaduje ruční kontrolu“.`,
+      },
+      {
+        title: 'Kontrola tvrzení a potřeby ověření',
+        description:
+          'Oddělí, co je bezpečně použitelné, co je potřeba ověřit a kde je AI jen v rovině pravděpodobného odhadu.',
+        content: `Zkontroluj následující text nebo návrh výstupu.
+
+U každého hlavního tvrzení urči:
+1) zda jde o fakt, interpretaci nebo odhad
+2) jestli je potřeba ho ověřit před dalším použitím
+3) jaký typ zdroje by byl nejvhodnější pro ověření
+
+Výstup dej do tabulky:
+Tvrzení | Typ | Riziko chyby | Potřeba ověření | Doporučený zdroj
+
+Na konci napiš:
+- co lze použít hned
+- co je potřeba ověřit
+- co je formulované příliš jistě a je lepší to změkčit`,
+      },
+    ],
+  },
+  {
+    title: 'Rešerše a hlubší výzkum',
+    slug: 'vyzkum',
+    introHtml:
+      '<p>Prompty pro rychlou orientaci v tématu i podrobnější rešerši se zdroji. Hodí se, když potřebujete inspiraci, přehled trendů nebo mapování obav cílové skupiny.</p>',
+    prompts: [
+      {
+        title: 'Rešerše úspěšných kampaní nebo projektů',
+        description:
+          'Najde srovnatelné příklady z praxe a vytáhne z nich to, co se dá převzít do vlastního projektu nebo komunikace.',
+        content: `Proveď rešerši úspěšných projektů nebo kampaní na téma [DOPLŇ TÉMA] z posledních 5 let.
+
+Cíl:
+Zjistit, jaké přístupy, formáty a sdělení fungovaly nejlépe a co si z toho můžeme vzít pro vlastní použití.
+
+Výstup:
+1) 3 detailní případové studie:
+- název
+- organizace
+- země nebo trh
+- co bylo cílem
+- hlavní sdělení
+- proč to fungovalo
+2) 5 společných prvků úspěchu
+3) 3 věci, kterým je lepší se vyhnout
+4) seznam použitých zdrojů
+
+Piš česky, konkrétně a bez marketingových klišé.`,
+      },
+      {
+        title: 'Mapování mýtů, obav a dezinformací',
+        description:
+          'Pomůže připravit obsah, který reaguje na skutečné obavy lidí. Vhodné pro komunikaci změn, zdraví, technologií i veřejných témat.',
+        content: `Zmapuj nejčastější mýty, obavy a dezinformace kolem tématu [DOPLŇ TÉMA].
+
+Výstup:
+1) Tabulka s 5 nejčastějšími mýty:
+Mýtus | Proč mu lidé věří | Jak ho srozumitelně vyvrátit
+2) Seznam nejčastějších laických argumentů, které se kolem tématu objevují
+3) Doporučený tón komunikace, aby text nevyvolal obrannou reakci
+
+Pravidla:
+- piš věcně a bez odsuzování
+- vycházej z aktuálně dostupných zdrojů
+- odděl ověřené informace od odhadů`,
+      },
+      {
+        title: 'Informační potřeby cílové skupiny',
+        description:
+          'Vytvoří přehled skutečných otázek a navrhne obsahové pilíře. Hodí se pro web, poradnu, newsletter i obsahový plán.',
+        content: `Analyzuj, jaké otázky, potřeby a praktické obavy řeší na internetu cílová skupina [DOPLŇ CÍLOVKU].
+
+Cíl:
+Připravit návrh obsahu, který bude odpovídat na skutečné dotazy a ne jen na to, co si myslíme, že lidi zajímá.
+
+Výstup:
+1) 10 nejčastějších konkrétních otázek
+2) Rozdělení těchto otázek do 3 tematických pilířů
+3) 5 návrhů titulků budoucích článků nebo sekcí
+4) Doporučení, jaký formát obsahu by byl nejvhodnější
+
+Piš stručně, prakticky a rovnou k věci.`,
+      },
+    ],
+  },
+  {
+    title: 'Strategické koncepty a prezentace',
+    slug: 'prezentace',
+    introHtml:
+      '<p>Prompty pro chvíle, kdy potřebujete převést podklady, data nebo delší dokument do jasné struktury, přesvědčivého příběhu a prezentace, která drží pohromadě.</p>',
+    prompts: [
+      {
+        title: 'Strategická osnova prezentace',
+        description:
+          'Převede podklady do struktury, kde každý slide podporuje hlavní závěr. Vhodné pro vedení, klienty i interní rozhodování.',
+        content: `Jednej jako seniorní strategický konzultant.
+
+Na základě těchto podkladů:
+[VLOŽ DOKUMENTY, POZNÁMKY, DATA NEBO SHRNUTÍ]
+
+navrhni strukturu prezentace pro publikum:
+[DOPLŇ PUBLIKUM]
+
+Požadavky:
+- nejdřív uveď hlavní závěr
+- potom navrhni logickou osnovu prezentace
+- názvy snímků formuluj jako akční věty, ne jako obecná témata
+
+Výstup:
+1) hlavní message prezentace v jedné větě
+2) osnova 6 až 10 slidů
+3) u každého slidu: název + 2 až 3 body, co má obsahovat
+4) krátké upozornění, kde je argumentace zatím slabá`,
+      },
+      {
+        title: 'Big Idea: jedna věta, která drží celou prezentaci',
+        description:
+          'Pomůže najít hlavní message, kterou si má publikum zapamatovat. Hodí se před tvorbou slidů i při zjednodušování hotové prezentace.',
+        content: `Z přiložených podkladů vytáhni jednu hlavní větu, kterou si má publikum zapamatovat i po týdnu.
+
+Podklady:
+[VLOŽ PODKLADY]
+
+Výstup:
+1) 3 varianty hlavní věty
+2) u každé krátké vysvětlení, proč funguje nebo nefunguje
+3) doporučení, kterou variantu použít jako hlavní
+4) stručně napiš, jak mají ostatní části prezentace tuto větu podporovat
+
+Požadavky:
+- piš srozumitelně
+- žádné nafouknuté formulace
+- věta má být konkrétní a zapamatovatelná`,
+      },
+      {
+        title: 'Drastická čistka textu na slidech',
+        description:
+          'Zkrátí a ztvrdí text tak, aby byl slide čitelný během pár vteřin. Skvělé, když už prezentace existuje, ale je přeplněná.',
+        content: `Zreviduj texty na mých slidech.
+
+Úkol:
+- odstraň korporátní vatu
+- přepiš trpný rod do aktivního
+- zkrať text tak, aby hlavní myšlenka byla jasná během 3 vteřin
+- na slide nedávej víc než 15 až 18 slov, pokud to není nutné
+
+Výstup:
+1) původní formulace
+2) stručnější verze
+3) poznámka, proč je nová verze silnější
+
+Buď nekompromisní a nešetři škrtáním.`,
+      },
+      {
+        title: 'Ďáblův advokát pro prezentaci',
+        description:
+          'Otestuje slabá místa argumentace a připraví nepříjemné otázky. Vhodné před jednáním s vedením nebo klientem.',
+        content: `Vystupuj jako skeptický člen vedení nebo náročný klient.
+
+Analyzuj tuto prezentaci nebo osnovu:
+[VLOŽ OSNOVU, TEXTY NEBO SHRNUTÍ]
+
+Výstup:
+1) 5 nejslabších míst argumentace
+2) ke každému jedna nepříjemná otázka, kterou by mohl někdo položit
+3) návrh věcné odpovědi, která pochybnost rozptýlí
+4) doporučení, co doplnit daty nebo důkazem
+
+Piš přímo a bez ohledu na moje ego.`,
+      },
+      {
+        title: 'Executive Summary pro vedení',
+        description:
+          'Krátké shrnutí pro rozhodující publikum. Pomůže převést rozsáhlou argumentaci do několika vět, které mají jasný směr.',
+        content: `Vytvoř Executive Summary na základě těchto podkladů:
+[VLOŽ PREZENTACI, POZNÁMKY NEBO ANALÝZU]
+
+Výstup musí obsahovat:
+1) hlavní problém nebo situaci
+2) navržené řešení
+3) očekávaný přínos nebo dopad
+4) konkrétní další krok ke schválení
+
+Rozsah:
+- max. 50 až 70 slov
+- věcně
+- bez obecných frází
+- každá věta musí nést konkrétní význam`,
+      },
+    ],
+  },
+];
+
+const promptLibrary = {
+  filters: [
+    ...promptLibraryBase.filters,
+    ...extraPromptCategories
+      .filter((category) => !promptLibraryBase.filters.some((filter) => filter.key === category.slug))
+      .map((category) => ({
+        key: category.slug,
+        label: stripLeadingEmoji(category.title),
+      })),
+  ],
+  categories: [...promptLibraryBase.categories, ...extraPromptCategories],
+};
 ---
 
 <Base title="Knihovna AI promptů pro firmy | Pavel Kovařík" description="Praktické AI prompty, které používám ve školeních. Kategorizované podle použití, okamžitě použitelné šablony.">
@@ -72,17 +395,21 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
   </div>
 
   <script>
-    const root = document.getElementById('prompt-library');
-    if (root) {
-      const search = root.querySelector('#prompt-search');
-      const clear = root.querySelector('#prompt-clear');
+    function initPromptLibrary() {
+      const root = document.querySelector('#prompt-library');
+      if (!root || root.dataset.init === '1') return;
+      root.dataset.init = '1';
+
+      const search = root.querySelector('.prompt-search');
+      const clear = root.querySelector('.prompt-clear');
       const filters = Array.from(root.querySelectorAll('.prompt-filter'));
       const groups = Array.from(root.querySelectorAll('.prompt-group'));
-      const empty = root.querySelector('#prompt-empty');
+      const empty = root.querySelector('.prompt-empty');
       let activeFilter = 'all';
 
       const normalize = (value) =>
         (value || '')
+          .toString()
           .toLowerCase()
           .normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')
@@ -94,12 +421,17 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
 
         groups.forEach((group) => {
           const groupKey = group.getAttribute('data-category') || '';
-          const filterMatch = activeFilter === 'all' || activeFilter === groupKey;
+          const filterMatch = activeFilter === 'all' || groupKey === activeFilter;
+          const cards = Array.from(group.querySelectorAll('.prompt-card'));
           let visibleInGroup = 0;
 
-          group.querySelectorAll('.prompt-card').forEach((card) => {
-            const haystack = normalize(card.getAttribute('data-search'));
+          cards.forEach((card) => {
+            const title = card.querySelector('summary')?.textContent || '';
+            const desc = card.querySelector('.prompt-card-desc')?.textContent || '';
+            const content = card.querySelector('.prompt-card-content')?.textContent || '';
+            const haystack = normalize(`${title} ${desc} ${content}`);
             const visible = filterMatch && (!query || haystack.includes(query));
+
             card.style.display = visible ? '' : 'none';
             if (visible) {
               visibleInGroup += 1;
@@ -110,13 +442,8 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
           group.style.display = visibleInGroup > 0 ? '' : 'none';
         });
 
-        if (clear) {
-          clear.hidden = !query;
-        }
-
-        if (empty) {
-          empty.hidden = visibleCount > 0;
-        }
+        if (clear) clear.hidden = !query;
+        if (empty) empty.hidden = visibleCount > 0;
       };
 
       filters.forEach((button) => {
@@ -127,13 +454,19 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
         });
       });
 
-      search?.addEventListener('input', refresh);
-      search?.addEventListener('input', () => {
-        const query = normalize(search instanceof HTMLInputElement ? search.value : '');
-        if (clear) {
-          clear.hidden = !query;
-        }
-      });
+      if (search instanceof HTMLInputElement) {
+        let timeoutId = null;
+
+        search.addEventListener('input', () => {
+          const value = search.value || '';
+          if (clear) clear.hidden = !normalize(value);
+          if (timeoutId) clearTimeout(timeoutId);
+
+          timeoutId = window.setTimeout(() => {
+            refresh();
+          }, 80);
+        });
+      }
 
       clear?.addEventListener('click', () => {
         if (search instanceof HTMLInputElement) {
@@ -147,14 +480,9 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
         button.addEventListener('click', async () => {
           const text = button.getAttribute('data-copy') || '';
           const original = button.textContent;
+
           try {
             await navigator.clipboard.writeText(text);
-            button.textContent = 'Zkopírováno';
-            button.classList.add('is-copied');
-            window.setTimeout(() => {
-              button.textContent = original;
-              button.classList.remove('is-copied');
-            }, 1800);
           } catch {
             const textArea = document.createElement('textarea');
             textArea.value = text;
@@ -164,28 +492,32 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            button.textContent = 'Zkopírováno';
-            button.classList.add('is-copied');
-            window.setTimeout(() => {
-              button.textContent = original;
-              button.classList.remove('is-copied');
-            }, 1800);
           }
+
+          button.textContent = 'Zkopírováno';
+          button.classList.add('is-copied');
+          window.setTimeout(() => {
+            button.textContent = original;
+            button.classList.remove('is-copied');
+          }, 1800);
         });
       });
 
       refresh();
     }
+
+    initPromptLibrary();
+    document.addEventListener('astro:page-load', initPromptLibrary);
   </script>
 
   <style>
     .prompt-shell {
-      padding: 2.6rem 0 4rem;
+      padding: 2.35rem 0 4rem;
       background: var(--pk-bg-alt);
     }
 
     .prompt-wrap {
-      max-width: 1040px;
+      max-width: 1080px;
     }
 
     .prompt-controls {
@@ -267,24 +599,27 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
     }
 
     .prompt-group {
-      margin-bottom: 1.35rem;
-      padding: 1.1rem 1.1rem 1rem;
+      margin-bottom: 2rem;
+      padding: 1.35rem 1.35rem 1.15rem;
       background: #fff;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      border-radius: 1.05rem;
-      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+      border: 1px solid #e2e8f0;
+      border-radius: 1.15rem;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.035);
     }
 
     .prompt-group-title {
-      font-size: 1.12rem;
-      color: #1e293b;
-      padding-bottom: 0;
-      border-bottom: none;
-      margin: 0 0 0.9rem;
+      margin: 0 0 0.95rem;
+      color: #22324a;
+      font-size: 1.18rem;
+      font-weight: 700;
+      line-height: 1.35;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e6edf5;
     }
 
     .prompt-group-intro {
-      margin-bottom: 0.95rem;
+      margin-bottom: 1.1rem;
+      max-width: 860px;
     }
 
     .prose-lite > *:last-child {
@@ -292,16 +627,24 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
     }
 
     .prose-lite h4 {
-      color: var(--pk-primary);
-      margin: 0 0 0.7rem;
-      font-size: 1.1rem;
+      color: #22324a;
+      margin: 1.15rem 0 0.55rem;
+      font-size: 0.96rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .prose-lite h4:first-child {
+      margin-top: 0;
     }
 
     .prose-lite p,
     .prose-lite ol,
     .prose-lite ul {
-      color: var(--pk-text-2);
-      margin-bottom: 0.9rem;
+      color: #66768f;
+      margin-bottom: 0.8rem;
+      font-size: 0.97rem;
+      line-height: 1.66;
     }
 
     .prose-lite ol,
@@ -314,39 +657,38 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
     }
 
     .prose-lite {
-      background: #f8fafc;
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      border-radius: 0.95rem;
-      padding: 1rem 1.05rem 0.95rem;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
       box-shadow: none;
     }
 
     .prompt-card {
-      background: #f8fafc;
-      border: 1px solid rgba(226, 232, 240, 0.95);
+      background: #fff;
+      border: 1px solid #d9e2ee;
       border-radius: 0.95rem;
-      margin-bottom: 0.72rem;
+      margin-bottom: 0.75rem;
       transition: 0.2s ease;
-      box-shadow: none;
       overflow: hidden;
     }
 
     .prompt-card:hover {
-      border-color: rgba(61, 92, 217, 0.28);
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      border-color: #cfd9e7;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.045);
     }
 
     .prompt-card summary {
       list-style: none;
       cursor: pointer;
-      padding: 0.95rem 1.15rem;
-      color: #334155;
-      font-size: 1rem;
+      padding: 0.98rem 1.15rem;
+      color: #334765;
+      font-size: 0.98rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #f8fafc;
+      background: #f7f9fc;
     }
 
     .prompt-card summary::-webkit-details-marker {
@@ -354,9 +696,9 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
     }
 
     .prompt-card summary::after {
-      content: '▾';
-      font-size: 0.8rem;
-      color: var(--pk-text-3);
+      content: '▼';
+      font-size: 0.62rem;
+      color: #71829b;
       transition: transform 0.2s ease;
     }
 
@@ -365,24 +707,22 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
     }
 
     .prompt-card[open] {
-      background: #fff;
-      border-color: rgba(61, 92, 217, 0.18);
-    }
-
-    .prompt-card[open] summary {
-      background: #f3f6fa;
+      border-color: #d7dfeb;
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
     }
 
     .prompt-card-body {
-      padding: 1.2rem;
-      border-top: 1px solid rgba(226, 232, 240, 0.9);
+      padding: 0 1.15rem 1.15rem;
       background: #fff;
+      border-top: 1px solid #e3e9f2;
     }
 
     .prompt-card-desc {
-      color: var(--pk-text-2);
-      margin: 0 0 1rem;
-      line-height: 1.65;
+      color: #5d6e87;
+      margin: 0.95rem 0 0.95rem;
+      line-height: 1.62;
+      font-style: normal;
+      font-size: 0.96rem;
     }
 
     .prompt-card-toolbar {
@@ -390,45 +730,45 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.75rem;
     }
 
     .prompt-card-label {
-      color: #64748b;
-      font-size: 0.78rem;
+      color: #70819b;
+      font-size: 0.76rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
     }
 
     .prompt-card-content {
-      background: #243042;
-      border: 1px solid #243042;
-      border-radius: 0.8rem;
-      padding: 1.15rem 1.2rem;
+      background: #2b3548;
+      border: 1px solid #2b3548;
+      border-radius: 0.7rem;
+      padding: 0.95rem 1rem;
       white-space: pre-wrap;
-      line-height: 1.82;
-      font-size: 0.95rem;
-      color: #e5edf8;
+      line-height: 1.72;
+      font-size: 0.88rem;
+      color: #e6edf7;
       overflow-x: auto;
       margin: 0;
       font-family: 'SFMono-Regular', 'Consolas', 'Monaco', monospace;
     }
 
     .prompt-copy {
-      border: 1px solid rgba(61, 92, 217, 0.18);
+      border: 1px solid #d8e1ee;
       background: #fff;
-      color: var(--pk-primary);
-      border-radius: 0.65rem;
-      padding: 0.58rem 0.95rem;
+      color: #4565de;
+      border-radius: 0.7rem;
+      padding: 0.5rem 0.88rem;
       font-weight: 700;
       cursor: pointer;
       transition: 0.2s ease;
     }
 
     .prompt-copy:hover {
-      border-color: rgba(61, 92, 217, 0.34);
-      background: #f8fbff;
+      border-color: #c9d6ea;
+      background: #fbfcfe;
     }
 
     .prompt-copy.is-copied {
@@ -440,12 +780,12 @@ const stripLeadingEmoji = (value: string) => value.replace(/^[^\p{L}\p{N}]+/u, '
     .prompt-empty {
       text-align: center;
       padding: 3rem 1rem;
-      color: var(--pk-text-2);
+      color: #6b7b91;
     }
 
     @media (max-width: 768px) {
       .prompt-group {
-        padding: 0.9rem 0.9rem 0.8rem;
+        padding: 1.05rem 1rem 0.95rem;
       }
 
       .prompt-search-row {
