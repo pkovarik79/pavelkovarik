@@ -1,345 +1,289 @@
 ---
 import Base from '../layouts/Base.astro';
 import '../styles/global.css';
+
+const overview = [
+  ['Kde AI opravdu dává smysl', 'Kde už dnes přináší firmám rychlý efekt a kde jsou očekávání zatím větší než reálný přínos.'],
+  ['Aktuální nástroje', 'ChatGPT, Copilot, Claude, Gemini a další. V čem se liší a co od nich čekat v praxi.'],
+  ['Automatizace a asistenti', 'Kde lze zrychlit rutinu, opakující se činnosti a interní procesy bez složitých projektů.'],
+  ['Data, Excel a predikce', 'Jak AI pomáhá při práci s tabulkami, reportingem, controllingem, scénáři a podklady pro rozhodování.'],
+  ['Rizika a odpovědnost ve firmě', 'Data, reputace, GDPR, AI Act, nespolehlivé výstupy a situace, kde je potřeba větší opatrnost.'],
+  ['Jednoduché nástroje na míru', 'Co dnes AI zvládne vytvořit rychle – od interních pomocníků po jednoduché aplikace, formuláře nebo kalkulačky.'],
+];
+
+const steps = [
+  ['Konzultace před školením', 'Krátce si ujasníme, co řešíte, kde potřebujete získat přehled a jaké otázky má vedení firmy na stole.'],
+  ['Čtyři hodiny online nebo ve firmě', 'Přehled AI možností pro management se zaměřením na rozhodování, náklady, nástroje a rizika.'],
+  ['Navazující konzultace', 'Po školení můžete využít ještě 30 minut na dotazy, které se objeví při dalších interních debatách.'],
+];
+
+const impactAreas = [
+  ['Finance, controlling a reporting', 'Rychlejší práce s Excelem, reporty, forecasty, scénáři a daty pro rozhodování.'],
+  ['Procesy a automatizace', 'Kde lze ušetřit čas bez velkých zásahů do fungování firmy a kde už je potřeba změna procesu.'],
+  ['Obchod a CRM', 'Podklady pro obchod, práce s CRM, zákaznická komunikace a opakující se úkoly.'],
+  ['Marketing a obsah', 'Texty, rešerše, prezentace, kampaně a rychlejší příprava podkladů pro tým.'],
+  ['HR a interní agenda', 'Nábor, onboarding, interní dokumenty a efektivnější práce s informacemi uvnitř firmy.'],
+  ['Interní nástroje a data', 'Jednoduché pomocníky, interní aplikace nebo rychlá řešení pro konkrétní potřeby týmu.'],
+];
+
+const audiences = [
+  ['CEO a majitelé firem', 'Potřebujete vědět, kde AI dává strategický smysl a co od ní čekat při rozhodování o investicích.'],
+  ['Top management', 'Řešíte směr firmy, změny procesů, bezpečnost, odpovědnost a prioritizaci toho, co má smysl zavádět.'],
+  ['Vedoucí oddělení', 'Chcete pochopit, jak AI ovlivní HR, obchod, finance, operations, marketing nebo zákaznickou péči.'],
+  ['Lidé s nedostatkem času', 'Potřebujete rychlý a praktický přehled bez dlouhého studování nebo testování všeho po večerech.'],
+];
+
+const fastWins = [
+  'Tvorba textů, shrnutí a interních podkladů',
+  'Práce s dokumenty, rešeršemi a firemními znalostmi',
+  'Rychlejší příprava reportů, prezentací a osnov',
+  'Automatizace opakujících se úkolů a rutiny',
+  'Práce s Excelem, přehledy a základními scénáři',
+  'Hledání souvislostí v datech a rychlejší příprava podkladů pro rozhodnutí',
+  'Návrh jednoduchých interních nástrojů, formulářů nebo kalkulaček',
+];
+
+const carefulAreas = [
+  'Práce s citlivými daty a osobními údaji',
+  'Výstupy, které mohou mít právní, reputační nebo obchodní dopad',
+  'Rozhodnutí postavená na nepřesných nebo neověřených výstupech',
+  'Nákup nástrojů bez jasného cíle, bez určení odpovědnosti a bez pilotního ověření',
+  'Složitější automatizace, které zasahují do důležitých firemních procesů',
+  'Situace, kdy není jasné, kdo odpovídá za výstup nebo za finální rozhodnutí',
+];
+
+const quotes = [
+  ['„Přesně to, co jsem potřeboval. Přehled bez zbytečných technických odboček a jasnější představa, co má pro nás smysl řešit dál.“', 'Petr Novotný', 'CEO, výrobní firma'],
+  ['„Za čtyři hodiny jsem získala jasnější představu o AI než za měsíce vlastního zkoumání. Pomohlo mi to s rozhodováním i prioritami.“', 'Jana Králová', 'CFO, IT společnost'],
+  ['„Oceňuji konkrétní příklady z praxe, orientaci v nástrojích i to, že se mluvilo i o rizicích, ne jen o výhodách.“', 'Martin Dvořák', 'majitel e-commerce'],
+];
+
+const includes = [
+  'Konzultace před školením',
+  '4 hodiny školení pro management',
+  'Přehled relevantních AI nástrojů a kategorií',
+  'Orientační ceny licencí, nástrojů a služeb',
+  'Prostor na dotazy a rozhodovací scénáře',
+  'Navazující konzultace do 30 dnů',
+];
+
+const faqItems = [
+  ['Co je AI školení pro manažery a komu je určené?', 'Je to čtyřhodinové školení pro CEO, majitele firem, top management a vedoucí oddělení, kteří potřebují rychle získat přehled o tom, kde AI dává smysl, co stojí, jaké nástroje má smysl sledovat a kde je potřeba větší opatrnost.'],
+  ['Co se manažeři na AI školení konkrétně dozvědí?', 'Získáte přehled, co AI dnes umí, kde pomůže vašemu byznysu, jaké nástroje sledovat, kolik stojí běžné licence a služby, kde může AI pomoct s automatizací, daty, Excelem nebo jednoduchými interními nástroji a co je potřeba hlídat z hlediska bezpečnosti a odpovědnosti.'],
+  ['Je školení vhodné i pro CEO, majitele firem a vedoucí oddělení?', 'Ano. Školení je připravené právě pro vedení firmy a manažery, kteří potřebují rychle získat přehled a udělat si jasno v tom, kde AI dává smysl a co od ní čekat.'],
+  ['Je možné AI školení pro manažery online i ve firmě?', 'Ano. Školení je možné uspořádat online i ve firmě. Obsah je v obou variantách stejný, liší se jen formátem setkání a způsobem práce během školení.'],
+  ['Jak poznáme, která varianta je pro nás vhodnější?', 'Online varianta je vhodná, když potřebujete rychlý a flexibilní přehled bez cestování. Varianta ve firmě dává větší prostor pro společnou diskusi vedení, sladění pohledu týmu a práci s konkrétní situací firmy.'],
+  ['Je čtyřhodinový formát dostatečný?', 'Ano. Pro vedení firmy je čtyřhodinový formát ve většině případů ideální, pokud cílem není učit se nástroje do detailu, ale získat pevnější rámec pro rozhodování a další kroky.'],
+  ['Jaká témata bezpečnosti a rizik ve školení řešíte?', 'Řešíme práci s daty, citlivé informace, GDPR, AI Act, reputační rizika, ověřování výstupů, odpovědnost za rozhodnutí opřená o AI i situace, kde je potřeba větší opatrnost při zavádění nových nástrojů do firmy.'],
+  ['Kolik stojí AI školení pro manažery?', 'Online varianta stojí 9 800 Kč, varianta ve firmě 14 900 Kč. V obou případech jde o čtyřhodinové školení pro skupinu do 10 účastníků a obsah je stejný.'],
+];
 ---
 
 <Base title="AI pro manažery: rozhodování, rizika a příležitosti | Pavel Kovařík" description="Rychlý přehled, co AI dnes umí a kde pomůže vašemu byznysu. Strategický přehled bez technických detailů pro CEO, majitele firem a top management.">
-
-  <section class="hero hero-center wrap">
-    <span class="hero-label">AI PRO MANAŽERY A VEDENÍ FIREM</span>
-    <h1>AI pro manažery: rozhodování, rizika a příležitosti</h1>
-    <p class="lead"><strong>Rychlý přehled, co AI dnes umí a kde pomůže vašemu byznysu</strong></p>
-    <div style="display:flex; justify-content:center; gap:2rem; font-weight:600; font-size:.95rem; color:var(--pk-text-3); margin:1rem 0;">
-      <span>4 hodiny</span>
-      <span>Až 10 účastníků</span>
-      <span>Online nebo ve firmě</span>
-    </div>
-    <div class="hero-actions">
-      <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
-      <a href="#cena" class="btn btn-s">Ukázat varianty školení</a>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div style="max-width:750px; margin:0 auto; text-align:center; background:#fff; border:2px solid var(--pk-primary); border-radius:var(--pk-radius-lg); padding:1.5rem 2rem; box-shadow:0 12px 36px rgba(61,92,217,0.15);">
-        <h3 style="color:var(--pk-primary); margin-bottom:.4rem; font-size:1.15rem;">Strategický přehled bez technických detailů</h3>
-        <p class="text-muted" style="font-size:.95rem; margin:0;">Školení je určené pro majitele firem, CEO, top management a vedoucí oddělení, kteří potřebují rychle pochopit, kde AI dává smysl, co stojí, jaké nástroje má smysl sledovat a kde je naopak potřeba větší opatrnost.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Co se dozvíte během čtyř hodin</h2>
-        <p>Přehled zaměřený na management, rozhodování a řízení rizik. Stručně, prakticky a v souvislostech.</p>
-      </div>
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <h3>Kde AI opravdu dává smysl</h3>
-          <p>Kde už dnes přináší firmám rychlý efekt a kde jsou očekávání zatím větší než reálný přínos.</p>
+  <div class="lp-page">
+    <section class="lp-hero">
+      <div class="wrap">
+        <span class="lp-badge">AI PRO MANAŽERY A VEDENÍ FIREM</span>
+        <h1>AI pro manažery: rozhodování, rizika a příležitosti</h1>
+        <p class="lp-subtitle"><strong>Rychlý přehled, co AI dnes umí a kde pomůže vašemu byznysu</strong></p>
+        <div class="lp-meta">
+          <span><i class="lp-meta-dot"></i>4 hodiny</span>
+          <span><i class="lp-meta-dot"></i>Až 10 účastníků</span>
+          <span><i class="lp-meta-dot"></i>Online nebo ve firmě</span>
         </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <h3>Aktuální nástroje</h3>
-          <p>ChatGPT, Copilot, Claude, Gemini a další. V čem se liší a co od nich čekat v praxi.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
-          <h3>Automatizace a asistenti</h3>
-          <p>Kde lze zrychlit rutinu, opakující se činnosti a interní procesy bez složitých projektů.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <h3>Data, Excel a predikce</h3>
-          <p>Jak AI pomáhá při práci s tabulkami, reportingem, controllingem, scénáři a podklady pro rozhodování.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <h3>Rizika a odpovědnost ve firmě</h3>
-          <p>Data, reputace, GDPR, AI Act, nespolehlivé výstupy a situace, kde je potřeba větší opatrnost.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-          <h3>Jednoduché nástroje na míru</h3>
-          <p>Co dnes AI zvládne vytvořit rychle - od interních pomocníků po jednoduché aplikace, formuláře nebo kalkulačky.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Jak školení probíhá</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="benefit-card" style="text-align:center; position:relative;">
-          <div style="width:40px; height:40px; background:var(--pk-primary); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.2rem; margin:0 auto 1rem;">1</div>
-          <h3>Konzultace před školením</h3>
-          <p>Krátce si ujasníme, co řešíte, kde potřebujete získat přehled a jaké otázky má vedení firmy na stole.</p>
-        </div>
-        <div class="benefit-card" style="text-align:center; position:relative;">
-          <div style="width:40px; height:40px; background:var(--pk-primary); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.2rem; margin:0 auto 1rem;">2</div>
-          <h3>Čtyři hodiny online nebo ve firmě</h3>
-          <p>Přehled AI možností pro management se zaměřením na rozhodování, náklady, nástroje a rizika.</p>
-        </div>
-        <div class="benefit-card" style="text-align:center; position:relative;">
-          <div style="width:40px; height:40px; background:var(--pk-primary); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.2rem; margin:0 auto 1rem;">3</div>
-          <h3>Navazující konzultace</h3>
-          <p>Po školení můžete využít ještě 30 minut na dotazy, které se objeví při dalších interních debatách.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Kde AI nejčastěji ovlivní rozhodování ve firmě</h2>
-        <p>Školení pomáhá pochopit, kde AI zasahuje do fungování firmy a kde bude vedení firmy rozhodovat o prioritách, investicích a odpovědnosti.</p>
-      </div>
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-          <h3>Finance, controlling a reporting</h3>
-          <p>Rychlejší práce s Excelem, reporty, forecasty, scénáři a daty pro rozhodování.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <h3>Procesy a automatizace</h3>
-          <p>Kde lze ušetřit čas bez velkých zásahů do fungování firmy a kde už je potřeba změna procesu.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Obchod a CRM</h3>
-          <p>Podklady pro obchod, práce s CRM, zákaznická komunikace a opakující se úkoly.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <h3>Marketing a obsah</h3>
-          <p>Texty, rešerše, prezentace, kampaně a rychlejší příprava podkladů pro tým.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <h3>HR a interní agenda</h3>
-          <p>Nábor, onboarding, interní dokumenty a efektivnější práce s informacemi uvnitř firmy.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
-          <h3>Interní nástroje a data</h3>
-          <p>Jednoduché pomocníky, interní aplikace nebo rychlá řešení pro konkrétní potřeby týmu.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Pro koho je školení určené</h2>
-      </div>
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <h3>CEO a majitelé firem</h3>
-          <p>Potřebujete vědět, kde AI dává strategický smysl a co od ní čekat při rozhodování o investicích.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Top management</h3>
-          <p>Řešíte směr firmy, změny procesů, bezpečnost, odpovědnost a prioritizaci toho, co má smysl zavádět.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-          <h3>Vedoucí oddělení</h3>
-          <p>Chcete pochopit, jak AI ovlivní HR, obchod, finance, operations, marketing nebo zákaznickou péči.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <h3>Lidé s nedostatkem času</h3>
-          <p>Potřebujete rychlý a praktický přehled bez dlouhého studování nebo testování všeho po večerech.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Kde AI přináší rychlý efekt a kde je potřeba větší rozvaha</h2>
-      </div>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3 style="color:var(--pk-primary);">Kde se rychle ukáže přínos</h3>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Tvorba textů, shrnutí a interních podkladů</li>
-            <li>Práce s dokumenty, rešeršemi a firemními znalostmi</li>
-            <li>Rychlejší příprava reportů, prezentací a osnov</li>
-            <li>Automatizace opakujících se úkolů a rutiny</li>
-            <li>Práce s Excelem, přehledy a základními scénáři</li>
-            <li>Hledání souvislostí v datech a rychlejší příprava podkladů pro rozhodnutí</li>
-            <li>Návrh jednoduchých interních nástrojů, formulářů nebo kalkulaček</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Kde je potřeba postupovat opatrněji</h3>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Práce s citlivými daty a osobními údaji</li>
-            <li>Výstupy, které mohou mít právní, reputační nebo obchodní dopad</li>
-            <li>Rozhodnutí postavená na nepřesných nebo neověřených výstupech</li>
-            <li>Nákup nástrojů bez jasného cíle, bez určení odpovědnosti a bez pilotního ověření</li>
-            <li>Složitější automatizace, které zasahují do důležitých firemních procesů</li>
-            <li>Situace, kdy není jasné, kdo odpovídá za výstup nebo za finální rozhodnutí</li>
-          </ul>
-        </div>
-      </div>
-      <div style="max-width:700px; margin:2rem auto 0; text-align:center;">
-        <p class="text-muted" style="font-size:.95rem;">Cílem školení není slibovat zázračné úspory, ale pomoct managementu rozlišit, kde AI opravdu přinese efekt a kde je potřeba větší rozvaha.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Zkušenosti vedoucích pracovníků</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p style="font-style:italic;">„Přesně to, co jsem potřeboval. Přehled bez zbytečných technických odboček a jasnější představa, co má pro nás smysl řešit dál."</p>
-          <strong style="color:var(--pk-primary);">Petr Novotný</strong>
-          <span class="text-muted text-sm">CEO, výrobní firma</span>
-        </div>
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p style="font-style:italic;">„Za čtyři hodiny jsem získala jasnější představu o AI než za měsíce vlastního zkoumání. Pomohlo mi to s rozhodováním i prioritami."</p>
-          <strong style="color:var(--pk-primary);">Jana Králová</strong>
-          <span class="text-muted text-sm">CFO, IT společnost</span>
-        </div>
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p style="font-style:italic;">„Oceňuji konkrétní příklady z praxe, orientaci v nástrojích i to, že se mluvilo i o rizicích, ne jen o výhodách."</p>
-          <strong style="color:var(--pk-primary);">Martin Dvořák</strong>
-          <span class="text-muted text-sm">majitel e-commerce</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt" id="cena">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Varianty školení a cena</h2>
-        <p>Obsah školení je v obou variantách stejný. Liší se jen formátem setkání a způsobem práce během školení.</p>
-      </div>
-      <div class="grid grid-2">
-        <div class="card" style="border:2px solid var(--pk-primary); text-align:center;">
-          <span class="hero-label" style="display:inline-block; margin-bottom:.5rem;">Ve firmě</span>
-          <p class="text-muted text-sm">4 hodiny</p>
-          <div class="card-price">14 900 Kč</div>
-          <p style="color:var(--pk-primary); font-weight:700; font-size:1.15rem; margin-top:.5rem;">To je 1 490 Kč na účastníka</p>
-          <p class="card-price-note">při 10 účastnících</p>
-          <p class="text-muted" style="margin-top:.8rem;">pro skupinu do 10 osob · 4 hodiny · ve firmě</p>
-          <div style="background:#f8fafc; border-radius:var(--pk-radius); padding:1.2rem; margin-top:1rem; text-align:left;">
-            <p style="font-weight:700; margin-bottom:.8rem;">V ceně je zahrnuto:</p>
-            <ul class="text-sm text-muted" style="padding-left:1.2em;">
-              <li>Konzultace před školením</li>
-              <li>4 hodiny školení pro management</li>
-              <li>Přehled relevantních AI nástrojů a kategorií</li>
-              <li>Orientační ceny licencí, nástrojů a služeb</li>
-              <li>Prostor na dotazy a rozhodovací scénáře</li>
-              <li>Navazující konzultace do 30 dnů</li>
-            </ul>
-          </div>
-        </div>
-        <div class="card" style="border:2px solid var(--pk-primary); text-align:center;">
-          <span class="hero-label" style="display:inline-block; margin-bottom:.5rem;">Online</span>
-          <p class="text-muted text-sm">4 hodiny</p>
-          <div class="card-price">9 800 Kč</div>
-          <p style="color:var(--pk-primary); font-weight:700; font-size:1.15rem; margin-top:.5rem;">To je 980 Kč na účastníka</p>
-          <p class="card-price-note">při 10 účastnících</p>
-          <p class="text-muted" style="margin-top:.8rem;">pro skupinu do 10 osob · 4 hodiny · online</p>
-          <div style="background:#f8fafc; border-radius:var(--pk-radius); padding:1.2rem; margin-top:1rem; text-align:left;">
-            <p style="font-weight:700; margin-bottom:.8rem;">V ceně je zahrnuto:</p>
-            <ul class="text-sm text-muted" style="padding-left:1.2em;">
-              <li>Konzultace před školením</li>
-              <li>4 hodiny školení pro management</li>
-              <li>Přehled relevantních AI nástrojů a kategorií</li>
-              <li>Orientační ceny licencí, nástrojů a služeb</li>
-              <li>Prostor na dotazy a rozhodovací scénáře</li>
-              <li>Navazující konzultace do 30 dnů</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div style="max-width:700px; margin:2rem auto 0; background:#fff; border:1px solid var(--pk-border); border-radius:var(--pk-radius-lg); padding:1.5rem 2rem; text-align:center;">
-        <h3>Jak vybrat vhodnou variantu</h3>
-        <p class="text-muted" style="font-size:.95rem; margin:0;">Online varianta je rychlá, flexibilní a snadná na organizaci. Varianta ve firmě dává větší prostor pro společnou diskusi vedení, práci s konkrétní situací firmy a lepší soustředění týmu. Obsah školení je v obou variantách stejný.</p>
-      </div>
-      <div class="mt-3" style="display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;">
-        <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
-        <a href="/skoleni/" class="btn btn-s">Zobrazit všechna školení</a>
-      </div>
-      <p class="text-muted" style="font-size:.85rem; margin-top:1.5rem; text-align:center;">Nejsem plátce DPH. Uvedená cena je konečná.</p>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap narrow">
-      <div class="sec-head">
-        <h2>Časté otázky k AI školení pro manažery</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>Co je AI školení pro manažery a komu je určené?</summary>
-          <div class="faq-body">Je to čtyřhodinové školení pro CEO, majitele firem, top management a vedoucí oddělení, kteří potřebují rychle získat přehled o tom, kde AI dává smysl, co stojí, jaké nástroje má smysl sledovat a kde je potřeba větší opatrnost.</div>
-        </details>
-        <details>
-          <summary>Co se manažeři na AI školení konkrétně dozvědí?</summary>
-          <div class="faq-body">Získáte přehled, co AI dnes umí, kde pomůže vašemu byznysu, jaké nástroje sledovat, kolik stojí běžné licence a služby, kde může AI pomoct s automatizací, daty, Excelem nebo jednoduchými interními nástroji a co je potřeba hlídat z hlediska bezpečnosti a odpovědnosti.</div>
-        </details>
-        <details>
-          <summary>Je školení vhodné i pro CEO, majitele firem a vedoucí oddělení?</summary>
-          <div class="faq-body">Ano. Školení je připravené právě pro vedení firmy a manažery, kteří potřebují rychle získat přehled a udělat si jasno v tom, kde AI dává smysl a co od ní čekat.</div>
-        </details>
-        <details>
-          <summary>Je možné AI školení pro manažery online i ve firmě?</summary>
-          <div class="faq-body">Ano. Školení je možné uspořádat online i ve firmě. Obsah je v obou variantách stejný, liší se jen formátem setkání a způsobem práce během školení.</div>
-        </details>
-        <details>
-          <summary>Jak poznáme, která varianta je pro nás vhodnější?</summary>
-          <div class="faq-body">Online varianta je vhodná, když potřebujete rychlý a flexibilní přehled bez cestování. Varianta ve firmě dává větší prostor pro společnou diskusi vedení, sladění pohledu týmu a práci s konkrétní situací firmy.</div>
-        </details>
-        <details>
-          <summary>Je čtyřhodinový formát dostatečný?</summary>
-          <div class="faq-body">Ano. Pro vedení firmy je čtyřhodinový formát ve většině případů ideální, pokud cílem není učit se nástroje do detailu, ale získat pevnější rámec pro rozhodování a další kroky.</div>
-        </details>
-        <details>
-          <summary>Jaká témata bezpečnosti a rizik ve školení řešíte?</summary>
-          <div class="faq-body">Řešíme práci s daty, citlivé informace, GDPR, AI Act, reputační rizika, ověřování výstupů, odpovědnost za rozhodnutí opřená o AI i situace, kde je potřeba větší opatrnost při zavádění nových nástrojů do firmy.</div>
-        </details>
-        <details>
-          <summary>Kolik stojí AI školení pro manažery?</summary>
-          <div class="faq-body">Online varianta stojí 9 800 Kč, varianta ve firmě 14 900 Kč. V obou případech jde o čtyřhodinové školení pro skupinu do 10 účastníků a obsah je stejný.</div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="cta-box">
-        <h2>Získejte jasnější představu, kde AI dává smysl pro vaši firmu</h2>
-        <p style="font-size:1.1rem; margin-bottom:1.5rem;">Zavolejte mi nebo napište a během krátké konzultace probereme, která varianta školení bude pro vás a váš management nejvhodnější.</p>
-        <div style="display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
+        <div class="lp-actions">
           <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
-          <a href="mailto:mail@pavelkovarik.cz" class="btn btn-s" style="border-color:#fff; color:#fff;">Napsat e-mail</a>
+          <a href="#cena" class="btn btn-s">Ukázat varianty školení</a>
         </div>
-        <p style="margin-top:1rem; font-size:.95rem; font-weight:700;">+420 770 126 519 · mail@pavelkovarik.cz</p>
-        <p style="font-size:.9rem; opacity:.9;">Odpovídám zpravidla do 24 hodin.</p>
+      </div>
+    </section>
+
+    <div class="lp-verified-wrap">
+      <div class="lp-verified">
+        <div class="lp-stars">★★★★★</div>
+        <h3>Strategický přehled bez technických detailů</h3>
+        <p>Školení je určené pro majitele firem, CEO, top management a vedoucí oddělení, kteří potřebují rychle pochopit, kde AI dává smysl, co stojí, jaké nástroje má smysl sledovat a kde je naopak potřeba větší opatrnost.</p>
       </div>
     </div>
-  </section>
 
+    <section class="sec">
+      <div class="wrap">
+        <h2>Co se dozvíte během čtyř hodin</h2>
+        <p class="lp-section-intro">Přehled zaměřený na management, rozhodování a řízení rizik. Stručně, prakticky a v souvislostech.</p>
+        <div class="lp-card-grid-6">
+          {overview.map(([title, text], index) => (
+            <div class="lp-card center">
+              <div class="lp-icon">{index + 1}</div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Jak školení probíhá</h2>
+        <div class="lp-steps">
+          {steps.map(([title, text], index) => (
+            <div class="lp-step">
+              <div class="lp-step-no">{index + 1}</div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Kde AI nejčastěji ovlivní rozhodování ve firmě</h2>
+        <p class="lp-section-intro">Školení pomáhá pochopit, kde AI zasahuje do fungování firmy a kde bude vedení firmy rozhodovat o prioritách, investicích a odpovědnosti.</p>
+        <div class="lp-card-grid-6">
+          {impactAreas.map(([title, text], index) => (
+            <div class="lp-card center">
+              <div class="lp-icon">{index + 1}</div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Pro koho je školení určené</h2>
+        <div class="lp-card-grid-4">
+          {audiences.map(([title, text]) => (
+            <div class="lp-card center">
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Kde AI přináší rychlý efekt a kde je potřeba větší rozvaha</h2>
+        <div class="lp-compare">
+          <div class="lp-compare-card is-after">
+            <h3>Kde se rychle ukáže přínos</h3>
+            <ul class="lp-compare-list">
+              {fastWins.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="lp-compare-card is-before">
+            <h3>Kde je potřeba postupovat opatrněji</h3>
+            <ul class="lp-compare-list">
+              {carefulAreas.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+        <p class="lp-copy" style="max-width:860px;">
+          Cílem školení není slibovat zázračné úspory, ale pomoct managementu rozlišit, kde AI opravdu přinese efekt a kde je potřeba větší rozvaha.
+        </p>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Zkušenosti vedoucích pracovníků</h2>
+        <div class="lp-quote-grid">
+          {quotes.map(([text, name, role]) => (
+            <div class="lp-quote-card">
+              <p>{text}</p>
+              <strong>{name}</strong>
+              <span class="lp-quote-role">{role}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="cena">
+      <div class="wrap">
+        <div class="lp-pricing-shell">
+          <h2 style="margin-bottom:0.55rem;">Varianty školení a cena</h2>
+          <p class="lp-section-intro" style="margin-top:0; margin-bottom:0;">Obsah školení je v obou variantách stejný. Liší se jen formátem setkání a způsobem práce během školení.</p>
+          <div class="lp-price-grid">
+            <div class="lp-price-card">
+              <div class="lp-price-tags">
+                <span class="lp-price-tag">Ve firmě</span>
+                <span class="lp-price-tag">4 hodiny</span>
+              </div>
+              <div class="lp-price-value">14&nbsp;900&nbsp;Kč</div>
+              <p class="lp-price-per">To je 1&nbsp;490&nbsp;Kč na účastníka<span>při 10 účastnících</span></p>
+              <p class="lp-price-note">pro skupinu do 10 osob • 4 hodiny • ve firmě</p>
+              <div class="lp-price-box">
+                <p>V ceně je zahrnuto:</p>
+                <ul class="lp-check-list">
+                  {includes.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+            <div class="lp-price-card" style="border-width:3px;">
+              <div class="lp-price-tags">
+                <span class="lp-price-tag">Online</span>
+                <span class="lp-price-tag">4 hodiny</span>
+              </div>
+              <div class="lp-price-value">9&nbsp;800&nbsp;Kč</div>
+              <p class="lp-price-per">To je 980&nbsp;Kč na účastníka<span>při 10 účastnících</span></p>
+              <p class="lp-price-note">pro skupinu do 10 osob • 4 hodiny • online</p>
+              <div class="lp-price-box">
+                <p>V ceně je zahrnuto:</p>
+                <ul class="lp-check-list">
+                  {includes.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="lp-info-box">
+            <h3>Jak vybrat vhodnou variantu</h3>
+            <p>Online varianta je rychlá, flexibilní a snadná na organizaci. Varianta ve firmě dává větší prostor pro společnou diskusi vedení, práci s konkrétní situací firmy a lepší soustředění týmu. Obsah školení je v obou variantách stejný.</p>
+          </div>
+
+          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
+            <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
+            <a href="/skoleni/" class="btn btn-s" style="background:#fff;">Zobrazit všechna školení</a>
+          </div>
+          <p class="lp-copy" style="font-size:0.88rem;">Nejsem plátce DPH. Uvedená cena je konečná.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Časté otázky k AI školení pro manažery</h2>
+        <div class="lp-faq-wrap">
+          <div class="faq">
+            {faqItems.map(([q, a]) => (
+              <details>
+                <summary>{q}</summary>
+                <div class="faq-body">{a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-final-cta">
+      <div class="wrap">
+        <h2>Získejte jasnější představu, kde AI dává smysl pro vaši firmu</h2>
+        <p>Zavolejte mi nebo napište a během krátké konzultace probereme, která varianta školení bude pro vás a váš management nejvhodnější.</p>
+        <div class="lp-actions">
+          <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
+          <a href="mailto:mail@pavelkovarik.cz" class="btn btn-s">Napsat e-mail</a>
+        </div>
+        <div class="lp-contact-line">+420&nbsp;770&nbsp;126&nbsp;519 · mail@pavelkovarik.cz</div>
+        <div class="lp-contact-note">Odpovídám zpravidla do 24 hodin.</div>
+      </div>
+    </section>
+  </div>
 </Base>

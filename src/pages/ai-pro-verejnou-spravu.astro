@@ -1,350 +1,382 @@
 ---
 import Base from '../layouts/Base.astro';
 import '../styles/global.css';
+
+const beforeItems = [
+  'Úředníci nevědí, co mohou do AI zadat',
+  'Riziko práce s osobními údaji občanů',
+  'Rutina a administrativa berou čas občanům i kolegům',
+  'Nejasné očekávání a obavy z nových nástrojů',
+];
+
+const afterItems = [
+  'Jasná pravidla pro bezpečné používání AI',
+  'Lepší orientace v tom, co do AI patří a co už ne',
+  'Rychlejší práce s podklady, texty a informacemi',
+  'AI jako pomocník pro každodenní praxi úřadu',
+];
+
+const skills = [
+  {
+    title: 'Bezpečnost a pravidla',
+    subtitle: 'Pevný základ pro bezpečné používání AI ve veřejné správě.',
+    items: [
+      'Co smí a nesmí úředník zadat do AI',
+      'Jak přemýšlet o osobních údajích, GDPR a citlivých informacích',
+      'Jak si hlídat kvalitu výstupů a nenechat se zmást nepřesností',
+      'Jak nastavit rozumný rámec používání AI na úřadě',
+    ],
+  },
+  {
+    title: 'Dokumenty, podklady a informace',
+    subtitle: 'Rychlejší práce s texty, podklady a interními materiály.',
+    items: [
+      'Shrnutí dokumentů a orientace ve větším množství podkladů',
+      'Příprava podkladů pro porady, radu nebo zastupitelstvo',
+      'Osnovy, přehledy a interní texty',
+      'Rychlejší práce s informacemi v každodenní agendě',
+    ],
+  },
+  {
+    title: 'Komunikace a každodenní agenda',
+    subtitle: 'Postupy, které mohou lidé používat hned v běžné práci.',
+    items: [
+      'Odpovědi na opakující se dotazy a e-maily',
+      'Úprava textů pro občany i interní komunikaci',
+      'Srozumitelnější formulace a rychlejší příprava výstupů',
+      'Využití AI tam, kde opravdu šetří čas',
+    ],
+  },
+  {
+    title: 'Asistenti, automatizace a interní nástroje',
+    subtitle: 'Pokročilejší možnosti pro úřady, které chtějí jít dál.',
+    items: [
+      'Kde dává smysl využít AI asistenty',
+      'Automatizace opakujících se činností a rutiny',
+      'Jednoduché interní nástroje nebo rychlá řešení pro konkrétní agendy',
+      'Inspirace, kde může AI pomoci i nad rámec běžného promptování',
+    ],
+  },
+];
+
+const keyBenefits = [
+  {
+    title: 'Více času pro občany',
+    text: 'Rutinní úkoly zvládnou rychleji a zůstane více prostoru na komunikaci s lidmi.',
+  },
+  {
+    title: 'Rychlejší administrativa',
+    text: 'Odpovědi, podklady, shrnutí a interní texty vznikají svižněji a s větším přehledem.',
+  },
+  {
+    title: 'Lepší práce s informacemi',
+    text: 'Dokážou zpracovat větší množství podkladů, vytáhnout podstatné body a pracovat s nimi dál.',
+  },
+  {
+    title: 'Bezpečnější používání AI',
+    text: 'Budou vědět, co do AI patří, co už ne a kde je potřeba větší opatrnost.',
+  },
+];
+
+const audiences = [
+  {
+    title: 'Pro úřady, které s AI začínají',
+    text: 'Žádné předchozí zkušenosti nejsou potřeba. Všechno vysvětlím srozumitelně a bez technického žargonu.',
+  },
+  {
+    title: 'Pro úřady, které chtějí jít víc do hloubky',
+    text: 'Pokud už AI někdo zkouší, školení pomůže udělat si v tom pořádek a posunout využití do praxe.',
+  },
+  {
+    title: 'Pro různé odbory a agendy',
+    text: 'Vedení úřadu, komunikace, sociální oblast, administrativa i další odbory. Obsah přizpůsobím tomu, co lidé skutečně řeší.',
+  },
+];
+
+const quotes = [
+  {
+    text: '„Bála jsem se, že AI je moc složitá na to, abych se to naučila. Pavel mi ukázal, že to zvládnu i já a že to vlastně není žádná věda.“',
+    name: 'Jana Dvořáková (58 let)',
+    role: 'pracovnice matričního úřadu',
+  },
+  {
+    text: '„Oceňuji, že Pavel neříká, že budeme nahrazeni. Naopak ukázal, jak AI ušetří čas a jak se můžeme víc věnovat lidem.“',
+    name: 'Petr Novák (52 let)',
+    role: 'vedoucí odboru obecního úřadu',
+  },
+  {
+    text: '„Konečně školení, kde lektor rozumí prostředí úřadů. Všechny příklady byly z praxe, kterou skutečně řešíme.“',
+    name: 'Markéta Svobodová (44 let)',
+    role: 'pracovnice sociálního odboru',
+  },
+];
+
+const oneDayIncludes = [
+  'Příprava obsahu přímo pro vaše agendy',
+  'Praktická cvičení na situacích z veřejné správy',
+  'Kontrolní postup pro bezpečnou práci s AI',
+  'Následná e-mailová podpora',
+  'Doprava po celé ČR zdarma',
+];
+
+const twoDayIncludes = [
+  'Více prostoru pro konkrétní agendy a podklady úřadu',
+  'Více času pro různé odbory a specifické situace',
+  'Hlubší nácvik bezpečné práce s AI a kontroly výstupů',
+  'Více prostoru na dotazy, zpětnou vazbu a doladění postupů',
+  'Lepší přenos do každodenní praxe úřadu',
+];
+
+const faqItems = [
+  ['Je AI školení vhodné pro obce, města a úřady různé velikosti?', 'Ano. Školení přizpůsobuji velikosti instituce i tomu, co konkrétní úřad řeší. Jinak bude vypadat pro menší obec, jinak pro větší město nebo magistrát.'],
+  ['Přizpůsobíte obsah školení našim agendám a odborům?', 'Ano. Před školením si zjistím, jaké agendy a odbory chcete pokrýt, a připravím praktické ukázky přímo z vašeho prostředí, ať už jde o komunikaci, administrativu, sociální oblast, vedení úřadu nebo další agendy.'],
+  ['Co se během školení konkrétně naučíme?', 'Naučíte se, co do AI patří a co už ne, jak bezpečně pracovat s daty, jak si hlídat kvalitu výstupů a jak AI využít v běžné práci úřadu. Všechno si ukážeme na konkrétních situacích z veřejné správy. Podrobnější osnovu najdete v PDF s obsahem školení.'],
+  ['Co smí a nesmí úředník zadat do AI?', 'Právě tohle je jedna z hlavních částí školení. Účastníci se naučí, jak přemýšlet o osobních údajích, citlivých informacích, GDPR a dalších rizicích tak, aby se AI používala bezpečně a s rozumem.'],
+  ['Jak poznáme, jestli nám stačí jednodenní, nebo je lepší dvoudenní varianta?', 'Jednodenní varianta je ideální, když chcete rychle získat přehled, nastavit bezpečný základ a ukázat lidem praktické využití AI v běžné práci. Dvoudenní varianta dává větší prostor na konkrétní agendy, různé odbory, práci s vlastními podklady a hlubší přenos do praxe.'],
+  ['Je školení vhodné i pro větší úřady nebo větší kolektivy?', 'Ano. Pro větší úřady, magistráty a větší kolektivy připravuji individuální nabídku. Může jít o více běhů školení, rozdělení podle odborů nebo po domluvě i jiný vhodný formát pro širší kolektiv.'],
+  ['Kdy uvidíme výsledky v praxi?', 'Většina účastníků začne nové postupy používat hned po školení. Nejrychleji se to projeví u rutinních úkolů, práce s podklady, interních textů a opakujících se dotazů.'],
+  ['Jaké vybavení potřebujeme připravit?', 'Stačí, aby každý účastník měl notebook a přístup k internetu. Pokud školíme u vás, ideální je zasedací místnost s projektorem nebo větší obrazovkou.'],
+];
 ---
 
 <Base title="Praktické školení AI pro města, obce a veřejnou správu | Pavel Kovařík" description="Proškolil jsem přes 1 000 zaměstnanců. Jako bývalý tiskový mluvčí znám prostředí úřadů zevnitř.">
+  <div class="lp-page">
+    <section class="lp-hero">
+      <div class="wrap">
+        <span class="lp-badge">Proškoleno přes 1 000 zaměstnanců v ČR</span>
+        <h1>Praktické školení AI pro města, obce a veřejnou správu</h1>
+        <p class="lp-subtitle"><strong>Konečně máte čas na to, co vás na práci skutečně naplňuje – pomáhat občanům ještě lépe.</strong></p>
+        <div class="lp-meta">
+          <span><i class="lp-meta-dot"></i>1 nebo 2 dny školení</span>
+          <span><i class="lp-meta-dot"></i>Až 15 účastníků</span>
+          <span><i class="lp-meta-dot"></i>Bezpečné používání AI na úřadě</span>
+        </div>
+        <div class="lp-actions">
+          <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
+          <a href="#cena" class="btn btn-s">Ukázat varianty školení</a>
+        </div>
+      </div>
+    </section>
 
-  <section class="hero hero-center wrap">
-    <span class="hero-label">Proškoleno přes 1 000 zaměstnanců v ČR</span>
-    <h1>Praktické školení AI pro města, obce a veřejnou správu</h1>
-    <p class="lead"><strong>Konečně máte čas na to, co vás na práci skutečně naplňuje – pomáhat občanům ještě lépe.</strong></p>
-    <div style="display:flex; justify-content:center; gap:2rem; font-weight:600; font-size:.95rem; color:var(--pk-text-3); margin:1rem 0;">
-      <span>⏱ 1 nebo 2 dny školení</span>
-      <span>👥 Až 15 účastníků</span>
-      <span>📍 Bezpečné používání AI na úřadě</span>
-    </div>
-    <div class="hero-actions">
-      <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
-      <a href="#cena" class="btn btn-s">Ukázat varianty školení</a>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div style="max-width:750px; margin:0 auto; text-align:center; background:#fff; border:2px solid var(--pk-primary); border-radius:var(--pk-radius-lg); padding:1.5rem 2rem; box-shadow:0 12px 36px rgba(61,92,217,0.15);">
-        <div style="color:#f59e0b; font-size:1.2rem; margin-bottom:.4rem;">★★★★★</div>
-        <h3 style="color:var(--pk-primary); margin-bottom:.4rem; font-size:1.15rem;">Školení AI podle doporučených postupů České asociace umělé inteligence</h3>
-        <p class="text-muted" style="font-size:.95rem; margin:0;">Proškolil jsem přes 1 000 zaměstnanců v ČR. Jako bývalý tiskový mluvčí města a vedoucí oddělení vnějších vztahů znám prostředí úřadů zevnitř. Obsah školení proto stavím na reálných situacích z veřejné správy, ne na obecných ukázkách.</p>
+    <div class="lp-verified-wrap">
+      <div class="lp-verified">
+        <div class="lp-stars">★★★★★</div>
+        <h3>Školení AI podle doporučených postupů České asociace umělé inteligence</h3>
+        <p>Proškolil jsem přes 1 000 zaměstnanců v ČR. Jako bývalý tiskový mluvčí města a vedoucí oddělení vnějších vztahů znám prostředí úřadů zevnitř. Obsah školení proto stavím na reálných situacích z veřejné správy, ne na obecných ukázkách.</p>
       </div>
     </div>
-  </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
+    <section class="sec">
+      <div class="wrap">
         <h2>Proč úřady potřebují školení AI</h2>
-        <p>Na úřadech dnes AI nejčastěji naráží na dvě věci: nejistotu, co je ještě bezpečné, a nejasnou představu, kde může opravdu pomoct. Když se s ní pracuje bez pravidel, vznikají zbytečné chyby. Když se používá správně, dokáže ulevit od rutiny a zrychlit práci s podklady, dokumenty i opakujícími se dotazy.</p>
-      </div>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Bez školení</h3>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Úředníci nevědí, co mohou do AI zadat</li>
-            <li>Riziko práce s osobními údaji občanů</li>
-            <li>Rutina a administrativa berou čas občanům i kolegům</li>
-            <li>Nejasné očekávání a obavy z nových nástrojů</li>
-          </ul>
+        <p class="lp-section-intro">
+          Na úřadech dnes AI nejčastěji naráží na dvě věci: nejistotu, co je ještě bezpečné, a nejasnou představu, kde může opravdu pomoct. Když se s ní pracuje bez pravidel, vznikají zbytečné chyby. Když se používá správně, dokáže ulevit od rutiny a zrychlit práci s podklady, dokumenty i opakujícími se dotazy.
+        </p>
+        <div class="lp-compare">
+          <div class="lp-compare-card is-before">
+            <h3>Bez školení</h3>
+            <ul class="lp-compare-list">
+              {beforeItems.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="lp-compare-card is-after">
+            <h3>Po školení</h3>
+            <ul class="lp-compare-list">
+              {afterItems.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div class="card" style="border-color:var(--pk-primary);">
-          <h3 style="color:var(--pk-primary);">Po školení</h3>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Jasná pravidla pro bezpečné používání AI</li>
-            <li>Lepší orientace v tom, co do AI patří a co už ne</li>
-            <li>Rychlejší práce s podklady, texty a informacemi</li>
-            <li>AI jako pomocník pro každodenní praxi úřadu</li>
-          </ul>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-head">
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
         <h2>Co se naučí lidé z vašeho úřadu</h2>
-        <p>Nejde o to, aby lidé viděli pár zajímavých ukázek. Důležité je, aby po školení věděli, kde jim AI opravdu pomůže, co je potřeba hlídat a jak ji používat tak, aby práci ulehčovala, ne komplikovala.</p>
-      </div>
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <h3>Bezpečnost a pravidla</h3>
-          <p>Pevný základ pro bezpečné používání AI ve veřejné správě.</p>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Co smí a nesmí úředník zadat do AI</li>
-            <li>Jak přemýšlet o osobních údajích, GDPR a citlivých informacích</li>
-            <li>Jak si hlídat kvalitu výstupů a nenechat se zmást nepřesností</li>
-            <li>Jak nastavit rozumný rámec používání AI na úřadě</li>
-          </ul>
+        <p class="lp-section-intro">
+          Nejde o to, aby lidé viděli pár zajímavých ukázek. Důležité je, aby po školení věděli, kde jim AI opravdu pomůže, co je potřeba hlídat a jak ji používat tak, aby práci ulehčovala, ne komplikovala.
+        </p>
+        <div class="lp-card-grid-2">
+          {skills.map((skill, index) => (
+            <div class="lp-card">
+              <div class="lp-icon">{index + 1}</div>
+              <h3 style="color:var(--pk-primary);">{skill.title}</h3>
+              <p>{skill.subtitle}</p>
+              <ul class="lp-bullet-list">
+                {skill.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <h3>Dokumenty, podklady a informace</h3>
-          <p>Rychlejší práce s texty, podklady a interními materiály.</p>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Shrnutí dokumentů a orientace ve větším množství podkladů</li>
-            <li>Příprava podkladů pro porady, radu nebo zastupitelstvo</li>
-            <li>Osnovy, přehledy a interní texty</li>
-            <li>Rychlejší práce s informacemi v každodenní agendě</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3>Komunikace a každodenní agenda</h3>
-          <p>Postupy, které mohou lidé používat hned v běžné práci.</p>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Odpovědi na opakující se dotazy a e-maily</li>
-            <li>Úprava textů pro občany i interní komunikaci</li>
-            <li>Srozumitelnější formulace a rychlejší příprava výstupů</li>
-            <li>Využití AI tam, kde opravdu šetří čas</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-          <h3>Asistenti, automatizace a interní nástroje</h3>
-          <p>Pokročilejší možnosti pro úřady, které chtějí jít dál.</p>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Kde dává smysl využít AI asistenty</li>
-            <li>Automatizace opakujících se činností a rutiny</li>
-            <li>Jednoduché interní nástroje nebo rychlá řešení pro konkrétní agendy</li>
-            <li>Inspirace, kde může AI pomoci i nad rámec běžného promptování</li>
-          </ul>
-        </div>
-      </div>
-      <div style="max-width:700px; margin:2rem auto 0; text-align:center; background:var(--pk-primary-light); border-radius:var(--pk-radius-lg); padding:1.5rem 2rem; border:1px solid var(--pk-border);">
-        <h3 style="color:var(--pk-primary); margin-bottom:.6rem;">📄 Podrobnosti školení (PDF)</h3>
-        <p class="text-muted" style="font-size:.95rem; margin:0 0 .8rem 0;">Detailní osnovu školení a varianty programu vám pošlu při poptávce podle typu úřadu, odborů a cíle školení.</p>
-        <a href="/kontakt/" class="btn btn-s">Vyžádat osnovu školení</a>
-      </div>
-      <div style="max-width:700px; margin:1rem auto 0; text-align:center; background:var(--pk-primary-light); border-radius:var(--pk-radius-lg); padding:1.5rem 2rem; border:1px solid var(--pk-border);">
-        <p class="text-muted" style="font-size:.95rem; margin:0;">Školení přizpůsobuji tomu, kdo se ho účastní – od starostů, radních, tajemníků a vedoucích odborů přes referenty, podatelnu, personalistiku a finance až po stavební úřady, městskou policii, krizové řízení nebo pracovníky komunikace a tiskových oddělení.</p>
-      </div>
-      <div style="max-width:700px; margin:1rem auto 0; text-align:center;">
-        <p class="text-muted" style="font-size:.95rem;">Jednodenní varianta dává pevný základ. Ve dvoudenní variantě je více prostoru pro konkrétní agendy, různé odbory, vlastní podklady a hlubší přenos do praxe úřadu.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
+        <p class="lp-copy">
+          Školení přizpůsobuji tomu, kdo se ho účastní – od starostů, radních, tajemníků a vedoucích odborů přes referenty, podatelnu, personalistiku a finance až po stavební úřady, městskou policii, krizové řízení nebo pracovníky komunikace a tiskových oddělení.
+        </p>
+
+        <p class="lp-copy" style="max-width:860px;">
+          Jednodenní varianta dává pevný základ. Ve dvoudenní variantě je více prostoru pro konkrétní agendy, různé odbory, vlastní podklady a hlubší přenos do praxe úřadu.
+        </p>
+
+        <div class="lp-info-box">
+          <h3>Podrobnosti školení (PDF)</h3>
+          <p>Chcete si udělat přesnější představu? V PDF najdete ukázku obsahu školení, hlavní témata i vysvětlení, kdy dává větší smysl jednodenní varianta a kdy už dvoudenní.</p>
+          <a href="https://pavelkovarik.cz/wp-content/uploads/2026/03/Prakticke-skoleni-AI-pro-urady-syllabus.pdf" class="btn btn-p" style="margin-top:1rem;" download>Stáhnout obsah školení (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
         <h2>Klíčové dovednosti pro práci s AI na úřadě</h2>
-      </div>
-      <div class="grid grid-2">
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Více času pro občany</h3>
-          <p>Rutinní úkoly zvládnou rychleji a zůstane více prostoru na komunikaci s lidmi.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <h3>Rychlejší administrativa</h3>
-          <p>Odpovědi, podklady, shrnutí a interní texty vznikají svižněji a s větším přehledem.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-          <h3>Lepší práce s informacemi</h3>
-          <p>Dokážou zpracovat větší množství podkladů, vytáhnout podstatné body a pracovat s nimi dál.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <h3>Bezpečnější používání AI</h3>
-          <p>Budou vědět, co do AI patří, co už ne a kde je potřeba větší opatrnost.</p>
+        <div class="lp-card-grid-4">
+          {keyBenefits.map((item, index) => (
+            <div class="lp-card center">
+              <div class="lp-icon">{index + 1}</div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-head">
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
         <h2>Pro koho je školení určeno</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-          <h3>Pro úřady, které s AI začínají</h3>
-          <p>Žádné předchozí zkušenosti nejsou potřeba. Všechno vysvětlím srozumitelně a bez technického žargonu.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg></div>
-          <h3>Pro úřady, které chtějí jít víc do hloubky</h3>
-          <p>Pokud už AI někdo zkouší, školení pomůže udělat si v tom pořádek a posunout využití do praxe.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-          <h3>Pro různé odbory a agendy</h3>
-          <p>Vedení úřadu, komunikace, sociální oblast, administrativa i další odbory. Obsah přizpůsobím tomu, co lidé skutečně řeší.</p>
+        <div class="lp-card-grid-3">
+          {audiences.map((item) => (
+            <div class="lp-card center">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
+    <section class="sec">
+      <div class="wrap">
         <h2>Reálné zkušenosti z úřadů</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p class="text-muted" style="font-style:italic; margin-bottom:.8rem;">„Bála jsem se, že AI je moc složitá na to, abych se to naučila. Pavel mi ukázal, že to zvládnu i já a že to vlastně není žádná věda."</p>
-          <p style="margin:0;"><strong style="color:var(--pk-primary);">Jana Dvořáková (58 let)</strong><br><span class="text-sm text-muted">pracovnice matričního úřadu</span></p>
-        </div>
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p class="text-muted" style="font-style:italic; margin-bottom:.8rem;">„Oceňuji, že Pavel neříká, že budeme nahrazeni. Naopak ukázal, jak AI ušetří čas a jak se můžeme víc věnovat lidem."</p>
-          <p style="margin:0;"><strong style="color:var(--pk-primary);">Petr Novák (52 let)</strong><br><span class="text-sm text-muted">vedoucí odboru obecního úřadu</span></p>
-        </div>
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p class="text-muted" style="font-style:italic; margin-bottom:.8rem;">„Konečně školení, kde lektor rozumí prostředí úřadů. Všechny příklady byly z praxe, kterou skutečně řešíme."</p>
-          <p style="margin:0;"><strong style="color:var(--pk-primary);">Markéta Svobodová (44 let)</strong><br><span class="text-sm text-muted">pracovnice sociálního odboru</span></p>
+        <div class="lp-quote-grid">
+          {quotes.map((quote) => (
+            <div class="lp-quote-card">
+              <p>{quote.text}</p>
+              <strong>{quote.name}</strong>
+              <span class="lp-quote-role">{quote.role}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec sec-alt" id="cena">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Varianty školení a cena</h2>
-        <p>Jednodenní varianta je vhodná jako pevný a praktický základ. Dvoudenní varianta dává více prostoru na vyzkoušení, práci s vašimi agendami a hlubší využití AI v praxi veřejné správy.</p>
-      </div>
-      <div class="grid grid-2">
-        <div class="card" style="border:2px solid var(--pk-primary);">
-          <div style="display:flex; gap:.6rem; align-items:center; margin-bottom:.5rem;">
-            <span class="hero-label" style="margin:0;">1 den</span>
-            <span class="text-muted text-sm">Praktický základ</span>
+    <section class="sec" id="cena" style="background:#fff;">
+      <div class="wrap">
+        <div class="lp-pricing-shell">
+          <h2 style="margin-bottom:0.55rem;">Varianty školení a cena</h2>
+          <p class="lp-section-intro" style="margin-top:0; margin-bottom:0;">
+            Jednodenní varianta je vhodná jako pevný a praktický základ. Dvoudenní varianta dává více prostoru na vyzkoušení, práci s vašimi agendami a hlubší využití AI v praxi veřejné správy.
+          </p>
+
+          <div class="lp-price-grid">
+            <div class="lp-price-card">
+              <div class="lp-price-tags">
+                <span class="lp-price-tag">1 den</span>
+                <span class="lp-price-tag">Praktický základ</span>
+              </div>
+              <div class="lp-price-value">19&nbsp;900&nbsp;Kč</div>
+              <p class="lp-price-per">To je 1&nbsp;330&nbsp;Kč na účastníka<span>při 15 účastnících</span></p>
+              <p class="lp-price-note">pro skupinu do 15 osob • 1 den • 8 hodin</p>
+              <p class="lp-price-desc">Vhodná volba pro úřady, které chtějí rychle získat přehled, naučit lidi základy a ukázat jim, jak AI používat bezpečně a s rozumem v každodenní práci.</p>
+              <div class="lp-price-box">
+                <p>V ceně je zahrnuto:</p>
+                <ul class="lp-check-list">
+                  {oneDayIncludes.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="lp-price-card" style="border-width:3px;">
+              <div class="lp-price-tags">
+                <span class="lp-price-tag">2 dny</span>
+                <span class="lp-price-tag">Více prostoru na vyzkoušení</span>
+              </div>
+              <div class="lp-price-value">37&nbsp;900&nbsp;Kč</div>
+              <p class="lp-price-per">To je 2&nbsp;530&nbsp;Kč na účastníka<span>při 15 účastnících</span></p>
+              <p class="lp-price-note">pro skupinu do 15 osob • 2 dny • 16 hodin</p>
+              <p class="lp-price-desc">Vhodná volba pro úřady, které chtějí jít víc do hloubky, dát lidem větší prostor na vyzkoušení a pracovat i s vlastními úkoly, dokumenty a situacemi z praxe.</p>
+              <div class="lp-price-box">
+                <p>Dvoudenní varianta obsahuje vše z jednodenní a navíc:</p>
+                <ul class="lp-check-list">
+                  {twoDayIncludes.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="card-price">19 900 Kč</div>
-          <p style="color:var(--pk-primary); font-weight:700; font-size:1.15rem; margin-top:.5rem;">To je 1 330 Kč na účastníka</p>
-          <p class="card-price-note">při 15 účastnících</p>
-          <p class="text-muted" style="margin-top:.8rem;">Pro skupinu do 15 osob · 1 den · 8 hodin</p>
-          <p class="text-muted text-sm">Vhodná volba pro úřady, které chtějí rychle získat přehled, naučit lidi základy a ukázat jim, jak AI používat bezpečně a s rozumem v každodenní práci.</p>
-          <div style="background:#f8fafc; border-radius:var(--pk-radius); padding:1.2rem; margin-top:1rem; text-align:left;">
-            <p style="font-weight:700; margin-bottom:.8rem;">V ceně je zahrnuto:</p>
-            <ul class="text-sm text-muted" style="padding-left:1.2em;">
-              <li>Příprava obsahu přímo pro vaše agendy</li>
-              <li>Praktická cvičení na situacích z veřejné správy</li>
-              <li>Kontrolní postup pro bezpečnou práci s AI</li>
-              <li>Následná e-mailová podpora</li>
-              <li>Doprava po celé ČR zdarma</li>
-            </ul>
+
+          <p class="lp-copy" style="max-width:820px;">
+            Uvedené ceny platí pro standardní skupinu do 15 účastníků. Pro větší úřady a větší kolektivy připravím individuální řešení podle počtu lidí, agend a cíle školení.
+          </p>
+
+          <div class="lp-card" style="max-width:760px; margin:1.6rem auto 0; border-left:4px solid var(--pk-primary); text-align:left;">
+            <h3 style="font-size:1.05rem; margin-bottom:0.45rem;">Větší úřady a větší kolektivy</h3>
+            <p>Pro větší úřady, magistráty a širší týmy připravuji individuální nabídku. Může jít o více běhů školení, rozdělení podle odborů nebo po domluvě i jiný vhodný formát pro širší kolektiv (např. dvouhodinová přednáška s úvodem do AI a představením klíčových nástrojů). <a href="/kontakt/">Napište mi a podíváme se na vhodné řešení</a>.</p>
           </div>
+
+          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
+            <a href="/kontakt/" class="btn btn-p">Poptat termín školení</a>
+            <a href="/skoleni/" class="btn btn-s" style="background:#fff;">Zobrazit všechna školení</a>
+          </div>
+          <p class="lp-copy" style="font-size:0.88rem;">Nejsem plátce DPH. Uvedená cena je konečná.</p>
         </div>
-        <div class="card" style="border:2px solid var(--pk-primary);">
-          <div style="display:flex; gap:.6rem; align-items:center; margin-bottom:.5rem;">
-            <span class="hero-label" style="margin:0;">2 dny</span>
-            <span class="text-muted text-sm">Více prostoru na vyzkoušení</span>
-          </div>
-          <div class="card-price">37 900 Kč</div>
-          <p style="color:var(--pk-primary); font-weight:700; font-size:1.15rem; margin-top:.5rem;">To je 2 530 Kč na účastníka</p>
-          <p class="card-price-note">při 15 účastnících</p>
-          <p class="text-muted" style="margin-top:.8rem;">Pro skupinu do 15 osob · 2 dny · 16 hodin</p>
-          <p class="text-muted text-sm">Vhodná volba pro úřady, které chtějí jít víc do hloubky, dát lidem větší prostor na vyzkoušení a pracovat i s vlastními úkoly, dokumenty a situacemi z praxe.</p>
-          <div style="background:#f8fafc; border-radius:var(--pk-radius); padding:1.2rem; margin-top:1rem; text-align:left;">
-            <p style="font-weight:700; margin-bottom:.8rem;">Dvoudenní varianta obsahuje vše z jednodenní a navíc:</p>
-            <ul class="text-sm text-muted" style="padding-left:1.2em;">
-              <li>Více prostoru pro konkrétní agendy a podklady úřadu</li>
-              <li>Více času pro různé odbory a specifické situace</li>
-              <li>Hlubší nácvik bezpečné práce s AI a kontroly výstupů</li>
-              <li>Více prostoru na dotazy, zpětnou vazbu a doladění postupů</li>
-              <li>Lepší přenos do každodenní praxe úřadu</li>
-            </ul>
-          </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="lp-dashed-box" style="max-width: 600px;">
+          <h3>AI školení pro firmy a komerční sektor</h3>
+          <p>Mám připravené firemní kurzy AI přizpůsobené potřebám podnikatelského sektoru.</p>
+          <a href="/prakticke-skoleni-ai-pro-firmy/" class="btn btn-p" style="margin-top:1rem;">Školení pro firmy</a>
         </div>
       </div>
-      <p class="text-muted" style="text-align:center; margin-top:1.5rem; font-size:.95rem;">Uvedené ceny platí pro standardní skupinu do 15 účastníků. Pro větší úřady a větší kolektivy připravím individuální řešení podle počtu lidí, agend a cíle školení.</p>
-      <div style="max-width:700px; margin:1.5rem auto 0; background:#f0f9ff; border-left:4px solid var(--pk-primary); border-radius:8px; padding:1.2rem 1.5rem;">
-        <p style="margin:0;"><strong>Větší úřady a větší kolektivy</strong><br><span class="text-muted text-sm">Pro větší úřady, magistráty a širší týmy připravuji individuální nabídku. Může jít o více běhů školení, rozdělení podle odborů nebo po domluvě i jiný vhodný formát pro širší kolektiv (např. dvouhodinová přednáška s úvodem do AI a představením klíčových nástrojů). <a href="/kontakt/">Napište mi a podíváme se na vhodné řešení</a>.</span></p>
-      </div>
-      <div class="mt-3" style="display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;">
-        <a href="/kontakt/" class="btn btn-p">Poptat termín školení</a>
-        <a href="/skoleni/" class="btn btn-s">Zobrazit všechna školení</a>
-      </div>
-      <p class="text-muted" style="text-align:center; font-size:.85rem; margin-top:1rem;">Nejsem plátce DPH. Uvedená cena je konečná.</p>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div style="max-width:700px; margin:0 auto; background:#fff; border:1px solid var(--pk-border); border-radius:var(--pk-radius-lg); padding:2rem;">
-        <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3>Co je dobré mít připravené</h3>
-        <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-          <li>Notebook pro každého účastníka a přístup k internetu</li>
-          <li>Ideálně zasedací místnost s projektorem nebo větší obrazovkou</li>
-          <li>Několik typických úkolů, které chcete zrychlit nebo zlepšit</li>
-          <li>Ukázkové podklady pro cvičení ideálně bez citlivých údajů</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div style="max-width:700px; margin:0 auto; background:#fff; border:1px solid var(--pk-border); border-radius:var(--pk-radius-lg); padding:2rem; text-align:center;">
-        <div class="benefit-icon" style="margin:0 auto 1rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3>AI školení pro firmy a komerční sektor</h3>
-        <p class="text-muted">Mám připravené firemní kurzy AI přizpůsobené potřebám podnikatelského sektoru.</p>
-        <a href="/prakticke-skoleni-ai-pro-firmy/" class="btn btn-s" style="margin-top:.8rem;">Školení pro firmy</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap narrow">
-      <div class="sec-head">
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
         <h2>Časté otázky k AI školení pro úřady a veřejnou správu</h2>
+        <div class="lp-faq-wrap">
+          <div class="faq">
+            {faqItems.map(([q, a]) => (
+              <details>
+                <summary>{q}</summary>
+                <div class="faq-body">{a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
-      <div class="faq">
-        <details>
-          <summary>Je AI školení vhodné pro obce, města a úřady různé velikosti?</summary>
-          <div class="faq-body">Ano. Školení přizpůsobuji velikosti instituce i tomu, co konkrétní úřad řeší. Jinak bude vypadat pro menší obec, jinak pro větší město nebo magistrát.</div>
-        </details>
-        <details>
-          <summary>Přizpůsobíte obsah školení našim agendám a odborům?</summary>
-          <div class="faq-body">Ano. Před školením si zjistím, jaké agendy a odbory chcete pokrýt, a připravím praktické ukázky přímo z vašeho prostředí, ať už jde o komunikaci, administrativu, sociální oblast, vedení úřadu nebo další agendy.</div>
-        </details>
-        <details>
-          <summary>Co se během školení konkrétně naučíme?</summary>
-          <div class="faq-body">Naučíte se, co do AI patří a co už ne, jak bezpečně pracovat s daty, jak si hlídat kvalitu výstupů a jak AI využít v běžné práci úřadu. Všechno si ukážeme na konkrétních situacích z veřejné správy.</div>
-        </details>
-        <details>
-          <summary>Co smí a nesmí úředník zadat do AI?</summary>
-          <div class="faq-body">Právě tohle je jedna z hlavních částí školení. Účastníci se naučí, jak přemýšlet o osobních údajích, citlivých informacích, GDPR a dalších rizicích tak, aby se AI používala bezpečně a s rozumem.</div>
-        </details>
-        <details>
-          <summary>Jak poznáme, jestli nám stačí jednodenní, nebo je lepší dvoudenní varianta?</summary>
-          <div class="faq-body">Jednodenní varianta je ideální, když chcete rychle získat přehled, nastavit bezpečný základ a ukázat lidem praktické využití AI v běžné práci. Dvoudenní varianta dává větší prostor na konkrétní agendy, různé odbory, práci s vlastními podklady a hlubší přenos do praxe.</div>
-        </details>
-        <details>
-          <summary>Je školení vhodné i pro větší úřady nebo větší kolektivy?</summary>
-          <div class="faq-body">Ano. Pro větší úřady, magistráty a větší kolektivy připravuji individuální nabídku. Může jít o více běhů školení, rozdělení podle odborů nebo po domluvě i jiný vhodný formát pro širší kolektiv.</div>
-        </details>
-        <details>
-          <summary>Kdy uvidíme výsledky v praxi?</summary>
-          <div class="faq-body">Většina účastníků začne nové postupy používat hned po školení. Nejrychleji se to projeví u rutinních úkolů, práce s podklady, interních textů a opakujících se dotazů.</div>
-        </details>
-        <details>
-          <summary>Jaké vybavení potřebujeme připravit?</summary>
-          <div class="faq-body">Stačí, aby každý účastník měl notebook a přístup k internetu. Pokud školíme u vás, ideální je zasedací místnost s projektorem nebo větší obrazovkou.</div>
-        </details>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="cta-box">
+    <section class="lp-final-cta">
+      <div class="wrap">
         <h2>Nastartujte bezpečné a praktické využití AI na vašem úřadě</h2>
         <p>Zavolejte mi nebo napište a během krátké konzultace zjistíme, která varianta školení bude pro váš úřad dávat největší smysl.</p>
-        <div style="display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
+        <div class="lp-actions">
           <a href="/kontakt/" class="btn btn-p">Domluvit termín školení</a>
-          <a href="mailto:mail@pavelkovarik.cz" class="btn btn-s" style="border-color:#fff; color:#fff;">Napsat e-mail</a>
+          <a href="mailto:mail@pavelkovarik.cz" class="btn btn-s">Napsat e-mail</a>
         </div>
-        <p style="margin-top:1rem; font-size:.95rem; font-weight:700;">+420 770 126 519 · mail@pavelkovarik.cz</p>
-        <p style="font-size:.9rem; opacity:.9;">Odpovídám zpravidla do 24 hodin. První konzultace k výběru školení je zdarma.</p>
+        <div class="lp-contact-line">+420 770 126 519 · mail@pavelkovarik.cz</div>
+        <div class="lp-contact-note">Odpovídám zpravidla do 24 hodin. První konzultace k výběru školení je zdarma.</div>
       </div>
-    </div>
-  </section>
-
+    </section>
+  </div>
 </Base>

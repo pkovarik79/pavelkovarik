@@ -1,335 +1,290 @@
 ---
 import Base from '../layouts/Base.astro';
 import '../styles/global.css';
+
+const beforeItems = [
+  'Copilot licence zůstávají nevyužité nebo se používají jen okrajově',
+  'Zaměstnanci nevědí, jak s Copilotem pracovat v běžné agendě',
+  'Výstupy jsou nevyrovnané a každý postupuje jinak',
+  'Část práce v Microsoft 365 zůstává stejně pomalá jako dřív',
+];
+
+const afterItems = [
+  'Lidé vědí, kde Copilot opravdu pomáhá a jak ho používat',
+  'Ve firmě vzniknou jasnější a praktičtější postupy',
+  'Dokumenty, tabulky, e-maily i prezentace vznikají rychleji',
+  'Investice do licencí začne dávat větší smysl i v praxi',
+];
+
+const learnBlocks = [
+  {
+    title: 'Základy práce s Copilotem a Copilot Chatem',
+    subtitle: 'Jak s Copilotem pracovat tak, aby byl opravdu užitečný, ne jen efektní.',
+    items: [
+      'Jak Copilot a Copilot Chat fungují a co od nich čekat',
+      'Jak zadávat úkoly, aby byly výstupy lepší',
+      'Kde Copilot šetří čas a kde má limity',
+      'Jak pracovat s firemními daty rozumně a bezpečně',
+    ],
+  },
+  {
+    title: 'Copilot v aplikacích Microsoft 365',
+    subtitle: 'Praktické využití v nástrojích, se kterými lidé ve firmách pracují každý den.',
+    items: [
+      'Word a PowerPoint – tvorba dokumentů a prezentací',
+      'Excel – práce s tabulkami, daty, vzorci a grafy',
+      'Outlook a Teams – e-maily, schůzky, shrnutí a úkoly',
+      'Praktická cvičení na situacích z vaší firmy',
+    ],
+  },
+];
+
+const appAreas = [
+  ['Word', 'Psaní, úpravy a zkracování dokumentů'],
+  ['Excel', 'Práce s tabulkami, daty, vzorci a grafy'],
+  ['PowerPoint', 'Příprava prezentací z podkladů a rychlejší úpravy slidů'],
+  ['Outlook', 'E-maily, shrnutí konverzací a návrhy odpovědí'],
+  ['Teams', 'Shrnutí schůzek, zápisy a úkoly'],
+  ['Copilot Chat', 'Práce s firemními soubory, podklady a interní znalostní bází'],
+];
+
+const audiences = [
+  ['Firmy s aktivními Copilot licencemi', 'Máte Microsoft 365 Copilot a chcete, aby ho zaměstnanci začali skutečně používat.'],
+  ['Týmy, které chtějí pracovat rychleji', 'Chcete zrychlit práci v dokumentech, tabulkách, e-mailech, schůzkách i prezentacích.'],
+  ['Firmy, které chtějí větší přínos z licencí', 'Potřebujete, aby investice do Copilotu dávala větší smysl i v každodenní firemní praxi.'],
+];
+
+const appreciated = [
+  ['Práce na vlastních podkladech', 'Cvičení vycházejí z dokumentů, tabulek a situací, které lidé ve firmě skutečně řeší.'],
+  ['Využití hned další den', 'Účastníci si odnášejí postupy, které mohou začít používat v běžné práci okamžitě.'],
+  ['Postupy pro každodenní práci', 'Nejde o obecné ukázky, ale o konkrétní využití Copilotu v reálném firemním prostředí.'],
+];
+
+const quotes = [
+  ['„Analýzu, na kterou jsem dřív potřeboval celé dopoledne, teď zvládnu výrazně rychleji. Copilot mi šetří spoustu času hlavně v Excelu.“', 'Martin Kovář', 'finanční analytik'],
+  ['„Konečně využíváme licence naplno. Příprava prezentací i dokumentů je rychlejší a tým má jasnější postupy.“', 'Petra Svobodová', 'projektová manažerka'],
+  ['„Oceňuji praktický přístup. Cvičili jsme na našich podkladech, takže jsme mohli hned druhý den začít nové postupy používat.“', 'Jan Novotný', 'vedoucí týmu'],
+];
+
+const includes = [
+  'Příprava obsahu na míru vašemu prostředí',
+  'Praktická cvičení na vašich dokumentech a datech',
+  'Šablony a návody pro práci v aplikacích Microsoft 365',
+  'Certifikát o absolvování pro účastníky',
+  'Následná e-mailová podpora',
+  'Doprava po celé ČR zdarma',
+];
+
+const faqItems = [
+  ['Co je školení Microsoft Copilot pro firmy a komu je určené?', 'Jde o jednodenní praktické školení pro firmy, které chtějí využívat Microsoft 365 Copilot ve Wordu, Excelu, Outlooku, Teams, PowerPointu i Copilot Chatu smysluplněji a efektivněji. Je určené pro týmy, které už Copilot mají nebo se na jeho využití připravují.'],
+  ['Kolik stojí školení Microsoft Copilot pro firmy?', 'Školení stojí 24 900 Kč pro skupinu do 15 účastníků. To je 1 660 Kč na osobu při plném počtu účastníků. V ceně je příprava obsahu, praktická cvičení, materiály, certifikáty i doprava po celé ČR zdarma.'],
+  ['Co se zaměstnanci na školení Microsoft Copilot naučí?', 'Naučí se, jak s Copilotem pracovat v běžné firemní agendě, jak zadávat úkoly, co od něj čekat, kde má limity a jak ho využít v dokumentech, tabulkách, e-mailech, schůzkách, prezentacích i při práci s firemními soubory a interními podklady.'],
+  ['Co umí Microsoft Copilot Chat ve firmě?', 'Copilot Chat slouží jako chatové rozhraní pro práci s úkoly, otázkami, souhrny a podklady. V praxi pomáhá rychleji dohledávat informace, shrnovat obsah, připravovat první návrhy textů a pracovat s firemními soubory a interními znalostmi napříč prostředím Microsoft 365.'],
+  ['Umí Microsoft Copilot pracovat s firemními soubory a interními podklady?', 'Ano. Právě to je jedna z jeho hlavních výhod. Na školení si ukazujeme, jak Copilot a Copilot Chat pomáhají při práci s firemními soubory, podklady, dokumenty a dalšími informacemi uloženými v prostředí Microsoft 365.'],
+  ['Potřebujeme před školením aktivní licence Microsoft 365 Copilot?', 'Ano. Každý účastník by měl mít aktivní licenci Microsoft 365 Copilot, aby mohl během školení pracovat přímo ve svém prostředí a vše si prakticky vyzkoušet.'],
+  ['Co je potřeba mít před školením připravené?', 'Stačí, když firma používá Microsoft 365, účastníci mají aktivní licenci Microsoft 365 Copilot a každý pracuje na vlastním počítači. Pro praktickou část je výhodou mít připravené i vlastní dokumenty, tabulky nebo jiné podklady.'],
+  ['Je školení vhodné i pro začátečníky?', 'Ano. Stačí běžná znalost aplikací Microsoft 365. Se samotným Copilotem nemusí mít účastníci předchozí zkušenost. Začínáme od základů a postupně přecházíme k praktičtějšímu využití.'],
+  ['Přizpůsobíte obsah školení našemu prostředí a dokumentům?', 'Ano. Před školením si zjistím, jaké typy dokumentů, tabulek a situací ve firmě řešíte, a podle toho upravím ukázky i praktická cvičení. Cílem je, aby si lidé odnesli postupy použitelné v jejich každodenní práci.'],
+  ['Jak na školení řešíte bezpečnost a práci s firemními daty?', 'Součástí školení je i to, co od Copilotu čekat, kde má limity a jak s ním pracovat rozumně a bezpečně ve firemním prostředí. Ukazujeme si také, kdy je vhodné být opatrnější při práci s citlivými informacemi nebo důležitými výstupy.'],
+];
 ---
 
 <Base title="Praktické školení Microsoft Copilot pro firmy | Pavel Kovařík" description="Naučím váš tým využívat Microsoft 365 Copilot ve Wordu, Excelu, Outlooku, Teams, PowerPointu i při práci s firemními soubory.">
+  <div class="lp-page">
+    <section class="lp-hero">
+      <div class="wrap">
+        <span class="lp-badge">Praktické firemní školení</span>
+        <h1>Praktické školení Microsoft Copilot pro firmy</h1>
+        <p class="lp-subtitle"><strong>Naučím váš tým využívat Microsoft 365 Copilot a Copilot Chat ve Wordu, Excelu, Outlooku, Teams, PowerPointu i při práci s firemními soubory tak, aby opravdu šetřil čas v každodenní práci.</strong></p>
+        <div class="lp-meta">
+          <span><i class="lp-meta-dot"></i>8 hodin</span>
+          <span><i class="lp-meta-dot"></i>Až 15 účastníků</span>
+          <span><i class="lp-meta-dot"></i>24&nbsp;900 Kč</span>
+        </div>
+        <div class="lp-actions">
+          <a href="/kontakt/" class="btn btn-p">Objednat školení</a>
+          <a href="#cena" class="btn btn-s">Zjistit cenu</a>
+        </div>
+      </div>
+    </section>
 
-  <section class="hero hero-center wrap">
-    <span class="hero-label">Praktické firemní školení</span>
-    <h1>Praktické školení Microsoft Copilot pro firmy</h1>
-    <p class="lead"><strong>Naučím váš tým využívat Microsoft 365 Copilot a Copilot Chat ve Wordu, Excelu, Outlooku, Teams, PowerPointu i při práci s firemními soubory tak, aby opravdu šetřil čas v každodenní práci.</strong></p>
-    <div style="display:flex; justify-content:center; gap:2rem; font-weight:600; font-size:.95rem; color:var(--pk-text-3); margin:1rem 0;">
-      <span>8 hodin</span>
-      <span>Až 15 účastníků</span>
-      <span>24 900 Kč</span>
-    </div>
-    <div class="hero-actions">
-      <a href="/kontakt/" class="btn btn-p">Objednat školení</a>
-      <a href="#cena" class="btn btn-s">Zjistit cenu</a>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div style="max-width:750px; margin:0 auto; text-align:center; background:#fff; border:2px solid var(--pk-primary); border-radius:var(--pk-radius-lg); padding:1.5rem 2rem; box-shadow:0 12px 36px rgba(61,92,217,0.15);">
-        <h3 style="color:var(--pk-primary); margin-bottom:.4rem; font-size:1.15rem;">Školení Microsoft Copilot postavené na firemní praxi</h3>
-        <p class="text-muted" style="font-size:.95rem; margin:0;">Jednodenní školení zaměřené na praktické využití Microsoft 365 Copilot a Copilot Chatu ve firemní praxi. Účastníci se naučí pracovat s dokumenty, tabulkami, e-maily, schůzkami, prezentacemi i s firemními podklady a soubory napříč Microsoft 365.</p>
+    <div class="lp-verified-wrap">
+      <div class="lp-verified">
+        <div class="lp-stars">★★★★★</div>
+        <h3>Školení Microsoft Copilot postavené na firemní praxi</h3>
+        <p>Jednodenní školení zaměřené na praktické využití Microsoft 365 Copilot a Copilot Chatu ve firemní praxi. Účastníci se naučí pracovat s dokumenty, tabulkami, e-maily, schůzkami, prezentacemi i s firemními podklady a soubory napříč Microsoft 365.</p>
       </div>
     </div>
-  </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
+    <section class="sec">
+      <div class="wrap">
         <h2>Proč firmy investují do školení Copilotu</h2>
-      </div>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Bez školení</h3>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Copilot licence zůstávají nevyužité nebo se používají jen okrajově</li>
-            <li>Zaměstnanci nevědí, jak s Copilotem pracovat v běžné agendě</li>
-            <li>Výstupy jsou nevyrovnané a každý postupuje jinak</li>
-            <li>Část práce v Microsoft 365 zůstává stejně pomalá jako dřív</li>
-          </ul>
-        </div>
-        <div class="card" style="border-color:var(--pk-primary);">
-          <h3 style="color:var(--pk-primary);">Po školení</h3>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Lidé vědí, kde Copilot opravdu pomáhá a jak ho používat</li>
-            <li>Ve firmě vzniknou jasnější a praktičtější postupy</li>
-            <li>Dokumenty, tabulky, e-maily i prezentace vznikají rychleji</li>
-            <li>Investice do licencí začne dávat větší smysl i v praxi</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Co se na školení naučíte</h2>
-        <p>Prakticky, srozumitelně a na úkolech, které dávají ve firmě smysl.</p>
-      </div>
-      <div style="max-width:720px; margin:0 auto 1.5rem; text-align:center; background:#fff; border:1px solid var(--pk-border); border-radius:var(--pk-radius-lg); padding:1.4rem 1.6rem;">
-        <h3 style="color:var(--pk-primary); margin-bottom:.5rem;">📄 Detailní obsah školení</h3>
-        <p class="text-muted" style="margin:0 0 .8rem 0;">Podrobnou osnovu pro Word, Excel, Outlook, Teams, PowerPoint i Copilot Chat pošlu podle vašeho prostředí a úrovně týmu.</p>
-        <a href="/kontakt/" class="btn btn-s">Vyžádat detailní osnovu</a>
-      </div>
-      <div class="grid grid-2">
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3>Základy práce s Copilotem a Copilot Chatem</h3>
-          <p>Jak s Copilotem pracovat tak, aby byl opravdu užitečný, ne jen efektní.</p>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Jak Copilot a Copilot Chat fungují a co od nich čekat</li>
-            <li>Jak zadávat úkoly, aby byly výstupy lepší</li>
-            <li>Kde Copilot šetří čas a kde má limity</li>
-            <li>Jak pracovat s firemními daty rozumně a bezpečně</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <h3>Copilot v aplikacích Microsoft 365</h3>
-          <p>Praktické využití v nástrojích, se kterými lidé ve firmách pracují každý den.</p>
-          <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-            <li>Word a PowerPoint - tvorba dokumentů a prezentací</li>
-            <li>Excel - práce s tabulkami, daty, vzorci a grafy</li>
-            <li>Outlook a Teams - e-maily, schůzky, shrnutí a úkoly</li>
-            <li>Praktická cvičení na situacích z vaší firmy</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Copilot v klíčových částech Microsoft 365</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <h3>Word</h3>
-          <p>Psaní, úpravy a zkracování dokumentů</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <h3>Excel</h3>
-          <p>Práce s tabulkami, daty, vzorci a grafy</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <h3>PowerPoint</h3>
-          <p>Příprava prezentací z podkladů a rychlejší úpravy slidů</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <h3>Outlook</h3>
-          <p>E-maily, shrnutí konverzací a návrhy odpovědí</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Teams</h3>
-          <p>Shrnutí schůzek, zápisy a úkoly</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3>Copilot Chat</h3>
-          <p>Práce s firemními soubory, podklady a interní znalostní bází</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Pro koho je školení určeno</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-          <h3>Firmy s aktivními Copilot licencemi</h3>
-          <p>Máte Microsoft 365 Copilot a chcete, aby ho zaměstnanci začali skutečně používat.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-          <h3>Týmy, které chtějí pracovat rychleji</h3>
-          <p>Chcete zrychlit práci v dokumentech, tabulkách, e-mailech, schůzkách i prezentacích.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-          <h3>Firmy, které chtějí větší přínos z licencí</h3>
-          <p>Potřebujete, aby investice do Copilotu dávala větší smysl i v každodenní firemní praxi.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Co firmy na školení oceňují</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
-          <h3>Práce na vlastních podkladech</h3>
-          <p>Cvičení vycházejí z dokumentů, tabulek a situací, které lidé ve firmě skutečně řeší.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <h3>Využití hned další den</h3>
-          <p>Účastníci si odnášejí postupy, které mohou začít používat v běžné práci okamžitě.</p>
-        </div>
-        <div class="card">
-          <div class="benefit-icon" style="margin:0 0 1rem 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <h3>Postupy pro každodenní práci</h3>
-          <p>Nejde o obecné ukázky, ale o konkrétní využití Copilotu v reálném firemním prostředí.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Zkušenosti z absolvovaných školení</h2>
-      </div>
-      <div class="grid grid-3">
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p style="font-style:italic;">"Analýzu, na kterou jsem dřív potřeboval celé dopoledne, teď zvládnu výrazně rychleji. Copilot mi šetří spoustu času hlavně v Excelu."</p>
-          <p><strong style="color:var(--pk-primary);">Martin Kovář</strong><br><span class="text-muted text-sm">finanční analytik</span></p>
-        </div>
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p style="font-style:italic;">"Konečně využíváme licence naplno. Příprava prezentací i dokumentů je rychlejší a tým má jasnější postupy."</p>
-          <p><strong style="color:var(--pk-primary);">Petra Svobodová</strong><br><span class="text-muted text-sm">projektová manažerka</span></p>
-        </div>
-        <div class="card" style="border-left:4px solid var(--pk-primary);">
-          <p style="font-style:italic;">"Oceňuji praktický přístup. Cvičili jsme na našich podkladech, takže jsme mohli hned druhý den začít nové postupy používat."</p>
-          <p><strong style="color:var(--pk-primary);">Jan Novotný</strong><br><span class="text-muted text-sm">vedoucí týmu</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="cena">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Cena školení</h2>
-        <p>Jednodenní praktické školení pro firmy, které chtějí využívat Microsoft 365 Copilot naplno.</p>
-      </div>
-      <div style="max-width:450px; margin:0 auto; text-align:center;">
-        <div class="card" style="border:2px solid var(--pk-primary);">
-          <div class="card-price">24 900 Kč</div>
-          <p style="color:var(--pk-primary); font-weight:700; font-size:1.15rem; margin-top:.5rem;">To je 1 660 Kč na zaměstnance</p>
-          <p class="card-price-note">při 15 účastnících</p>
-          <p class="text-muted" style="margin-top:.8rem;">Pro skupinu do 15 osob · 8 hodin školení</p>
-          <p class="text-muted" style="font-size:.9rem; font-style:italic; margin-top:.8rem;">Menší tým? <a href="/kontakt/" style="color:var(--pk-primary); font-weight:600;">Připravím vám kalkulaci na míru.</a></p>
-          <div style="background:#f8fafc; border-radius:var(--pk-radius); padding:1.2rem; margin-top:1rem; text-align:left;">
-            <p style="font-weight:700; margin-bottom:.8rem;">V ceně je zahrnuto:</p>
-            <ul class="text-sm text-muted" style="padding-left:1.2em;">
-              <li>Příprava obsahu na míru vašemu prostředí</li>
-              <li>Praktická cvičení na vašich dokumentech a datech</li>
-              <li>Šablony a návody pro práci v aplikacích Microsoft 365</li>
-              <li>Certifikát o absolvování pro účastníky</li>
-              <li>Následná e-mailová podpora</li>
-              <li>Doprava po celé ČR zdarma</li>
+        <div class="lp-compare">
+          <div class="lp-compare-card is-before">
+            <h3>Bez školení</h3>
+            <ul class="lp-compare-list">
+              {beforeItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
-          <p class="text-muted" style="font-size:.9rem; margin-top:1rem;">Po školení budete mít k dispozici také praktické šablony a doporučené postupy pro efektivnější využití Microsoft 365 Copilot ve firmě.</p>
-          <p class="text-muted" style="font-size:.85rem; margin-top:1rem;">Nejsem plátce DPH. Uvedená cena je konečná.</p>
+          <div class="lp-compare-card is-after">
+            <h3>Po školení</h3>
+            <ul class="lp-compare-list">
+              {afterItems.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
         </div>
-        <div class="mt-3" style="display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap;">
-          <a href="/kontakt/" class="btn btn-p">Objednat školení</a>
-          <a href="/skoleni/" class="btn btn-s">Zobrazit všechna školení</a>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Co se na školení naučíte</h2>
+        <div class="lp-card-grid-2">
+          {learnBlocks.map((block, index) => (
+            <div class="lp-card">
+              <div class="lp-icon">{index + 1}</div>
+              <h3 style="color:var(--pk-primary);">{block.title}</h3>
+              <p>{block.subtitle}</p>
+              <ul class="lp-bullet-list">
+                {block.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div class="lp-info-box">
+          <h3>Detailní obsah školení</h3>
+          <p>Chcete vidět přesný harmonogram a příklady cvičení? Stáhněte si modelový program.</p>
+          <a href="/wp-content/uploads/harmonogram-skoleni-copilot.pdf" class="btn btn-p" style="margin-top:1rem;" download>Stáhnout harmonogram (PDF)</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec sec-alt">
-    <div class="wrap">
-      <div style="max-width:700px; margin:0 auto; background:#fff; border:1px solid var(--pk-border); border-radius:var(--pk-radius-lg); padding:2rem;">
-        <h3>Co je potřeba mít před školením připravené</h3>
-        <ul class="mt-2 text-sm text-muted" style="padding-left:1.2em;">
-          <li>Firma používá Microsoft 365</li>
-          <li>Účastníci mají aktivní licenci Microsoft 365 Copilot</li>
-          <li>Každý pracuje na vlastním počítači</li>
-          <li>Pro praktickou část je výhodou mít připravené vlastní dokumenty, tabulky nebo jiné podklady</li>
-        </ul>
+    <section class="sec">
+      <div class="wrap">
+        <h2>Copilot v klíčových částech Microsoft 365</h2>
+        <div class="lp-card-grid-6">
+          {appAreas.map(([title, text], index) => (
+            <div class="lp-card center">
+              <div class="lp-icon">{index + 1}</div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div style="max-width:700px; margin:0 auto; background:var(--pk-primary-light); border:1px solid var(--pk-border); border-radius:var(--pk-radius-lg); padding:2rem; text-align:center;">
-        <div class="benefit-icon" style="margin:0 auto 1rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
-        <h3 style="color:var(--pk-primary);">Praktické školení AI pro firmy</h3>
-        <p class="text-muted" style="font-size:.95rem;">Kromě Microsoft Copilotu nabízím i praktické školení AI pro firmy zaměřené na využití umělé inteligence v běžné práci napříč týmy a rolemi.</p>
-        <a href="/prakticke-skoleni-ai-pro-firmy/" class="btn btn-s" style="margin-top:.8rem;">Školení AI pro firmy</a>
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Pro koho je školení určeno</h2>
+        <div class="lp-card-grid-3">
+          {audiences.map(([title, text]) => (
+            <div class="lp-card center">
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec sec-alt">
-    <div class="wrap narrow">
-      <div class="sec-head">
+    <section class="sec">
+      <div class="wrap">
+        <h2>Co firmy na školení oceňují</h2>
+        <div class="lp-card-grid-3">
+          {appreciated.map(([title, text], index) => (
+            <div class="lp-card center">
+              <div class="lp-icon">{index + 1}</div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
+        <h2>Zkušenosti z absolvovaných školení</h2>
+        <div class="lp-quote-grid">
+          {quotes.map(([text, name, role]) => (
+            <div class="lp-quote-card">
+              <p>{text}</p>
+              <strong>{name}</strong>
+              <span class="lp-quote-role">{role}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="cena">
+      <div class="wrap">
+        <div class="lp-pricing-shell">
+          <h2 style="margin-bottom:0.55rem;">Cena školení</h2>
+          <p class="lp-section-intro" style="margin-top:0; margin-bottom:0;">Jednodenní praktické školení pro firmy, které chtějí využívat Microsoft 365 Copilot naplno.</p>
+          <div style="max-width: 470px; margin: 1.8rem auto 0;">
+            <div class="lp-price-card">
+              <div class="lp-price-value">24&nbsp;900 Kč</div>
+              <p class="lp-price-per">To je 1&nbsp;660 Kč na zaměstnance</p>
+              <p class="lp-price-note">pro skupinu do 15 osob • 8 hodin školení</p>
+              <p class="lp-price-desc" style="font-style:italic;">Menší tým? <a href="/kontakt/">Připravím vám kalkulaci na míru.</a></p>
+              <div class="lp-price-box">
+                <p>V ceně je zahrnuto:</p>
+                <ul class="lp-check-list">
+                  {includes.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+              <p class="lp-copy" style="margin-top:1rem;">Po školení budete mít k dispozici také praktické šablony a doporučené postupy pro efektivnější využití Microsoft 365 Copilot ve firmě.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;">
+            <a href="/kontakt/" class="btn btn-p">Objednat školení</a>
+            <a href="/skoleni/" class="btn btn-s" style="background:#fff;">Zobrazit všechna školení</a>
+          </div>
+          <p class="lp-copy" style="font-size:0.88rem;">Nejsem plátce DPH. Uvedená cena je konečná.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="lp-dashed-box" style="max-width: 600px;">
+          <h3>Praktické školení AI pro firmy</h3>
+          <p>Kromě Microsoft Copilotu nabízím i praktické školení AI pro firmy zaměřené na využití umělé inteligence v běžné práci napříč týmy a rolemi.</p>
+          <a href="/prakticke-skoleni-ai-pro-firmy/" class="btn btn-p" style="margin-top:1rem;">Školení AI pro firmy</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" style="background:#fff;">
+      <div class="wrap">
         <h2>Časté otázky k Microsoft Copilot školení</h2>
+        <div class="lp-faq-wrap">
+          <div class="faq">
+            {faqItems.map(([q, a]) => (
+              <details>
+                <summary>{q}</summary>
+                <div class="faq-body">{a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
-      <div class="faq">
-        <details>
-          <summary>Co je školení Microsoft Copilot pro firmy a komu je určené?</summary>
-          <div class="faq-body">Jde o jednodenní praktické školení pro firmy, které chtějí využívat Microsoft 365 Copilot ve Wordu, Excelu, Outlooku, Teams, PowerPointu i Copilot Chatu smysluplněji a efektivněji. Je určené pro týmy, které už Copilot mají nebo se na jeho využití připravují.</div>
-        </details>
-        <details>
-          <summary>Kolik stojí školení Microsoft Copilot pro firmy?</summary>
-          <div class="faq-body">Školení stojí 24 900 Kč pro skupinu do 15 účastníků. To je 1 660 Kč na osobu při plném počtu účastníků. V ceně je příprava obsahu, praktická cvičení, materiály, certifikáty i doprava po celé ČR zdarma.</div>
-        </details>
-        <details>
-          <summary>Co se zaměstnanci na školení Microsoft Copilot naučí?</summary>
-          <div class="faq-body">Naučí se, jak s Copilotem pracovat v běžné firemní agendě, jak zadávat úkoly, co od něj čekat, kde má limity a jak ho využít v dokumentech, tabulkách, e-mailech, schůzkách, prezentacích i při práci s firemními soubory a interními podklady.</div>
-        </details>
-        <details>
-          <summary>Co umí Microsoft Copilot Chat ve firmě?</summary>
-          <div class="faq-body">Copilot Chat slouží jako chatové rozhraní pro práci s úkoly, otázkami, souhrny a podklady. V praxi pomáhá rychleji dohledávat informace, shrnovat obsah, připravovat první návrhy textů a pracovat s firemními soubory a interními znalostmi napříč prostředím Microsoft 365.</div>
-        </details>
-        <details>
-          <summary>Umí Microsoft Copilot pracovat s firemními soubory a interními podklady?</summary>
-          <div class="faq-body">Ano. Právě to je jedna z jeho hlavních výhod. Na školení si ukazujeme, jak Copilot a Copilot Chat pomáhají při práci s firemními soubory, podklady, dokumenty a dalšími informacemi uloženými v prostředí Microsoft 365.</div>
-        </details>
-        <details>
-          <summary>Potřebujeme před školením aktivní licence Microsoft 365 Copilot?</summary>
-          <div class="faq-body">Ano. Každý účastník by měl mít aktivní licenci Microsoft 365 Copilot, aby mohl během školení pracovat přímo ve svém prostředí a vše si prakticky vyzkoušet.</div>
-        </details>
-        <details>
-          <summary>Co je potřeba mít před školením připravené?</summary>
-          <div class="faq-body">Stačí, když firma používá Microsoft 365, účastníci mají aktivní licenci Microsoft 365 Copilot a každý pracuje na vlastním počítači. Pro praktickou část je výhodou mít připravené i vlastní dokumenty, tabulky nebo jiné podklady.</div>
-        </details>
-        <details>
-          <summary>Je školení vhodné i pro začátečníky?</summary>
-          <div class="faq-body">Ano. Stačí běžná znalost aplikací Microsoft 365. Se samotným Copilotem nemusí mít účastníci předchozí zkušenost. Začínáme od základů a postupně přecházíme k praktičtějšímu využití.</div>
-        </details>
-        <details>
-          <summary>Přizpůsobíte obsah školení našemu prostředí a dokumentům?</summary>
-          <div class="faq-body">Ano. Před školením si zjistím, jaké typy dokumentů, tabulek a situací ve firmě řešíte, a podle toho upravím ukázky i praktická cvičení. Cílem je, aby si lidé odnesli postupy použitelné v jejich každodenní práci.</div>
-        </details>
-        <details>
-          <summary>Jak na školení řešíte bezpečnost a práci s firemními daty?</summary>
-          <div class="faq-body">Součástí školení je i to, co od Copilotu čekat, kde má limity a jak s ním pracovat rozumně a bezpečně ve firemním prostředí. Ukazujeme si také, kdy je vhodné být opatrnější při práci s citlivými informacemi nebo důležitými výstupy.</div>
-        </details>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="cta-box">
+    <section class="lp-final-cta">
+      <div class="wrap">
         <h2>Využijte Copilot licence naplno</h2>
         <p>Zavolejte mi nebo napište a během krátké konzultace zjistíme, jak nejlépe využít Microsoft 365 Copilot ve vaší firmě.</p>
-        <div style="display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;">
+        <div class="lp-actions">
           <a href="/kontakt/" class="btn btn-p">Objednat školení</a>
-          <a href="mailto:mail@pavelkovarik.cz" class="btn btn-s" style="border-color:#fff; color:#fff;">Napsat e-mail</a>
+          <a href="mailto:mail@pavelkovarik.cz" class="btn btn-s">Napsat e-mail</a>
         </div>
-        <p style="margin-top:1rem; font-size:.95rem; font-weight:700;">+420 770 126 519 · mail@pavelkovarik.cz</p>
-        <p style="font-size:.9rem; opacity:.9;">Odpovídám zpravidla do 24 hodin. První konzultace je zdarma.</p>
+        <div class="lp-contact-line">+420&nbsp;770&nbsp;126&nbsp;519 · mail@pavelkovarik.cz</div>
+        <div class="lp-contact-note">Odpovídám zpravidla do 24 hodin. První konzultace je zdarma.</div>
       </div>
-    </div>
-  </section>
-
+    </section>
+  </div>
 </Base>
