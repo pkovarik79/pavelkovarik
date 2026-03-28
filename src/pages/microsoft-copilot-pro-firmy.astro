@@ -87,6 +87,9 @@ const faqItems = [
   ['Přizpůsobíte obsah školení našemu prostředí a dokumentům?', 'Ano. Před školením si zjistím, jaké typy dokumentů, tabulek a situací ve firmě řešíte, a podle toho upravím ukázky i praktická cvičení. Cílem je, aby si lidé odnesli postupy použitelné v jejich každodenní práci.'],
   ['Jak na školení řešíte bezpečnost a práci s firemními daty?', 'Součástí školení je i to, co od Copilotu čekat, kde má limity a jak s ním pracovat rozumně a bezpečně ve firemním prostředí. Ukazujeme si také, kdy je vhodné být opatrnější při práci s citlivými informacemi nebo důležitými výstupy.'],
 ];
+
+const visibleFaqItems = faqItems.slice(0, 5);
+const extraFaqItems = faqItems.slice(5);
 ---
 
 <Base title="Praktické školení Microsoft Copilot pro firmy | Pavel Kovařík" description="Naučím váš tým využívat Microsoft 365 Copilot ve Wordu, Excelu, Outlooku, Teams, PowerPointu i při práci s firemními soubory.">
@@ -97,9 +100,24 @@ const faqItems = [
         <h1>Praktické školení Microsoft Copilot pro firmy</h1>
         <p class="lp-subtitle"><strong>Naučím váš tým využívat Microsoft 365 Copilot a Copilot Chat ve Wordu, Excelu, Outlooku, Teams, PowerPointu i při práci s firemními soubory tak, aby opravdu šetřil čas v každodenní práci.</strong></p>
         <div class="lp-meta">
-          <span><i class="lp-meta-dot"></i>8 hodin</span>
-          <span><i class="lp-meta-dot"></i>Až 15 účastníků</span>
-          <span><i class="lp-meta-dot"></i>24&nbsp;900 Kč</span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            </i>
+            8 hodin
+          </span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16 20v-1.2a3.8 3.8 0 0 0-3.8-3.8H7.8A3.8 3.8 0 0 0 4 18.8V20"></path><circle cx="10" cy="8" r="3"></circle><path d="M20 20v-1.2a3.4 3.4 0 0 0-2.4-3.3"></path><path d="M15.8 5.2A3 3 0 0 1 15.8 11"></path></svg>
+            </i>
+            Až 15 účastníků
+          </span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 7h11l3 3v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path><path d="M15 7v4h4"></path><path d="M9 12h6"></path></svg>
+            </i>
+            24&nbsp;900 Kč
+          </span>
         </div>
         <div class="lp-actions">
           <a href="/kontakt/" class="btn btn-p">Objednat školení</a>
@@ -264,9 +282,9 @@ const faqItems = [
           <h2>Časté otázky k Microsoft Copilot školení</h2>
           <p>To nejdůležitější na jednom místě - licence, průběh školení, cena i to, jak vše přizpůsobuji vašemu prostředí Microsoft 365.</p>
         </div>
-        <div class="lp-faq-wrap">
+        <div class="lp-faq-wrap" data-faq-group>
           <div class="faq">
-            {faqItems.map(([q, a]) => (
+            {visibleFaqItems.map(([q, a]) => (
               <details>
                 <summary>{q}</summary>
                 <div class="faq-body">
@@ -276,6 +294,21 @@ const faqItems = [
                 </div>
               </details>
             ))}
+            <div class="lp-faq-extra" data-faq-extra hidden>
+              {extraFaqItems.map(([q, a]) => (
+                <details>
+                  <summary>{q}</summary>
+                  <div class="faq-body">
+                    <div class="faq-body-inner">
+                      <p>{a}</p>
+                    </div>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+          <div class="lp-faq-more">
+            <button type="button" class="btn btn-p lp-faq-toggle" data-faq-toggle>Zobrazit další otázky</button>
           </div>
         </div>
       </div>

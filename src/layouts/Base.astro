@@ -194,6 +194,27 @@ const canonicalUrl = new URL(path, Astro.site).href;
     scrollBtn?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    document.querySelectorAll('[data-faq-group]').forEach((group) => {
+      const extraFaq = group.querySelector('[data-faq-extra]');
+      const faqToggle = group.querySelector('[data-faq-toggle]');
+
+      if (!(extraFaq instanceof HTMLElement) || !(faqToggle instanceof HTMLElement)) {
+        return;
+      }
+
+      faqToggle.addEventListener('click', () => {
+        const isHidden = extraFaq.hasAttribute('hidden');
+
+        if (isHidden) {
+          extraFaq.removeAttribute('hidden');
+          faqToggle.textContent = 'Skrýt další otázky';
+        } else {
+          extraFaq.setAttribute('hidden', '');
+          faqToggle.textContent = 'Zobrazit další otázky';
+        }
+      });
+    });
   </script>
 </body>
 </html>

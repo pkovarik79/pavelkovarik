@@ -77,6 +77,9 @@ const faqItems = [
   ['Jaká témata bezpečnosti a rizik ve školení řešíte?', 'Řešíme práci s daty, citlivé informace, GDPR, AI Act, reputační rizika, ověřování výstupů, odpovědnost za rozhodnutí opřená o AI i situace, kde je potřeba větší opatrnost při zavádění nových nástrojů do firmy.'],
   ['Kolik stojí AI školení pro manažery?', 'Online varianta stojí 9 800 Kč, varianta ve firmě 14 900 Kč. V obou případech jde o čtyřhodinové školení pro skupinu do 10 účastníků a obsah je stejný.'],
 ];
+
+const visibleFaqItems = faqItems.slice(0, 5);
+const extraFaqItems = faqItems.slice(5);
 ---
 
 <Base title="AI pro manažery: rozhodování, rizika a příležitosti | Pavel Kovařík" description="Rychlý přehled, co AI dnes umí a kde pomůže vašemu byznysu. Strategický přehled bez technických detailů pro CEO, majitele firem a top management.">
@@ -87,9 +90,24 @@ const faqItems = [
         <h1>AI pro manažery: rozhodování, rizika a příležitosti</h1>
         <p class="lp-subtitle"><strong>Rychlý přehled, co AI dnes umí a kde pomůže vašemu byznysu</strong></p>
         <div class="lp-meta">
-          <span><i class="lp-meta-dot"></i>4 hodiny</span>
-          <span><i class="lp-meta-dot"></i>Až 10 účastníků</span>
-          <span><i class="lp-meta-dot"></i>Online nebo ve firmě</span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            </i>
+            4 hodiny
+          </span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16 20v-1.2a3.8 3.8 0 0 0-3.8-3.8H7.8A3.8 3.8 0 0 0 4 18.8V20"></path><circle cx="10" cy="8" r="3"></circle><path d="M20 20v-1.2a3.4 3.4 0 0 0-2.4-3.3"></path><path d="M15.8 5.2A3 3 0 0 1 15.8 11"></path></svg>
+            </i>
+            Až 10 účastníků
+          </span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="2"></rect><path d="M8 19h8"></path><path d="M12 15v4"></path></svg>
+            </i>
+            Online nebo ve firmě
+          </span>
         </div>
         <div class="lp-actions">
           <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
@@ -263,9 +281,9 @@ const faqItems = [
           <h2>Časté otázky k AI školení pro manažery</h2>
           <p>To nejdůležitější na jednom místě - délka, cena, formát i to, jak školení přizpůsobuji vašemu managementu.</p>
         </div>
-        <div class="lp-faq-wrap">
+        <div class="lp-faq-wrap" data-faq-group>
           <div class="faq">
-            {faqItems.map(([q, a]) => (
+            {visibleFaqItems.map(([q, a]) => (
               <details>
                 <summary>{q}</summary>
                 <div class="faq-body">
@@ -275,6 +293,21 @@ const faqItems = [
                 </div>
               </details>
             ))}
+            <div class="lp-faq-extra" data-faq-extra hidden>
+              {extraFaqItems.map(([q, a]) => (
+                <details>
+                  <summary>{q}</summary>
+                  <div class="faq-body">
+                    <div class="faq-body-inner">
+                      <p>{a}</p>
+                    </div>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+          <div class="lp-faq-more">
+            <button type="button" class="btn btn-p lp-faq-toggle" data-faq-toggle>Zobrazit další otázky</button>
           </div>
         </div>
       </div>

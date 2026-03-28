@@ -137,6 +137,9 @@ const faqItems = [
   ['Kdy uvidíme výsledky v praxi?', 'Většina účastníků začne nové postupy používat hned po školení. Nejrychleji se to projeví u rutinních úkolů, práce s podklady, interních textů a opakujících se dotazů.'],
   ['Jaké vybavení potřebujeme připravit?', 'Stačí, aby každý účastník měl notebook a přístup k internetu. Pokud školíme u vás, ideální je zasedací místnost s projektorem nebo větší obrazovkou.'],
 ];
+
+const visibleFaqItems = faqItems.slice(0, 5);
+const extraFaqItems = faqItems.slice(5);
 ---
 
 <Base title="Praktické školení AI pro města, obce a veřejnou správu | Pavel Kovařík" description="Proškolil jsem přes 1 000 zaměstnanců. Jako bývalý tiskový mluvčí znám prostředí úřadů zevnitř.">
@@ -147,9 +150,24 @@ const faqItems = [
         <h1>Praktické školení AI pro města, obce a veřejnou správu</h1>
         <p class="lp-subtitle"><strong>Konečně máte čas na to, co vás na práci skutečně naplňuje – pomáhat občanům ještě lépe.</strong></p>
         <div class="lp-meta">
-          <span><i class="lp-meta-dot"></i>1 nebo 2 dny školení</span>
-          <span><i class="lp-meta-dot"></i>Až 15 účastníků</span>
-          <span><i class="lp-meta-dot"></i>Bezpečné používání AI na úřadě</span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            </i>
+            1 nebo 2 dny školení
+          </span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16 20v-1.2a3.8 3.8 0 0 0-3.8-3.8H7.8A3.8 3.8 0 0 0 4 18.8V20"></path><circle cx="10" cy="8" r="3"></circle><path d="M20 20v-1.2a3.4 3.4 0 0 0-2.4-3.3"></path><path d="M15.8 5.2A3 3 0 0 1 15.8 11"></path></svg>
+            </i>
+            Až 15 účastníků
+          </span>
+          <span class="lp-meta-item">
+            <i class="lp-meta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-2.9 8.3-7 9.5C7.9 19.3 5 15.4 5 11V6l7-3z"></path></svg>
+            </i>
+            Bezpečné používání AI na úřadě
+          </span>
         </div>
         <div class="lp-actions">
           <a href="/kontakt/" class="btn btn-p">Domluvit termín</a>
@@ -356,9 +374,9 @@ const faqItems = [
           <h2>Časté otázky k AI školení pro úřady a veřejnou správu</h2>
           <p>To nejdůležitější na jednom místě - délka, cena, formát i to, jak školení přizpůsobuji vašemu úřadu.</p>
         </div>
-        <div class="lp-faq-wrap">
+        <div class="lp-faq-wrap" data-faq-group>
           <div class="faq">
-            {faqItems.map(([q, a]) => (
+            {visibleFaqItems.map(([q, a]) => (
               <details>
                 <summary>{q}</summary>
                 <div class="faq-body">
@@ -368,6 +386,21 @@ const faqItems = [
                 </div>
               </details>
             ))}
+            <div class="lp-faq-extra" data-faq-extra hidden>
+              {extraFaqItems.map(([q, a]) => (
+                <details>
+                  <summary>{q}</summary>
+                  <div class="faq-body">
+                    <div class="faq-body-inner">
+                      <p>{a}</p>
+                    </div>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+          <div class="lp-faq-more">
+            <button type="button" class="btn btn-p lp-faq-toggle" data-faq-toggle>Zobrazit další otázky</button>
           </div>
         </div>
       </div>

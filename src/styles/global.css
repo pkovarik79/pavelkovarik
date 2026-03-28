@@ -473,10 +473,31 @@ p:last-child { margin-bottom: 0; }
   font-weight: 700;
 }
 
-.lp-meta span {
+.lp-meta span,
+.lp-meta-item {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+}
+
+.lp-meta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.lp-meta-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .lp-meta-dot {
@@ -558,17 +579,27 @@ p:last-child { margin-bottom: 0; }
   margin: -0.35rem auto 1.9rem;
 }
 
+.lp-page .sec > .wrap > h2 {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .lp-compare {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.6rem;
+  max-width: 1040px;
+  margin: 0 auto;
+  align-items: stretch;
 }
 
 .lp-compare-card {
   background: #fff;
   border: 1px solid var(--pk-border);
   border-radius: 1.35rem;
-  padding: 2rem 2rem 1.8rem;
+  padding: 1.8rem 1.7rem 1.6rem;
   box-shadow: var(--pk-shadow);
 }
 
@@ -582,8 +613,8 @@ p:last-child { margin-bottom: 0; }
 
 .lp-compare-card h3 {
   text-align: center;
-  margin-bottom: 1.35rem;
-  font-size: 1.25rem;
+  margin-bottom: 1.15rem;
+  font-size: 1.18rem;
 }
 
 .lp-compare-card.is-after h3 {
@@ -646,20 +677,32 @@ p:last-child { margin-bottom: 0; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.55rem;
   background: #fff;
   border: 1px solid var(--pk-border);
   border-radius: 999px;
-  padding: 0.8rem 1.25rem;
+  padding: 0.72rem 1.18rem;
   font-weight: 800;
   color: var(--pk-text);
   box-shadow: var(--pk-shadow);
+}
+
+.lp-tool-pill svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--pk-primary);
 }
 
 .lp-feature-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.1rem;
-  max-width: 940px;
+  max-width: 980px;
   margin: 1.8rem auto 0;
 }
 
@@ -669,7 +712,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: 1rem;
   box-shadow: var(--pk-shadow);
   text-align: center;
-  padding: 1.6rem 1rem;
+  padding: 1.55rem 1rem 1.45rem;
 }
 
 .lp-icon {
@@ -684,6 +727,16 @@ p:last-child { margin-bottom: 0; }
   font-weight: 900;
   font-size: 1.15rem;
   margin: 0 auto 0.85rem;
+}
+
+.lp-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .lp-feature-card h3 {
@@ -703,12 +756,16 @@ p:last-child { margin-bottom: 0; }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.35rem;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .lp-card-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.1rem;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .lp-card-grid-6 {
@@ -728,6 +785,9 @@ p:last-child { margin-bottom: 0; }
 
 .lp-card.center {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .lp-card h3 {
@@ -767,7 +827,7 @@ p:last-child { margin-bottom: 0; }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.35rem;
-  max-width: 940px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -887,7 +947,9 @@ p:last-child { margin-bottom: 0; }
 .lp-pricing-shell {
   background: linear-gradient(180deg, #e8f0fe 0%, #dce6fa 100%);
   border-radius: 1.8rem;
-  padding: 3rem 2rem;
+  padding: 2.6rem 2rem 2.4rem;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .lp-price-grid {
@@ -1036,27 +1098,27 @@ p:last-child { margin-bottom: 0; }
   margin-top: 2.5rem;
   background: linear-gradient(135deg, var(--pk-primary) 0%, var(--pk-primary-dark) 100%);
   color: #fff;
-  padding: 5rem 1.5rem;
+  padding: 4.2rem 1.5rem 4rem;
 }
 
 .lp-final-cta .wrap {
-  max-width: 760px;
+  max-width: 720px;
   text-align: center;
 }
 
 .lp-final-cta h2 {
   color: #fff;
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-size: clamp(1.95rem, 4vw, 2.9rem);
   line-height: 1.12;
   letter-spacing: -0.03em;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
 }
 
 .lp-final-cta p {
   color: rgba(255, 255, 255, 0.86);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
   max-width: 760px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.65rem;
 }
 
 .lp-final-cta .lp-actions {
@@ -1123,6 +1185,24 @@ p:last-child { margin-bottom: 0; }
   opacity: 1;
 }
 
+.lp-faq-extra {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.lp-faq-extra[hidden] {
+  display: none;
+}
+
+.lp-faq-more {
+  margin-top: 1.4rem;
+  text-align: center;
+}
+
+.lp-faq-toggle {
+  min-width: 23rem;
+}
+
 @media (max-width: 1024px) {
   .lp-card-grid-4,
   .lp-feature-grid {
@@ -1155,6 +1235,11 @@ p:last-child { margin-bottom: 0; }
   .lp-meta {
     flex-direction: column;
     gap: 0.8rem;
+  }
+
+  .lp-meta-item,
+  .lp-meta span {
+    justify-content: center;
   }
 
   .lp-actions {
@@ -1226,6 +1311,10 @@ p:last-child { margin-bottom: 0; }
   .lp-final-cta p {
     font-size: 1rem;
     margin-bottom: 1.4rem;
+  }
+
+  .lp-faq-toggle {
+    min-width: 100%;
   }
 }
 
