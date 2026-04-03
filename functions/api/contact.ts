@@ -39,6 +39,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     const email = String(payload.email ?? '').trim();
     const phone = String(payload.phone ?? '').trim();
     const teamSize = String(payload.teamSize ?? '').trim();
+    const preferredDate = String(payload.preferredDate ?? '').trim();
+    const preferredFormat = String(payload.preferredFormat ?? '').trim();
     const interests = Array.isArray(payload.interests)
       ? payload.interests.map((item) => String(item).trim()).filter(Boolean)
       : [];
@@ -69,6 +71,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       `E-mail: ${email}`,
       `Telefon: ${phone || '-'}`,
       `Velikost skupiny: ${teamSize || '-'}`,
+      `Preferovaný termín: ${preferredDate || '-'}`,
+      `Preferovaný formát: ${preferredFormat || '-'}`,
       `Zájem o školení: ${interests.length ? interests.join(', ') : '-'}`,
       '',
       'Poznámka / dotaz:',
@@ -84,6 +88,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
           <tr><td style="padding:8px 0;font-weight:700">E-mail</td><td style="padding:8px 0"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
           <tr><td style="padding:8px 0;font-weight:700">Telefon</td><td style="padding:8px 0">${escapeHtml(phone || '-')}</td></tr>
           <tr><td style="padding:8px 0;font-weight:700">Velikost skupiny</td><td style="padding:8px 0">${escapeHtml(teamSize || '-')}</td></tr>
+          <tr><td style="padding:8px 0;font-weight:700">Preferovaný termín</td><td style="padding:8px 0">${escapeHtml(preferredDate || '-')}</td></tr>
+          <tr><td style="padding:8px 0;font-weight:700">Preferovaný formát</td><td style="padding:8px 0">${escapeHtml(preferredFormat || '-')}</td></tr>
           <tr><td style="padding:8px 0;font-weight:700">Zájem o školení</td><td style="padding:8px 0">${escapeHtml(interests.length ? interests.join(', ') : '-')}</td></tr>
         </table>
         <h2 style="font-size:18px;margin:0 0 10px;color:#0e2c6b">Poznámka / dotaz</h2>

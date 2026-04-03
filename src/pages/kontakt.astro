@@ -5,16 +5,8 @@ import '../styles/global.css';
 const trainingOptions = [
   'Praktické školení AI pro firmy',
   'AI pro veřejnou správu',
-  'Marketing & PR s AI',
-  'AI pro manažery',
-  'AI – právo, bezpečnost a autorská práva',
   'Workshop vibe codingu',
-  'ChatGPT pro firmy',
-  'Claude pro firmy',
-  'Gemini pro firmy',
-  'Microsoft Copilot pro firmy',
-  'Školení na míru',
-  'Jiné / nejsem si jistý',
+  'Školení na míru / jiný typ',
 ];
 ---
 
@@ -130,6 +122,22 @@ const trainingOptions = [
                 <option value="16 až 30 osob">16 až 30 osob</option>
                 <option value="31 až 60 osob">31 až 60 osob</option>
                 <option value="60+ osob">60+ osob</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="preferredDate">Preferovaný termín</label>
+              <input type="text" id="preferredDate" name="preferredDate" placeholder="Např. květen 2026 / do 15. 6." />
+            </div>
+
+            <div class="form-group">
+              <label for="preferredFormat">Preferovaný formát</label>
+              <select id="preferredFormat" name="preferredFormat">
+                <option value="">Vyberte formát</option>
+                <option value="Online">Online</option>
+                <option value="U vás ve firmě">U vás ve firmě</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Nejsem si jistý">Nejsem si jistý</option>
               </select>
             </div>
 
@@ -634,6 +642,8 @@ const trainingOptions = [
     const phone = String(formData.get('phone') ?? '').trim();
     const company = String(formData.get('company') ?? '').trim();
     const teamSize = String(formData.get('teamSize') ?? '').trim();
+    const preferredDate = String(formData.get('preferredDate') ?? '').trim();
+    const preferredFormat = String(formData.get('preferredFormat') ?? '').trim();
     const message = String(formData.get('message') ?? '').trim();
     const website = String(formData.get('website') ?? '').trim();
     const interests = formData.getAll('interests').map((value) => String(value).trim()).filter(Boolean);
@@ -665,6 +675,8 @@ const trainingOptions = [
           phone,
           company,
           teamSize,
+          preferredDate,
+          preferredFormat,
           interests,
           message,
           website,
