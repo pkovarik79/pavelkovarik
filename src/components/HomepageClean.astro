@@ -353,8 +353,8 @@ const formatDate = (date: string) =>
   <section class="sec sec-alt">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Vybraná školení</h2>
-        <p>3 hlavní pilíře nabídky, na které se specializuji nejvíc.</p>
+        <h2>Nejčastější školení</h2>
+        <p>Přehled školení, o která je největší zájem.</p>
       </div>
       <div class="grid grid-3 hp-course-grid">
         {primaryCourses.map((course) => (
@@ -366,18 +366,25 @@ const formatDate = (date: string) =>
         ))}
       </div>
 
-      <div class="sec-head hp-secondary-head">
-        <h3>Další workshopy</h3>
-        <p>Specializované workshopy k doplnění hlavních pilířů.</p>
-      </div>
-      <div class="grid grid-2 hp-course-grid hp-course-grid-secondary">
-        {workshopCourses.map((course) => (
-          <article class="hp-course-card hp-course-card-secondary">
-            <h3>{course.title}</h3>
-            <p>{course.text}</p>
-            <a href={course.href} class="btn btn-s hp-course-btn">Zjistit více</a>
-          </article>
-        ))}
+      <div class="hp-secondary-block">
+        <div class="sec-head hp-secondary-head">
+          <h3>Další formáty školení</h3>
+          <p>Další školení pro konkrétní týmy, agendy a způsoby práce.</p>
+        </div>
+        <div class="hp-secondary-grid">
+          {workshopCourses.map((course) => (
+            <article class="hp-secondary-tile">
+              <div>
+                <h4>{course.title}</h4>
+                <p>{course.text}</p>
+              </div>
+              <a href={course.href} class="hp-secondary-link">Zjistit více</a>
+            </article>
+          ))}
+        </div>
+        <div class="hp-secondary-cta">
+          <a href="/skoleni/" class="btn btn-s">Zobrazit všechna školení</a>
+        </div>
       </div>
     </div>
   </section>
@@ -935,22 +942,75 @@ const formatDate = (date: string) =>
     margin: 0 auto;
   }
 
+  .hp-secondary-block {
+    margin-top: 2.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(15, 38, 90, 0.08);
+  }
+
   .hp-secondary-head {
-    margin-top: 2.5rem;
+    margin-top: 0;
   }
 
   .hp-secondary-head h3 {
-    font-size: 1.35rem;
-    margin-bottom: .5rem;
+    font-size: 1.3rem;
+    margin-bottom: .4rem;
   }
 
   .hp-secondary-head p {
     color: var(--pk-text-2);
-    font-size: .98rem;
+    font-size: .95rem;
   }
 
-  .hp-course-grid-secondary {
-    max-width: 860px;
+  .hp-secondary-grid {
+    margin-top: 1.1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .hp-secondary-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .85rem;
+    padding: 1.1rem 1.25rem;
+    border-radius: 16px;
+    border: 1px solid var(--pk-border);
+    background: #f9fafc;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
+  }
+
+  .hp-secondary-tile h4 {
+    margin: 0 0 .5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1b2c52;
+  }
+
+  .hp-secondary-tile p {
+    margin: 0;
+    font-size: .94rem;
+    color: var(--pk-text-2);
+  }
+
+  .hp-secondary-link {
+    align-self: flex-start;
+    font-size: .94rem;
+    font-weight: 600;
+    color: #2f51d8;
+    text-decoration: none;
+  }
+
+  .hp-secondary-link:hover {
+    color: #1f3fb5;
+    text-decoration: underline;
+  }
+
+  .hp-secondary-cta {
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: center;
   }
 
   .hp-course-card {
@@ -1423,6 +1483,10 @@ const formatDate = (date: string) =>
     }
 
     .hp-blog-featured {
+      grid-template-columns: 1fr;
+    }
+
+    .hp-secondary-grid {
       grid-template-columns: 1fr;
     }
 
