@@ -533,13 +533,23 @@ p:last-child { margin-bottom: 0; }
 .article-faq-item:last-child {
   border-bottom: none;
 }
+.article-glossary h4 {
+  font-size: 1rem;
+}
+.article-glossary p {
+  font-size: .98rem;
+  line-height: 1.6;
+}
 .article-faq-item h3,
 .article-faq-item h4 {
   margin: 0 0 .45rem;
   color: #0e2c6b;
+  font-size: 1rem;
 }
 .article-faq-item p {
   margin: 0;
+  font-size: .98rem;
+  line-height: 1.6;
 }
 .prose table {
   width: max-content;
