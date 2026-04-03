@@ -1,6 +1,30 @@
 ---
 import Base from './Base.astro';
+import { importedPosts } from '../data/importedPosts';
+
 const { frontmatter } = Astro.props;
+
+const mdxPosts = Object.values(import.meta.glob('../pages/*.mdx', { eager: true })).map((post: any) => ({
+  url: post.url,
+  frontmatter: post.frontmatter,
+}));
+
+const allPosts = [
+  ...mdxPosts,
+  ...importedPosts.map((post) => ({
+    url: post.url,
+    frontmatter: {
+      title: post.title,
+      description: post.description,
+      date: post.date,
+      image: post.image,
+    },
+  })),
+].sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+
+const currentUrl = Astro.url?.pathname ?? '';
+const relatedPosts = allPosts.filter((post) => post.url !== currentUrl).slice(0, 3);
+const displayPosts = relatedPosts.length > 0 ? relatedPosts : allPosts.slice(0, 3);
 ---
 
 <Base title={`${frontmatter.title} | Pavel Kovařík`} description={frontmatter.description}>
@@ -24,6 +48,28 @@ const { frontmatter } = Astro.props;
           <a href="/kdo-jsem/">Více o mně</a>
         </div>
       </aside>
+      {displayPosts.length > 0 && (
+        <section class="article-related" aria-label="Doporučené články">
+          <h2>Doporučené další články</h2>
+          <div class="article-related-grid">
+            {displayPosts.map((post) => (
+              <a href={post.url} class="article-related-card">
+                {post.frontmatter.image && (
+                  <img src={post.frontmatter.image} alt={post.frontmatter.title} loading="lazy" />
+                )}
+                <div class="article-related-body">
+                  <time datetime={post.frontmatter.date}>
+                    {new Date(post.frontmatter.date).toLocaleDateString('cs-CZ')}
+                  </time>
+                  <h3>{post.frontmatter.title}</h3>
+                  <p>{post.frontmatter.description}</p>
+                  <span class="article-related-link">Přečíst článek →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   </article>
 </Base>
