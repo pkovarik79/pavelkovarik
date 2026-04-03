@@ -58,7 +58,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       return json({ ok: false, error: 'Zadejte prosím platný e-mail.' }, 400);
     }
 
-    const from = 'WEB pavelkovarik.cz <mail@pavelkovarik.cz>';
+    const fromAdmin = 'WEB pavelkovarik.cz <mail@pavelkovarik.cz>';
+    const fromClient = 'Pavel Kovařík <mail@pavelkovarik.cz>';
     const to = 'mail@pavelkovarik.cz';
     const subject = `Nová poptávka školení AI – ${company || '-'} (${name})`;
 
@@ -108,7 +109,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from,
+        from: fromAdmin,
         to: [to],
         reply_to: email,
         subject,
@@ -130,7 +131,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from,
+        from: fromClient,
         to: [email],
         subject: 'Děkuji za poptávku – ozvu se do 24 hodin',
         text: [
