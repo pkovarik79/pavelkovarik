@@ -37,6 +37,10 @@ const featuredLinks = [
     href: '/ai-nastroje/',
   },
 ];
+const featuredPosts = featuredLinks.map((item) => ({
+  ...item,
+  post: posts.find((post) => post.url === item.href),
+}));
 ---
 
 <Base title="Blog | Pavel Kovařík" description="Návody, trendy a zkušenosti ze zavádění umělé inteligence v českých firmách.">
@@ -50,13 +54,31 @@ const featuredLinks = [
   <section class="sec pk-blog-hub">
     <div class="wrap">
       <div class="pk-blog-start">
-        <h2>Začněte tady</h2>
+        <h2>Doporučené články</h2>
         <div class="pk-blog-start-grid">
-          {featuredLinks.map((item) => (
+          {featuredPosts.map((item) => (
             <article class="pk-blog-start-card">
-              <span class="pk-blog-kicker">{item.kicker}</span>
-              <h3><a href={item.href}>{item.title}</a></h3>
-              <p>{item.description}</p>
+              <a class="pk-blog-start-media" href={item.href} aria-label={item.title}>
+                {item.post?.frontmatter.image ? (
+                  <img src={item.post.frontmatter.image} alt={item.title} loading="lazy" />
+                ) : (
+                  <div class="pk-blog-start-thumb">{item.kicker}</div>
+                )}
+              </a>
+              <div class="pk-blog-start-body">
+                <div class="pk-blog-start-meta">
+                  <span class="pk-blog-kicker">{item.kicker}</span>
+                  <span class="pk-blog-tag">Doporučený článek</span>
+                  {item.post?.frontmatter.date && (
+                    <time datetime={item.post.frontmatter.date}>
+                      {new Date(item.post.frontmatter.date).toLocaleDateString('cs-CZ')}
+                    </time>
+                  )}
+                </div>
+                <h3><a href={item.href}>{item.title}</a></h3>
+                <p>{item.description}</p>
+                <a class="pk-blog-start-cta" href={item.href}>Přečíst článek →</a>
+              </div>
             </article>
           ))}
         </div>
