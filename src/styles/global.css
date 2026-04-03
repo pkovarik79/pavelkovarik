@@ -2367,6 +2367,15 @@ p:last-child { margin-bottom: 0; }
   font-size: .92rem;
   color: #8a8f98;
 }
+.article-header--static {
+  margin-bottom: 2.2rem;
+}
+.article-header--static h1 {
+  max-width: 720px;
+}
+.article-header--static .text-muted {
+  margin-top: .4rem;
+}
 .article-cover {
   width: min(100%, 520px);
   margin-inline: auto;
