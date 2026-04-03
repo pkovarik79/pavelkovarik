@@ -97,6 +97,14 @@ export function getMaterialHubData() {
     icon: index === 0 ? 'layers' : 'terminal',
   }));
 
+  cards.push({
+    href: '/nepis-jako-robot/',
+    title: '19+1 chyb AI textů',
+    description: 'Detailní přehled vzorů, které prozradí text napsaný umělou inteligencí. Ke každé chybě konkrétní příklad a lepší řešení. PDF ke stažení zdarma.',
+    linkLabel: 'Otevřít průvodce',
+    icon: 'search',
+  });
+
   const prepMatch = content.match(
     /<h3>([^<]+)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>[\s\S]*?Checklisty pro zavádění AI[\s\S]*?E-booky[\s\S]*?Legislativa[\s\S]*?<a href="([^"]+)"/,
   );

@@ -1,0 +1,307 @@
+---
+layout: ../layouts/BlogPost.astro
+title: "Co je vibe coding a jak pomocí AI vytvářet vlastní nástroje"
+description: "Co je vibe coding? Praktický průvodce pro každého, kdo chce pomocí AI vytvářet vlastní nástroje, prototypy a automatizace bez programování."
+date: "2026-03-27"
+image: "/images/blog/blog-cover-vibe-coding-prakticky.webp"
+---
+
+<div class="article-note article-note--warn">
+  <p><strong>Vibe coding</strong> je způsob práce, kdy pomocí AI bez hlubších znalostí programování vytváříte aplikace, nástroje, weby nebo nastavujete automatizaci.</p>
+</div>
+
+<div class="article-quote">
+  <p>„Nechám se nést vibes, zapomenu, že kód vůbec existuje. Prostě vidím věci, říkám věci, spouštím věci a ono to většinou funguje.“</p>
+  <span class="article-quote-author">Andrej Karpathy, spoluzakladatel OpenAI</span>
+</div>
+
+Tahle věta o vibe codingu z tweetu Andreje Karpathyho odstartovala v roce 2025 lavinu. Z technologického slangu se stal pojem, který dnes proniká do nejrůznějších oblastí firemního života. Vibe coding otevřel potenciál všem, kdo mají nápady, jen jim scházely dovednosti tvořit kód.
+
+Satya Nadella, šéf Microsoftu, v březnu 2026 řekl, že díky AI se dnes může stát vývojářem softwaru kdokoli. A Collins Dictionary dokonce zvolil vibe coding slovem roku 2025.
+
+V následujícím článku se dozvíte, co přesně vibe coding znamená, jak vypadá v praxi, jaké nástroje se pro něj hodí a na co si dát při práci pozor. Pokud se v AI nástrojích teprve snažíte zorientovat, může se vám hodit i můj [přehled AI nástrojů pro firmy](/ai-nastroje/).
+
+<div class="article-toc">
+  <h3>Obsah</h3>
+  <ol>
+    <li><a href="#definice">Co je vibe coding</a></li>
+    <li><a href="#praxe">Příklady vibe codingu z praxe</a></li>
+    <li><a href="#urovne">6 úrovní vibe codingu</a></li>
+    <li><a href="#nastroje">Nástroje pro vibe coding</a></li>
+    <li><a href="#modely">Jaké AI modely pohánějí vibe coding</a></li>
+    <li><a href="#ekosystem">Ekosystém kolem vibe codingu</a></li>
+    <li><a href="#orchestrace">V roce 2026 přichází orchestrace agentů</a></li>
+    <li><a href="#zaver">Jak začít s vibe codingem</a></li>
+    <li><a href="#slovnicek">Slovníček pojmů</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ol>
+</div>
+
+<h2 id="definice">Co je vibe coding</h2>
+
+Vibe coding je podle Wikipedie způsob vývoje softwaru za pomoci nástrojů umělé inteligence. Vy popíšete svou představu a velký jazykový model ji zhmotní v podobě programového kódu. A nejzajímavější na tom je, že tím vývojářem se může stát prakticky kdokoli, aniž by musel rozumět syntaxi nebo architektuře aplikací do detailu.
+
+Vibe coding umožňuje, že se můžete soustředit na výsledek, zatímco AI se stará o programový kód a související technické řešení. Člověk za klávesnicí tak vystupuje v roli architekta a režiséra, AI je dříč, který se postará o podstatnou část práce.
+
+Instrukce umělé inteligenci předáváte běžnou řečí, zpravidla písemně do políčka chatbota nebo do rozhraní specializované aplikace. Čím dál víc vibe coderů ale přechází na konverzaci mluveným slovem, protože je to rychlejší a z určitého pohledu i přesnější.
+
+Jakmile AI vyprodukuje první výstupy, můžete si je prohlédnout často přímo v prostředí chatbota, anebo vám AI pomůže aplikaci otevřít v některém z k tomu určených nástrojů. Pokud nejste s výsledkem spokojeni, opět běžnou řečí popíšete požadovanou změnu a počkáte na další výstup.
+
+I člověk bez programátorské zkušenosti si tak dnes dokáže vytvořit vlastní pomůcku pro problém, který potřebuje vyřešit. Vibe coding má své limity a zatím není příliš vhodný pro komplexní projekty, větší aplikace nebo kritické systémy, pokud nejste vývojáři, kteří s kódem umí pracovat s větším porozuměním. Pro běžnou firemní praxi je ale podstatné něco jiného. Můžete si rychle zautomatizovat otravné úkoly, na které by dříve nikdo nenasadil profesionální vývoj, protože by se to nevyplatilo.
+
+<div class="article-note article-note--warn">
+  <p><strong>Zajímavost:</strong> Čtvrtina startupů z inkubátoru Y Combinator měla na přelomu let 2024 a 2025 kód z 95 % generovaný umělou inteligencí.</p>
+</div>
+
+<h2 id="praxe">Příklady vibe codingu z praxe: od kalkulačky po autonomního agenta</h2>
+
+Vibe coding se nejlépe ukazuje na příkladech, které elegantně řeší pracovní úkoly, na které by IT oddělení nemělo kapacitu. Přesto vám vlastní řešení vytvořené pomocí AI dokáže ušetřit reálně i hodiny práce. Rozptyl úloh, které vám pomůže vyřešit AI pomocí vibe codingu, je opravdu velký. Tady je pro inspiraci několik příkladů s různou mírou obtížnosti.
+
+<div class="article-case">
+  <div class="article-case-header">
+    <span class="article-case-label">Obchod</span>
+    <span class="article-case-difficulty">Obtížnost <span class="article-case-dots"><span class="article-case-dot active"></span><span class="article-case-dot"></span><span class="article-case-dot"></span><span class="article-case-dot"></span><span class="article-case-dot"></span></span></span>
+  </div>
+  <h3>Kalkulačka marží v mobilu</h3>
+  <p>Obchodní zástupce v terénu potřeboval rychle spočítat nabídkové ceny podle interních pravidel firmy. Dříve to řešil v Excelu na notebooku, což zdržovalo odeslání nabídky o celé dny. S pomocí AI si vytvořil jednoduchou webovou kalkulačku, kterou má ve svém telefonu. Zadá vstupní cenu, vybere kategorii produktu a aplikace spočítá finální cenovou nabídku.</p>
+  <p class="article-case-result">Nabídku klientovi pošle hned po schůzce. Obchodní cyklus se zkrátí o 2 až 3 dny.</p>
+</div>
+
+<div class="article-case">
+  <div class="article-case-header">
+    <span class="article-case-label">Administrativa</span>
+    <span class="article-case-difficulty">Obtížnost <span class="article-case-dots"><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot"></span><span class="article-case-dot"></span><span class="article-case-dot"></span></span></span>
+  </div>
+  <h3>Čištění exportů z CRM</h3>
+  <p>Asistentka pravidelně dostávala z CRM systému exporty dat pro vedení firmy. Neseděly ale formáty čísel, v souboru byly duplicity a celé dopoledne trávila ručním čištěním dat v Excelu. Pomocí AI si vytvořila pomůcku, která export automaticky projde, sjednotí formáty a odstraní duplicity.</p>
+  <p class="article-case-result">Úkol na celé dopoledne je hotový za pár minut. Data pro vedení firmy jsou čistá a konzistentní.</p>
+</div>
+
+<div class="article-case">
+  <div class="article-case-header">
+    <span class="article-case-label">HR</span>
+    <span class="article-case-difficulty">Obtížnost <span class="article-case-dots"><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot"></span><span class="article-case-dot"></span></span></span>
+  </div>
+  <h3>Onboardingový portál pro nové zaměstnance</h3>
+  <p>Nástup nového kolegy znamenal pro firmu dny chaosu. Desítky e-mailů s přístupy, formuláře na papíře a informace rozházené v několika dokumentech. V Lovable proto vznikla webová aplikace s přihlášením, kde nový zaměstnanec vidí checklist úkolů, kontakty na klíčové lidi a odkazy na interní systémy. Manažer pak jen sleduje, co už má nováček vyřízené.</p>
+  <p class="article-case-result">Jednotný proces pro každý nástup. Manažer ušetří čas strávený koordinací a noví zaměstnanci se zorientují sami.</p>
+</div>
+
+<div class="article-case">
+  <div class="article-case-header">
+    <span class="article-case-label">Web</span>
+    <span class="article-case-difficulty">Obtížnost <span class="article-case-dots"><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot"></span><span class="article-case-dot"></span></span></span>
+  </div>
+  <h3>Přepsání firemního webu bez WordPressu</h3>
+  <p>Malá firma měla web na WordPressu, který se načítal pomalu, vyžadoval neustálé aktualizace pluginů a každý zásah do designu znamenal hodiny práce v nepřehledném editoru. Pomocí Claude Code přepsali celý web do čistého HTML a CSS. Agent prošel původní stránky, převzal strukturu i texty a vytvořil moderní a rychlý web bez těžkého redakčního systému.</p>
+  <p class="article-case-result">Web se načítá násobně rychleji, hosting může běžet zdarma a odpadají starosti s aktualizacemi i bezpečnostními záplatami WordPressu.</p>
+</div>
+
+<div class="article-case">
+  <div class="article-case-header">
+    <span class="article-case-label">Strategie</span>
+    <span class="article-case-difficulty">Obtížnost <span class="article-case-dots"><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot"></span></span></span>
+  </div>
+  <h3>Hlídač oborových novinek</h3>
+  <p>Vedoucí obchodního oddělení potřeboval udržovat přehled o tom, co se děje v jeho oboru. Konkurence, legislativní změny, nové technologie. Dříve to znamenalo každé ráno procházet weby, newslettery a LinkedIn profily. Pomocí Codex a napojení na API si vytvořil agenta, který každý den projde vybrané zdroje, vytáhne klíčové informace, vyhodnotí relevanci a pošle mu e-mail se strukturovaným přehledem.</p>
+  <p class="article-case-result">Každé ráno má pětiminutový souhrn a nestráví desítky minut nebo hodiny manuálním dohledáváním.</p>
+</div>
+
+<div class="article-case">
+  <div class="article-case-header">
+    <span class="article-case-label">Vzdělávání</span>
+    <span class="article-case-difficulty">Obtížnost <span class="article-case-dots"><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot active"></span><span class="article-case-dot active"></span></span></span>
+  </div>
+  <h3>Skener YouTube kanálů s přepisy a souhrny</h3>
+  <p>Specialista na vzdělávání sledoval patnáct YouTube kanálů o AI a každý týden trávil hodiny sledováním nových videí. Vytvořil si proto nástroj, který sleduje nová videa, automaticky je přepíše, vytvoří strukturovaný souhrn s časovými značkami a vyhodnotí, jestli se video vyplatí pustit celé.</p>
+  <p class="article-case-result">Místo hodin sledování dostane pětiminutový přehled toho, co stojí za pozornost.</p>
+</div>
+
+Rozdíl v náročnosti mezi prvním a posledním příkladem je velký. Pomocí vibe codingu ale můžete s určitou dávkou trpělivosti realizovat všechny. Kalkulačku zvládnete za hodinu v ChatGPT. Agent na monitoring videí už vyžaduje propojení s API, databází a plánované spouštění. Princip je ale stejný. Popíšete, co chcete, a AI vám pomůže to realizovat. Liší se jen míra složitosti.
+
+Ne vždy znamená, že vibe coding ušetří firmě peníze okamžitě. Pokud si ale dáte práci s přípravou a použijete vhodné nástroje, úspěch se většinou dostaví. Vibe coding firmám šetří čas a snižuje závislost na vývojářích.
+
+<h2 id="urovne">6 úrovní vibe codingu: od prvního skriptu k ostrému provozu</h2>
+
+Vibe coding není jen o psaní kódu, je to cesta. Tento žebříček vám pomůže odhadnout, kde se na ní nacházíte, co můžete zvládnout sami a kdy je lepší povolat posily. Každý stupínek zvyšuje náročnost, ale i míru rizika, kterou na sebe berete.
+
+1. **Skripty a drobné automatizace.** Nástroje pro konverzi souborů, třídění dokumentů nebo čištění dat v tabulkách. Riziko je malé, protože pracujete v uzavřeném prostředí a nic nenarušujete.
+2. **Prezentační webové stránky.** Jednoduché vizitky nebo landing pages bez databází. Stránky jen zobrazují informace a bezpečnostní nároky jsou minimální.
+3. **Interaktivní weby s logikou.** Galerie, formuláře a jednoduché podstránky. Jakmile web přijímá vstupy od uživatelů, musíte řešit ochranu proti spamu a základní ošetření dat.
+4. **Funkční prototypy.** Proklikávací model aplikace, který simuluje reálné funkce a slouží k rychlému testování nápadů ve firmě.
+5. **Interní firemní nástroje.** Vlastní aplikace na míru, které nahrazují část komerčního softwaru. Tady už je důležité dobré nastavení oprávnění a práce s daty.
+6. **Produkční systémy pro veřejnost.** Aplikace pro reálné zákazníky v nepřetržitém provozu. Tady vibe coding často slouží jako rychlý koncept, který do finální podoby dotáhne profesionální vývojář.
+
+<h2 id="nastroje">Nástroje pro vibe coding</h2>
+
+Nástrojů pro vibe coding je celá paleta a přibývají další. Není ale třeba znát všechny ani se je všechny učit používat. Ideální je vybrat si jeden nebo dva, naučit se s nimi pracovat a zůstat u nich. Téměř všechny nástroje se neustále zlepšují, takže se nemusíte bát, že s vybraným nástrojem zůstanete pozadu.
+
+Při výběru se můžete orientovat hlavně podle toho, v jakém prostředí nástroje běží a jaký komfort práce nabízejí.
+
+První skupinu tvoří nástroje, které běží v prohlížeči a často nabízejí řešení all in one. To znamená, že když chcete vytvořit web nebo aplikaci, nejenže vám ji vygenerují, ale často pomohou i s nasazením, doménou nebo hostingem.
+
+Druhá skupina běží primárně na vašem počítači v editoru nebo terminálu a nabízí širší škálu možností i větší kontrolu nad projektem. Hosting za vás obvykle nezajistí, ale dovedou vás k němu a pomůžou ho nastavit.
+
+### Nástroje v prohlížeči: otevřít, popsat, hotovo
+
+Tady se odehrává to, co si většina lidí pod vibe codingem představí. Otevřete prohlížeč, popíšete, co chcete, a za pár minut máte funkční aplikaci. Nemusíte nic instalovat, nastavovat ani se trápit s příkazy v terminálu.
+
+- **Lovable** je švédská platforma zaměřená na webové aplikace s databází, přihlašováním uživatelů a napojením na externí služby. Hodí se na interní nástroje, portály i funkční prototypy.
+- **Bolt.new** od StackBlitz běží kompletně v prohlížeči díky technologii WebContainers. Na jednoduché prototypy a pomůcky je to jeden z nejrychlejších nástrojů.
+- **v0.dev** od Vercelu je zaměřené na frontend. Popíšete komponentu nebo celou stránku a v0 vygeneruje čistý React kód s Tailwindem.
+- **Replit** nabízí plnohodnotné vývojové prostředí v prohlížeči s AI agentem, který umí aplikaci nejen vygenerovat, ale i nasadit na internet.
+- **Macaly** je česká platforma, která nabízí generování aplikace, databázi, hosting, analytiku, CMS i A/B testování na jednom místě. Pro firmy je zajímavá hlavně propojením s GitHubem.
+- **Google AI Studio** od března 2026 integruje agenta Antigravity přímo do prohlížečového prostředí. Můžete v něm popsat aplikaci, nechat agenta vygenerovat kód i s napojením na Firebase a výsledek rovnou nasadit.
+
+### Nástroje na počítači: editor nebo terminál
+
+Nástroje běžící přímo na vašem počítači patří většinou do skupiny agentních nástrojů. Vidí vaše soubory a složky, rozumí struktuře celého projektu a mohou samy provádět změny v desítkách souborů najednou. Když agent narazí na chybu, sám ji najde, opraví a často i otestuje.
+
+Co všechno tyto nástroje zvládnou:
+
+- roztřídit chaotickou složku se stovkami dokumentů a přejmenovat ji podle smysluplného vzoru
+- načíst objemné datové soubory, provést analýzu a rovnou vygenerovat reporty včetně grafů
+- převzít úkoly, které se opakují každý týden, od stahování dat po generování pravidelných přehledů
+- připojit se k serveru a identifikovat, proč je systém pomalý nebo kde vznikla chyba
+- nainstalovat potřebný software a připravit pracovní prostředí
+- efektivně propojit dvě služby skrze jejich API
+
+Tyto nástroje můžeme z pohledu uživatele rozdělit na dvě skupiny, grafické editory a terminálové agenty. Některé nabízejí obojí.
+
+- **Cursor** je dnes asi nejpoužívanější agentní editor. Je postavený na základech VS Code, ale AI v něm vidí celý projekt, rozumí závislostem mezi soubory a umí provádět změny napříč aplikací.
+- **Claude Code** od Anthropicu je terminálový agent. Přečte si zadání, prozkoumá existující kód, projde složky, navrhne řešení, implementuje ho a sám spustí testy.
+- **Codex** od OpenAI pokrývá celé spektrum možností. Má terminálového agenta, cloudovou verzi integrovanou v ChatGPT a rozšíření do VS Code.
+- **Google Antigravity** je agentní IDE postavené na základech VS Code, které Google představil koncem roku 2025 spolu s modelem Gemini 3.
+- **Windsurf** nabízí podobný přístup jako Cursor s vlastním agentem Cascade, který umí provádět vícekrokové úpravy přes celý projekt.
+- **Kiro** od Amazonu nejdřív vytvoří specifikaci, požadavky a plán implementace. Teprve po schválení začne psát kód.
+- **Grok Build** od xAI je terminálový agent, který pracuje čistě lokálně. Kód nikdy neopouští váš počítač.
+
+### A kde je GitHub Copilot?
+
+GitHub Copilot je rozšíření do editorů, které funguje jako chytrý asistent při psaní kódu. Navrhuje dokončení řádků, generuje funkce a pomáhá s rutinním kódem. Na rozdíl od agentních nástrojů ale nepracuje autonomně s celým projektem. Je to spolehlivý pomocník pro ty, kdo už kód píšou, ne nástroj pro vibe coding v pravém slova smyslu.
+
+Pokud právě řešíte, který AI nástroj je pro vás celkově nejlepší, navazuje na to článek [Nejlepší AI asistent 2026: srovnání ChatGPT, Gemini, Claude a dalších](/nejlepsi-ai-asistent-2026-srovnani-chatgpt-gemini-claude-a-dalsich/).
+
+<h2 id="modely">Jaké AI modely pohánějí vibe coding</h2>
+
+Nástroje pro vibe coding jsou jen rozhraní. Pod kapotou vždy běží konkrétní jazykový model, který kódu skutečně rozumí. A právě ten model zásadním způsobem ovlivňuje, jak kvalitní výsledek dostanete.
+
+Dnes se o generování kódu dělí několik firem. **OpenAI** pohání Codex, GitHub Copilot i řadu builderů modelem řady GPT-5. **Anthropic** stojí za Claude Code a jeho modely Claude používá i Cursor, Kiro nebo Antigravity. **Google** nasazuje Gemini 3 v Antigravity a AI Studiu. Všechny tři firmy závodí v kvalitě generovaného kódu a jejich modely se pravidelně střídají na čele benchmarků.
+
+Vedle těchto tří velkých hráčů ale rostou i další. **xAI** vytvořilo model grok-code-fast-1 přímo pro agentní programování. **Alibaba** vydává řadu modelů Qwen zaměřených na kód, které jsou open source a můžete si je spustit lokálně. **Moonshot AI** z Číny nabízí model Kimi s milionovým kontextovým oknem, které umožňuje zpracovat celé velké projekty najednou.
+
+Pro běžného uživatele to znamená jediné. Vibe coding není závislý na jedné firmě. Když se vám nelíbí výsledky jednoho modelu, hodně nástrojů vám umožní přepnout na jiný. Cursor, Antigravity i Codex CLI podporují výběr modelu přímo v nastavení.
+
+<h2 id="ekosystem">Ekosystém kolem vibe codingu a užitečné služby</h2>
+
+Jakmile se pustíte do tvorby čehokoliv rozsáhlejšího nebo složitějšího, začnete narážet na názvy služeb, které se opakují ve všech návodech a kurzech. Stojí za to vědět, co dělají a proč je budete potřebovat.
+
+- **Terminál** je textové okno, přes které ovládáte počítač příkazy místo klikání myší. Právě tady běží agentní nástroje jako Claude Code nebo Codex CLI.
+- **GitHub** je cloudové úložiště kódu, které si na rozdíl od běžné složky v počítači pamatuje každou změnu. Je to klíčový most mezi rychlým vibe codingem a skutečným vývojem.
+- **Vercel** řeší nasazení aplikace na internet. Propojíte ho s GitHubem a každá nová verze se automaticky publikuje.
+- **Cloudflare Pages** je alternativa k Vercelu, kterou ocení hlavně ti, kdo chtějí provozovat statický web bez měsíčních poplatků za hosting.
+- **Supabase** je databáze a přihlašování uživatelů v jednom. Když vaše aplikace potřebuje ukládat data nebo spravovat uživatelské účty, často skončí právě tady.
+
+Nemusíte tyto služby ovládat do detailu. Stačí vědět, k čemu slouží, protože AI je za vás často sama nastaví a propojí. Orientace v nich vám ale pomůže lépe formulovat zadání a rozumět tomu, co AI dělá.
+
+<h2 id="orchestrace">V roce 2026 přichází orchestrace agentů</h2>
+
+Dosud jste s umělou inteligencí komunikovali jako s jedním partnerem. Rok 2026 ale přináší přechod k práci s celým sehraným digitálním týmem agentů. Tento posun řeší hlavní slabinu samostatných modelů, které po sobě často neumějí efektivně kontrolovat chyby a snadno ztratí nit v dlouhém kódu.
+
+V těchto systémech jeden agent píše kód, druhý ho nezávisle reviduje a třetí automaticky provádí zátěžové testy. Výsledkem je robustnější software, protože nástroje fungují jako vzájemně provázaná oddělení ve skutečné softwarové firmě.
+
+Andrej Karpathy tento vývoj v únoru 2026 označil termínem „agentic engineering“, který postupně nahradil dřívější koncept vibe codingu. Hlavní rozdíl spočívá v tom, že člověk už 99 % času kód přímo nepíše, ale přebírá roli architekta a manažera kvality. Místo vymýšlení konkrétních řádků kódu jen definuje pravidla, schvaluje milníky a koriguje směr, kterým se tým agentů vydává.
+
+<h2 id="zaver">Jak začít s vibe codingem</h2>
+
+S vibe codingem můžete začít úplně jednoduše. Stačí přestat jen nadávat na úkoly, které vás v práci zdržují, a raději si pro ně vymyslet a postavit vlastní řešení. Největší rozdíl totiž není v technologii, ale v tom, že přestanete být jen pasivním uživatelem softwaru, který pro vás vyrobil někdo jiný.
+
+Zkuste si to. Otevřete si v prohlížeči ChatGPT, Claude nebo Gemini, zapněte pracovní plochu a napište běžnou řečí, co byste potřebovali vytvořit. Může to být jednoduchá kalkulačka, interaktivní tabulka nebo skript na třídění souborů. AI vám obratem vygeneruje funkční výsledek, který si můžete hned v okně prohlížeče vyzkoušet, proklikat a případně ladit dál.
+
+Ten moment, kdy vám pod rukama vznikne něco skutečně funkčního, je návykový. Jestli vás zajímá, jak tahle nová vlna svobody mění fungování celých týmů a byznysu, podívejte se i na [stránku o vibe codingu](/vibe-coding/) nebo na [workshop vibe codingu pro firmy](/workshop-vibe-codingu-pro-firmy/).
+
+<h2 id="slovnicek">Slovníček pojmů pro vibe codera</h2>
+
+<div class="article-faq-list">
+  <div class="article-faq-item">
+    <h3>Agent</h3>
+    <p>Agent je systém, který nefunguje jen jako rádce v chatu, ale skutečně provádí úkoly. Čte soubory, píše kód nebo sám opravuje chyby.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>API</h3>
+    <p>API je způsob, jakým spolu komunikují různé aplikace a služby. Pokud váš nástroj potřebuje stáhnout data odjinud, dělá to právě přes tuto spojku.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>CLI</h3>
+    <p>CLI označuje rozhraní ovládané textovými příkazy v terminálu. Nástroje jako Claude Code nainstalujete a ovládáte právě tam.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Deploy</h3>
+    <p>Deploy je proces, kdy svou aplikaci zpřístupníte na internetu. Dokud je jen u vás v počítači, nikdo další k ní nemá přístup.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Frontend a backend</h3>
+    <p>Frontend je to, co vidí uživatel. Backend běží na pozadí a stará se o ukládání dat nebo odesílání e-mailů.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Framework</h3>
+    <p>Framework je stavebnice pro tvorbu aplikací. Jména jako React, Next.js nebo Tailwind jsou sady hotových dílů, které AI používá pod kapotou.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>IDE</h3>
+    <p>IDE je program, ve kterém se píše kód. Nástroje jako Cursor, Antigravity nebo Kiro jsou vlastně editory s vestavěnou inteligencí.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>MVP</h3>
+    <p>MVP je nejjednodušší funkční verze produktu, která stačí k ověření nápadu v praxi. Cílem není dokonalost, ale rychlá validace.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Orchestrace agentů</h3>
+    <p>Styl práce, kdy na jednom projektu spolupracuje více AI agentů najednou. Jeden píše, druhý kontroluje a třetí testuje.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Prompt</h3>
+    <p>Prompt je textové zadání, které dáváte umělé inteligenci. Čím přesněji popíšete, co chcete, tím lepší výsledek dostanete.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Repozitář</h3>
+    <p>Repozitář je složka s projektem uložená na GitHubu. Obsahuje všechny soubory i historii změn.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Sandbox</h3>
+    <p>Sandbox je bezpečné a izolované prostředí, ve kterém agent zkouší spouštět kód, aby nemohl omylem ovlivnit váš počítač.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>SaaS</h3>
+    <p>SaaS je software, za který platíte měsíční paušál a používáte ho v prohlížeči. Vibe coding vám dává šanci některé drahé nástroje nahradit vlastními pomůckami.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Vibe deploying</h3>
+    <p>Nasazení hotové aplikace na internet čistě pomocí AI agenta. Nemusíte rozumět serverům ani nastavení domén.</p>
+  </div>
+</div>
+
+<h2 id="faq">FAQ: Často kladené otázky k vibe codingu</h2>
+
+<div class="article-faq-list">
+  <div class="article-faq-item">
+    <h3>Co je vibe coding jednoduše?</h3>
+    <p>Je to způsob tvorby softwaru, kdy se nezabýváte technickými detaily kódu a pouze popisujete svůj záměr běžnou řečí. AI pak zadání převede do funkčního digitálního řešení.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Je vibe coding totéž co běžné programování s AI?</h3>
+    <p>Ne úplně. Vibe coding je styl práce zaměřený na rychlé vyjádření nápadu bez nutnosti rozumět syntaxi. Pokud kód sami aktivně čtete, upravujete a kontrolujete, jde spíš o klasické programování s podporou AI.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>V čem se liší vibe coding od běžného používání ChatGPT?</h3>
+    <p>V běžném chatu obvykle hledáte textové informace nebo rady. U vibe codingu je výsledkem skutečně funkční nástroj, třeba webová aplikace nebo skript, který můžete okamžitě spustit a používat.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Musím umět programovat, abych mohl vibe coding využít?</h3>
+    <p>U většiny běžných pomůcek a aplikací ne. Klíčové je logické myšlení a schopnost popsat kroky procesu tak srozumitelně, aby jim AI dokázala porozumět.</p>
+  </div>
+  <div class="article-faq-item">
+    <h3>Je vibe coding bezpečný pro firemní použití?</h3>
+    <p>Ano pro tvorbu interních nástrojů, které nepracují s citlivými údaji. Jakmile aplikace manipuluje s osobními daty nebo se napojuje na kritické firemní systémy, je nutná následná kontrola od profesionálního vývojáře.</p>
+  </div>
+</div>

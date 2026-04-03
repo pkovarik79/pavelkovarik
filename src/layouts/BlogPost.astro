@@ -14,6 +14,14 @@ const { frontmatter } = Astro.props;
       <div class="prose article-content">
         <slot />
       </div>
+      <aside class="article-author-box" aria-label="Autor článku">
+        <div class="article-author-avatar" aria-hidden="true">PK</div>
+        <div class="article-author-meta">
+          <div class="article-author-name">Pavel Kovařík</div>
+          <p>Školím firmy, jak AI používat prakticky, bezpečně a bez zbytečné teorie. Pomáhám týmům převést AI do každodenní práce.</p>
+          <a href="/kdo-jsem/">Více o mně</a>
+        </div>
+      </aside>
     </div>
   </article>
 </Base>

@@ -1,0 +1,710 @@
+---
+import Base from '../layouts/Base.astro';
+
+const pdfHref = 'https://pavelkovarik.cz/wp-content/uploads/2026/03/pkovarik-nepis-jako-robot.pdf';
+
+type SlopItem = {
+  number: string;
+  title: string;
+  description: string;
+  example: string;
+  better: string;
+};
+
+type SlopSection = {
+  id: string;
+  label: string;
+  title: string;
+  intro: string;
+  items: SlopItem[];
+};
+
+const sections: SlopSection[] = [
+  {
+    id: 'strategie',
+    label: 'Chyby 1–8',
+    title: 'Strategie a styl',
+    intro:
+      'Vzory v této části se týkají celkového přístupu AI k psaní. Zbytečné úvody, dramatické pomlčky, falešné kontrasty a záporové konstrukce, které komplikují jinak jednoduchá sdělení.',
+    items: [
+      {
+        number: '01',
+        title: 'Sáhodlouhý úvod, který nic neříká',
+        description:
+          'AI má potřebu začít odpověď obecným odstavcem, který čtenáři nedá žádnou novou informaci. Opakuje zadání jinými slovy, než se dostane k věci. V článku to vypadá jako zbytečná vata před prvním odstavcem, který jde k věci.',
+        example:
+          '„V dnešní době, kdy se umělá inteligence stává nedílnou součástí našeho každodenního života, je důležité si uvědomit, jaký dopad má na způsob, jakým komunikujeme a pracujeme.“',
+        better: '„AI mění způsob, jakým píšeme e-maily, nabídky i články. Tady je dvacet konkrétních příkladů.“',
+      },
+      {
+        number: '02',
+        title: 'Pomlčky uprostřed vět',
+        description: 'AI vkládá do vět pomlčky místo čárek a spojek. Snaží se tím vzbudit dojem dramatické pauzy.',
+        example: '„Byl to jen okamžik – ale všechno se změnilo.“',
+        better: '„Byl to jen okamžik a všechno se rázem změnilo.“',
+      },
+      {
+        number: '03',
+        title: '„Ne proto, že…“',
+        description:
+          'AI ráda začne větu falešným kontrastem. Řekne, proč něco není, a pak teprve prozradí důvod. Druhá věta přitom často sklouzne k frázi místo konkrétního vysvětlení.',
+        example: '„Ne proto, že bychom nechtěli nové auto. Ale protože máme jiné priority.“',
+        better: '„Nové auto nechceme, protože chceme investovat do lepšího bydlení.“',
+      },
+      {
+        number: '04',
+        title: 'Dvojitý zápor místo přímého sdělení',
+        description:
+          'AI nám řekne, proč se něco nestalo, i když by se to stát mohlo. Dva zápory v jedné větě zbytečně komplikují sdělení, které by šlo říct jednou kladnou větou.',
+        example: '„Není to tak, že by se to nedalo udělat.“',
+        better: '„Tohle by šlo.“',
+      },
+      {
+        number: '05',
+        title: 'Dvojitý zápor na druhou',
+        description:
+          'AI má potřebu zdůraznit zápor na začátku věty, proto nám ho pro jistotu naservíruje dvakrát, pokaždé trochu jinak. Obě věty říkají totéž, jen jinými slovy.',
+        example: '„Ne proto, že bychom nechtěli. Ne proto, že by nás to nebavilo. Prostě už toho máme dost.“',
+        better: '„Šli jsme pryč, protože to byla nuda.“',
+      },
+      {
+        number: '06',
+        title: 'Zápor jako rétorika',
+        description:
+          'AI vymezí téma negativně. Řekne, co věc není, a pak nabídne pozitivní charakteristiku. Místo jedné jasné věty dostaneme dvě, z nichž první je zbytečná.',
+        example: '„Umělá inteligence není budoucnost. Je to přítomnost.“',
+        better: '„Umělá inteligence je tu s námi už pár let.“',
+      },
+      {
+        number: '07',
+        title: 'Fragmenty místo vět',
+        description:
+          'AI nadhodí neúplnou větu formou otázky, aby zdramatizovala tok myšlenek. Pak to dovysvětlí krátkou odpovědí. Čtenář místo plnohodnotné informace dostane rétorické cvičení.',
+        example: '„Jedna z největších změn? Autonomní agenti ve vašem počítači.“',
+        better:
+          '„Největší změnou v každodenní práci jsou autonomní agenti, které si můžete spustit přímo na svém počítači.“',
+      },
+      {
+        number: '08',
+        title: 'Výkřiky bez kontextu',
+        description:
+          'AI dá dvojí nebo trojí důraz za sebou, aby vyvolala pocit naléhavosti. Věty znějí jako filmový trailer, ale nenesou žádnou informaci.',
+        example: '„Bez výmluv. Bez odkladu.“',
+        better: '„Nový postup zavedeme od pondělí.“',
+      },
+    ],
+  },
+  {
+    id: 'retorika',
+    label: 'Chyby 9–16',
+    title: 'Rétorika a fráze',
+    intro:
+      'Tyto vzory se týkají způsobu, jakým AI buduje argumenty a působí na čtenáře. Tříslovné slogany, falešná pokora, vyčpělé metafory a motivační klišé, která sedí na cokoli.',
+    items: [
+      {
+        number: '09',
+        title: 'Tříslovný rytmus',
+        description:
+          'AI miluje trojice krátkých slov oddělených tečkami. Zní to úderně, ale ve skutečnosti jde o prázdný slogan, který neřekne nic konkrétního.',
+        example: '„Jednoduše. Rychle. Efektivně.“',
+        better: '„Celý proces zabere deset minut a zvládnete ho bez pomoci IT oddělení.“',
+      },
+      {
+        number: '10',
+        title: 'Jednoslovná otázka s odpovědí',
+        description:
+          'AI se zeptá na výsledek, aby mohla záhy odpovědět. Vyvolává očekávání něčeho velkého, ale odpověď je často vágní a nic konkrétního neřekne.',
+        example: '„Výsledek? Vyšší produktivita práce.“',
+        better: '„AI přinesla měřitelné zvýšení produktivity práce.“',
+      },
+      {
+        number: '11',
+        title: 'Absolutní tvrzení bez pointy',
+        description:
+          'AI pronese větu, která zní důležitě, ale nenabídne skutečný důvod. Chybí jí prožitek, tak ho nahradí frází, která má vyvolat emoce.',
+        example: '„Protože na tom záleží.“',
+        better:
+          '„Záleží nám na tom, aby si naši zákazníci kromě zboží odnášeli i pocit, že jsou u nás vítáni.“',
+      },
+      {
+        number: '12',
+        title: 'Korporátní mlha',
+        description:
+          'Vzletné fráze a důležitá slovíčka, která mají vyvolat dojem odbornosti. Ve skutečnosti věta neříká, kdo co udělá. Chybí konkrétní aktér i konkrétní výsledek.',
+        example: '„Dojde k optimalizaci workflow.“',
+        better: '„Ušetříme čas, protože data už nebudeme zadávat dvakrát. Vyplní je za nás AI.“',
+      },
+      {
+        number: '13',
+        title: 'Falešná pokora',
+        description:
+          'AI ráda mluví o tom, že něco velkého vzniklo v tichu. Že někdo nekřičel, mluvil potichu, a přesto změnil svět. Zní to hluboce, ale ve skutečnosti jde o prázdnou pózu.',
+        example: '„Nekřičela. Mluvila tiše. A přesto změnila svět.“',
+        better:
+          '„Byla skromná a neměla ráda velká slova. Nakonec ukázala cestu ženám, které se do té doby bály ozvat.“',
+      },
+      {
+        number: '14',
+        title: 'Vyčpělá metafora',
+        description:
+          'AI sáhne po přirovnání, které mělo být obrazné, ale je tak nadužívané, že zní spíš jako klišé. Maraton, cesta, most, kompas. Čtenář metaforu přeskočí, protože ji viděl stokrát.',
+        example: '„Je to maraton, ne sprint.“',
+        better: '„Zavádění AI ve firmě trvá měsíce. Počítejte s tím a nesnažte se to stihnout za týden.“',
+      },
+      {
+        number: '15',
+        title: 'Povinná otázka na čtenáře',
+        description:
+          'Každý článek nebo příspěvek na sociální sítě musí podle AI končit otázkou na čtenáře. Má vyvolat interakci, ale čtenáři ji ignorují, protože je generická a neosobní.',
+        example: '„A co vy? Jakou máte zkušenost?“',
+        better: '„Jestli řešíte něco podobného, ocením, když mi to napíšete do komentáře.“',
+      },
+      {
+        number: '16',
+        title: 'Motivační klišé',
+        description:
+          'AI uzavře odstavec motivační frází, která má čtenáře povzbudit. Jenže fráze je tak obecná, že sedí na cokoli. Neříká nic konkrétního o tématu, o kterém článek je.',
+        example: '„Držte směr. I když to není jednoduché.“',
+        better: '„Běžte si za svým a nebojte se překážek. Ty patří ke každé úspěšné cestě.“',
+      },
+    ],
+  },
+  {
+    id: 'struktura',
+    label: 'Chyby 17–19',
+    title: 'Struktura a zvyky',
+    intro:
+      'Poslední skupina se týká toho, jak AI strukturuje odpovědi a jak přistupuje ke komunikaci s čtenářem. Seznamy místo vět, příkazy místo rad a falešná empatie.',
+    items: [
+      {
+        number: '17',
+        title: 'Čím více, tím lépe',
+        description:
+          'AI vysází několik příkazů do samostatných krátkých vět. Působí to jako rada od mentora, který toho zažil násobně víc. Ve skutečnosti jde o řadu sloves bez kontextu.',
+        example: '„Začni malými kroky. Zkus nové nástroje. Uč se. Experimentuj.“',
+        better: '„Začněte pomalu a nebojte se experimentovat. Postupně zjistíte, jak to funguje.“',
+      },
+      {
+        number: '18',
+        title: 'Falešná empatie',
+        description:
+          'AI předstírá vcítění do situace čtenáře. Řekne, že chápe, že to není snadné, ale nenabídne řešení ani konkrétní pomoc. Empatie bez akce je prázdná fráze.',
+        example: '„Chápeme, že to není snadné. Víme, jak se cítíte.“',
+        better:
+          '„Přechod na nový systém zabere čtrnáct dní. Pak už to řešit nemusíte, vše běží automaticky a vy ušetříte dvě hodiny denně.“',
+      },
+      {
+        number: '19',
+        title: 'Odrážkový seznam místo odpovědi',
+        description:
+          'AI má tendenci strukturovat každou odpověď do odrážek a seznamů, i když se ptáte na jednoduchou věc. Místo souvislé věty dostanete nadpis, tři odrážky a shrnutí. Působí to přehledně, ale ve skutečnosti to rozbije přirozený tok textu. Toto je oblíbený styl zejména u Gemini.',
+        example: '„Výhody tohoto přístupu: • Úspora času • Vyšší efektivita • Lepší přehlednost“',
+        better: '„Tenhle postup vám ušetří čas, protože nebudete opakovat stejné kroky dvakrát.“',
+      },
+    ],
+  },
+];
+
+const aiVocabulary = [
+  {
+    title: 'Spojky a přechody',
+    text: 'Nicméně. Navíc. Kromě toho. Stejně tak. Následně. Současně. Na druhou stranu. Dále je třeba zmínit. V neposlední řadě. Zatímco.',
+  },
+  {
+    title: 'Shrnutí a závěry',
+    text: 'Závěrem. Celkově vzato. Abych to shrnul. Stojí za zmínku. Je důležité poznamenat. Jak již bylo zmíněno. Z výše uvedeného vyplývá. Jednoduše řečeno.',
+  },
+  {
+    title: 'Akční slovesa',
+    text: 'Optimalizovat. Odemknout potenciál. Využít naplno. Ponořit se do. Prohloubit. Prozkoumat. Posílit. Podpořit. Akcelerovat.',
+  },
+  {
+    title: 'Přídavná jména',
+    text: 'Klíčový. Zásadní. Komplexní. Robustní. Inovativní. Transformativní. Sofistikovaný. Mnohostranný. Revoluční. Holistický.',
+  },
+  {
+    title: 'Vycpávky',
+    text: 'V rámci. V kontextu. V dnešní době. V současné době. S ohledem na. Z hlediska. Na základě. S přihlédnutím k. Pokud jde o.',
+  },
+  {
+    title: 'Fráze na úvod odstavce',
+    text: 'Je třeba si uvědomit. Nelze opomenout. Není bez zajímavosti. Je nutné zdůraznit. Jak už název napovídá.',
+  },
+];
+
+const practicalUse = [
+  'Použijte seznam zakázaných slov přímo v promptu jako instrukci.',
+  'Vložte PDF do chatu a nechte si vyčistit aktuální text.',
+  'Vytvořte si vlastního asistenta (GPT, Gems, Agent) a nahrajte mu PDF do znalostí.',
+  'Dejte je jako manuál do Skills v Claude.',
+  'Vybrané body vložte do Custom Instructions v nastavení chatbota.',
+];
+---
+
+<Base
+  title="19+1 kritických chyb, které z vašich textů dělají AI slop | Pavel Kovařík"
+  description="Průvodce vzory, které prozradí AI text. U každé chyby najdete konkrétní příklad, vysvětlení a lepší řešení."
+>
+  <section class="pk-page-hero slop-hero">
+    <div class="wrap">
+      <span class="pk-hero-label">MATERIÁLY</span>
+      <h1>19+1 kritických chyb, které z vašich textů dělají AI slop</h1>
+      <p>
+        Všechny AI nástroje píšou gramaticky správně. Ale znějí stejně. Tady je kompletní přehled vzorů,
+        které prozradí AI text. Ke každé chybě najdete konkrétní příklad a lepší řešení.
+      </p>
+      <div class="slop-hero-actions">
+        <a href={pdfHref} class="btn btn-whiteish" download>Stáhnout PDF zdarma</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec slop-shell-sec">
+    <div class="slop-shell">
+      <div class="slop-note">
+        <strong>Jak tohoto průvodce používat?</strong> Projděte si seznam chyb a klikněte na kteroukoli z nich.
+        Uvidíte vysvětlení, typický příklad špatného textu a lepší řešení. PDF verzi si můžete stáhnout a
+        použít přímo jako instrukci v promptu, nahrát do znalostní báze chatbota nebo vložit do Custom
+        Instructions.
+      </div>
+
+      <nav class="slop-toc" aria-label="Obsah článku">
+        <h2>Obsah</h2>
+        <ol>
+          <li><a href="#strategie">Strategie a styl (chyby 1–8)</a></li>
+          <li><a href="#retorika">Rétorika a fráze (chyby 9–16)</a></li>
+          <li><a href="#struktura">Struktura a zvyky (chyby 17–19)</a></li>
+          <li><a href="#slovnik">Oblíbená slova AI (bonusový seznam)</a></li>
+          <li><a href="#jak-pouzit">Jak průvodce využít v praxi</a></li>
+        </ol>
+      </nav>
+
+      {sections.map((section) => (
+        <section id={section.id} class="slop-section">
+          <span class="slop-section-label">{section.label}</span>
+          <h2>{section.title}</h2>
+          <p class="slop-section-intro">{section.intro}</p>
+
+          <div class="slop-accordion">
+            {section.items.map((item) => (
+              <details class="slop-item">
+                <summary>
+                  <span class="slop-item-num">{item.number}</span>
+                  <span class="slop-item-title">{item.title}</span>
+                </summary>
+                <div class="slop-item-body">
+                  <p>{item.description}</p>
+                  <div class="slop-example">
+                    <strong>Typicky</strong>
+                    <p>{item.example}</p>
+                  </div>
+                  <div class="slop-better">
+                    <strong>Lépe</strong>
+                    <p>{item.better}</p>
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <section id="slovnik" class="slop-section">
+        <span class="slop-section-label">Bonus</span>
+        <h2>Oblíbená slova AI</h2>
+        <p class="slop-section-intro">
+          AI má svůj vlastní slovník. Některá slova a fráze používá tak často, že se stala jejím poznávacím
+          znamením. Tady je přehled těch nejpoužívanějších.
+        </p>
+        <div class="slop-vocab-list">
+          {aiVocabulary.map((item) => (
+            <div class="slop-vocab-box">
+              <strong>{item.title}</strong>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="jak-pouzit" class="slop-section">
+        <h2>Jak průvodce využít v praxi</h2>
+        <p class="slop-section-intro">Tohle PDF můžete využít několika způsoby:</p>
+        <ol class="slop-practical-list">
+          {practicalUse.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="slop-cta">
+        <h2>Chcete z AI udělat skutečného parťáka pro svůj tým?</h2>
+        <p>
+          Moje školení nejsou jen o psaní textů. Učím firmy, jak pomocí AI šetřit čas a dosahovat lepších
+          výsledků. Pomůžu vám AI smysluplně zapojit do každodenní práce.
+        </p>
+        <div class="slop-cta-actions">
+          <a href={pdfHref} class="btn btn-whiteish" download>Stáhnout PDF</a>
+          <a href="/kontakt/" class="btn btn-outline-light">Poptat školení</a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <style>
+    .slop-hero {
+      padding: 3rem 0 3.15rem;
+    }
+
+    .slop-hero .wrap {
+      max-width: 860px;
+    }
+
+    .slop-hero h1 {
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: clamp(2rem, 4.6vw, 3rem);
+      line-height: 1.14;
+      letter-spacing: -0.03em;
+    }
+
+    .slop-hero p {
+      max-width: 720px;
+      font-size: 1.05rem;
+      line-height: 1.72;
+    }
+
+    .slop-hero-actions {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-whiteish {
+      background: #fff;
+      color: var(--pk-primary);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+    }
+
+    .btn-whiteish:hover {
+      color: var(--pk-primary-dark);
+      background: #fff;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
+    }
+
+    .btn-outline-light {
+      border-color: rgba(255,255,255,.9);
+      color: #fff;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,.09);
+      color: #fff;
+      border-color: rgba(255,255,255,.95);
+    }
+
+    .slop-shell-sec {
+      background: var(--pk-bg);
+      padding-top: 2rem;
+    }
+
+    .slop-shell {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .slop-note,
+    .slop-toc,
+    .slop-vocab-box {
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem;
+    }
+
+    .slop-note {
+      margin-bottom: 1.35rem;
+      border-left: 4px solid #e6a817;
+      background: #fcf8ee;
+      color: #444;
+      line-height: 1.75;
+    }
+
+    .slop-note strong {
+      color: #111;
+    }
+
+    .slop-toc {
+      border-left: 4px solid #0e2c6b;
+      background: #f6f8ff;
+      margin-bottom: 3rem;
+    }
+
+    .slop-toc h2 {
+      font-size: .82rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #0e2c6b;
+      margin: 0 0 1rem;
+    }
+
+    .slop-toc ol {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .slop-toc li {
+      margin-bottom: .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .slop-toc li:last-child {
+      margin-bottom: 0;
+    }
+
+    .slop-toc a {
+      color: #143f99;
+      text-decoration: none;
+    }
+
+    .slop-toc a:hover {
+      text-decoration: underline;
+    }
+
+    .slop-section {
+      margin-bottom: 3.25rem;
+      scroll-margin-top: 110px;
+    }
+
+    .slop-section-label {
+      display: inline-block;
+      margin-bottom: .95rem;
+      padding: .34rem .78rem;
+      border-radius: 999px;
+      background: #0e2c6b;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .slop-section h2 {
+      font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+      color: #0e2c6b;
+      margin: 0 0 .85rem;
+    }
+
+    .slop-section-intro {
+      color: var(--pk-text-2);
+      line-height: 1.78;
+      margin-bottom: 1.4rem;
+    }
+
+    .slop-accordion {
+      display: grid;
+      gap: .9rem;
+    }
+
+    .slop-item {
+      border: 1px solid #e5ebf5;
+      border-radius: 14px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 1px 0 rgba(14, 44, 107, 0.03);
+    }
+
+    .slop-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: 1.05rem 1.15rem;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    .slop-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .slop-item summary::after {
+      content: '▾';
+      margin-left: auto;
+      color: #9ca3af;
+      font-size: .9rem;
+      transition: transform .2s ease;
+    }
+
+    .slop-item[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .slop-item-num {
+      width: 2.2rem;
+      height: 2.2rem;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: #0e2c6b;
+      color: #fff;
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    .slop-item-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1f2937;
+      line-height: 1.45;
+    }
+
+    .slop-item-body {
+      padding: 0 1.15rem 1.15rem 4.25rem;
+    }
+
+    .slop-item-body p {
+      color: #4b5563;
+      line-height: 1.75;
+      margin-bottom: .95rem;
+    }
+
+    .slop-example,
+    .slop-better {
+      padding: .9rem 1rem;
+      border-radius: 0 10px 10px 0;
+      border-left: 3px solid;
+    }
+
+    .slop-example {
+      background: #fef3f3;
+      border-left-color: #ef4444;
+      margin-bottom: .75rem;
+      color: #7f1d1d;
+    }
+
+    .slop-better {
+      background: #f0fdf4;
+      border-left-color: #22c55e;
+      color: #14532d;
+    }
+
+    .slop-example strong,
+    .slop-better strong {
+      display: block;
+      margin-bottom: .25rem;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .slop-example strong {
+      color: #dc2626;
+    }
+
+    .slop-better strong {
+      color: #16a34a;
+    }
+
+    .slop-example p,
+    .slop-better p {
+      margin: 0;
+      color: inherit;
+    }
+
+    .slop-vocab-list {
+      display: grid;
+      gap: .85rem;
+    }
+
+    .slop-vocab-box {
+      border-left: 4px solid #e6a817;
+      background: #fcf8ee;
+    }
+
+    .slop-vocab-box strong {
+      display: block;
+      margin-bottom: .3rem;
+      color: #111;
+    }
+
+    .slop-vocab-box p {
+      color: #4b5563;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .slop-practical-list {
+      padding-left: 1.25rem;
+      display: grid;
+      gap: .65rem;
+      color: var(--pk-text);
+      line-height: 1.7;
+    }
+
+    .slop-cta {
+      margin-top: 3.4rem;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--pk-primary) 0%, var(--pk-primary-dark) 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    .slop-cta h2 {
+      color: #fff;
+      margin: 0 0 .8rem;
+      font-size: clamp(1.55rem, 2.8vw, 2.1rem);
+    }
+
+    .slop-cta p {
+      max-width: 620px;
+      margin: 0 auto 1.3rem;
+      color: rgba(255,255,255,.92);
+      line-height: 1.75;
+    }
+
+    .slop-cta-actions {
+      display: flex;
+      gap: .9rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .slop-hero {
+        padding: 2.6rem 0 2.8rem;
+      }
+
+      .slop-shell {
+        padding: 0 1rem 1rem;
+      }
+
+      .slop-note,
+      .slop-toc,
+      .slop-vocab-box {
+        padding: 1.15rem 1.2rem;
+      }
+
+      .slop-item summary {
+        padding: .95rem 1rem;
+      }
+
+      .slop-item-body {
+        padding: 0 1rem 1rem 1rem;
+      }
+
+      .slop-item-num {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .slop-cta {
+        padding: 2rem 1.2rem;
+      }
+    }
+  </style>
+</Base>
