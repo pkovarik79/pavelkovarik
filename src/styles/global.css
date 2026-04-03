@@ -2963,6 +2963,25 @@ p:last-child { margin-bottom: 0; }
   font-size: 1rem;
   font-weight: 600;
 }
+.pk-rozcestnik .cta-contact .cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.pk-rozcestnik .cta-contact .cta-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+.pk-rozcestnik .cta-contact .cta-contact-sep {
+  margin: 0 10px;
+  opacity: .7;
+}
 .pk-rozcestnik .cta-note {
   margin-top: 15px;
   font-size: .85rem;

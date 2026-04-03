@@ -119,7 +119,7 @@ export const trainingCourses: TrainingCourse[] = [
     badgeClass: 'vibe',
     title: 'Workshop vibe codingu pro firmy',
     subtitle: 'Weby, interní nástroje, automatizace a rychlé prototypy s AI',
-    description: 'Celodenní workshop pro týmy, které chtějí s AI navrhovat a stavět weby, interní nástroje a prototypy, vyznat se v Claude Code, Codex, Cursor, Lovable, GitHubu, Vercelu i Supabase a vědět, kde má vibe coding skutečný přínos. Od nápadu k funkčnímu prototypu bez zdlouhavého vývoje. Vhodné pro týmy, které chtějí rychleji ověřovat nápady a méně čekat na externí vývoj.',
+    description: 'Intenzivní workshop, kde si tým vyzkouší, jak s AI rychle stavět weby, nástroje a prototypy. Prakticky, s jasným postupem a okamžitelným výstupem.',
     meta: ['celý den', 'do 15 osob', 'online / ve firmě', '29 000 Kč'],
     href: '/workshop-vibe-codingu-pro-firmy/',
   },
@@ -176,7 +176,7 @@ export const trainingFaqs: TrainingFaq[] = [
     answer: 'Většinu školení vedu přímo u vás ve firmě kdekoli v České republice. Vybrané programy nabízím i online přes Microsoft Teams nebo Google Meet.',
   },
   {
-    question: 'Nevíme, které školení vybrat',
-    answer: 'To je běžné. Stačí mi stručně popsat, co ve firmě řešíte, a doporučím vám vhodný formát. Ozvat se mi můžete přes stránku Kontakt.',
+    question: 'Lze školení upravit na míru?',
+    answer: 'Ano. Obsah i délku můžu přizpůsobit vašim cílům a interním procesům. Více informací najdete na stránce <a href="/skoleni-na-miru/">Školení na míru</a>.',
   },
 ];
