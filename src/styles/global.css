@@ -2625,6 +2625,17 @@ p:last-child { margin-bottom: 0; }
   display: grid;
   gap: 16px;
 }
+.pk-rozcestnik .pk-tool-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.pk-rozcestnik .pk-tool-item {
+  padding: 18px 20px;
+  box-shadow: none;
+}
+.pk-rozcestnik .pk-tool-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
 .pk-rozcestnik .pk-course-group + .pk-course-group {
   margin-top: 34px;
 }
@@ -2945,6 +2956,9 @@ p:last-child { margin-bottom: 0; }
   }
   .pk-rozcestnik .training-list-item {
     padding: 18px;
+  }
+  .pk-rozcestnik .pk-tool-list {
+    grid-template-columns: 1fr;
   }
   .pk-rozcestnik .pk-courses {
     padding-top: 0;

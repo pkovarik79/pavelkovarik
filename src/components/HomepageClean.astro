@@ -39,43 +39,37 @@ const practicalAudience = [
   'Ty, kdo chtějí pokročilé znalosti AI nástrojů',
 ];
 
-const specializedCourses = [
+const primaryCourses = [
   {
-    title: 'Microsoft Copilot školení pro firmy',
-    text: 'Využijte AI v Excelu, Wordu, Outlooku a Teams. Ovládněte nástroje, za které už ve firmě platíte.',
-    href: '/microsoft-copilot-pro-firmy/',
+    title: 'AI pro firmy',
+    text: 'Základní praktické školení pro firemní týmy. Bezpečně, srozumitelně a hned v každodenní práci.',
+    href: '/prakticke-skoleni-ai-pro-firmy/',
     accent: 'blue',
   },
   {
-    title: 'AI pro manažery – rozhodování a řízení rizik',
-    text: 'Rychlý přehled pro vedoucí pracovníky, kteří nemají čas na deep dive. Co AI umí, kde pomůže, jak bezpečně začít.',
-    href: '/ai-pro-manazery/',
-    accent: 'blue',
-  },
-  {
-    title: 'AI - právo, bezpečnost a autorská práva',
-    text: 'GDPR, AI Act i autorská práva vysvětlené lidsky. Praktický rámec pro bezpečnější používání AI ve firmě.',
-    href: '/pravo-v-ai/',
-    accent: 'blue',
-  },
-  {
-    title: 'Marketing & PR s AI – expertní školení pro firmy',
-    text: 'Tvorba obsahu, grafiky a videí rychlostí blesku. Sociální sítě, SEO, automatizace.',
-    href: '/marketing-pr-ai/',
-    accent: 'blue',
-  },
-  {
-    title: 'Praktické školení AI pro města, obce a veřejnou správu',
-    text: 'Efektivní úřad bezpečně a lidsky. Speciální postupy pro města, obce a instituce.',
+    title: 'AI pro veřejnou správu',
+    text: 'Praktické využití AI v agendách úřadů s důrazem na bezpečnost dat, pravidla a českou praxi.',
     href: '/ai-pro-verejnou-spravu/',
     accent: 'blue',
   },
   {
-    title: 'Školení na míru',
-    text: 'Obsah připravený přímo pro váš obor. Analýza vašich procesů a nasazení AI tam, kde dává smysl.',
-    href: '/skoleni-na-miru/',
-    accent: 'gold',
-    badge: 'INDIVIDUÁLNÍ PŘÍSTUP',
+    title: 'Microsoft Copilot pro firmy',
+    text: 'Word, Excel, Outlook, Teams a Copilot Chat. Ovládněte nástroje, za které už ve firmě platíte.',
+    href: '/microsoft-copilot-pro-firmy/',
+    accent: 'blue',
+  },
+];
+
+const workshopCourses = [
+  {
+    title: 'Marketing & PR s AI',
+    text: 'Obsah, kampaně, sociální sítě, grafika i video. Pokročilé workflow pro marketingové týmy.',
+    href: '/marketing-pr-ai/',
+  },
+  {
+    title: 'Workshop vibe codingu',
+    text: 'Weby, interní nástroje, automatizace a prototypy s AI. Od nápadu k funkčnímu prototypu.',
+    href: '/workshop-vibe-codingu-pro-firmy/',
   },
 ];
 
@@ -206,9 +200,9 @@ const faqJsonLd = {
 const itemListJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Školení podle zaměření',
-  description: 'Odborné kurzy umělé inteligence zaměřené na konkrétní odvětví a profese.',
-  itemListElement: specializedCourses.map((course, index) => ({
+  name: 'Hlavní školení AI',
+  description: 'Hlavní pilíře AI školení pro firmy a organizace.',
+  itemListElement: primaryCourses.map((course, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     name: course.title,
@@ -359,13 +353,26 @@ const formatDate = (date: string) =>
   <section class="sec sec-alt">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Školení podle zaměření</h2>
-        <p>Pokročilé kurzy zaměřené na konkrétní odvětví a profese. Maximální efektivita pro vaše potřeby.</p>
+        <h2>Vybraná školení</h2>
+        <p>3 hlavní pilíře nabídky, na které se specializuji nejvíc.</p>
       </div>
       <div class="grid grid-3 hp-course-grid">
-        {specializedCourses.map((course) => (
-          <article class:list={['hp-course-card', course.accent === 'gold' && 'is-gold']}>
-            {course.badge && <div class="hp-course-badge">{course.badge}</div>}
+        {primaryCourses.map((course) => (
+          <article class="hp-course-card">
+            <h3>{course.title}</h3>
+            <p>{course.text}</p>
+            <a href={course.href} class="btn btn-s hp-course-btn">Zjistit více</a>
+          </article>
+        ))}
+      </div>
+
+      <div class="sec-head hp-secondary-head">
+        <h3>Další workshopy</h3>
+        <p>Specializované workshopy k doplnění hlavních pilířů.</p>
+      </div>
+      <div class="grid grid-2 hp-course-grid hp-course-grid-secondary">
+        {workshopCourses.map((course) => (
+          <article class="hp-course-card hp-course-card-secondary">
             <h3>{course.title}</h3>
             <p>{course.text}</p>
             <a href={course.href} class="btn btn-s hp-course-btn">Zjistit více</a>
@@ -928,6 +935,24 @@ const formatDate = (date: string) =>
     margin: 0 auto;
   }
 
+  .hp-secondary-head {
+    margin-top: 2.5rem;
+  }
+
+  .hp-secondary-head h3 {
+    font-size: 1.35rem;
+    margin-bottom: .5rem;
+  }
+
+  .hp-secondary-head p {
+    color: var(--pk-text-2);
+    font-size: .98rem;
+  }
+
+  .hp-course-grid-secondary {
+    max-width: 860px;
+  }
+
   .hp-course-card {
     background: #fff;
     border: 1px solid var(--pk-border);
@@ -966,6 +991,20 @@ const formatDate = (date: string) =>
     line-height: 1.6;
     font-size: .95rem;
     margin-bottom: 1.1rem;
+  }
+
+  .hp-course-card-secondary {
+    padding: 1.2rem 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, .05);
+  }
+
+  .hp-course-card-secondary h3 {
+    font-size: 1.1rem;
+  }
+
+  .hp-course-card-secondary p {
+    font-size: .92rem;
   }
 
   .hp-course-card:hover {

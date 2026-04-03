@@ -1,5 +1,5 @@
 export interface TrainingCourse {
-  category: 'core' | 'specialized';
+  category: 'primary' | 'workshop' | 'supplement' | 'tool';
   badge: string;
   badgeClass: string;
   title: string;
@@ -23,38 +23,38 @@ export interface TrainingLogo {
 
 export const trainingCourses: TrainingCourse[] = [
   {
-    category: 'core',
-    badge: 'NEJPOPULÁRNĚJŠÍ',
+    category: 'primary',
+    badge: 'AI PRO FIRMY',
     badgeClass: 'popular',
-    title: 'Praktické školení AI pro firmy',
-    subtitle: 'Základní a nejžádanější firemní školení',
+    title: 'AI pro firmy',
+    subtitle: 'Základní praktické školení pro firemní týmy',
     description: 'Praktický kurz pro týmy, které chtějí AI začít používat bezpečně, srozumitelně a hned v každodenní práci.',
     meta: ['8 hodin', 'do 15 osob', 'u vás ve firmě', '19 900 Kč'],
     href: '/prakticke-skoleni-ai-pro-firmy/',
     featured: true,
   },
   {
-    category: 'core',
-    badge: 'PRO ÚŘADY',
+    category: 'primary',
+    badge: 'VEŘEJNÁ SPRÁVA',
     badgeClass: 'verejna-sprava',
-    title: 'Praktické školení AI pro města, obce a veřejnou správu',
+    title: 'AI pro veřejnou správu',
     subtitle: 'Školení přizpůsobené prostředí veřejné správy',
     description: 'Praktické využití AI v agendách úřadů s důrazem na bezpečnost dat, pravidla a českou praxi.',
     meta: ['8 hodin', 'do 15 osob', 'prezenčně', '19 900 Kč'],
     href: '/ai-pro-verejnou-spravu/',
   },
   {
-    category: 'specialized',
-    badge: 'COPILOT',
+    category: 'primary',
+    badge: 'MICROSOFT COPILOT',
     badgeClass: 'copilot',
-    title: 'Microsoft Copilot školení pro firmy',
+    title: 'Microsoft Copilot pro firmy',
     subtitle: 'Word, Excel, Outlook, Teams a Copilot Chat',
     description: 'Specializované školení pro firmy, které chtějí začít Microsoft 365 Copilot využívat naplno a smysluplně.',
     meta: ['8 hodin', 'do 15 osob', 'prezenčně', '24 900 Kč'],
     href: '/microsoft-copilot-pro-firmy/',
   },
   {
-    category: 'core',
+    category: 'workshop',
     badge: 'MARKETING',
     badgeClass: 'marketing',
     title: 'Marketing & PR s AI – expertní školení pro firmy',
@@ -64,7 +64,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/marketing-pr-ai/',
   },
   {
-    category: 'core',
+    category: 'supplement',
     badge: 'MANAŽEŘI',
     badgeClass: 'manazery',
     title: 'AI pro manažery – rozhodování a řízení rizik',
@@ -74,7 +74,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/ai-pro-manazery/',
   },
   {
-    category: 'core',
+    category: 'supplement',
     badge: 'BEZPEČNOST',
     badgeClass: 'pravo',
     title: 'AI - právo, bezpečnost a autorská práva',
@@ -84,7 +84,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/pravo-v-ai/',
   },
   {
-    category: 'specialized',
+    category: 'tool',
     badge: 'CHATGPT',
     badgeClass: 'chatgpt',
     title: 'ChatGPT školení pro firmy',
@@ -94,7 +94,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/chatgpt-pro-firmy/',
   },
   {
-    category: 'specialized',
+    category: 'tool',
     badge: 'CLAUDE',
     badgeClass: 'claude',
     title: 'Claude školení pro firmy',
@@ -104,7 +104,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/claude-pro-firmy/',
   },
   {
-    category: 'specialized',
+    category: 'tool',
     badge: 'GEMINI',
     badgeClass: 'gemini',
     title: 'Gemini školení pro firmy',
@@ -114,7 +114,7 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/gemini-pro-firmy/',
   },
   {
-    category: 'specialized',
+    category: 'workshop',
     badge: 'VIBE CODING',
     badgeClass: 'vibe',
     title: 'Workshop vibe codingu pro firmy',
@@ -122,6 +122,16 @@ export const trainingCourses: TrainingCourse[] = [
     description: 'Celodenní workshop pro týmy, které chtějí s AI navrhovat a stavět weby, interní nástroje a prototypy, vyznat se v Claude Code, Codex, Cursor, Lovable, GitHubu, Vercelu i Supabase a vědět, kde má vibe coding skutečný přínos. Od nápadu k funkčnímu prototypu bez zdlouhavého vývoje. Vhodné pro týmy, které chtějí rychleji ověřovat nápady a méně čekat na externí vývoj.',
     meta: ['celý den', 'do 15 osob', 'online / ve firmě', '29 000 Kč'],
     href: '/workshop-vibe-codingu-pro-firmy/',
+  },
+  {
+    category: 'supplement',
+    badge: 'NA MÍRU',
+    badgeClass: 'custom',
+    title: 'Školení na míru',
+    subtitle: 'Obsah podle vašeho oboru, rolí a konkrétních situací',
+    description: 'Individuální školení přizpůsobené vašim procesům, nástrojům a cílům. Vhodné, když potřebujete jít hlouběji do konkrétní agendy.',
+    meta: ['4–16 hodin', 'po domluvě', 'u vás / online', 'individuální cena'],
+    href: '/skoleni-na-miru/',
   },
 ];
 

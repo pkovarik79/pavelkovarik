@@ -1,18 +1,21 @@
 ---
 import { trainingCourses, trainingFaqs, trainingLogos } from '../data/trainingOverview';
 
-const coreCourses = trainingCourses.filter((course) => course.category === 'core');
-const specializedCourses = trainingCourses.filter((course) => course.category === 'specialized');
+const primaryCourses = trainingCourses.filter((course) => course.category === 'primary');
+const workshopCourses = trainingCourses.filter((course) => course.category === 'workshop');
+const supplementCourses = trainingCourses.filter((course) => course.category === 'supplement');
+const toolCourses = trainingCourses.filter((course) => course.category === 'tool');
 ---
 
 <div class="pk-rozcestnik">
   <section class="hero">
     <div class="container">
       <span class="badge">PŘEHLED ŠKOLENÍ</span>
-      <h1>Kurzy AI pro firmy</h1>
-      <p class="hero-subtitle">Vyberte si AI školení podle role, tématu a cíle. Najdete tu praktické kurzy pro firmy, management, marketing, veřejnou správu i Microsoft Copilot.</p>
+      <h1>AI školení pro firmy a organizace</h1>
+      <p class="hero-subtitle">Vyberte si školení podle role, cíle nebo tématu. Hlavní nabídku tvoří tři pilíře, doplněné o specializované workshopy a další formáty.</p>
       <div class="btn-group">
-        <a href="#kurzy" class="btn btn-white">Zobrazit všechna školení</a>
+        <a href="#kurzy" class="btn btn-white">Vybrat školení</a>
+        <a href="/kontakt/" class="btn btn-outline">Nechat si doporučit školení</a>
       </div>
     </div>
   </section>
@@ -28,7 +31,7 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
   <section class="section pk-overview-intro">
     <div class="container">
       <div class="intro-text">
-        <p>Na této stránce najdete přehled školení AI pro firmy – od základního praktického kurzu až po specializované programy pro management, marketing, veřejnou správu nebo Microsoft Copilot. Snadno si tak vyberete formát, který nejlépe odpovídá vaší firmě.</p>
+        <p>Na této stránce najdete jasnou mapu nabídky: 3 hlavní pilíře, 2 specializované workshopy, 3 doplňkové formáty a SEO stránky podle nástroje.</p>
       </div>
     </div>
   </section>
@@ -38,9 +41,9 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
       <div class="pk-courses-divider" aria-hidden="true"></div>
 
       <div class="pk-course-group">
-        <h3 class="pk-course-group-title">Hlavní školení pro firmy a organizace</h3>
+        <h3 class="pk-course-group-title">Hlavní školení</h3>
         <div class="training-list">
-          {coreCourses.map((course) => (
+          {primaryCourses.map((course) => (
             <article class:list={['training-list-item', course.featured && 'is-featured']}>
               <div class="training-list-main">
                 <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
@@ -66,9 +69,9 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
       </div>
 
       <div class="pk-course-group">
-        <h3 class="pk-course-group-title">Další specializovaná školení a workshopy</h3>
+        <h3 class="pk-course-group-title">Specializované workshopy</h3>
         <div class="training-list">
-          {specializedCourses.map((course) => (
+          {workshopCourses.map((course) => (
           <article class:list={['training-list-item', course.featured && 'is-featured']}>
             <div class="training-list-main">
               <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
@@ -84,11 +87,69 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
                 </div>
                 <div class="training-list-side">
                   <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
-                  <a href="/kontakt/" class="course-link">Poptat školení</a>
                 </div>
               </div>
             </div>
           </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="pk-course-group">
+        <h3 class="pk-course-group-title">Doplňkové formáty</h3>
+        <div class="training-list">
+          {supplementCourses.map((course) => (
+            <article class:list={['training-list-item', course.featured && 'is-featured']}>
+              <div class="training-list-main">
+                <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
+                <h3 class="course-title">
+                  <a href={course.href} class="course-title-link">{course.title}</a>
+                </h3>
+                <div class="course-subtitle">{course.subtitle}</div>
+                <div class="course-description">{course.description}</div>
+                <div class="course-footer">
+                  <div class="course-meta">
+                    {course.meta.map((item) => <span>{item}</span>)}
+                  </div>
+                  <div class="training-list-side">
+                    {course.title === 'Školení na míru' ? (
+                      <>
+                        <a href="/kontakt/" class="course-link course-link-primary">Nechat si doporučit školení</a>
+                        <a href="/kontakt/" class="course-link">Poptat školení</a>
+                      </>
+                    ) : (
+                      <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="pk-course-group">
+        <h3 class="pk-course-group-title">Podle nástroje</h3>
+        <div class="training-list pk-tool-list">
+          {toolCourses.map((course) => (
+            <article class="training-list-item pk-tool-item">
+              <div class="training-list-main">
+                <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
+                <h3 class="course-title">
+                  <a href={course.href} class="course-title-link">{course.title}</a>
+                </h3>
+                <div class="course-subtitle">{course.subtitle}</div>
+                <div class="course-description">{course.description}</div>
+                <div class="course-footer">
+                  <div class="course-meta">
+                    {course.meta.map((item) => <span>{item}</span>)}
+                  </div>
+                  <div class="training-list-side">
+                    <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
+                  </div>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </div>
@@ -102,7 +163,7 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
         <h3>Potřebujete školení přesně pro vaši firmu?</h3>
         <p>Školení na míru kombinuje témata podle vašich potřeb. Zaměřím se na vaše konkrétní procesy, nástroje a cíle. Obsah i délku nastavíme podle toho, co potřebujete.</p>
         <div class="btn-group">
-          <a href="/skoleni-na-miru/" class="btn btn-primary">Zjistit více o školení na míru</a>
+          <a href="/kontakt/" class="btn btn-primary">Nechat si doporučit školení</a>
           <a href="/kontakt/" class="btn btn-secondary">Poptat školení</a>
         </div>
       </div>
