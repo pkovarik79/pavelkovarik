@@ -3,7 +3,6 @@ import { trainingCourses, trainingFaqs, trainingLogos } from '../data/trainingOv
 
 const primaryCourses = trainingCourses.filter((course) => course.category === 'primary');
 const workshopCourses = trainingCourses.filter((course) => course.category === 'workshop');
-const supplementCourses = trainingCourses.filter((course) => course.category === 'supplement');
 const toolCourses = trainingCourses.filter((course) => course.category === 'tool');
 ---
 
@@ -12,21 +11,13 @@ const toolCourses = trainingCourses.filter((course) => course.category === 'tool
     <div class="container">
       <span class="badge">PŘEHLED ŠKOLENÍ</span>
       <h1>AI školení pro firmy a organizace</h1>
-      <p class="hero-subtitle">Vyberte si školení podle role, cíle nebo tématu. Hlavní nabídku tvoří tři pilíře, doplněné o specializované workshopy a další formáty.</p>
+      <p class="hero-subtitle">Vyberte si školení podle typu týmu, tématu nebo používaného nástroje.</p>
       <div class="btn-group">
         <a href="#kurzy" class="btn btn-white">Vybrat školení</a>
         <a href="/kontakt/" class="btn btn-outline">Nechat si doporučit školení</a>
       </div>
     </div>
   </section>
-
-  <div class="container">
-    <div class="verified-card">
-      <div class="stars">★★★★★</div>
-      <h3>Školení v souladu s doporučeními České asociace umělé inteligence</h3>
-      <p>Obsah vychází z ověřených postupů, respektuje pravidla GDPR i nařízení AI Act a zároveň je postavený na reálných úkolech z firemní praxe.</p>
-    </div>
-  </div>
 
   <section class="section pk-courses" id="kurzy">
     <div class="container">
@@ -46,9 +37,11 @@ const toolCourses = trainingCourses.filter((course) => course.category === 'tool
                 <div class="course-description">{course.description}</div>
                 {course.note && <div class="bonus-box">{course.note}</div>}
                 <div class="course-footer">
-                  <div class="course-meta">
-                    {course.meta.map((item) => <span>{item}</span>)}
-                  </div>
+                  {course.meta.length > 0 && (
+                    <div class="course-meta">
+                      {course.meta.map((item) => <span>{item}</span>)}
+                    </div>
+                  )}
                   <div class="training-list-side">
                     <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
                     <a href="/kontakt/" class="course-link">Poptat školení</a>
@@ -74,48 +67,17 @@ const toolCourses = trainingCourses.filter((course) => course.category === 'tool
               <div class="course-description">{course.description}</div>
               {course.note && <div class="bonus-box">{course.note}</div>}
               <div class="course-footer">
-                <div class="course-meta">
-                  {course.meta.map((item) => <span>{item}</span>)}
-                </div>
+                {course.meta.length > 0 && (
+                  <div class="course-meta">
+                    {course.meta.map((item) => <span>{item}</span>)}
+                  </div>
+                )}
                 <div class="training-list-side">
                   <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
                 </div>
               </div>
             </div>
           </article>
-          ))}
-        </div>
-      </div>
-
-      <div class="pk-course-group">
-        <h3 class="pk-course-group-title">Doplňkové formáty</h3>
-        <div class="training-list">
-          {supplementCourses.map((course) => (
-            <article class:list={['training-list-item', course.featured && 'is-featured']}>
-              <div class="training-list-main">
-                <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
-                <h3 class="course-title">
-                  <a href={course.href} class="course-title-link">{course.title}</a>
-                </h3>
-                <div class="course-subtitle">{course.subtitle}</div>
-                <div class="course-description">{course.description}</div>
-                <div class="course-footer">
-                  <div class="course-meta">
-                    {course.meta.map((item) => <span>{item}</span>)}
-                  </div>
-                  <div class="training-list-side">
-                    {course.title === 'Školení na míru' ? (
-                      <>
-                        <a href="/kontakt/" class="course-link course-link-primary">Nechat si doporučit školení</a>
-                        <a href="/kontakt/" class="course-link">Poptat školení</a>
-                      </>
-                    ) : (
-                      <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </article>
           ))}
         </div>
       </div>
@@ -133,9 +95,11 @@ const toolCourses = trainingCourses.filter((course) => course.category === 'tool
                 <div class="course-subtitle">{course.subtitle}</div>
                 <div class="course-description">{course.description}</div>
                 <div class="course-footer">
-                  <div class="course-meta">
-                    {course.meta.map((item) => <span>{item}</span>)}
-                  </div>
+                  {course.meta.length > 0 && (
+                    <div class="course-meta">
+                      {course.meta.map((item) => <span>{item}</span>)}
+                    </div>
+                  )}
                   <div class="training-list-side">
                     <a href={course.href} class="course-link course-link-primary">Zjistit více</a>
                   </div>
@@ -185,7 +149,7 @@ const toolCourses = trainingCourses.filter((course) => course.category === 'tool
               <summary>{item.question}</summary>
               <div class="faq-body">
                 <div class="faq-body-inner">
-                  <p>{item.answer}</p>
+                  <p set:html={item.answer}></p>
                 </div>
               </div>
             </details>

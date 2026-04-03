@@ -31,7 +31,6 @@ export const trainingCourses: TrainingCourse[] = [
     description: 'Praktický kurz pro týmy, které chtějí AI začít používat bezpečně, srozumitelně a hned v každodenní práci.',
     meta: ['8 hodin', 'do 15 osob', 'u vás ve firmě', '19 900 Kč'],
     href: '/prakticke-skoleni-ai-pro-firmy/',
-    featured: true,
   },
   {
     category: 'primary',
@@ -64,33 +63,13 @@ export const trainingCourses: TrainingCourse[] = [
     href: '/marketing-pr-ai/',
   },
   {
-    category: 'supplement',
-    badge: 'MANAŽEŘI',
-    badgeClass: 'manazery',
-    title: 'AI pro manažery – rozhodování a řízení rizik',
-    subtitle: 'Rychlý strategický přehled pro vedení firmy',
-    description: 'Kurz pro CEO, management a vedoucí, kteří potřebují pochopit přínosy, rizika a rozumné další kroky.',
-    meta: ['4 hodiny', 'do 10 osob', 'online / ve firmě', 'od 9 800 Kč'],
-    href: '/ai-pro-manazery/',
-  },
-  {
-    category: 'supplement',
-    badge: 'BEZPEČNOST',
-    badgeClass: 'pravo',
-    title: 'AI - právo, bezpečnost a autorská práva',
-    subtitle: 'GDPR, AI Act, autorská práva a práce s daty v běžné praxi',
-    description: 'Dvouhodinové školení pro firmy, které chtějí dát lidem srozumitelný rámec pro bezpečnější práci s AI bez zbytečného právnického balastu.',
-    meta: ['2 hodiny', 'do 30 osob', 'online / ve firmě', 'od 9 800 Kč'],
-    href: '/pravo-v-ai/',
-  },
-  {
     category: 'tool',
     badge: 'CHATGPT',
     badgeClass: 'chatgpt',
     title: 'ChatGPT školení pro firmy',
-    subtitle: 'Psaní, shrnutí, rešerše, soubory, data i obrázky',
-    description: 'Specializované školení pro firmy, které chtějí z ChatGPT udělat skutečný pracovní nástroj pro běžnou agendu.',
-    meta: ['8 hodin', 'do 15 osob', 'u vás ve firmě', '19 900 Kč'],
+    subtitle: 'Praktická práce s texty, daty a soubory',
+    description: 'Stručný kurz zaměřený na to, co lidé ve firmě používají nejčastěji.',
+    meta: ['8 hodin', 'u vás ve firmě'],
     href: '/chatgpt-pro-firmy/',
   },
   {
@@ -98,9 +77,9 @@ export const trainingCourses: TrainingCourse[] = [
     badge: 'CLAUDE',
     badgeClass: 'claude',
     title: 'Claude školení pro firmy',
-    subtitle: 'Projects, Artifacts, Skills a kvalitní výstupy',
-    description: 'Praktické školení zaměřené na Claude a jeho silné stránky v každodenní firemní práci a opakovaných scénářích.',
-    meta: ['8 hodin', 'do 15 osob', 'u vás ve firmě', '19 900 Kč'],
+    subtitle: 'Delší texty, workflow a kvalitní výstupy',
+    description: 'Kurz pro týmy, které chtějí lepší texty a práci s dokumenty.',
+    meta: ['8 hodin', 'u vás ve firmě'],
     href: '/claude-pro-firmy/',
   },
   {
@@ -108,9 +87,9 @@ export const trainingCourses: TrainingCourse[] = [
     badge: 'GEMINI',
     badgeClass: 'gemini',
     title: 'Gemini školení pro firmy',
-    subtitle: 'Rešerše, dokumenty, NotebookLM a práce se zdroji',
-    description: 'Kurz pro firmy, které chtějí Gemini využít při práci s podklady, souhrny, dokumenty a Google prostředím.',
-    meta: ['8 hodin', 'do 15 osob', 'u vás ve firmě', '19 900 Kč'],
+    subtitle: 'Rešerše, zdroje a ekosystém Google',
+    description: 'Stručné školení pro práci s podklady a vyhledáváním informací.',
+    meta: ['8 hodin', 'u vás ve firmě'],
     href: '/gemini-pro-firmy/',
   },
   {
@@ -119,19 +98,9 @@ export const trainingCourses: TrainingCourse[] = [
     badgeClass: 'vibe',
     title: 'Workshop vibe codingu pro firmy',
     subtitle: 'Weby, interní nástroje, automatizace a rychlé prototypy s AI',
-    description: 'Intenzivní workshop, kde si tým vyzkouší, jak s AI rychle stavět weby, nástroje a prototypy. Prakticky, s jasným postupem a okamžitelným výstupem.',
+    description: 'Celodenní workshop pro týmy, které chtějí s AI rychle navrhovat weby, interní nástroje a prototypy.',
     meta: ['celý den', 'do 15 osob', 'online / ve firmě', '29 000 Kč'],
     href: '/workshop-vibe-codingu-pro-firmy/',
-  },
-  {
-    category: 'supplement',
-    badge: 'NA MÍRU',
-    badgeClass: 'custom',
-    title: 'Školení na míru',
-    subtitle: 'Obsah podle vašeho oboru, rolí a konkrétních situací',
-    description: 'Individuální školení přizpůsobené vašim procesům, nástrojům a cílům. Vhodné, když potřebujete jít hlouběji do konkrétní agendy.',
-    meta: ['4–16 hodin', 'po domluvě', 'u vás / online', 'individuální cena'],
-    href: '/skoleni-na-miru/',
   },
 ];
 
@@ -161,7 +130,7 @@ export const trainingLogos: TrainingLogo[] = [
 export const trainingFaqs: TrainingFaq[] = [
   {
     question: 'Jak dlouho školení trvá?',
-    answer: 'Standardní kurz má 8 hodin, ale délku můžu přizpůsobit vašim potřebám. Nabízím i kratší online bloky nebo delší varianty na míru.',
+    answer: 'Standardní školení trvá obvykle 8 hodin. U kratších briefingů nebo školení na míru záleží na tématu a domluvě.',
   },
   {
     question: 'Kolik školení stojí?',
@@ -169,14 +138,14 @@ export const trainingFaqs: TrainingFaq[] = [
   },
   {
     question: 'Je školení vhodné pro úplné začátečníky?',
-    answer: 'Ano. Většina účastníků přichází bez předchozích zkušeností s AI nástroji. Tempo i obsah přizpůsobím úrovni vašeho týmu.',
+    answer: 'Ano. Většina týmů začíná bez větších zkušeností. Obsah i tempo přizpůsobím tomu, jakou úroveň už účastníci mají.',
   },
   {
     question: 'Kde školení probíhá?',
-    answer: 'Většinu školení vedu přímo u vás ve firmě kdekoli v České republice. Vybrané programy nabízím i online přes Microsoft Teams nebo Google Meet.',
+    answer: 'Nejčastěji přímo u vás ve firmě, po celé České republice. Vybrané formáty je možné vést i online.',
   },
   {
     question: 'Lze školení upravit na míru?',
-    answer: 'Ano. Obsah i délku můžu přizpůsobit vašim cílům a interním procesům. Více informací najdete na stránce <a href="/skoleni-na-miru/">Školení na míru</a>.',
+    answer: 'Ano. Obsah upravuji podle vašeho oboru, rolí účastníků, používaných nástrojů i konkrétních situací, které ve firmě řešíte. Více na stránce <a href="/skoleni-na-miru/">Školení na míru</a>.',
   },
 ];

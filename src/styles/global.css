@@ -3023,9 +3023,9 @@ p:last-child { margin-bottom: 0; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .pk-rozcestnik .pk-tool-item {
-  padding: 16px 18px;
-  background: #fafbff;
-  border-color: #e6ebf5;
+  padding: 14px 16px;
+  background: #f9fafc;
+  border-color: #edf1f7;
   box-shadow: none;
 }
 .pk-rozcestnik .pk-tool-item:hover {
@@ -3034,10 +3034,10 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 10px 22px rgba(61,92,217,.08);
 }
 .pk-rozcestnik .pk-course-group + .pk-course-group {
-  margin-top: 28px;
+  margin-top: 36px;
 }
 .pk-rozcestnik .pk-course-group-title {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   font-size: 1.5rem;
   line-height: 1.2;
   color: var(--text);
@@ -3204,16 +3204,22 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.6;
 }
 .pk-rozcestnik .pk-tool-item .course-subtitle {
-  font-size: .92rem;
+  font-size: .9rem;
 }
 .pk-rozcestnik .pk-tool-item .course-description {
-  font-size: .9rem;
-  margin-bottom: 10px;
+  font-size: .86rem;
+  margin-bottom: 8px;
 }
 .pk-rozcestnik .pk-tool-item .course-meta span {
-  min-height: 28px;
+  min-height: 26px;
   padding: 2px 8px;
-  font-size: .8rem;
+  font-size: .78rem;
+}
+.pk-rozcestnik .pk-tool-item .course-footer {
+  margin-top: 10px;
+}
+.pk-rozcestnik .pk-tool-item .course-meta {
+  gap: 8px;
 }
 .pk-rozcestnik .course-meta {
   display: flex;
