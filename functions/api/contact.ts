@@ -1,7 +1,5 @@
 interface Env {
   RESEND_API_KEY: string;
-  CONTACT_FROM_EMAIL: string;
-  CONTACT_TO_EMAIL?: string;
 }
 
 const json = (body: Record<string, unknown>, status = 200) =>
@@ -23,7 +21,7 @@ const escapeHtml = (value: string) =>
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   try {
-    if (!env.RESEND_API_KEY || !env.CONTACT_FROM_EMAIL) {
+    if (!env.RESEND_API_KEY) {
       return json({ ok: false, error: 'Server is not configured.' }, 500);
     }
 
@@ -60,7 +58,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       return json({ ok: false, error: 'Zadejte prosím platný e-mail.' }, 400);
     }
 
-    const to = env.CONTACT_TO_EMAIL || 'mail@pavelkovarik.cz';
+    const from = 'Pavel Kovařík <mail@pavelkovarik.cz>';
+    const to = 'mail@pavelkovarik.cz';
     const subject = `Poptávka AI školení: ${company || name}`;
 
     const text = [
@@ -104,7 +103,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: env.CONTACT_FROM_EMAIL,
+        from,
         to: [to],
         reply_to: email,
         subject,
