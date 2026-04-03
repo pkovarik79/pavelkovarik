@@ -2773,6 +2773,15 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.3;
   color: var(--text);
 }
+.pk-rozcestnik .course-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+.pk-rozcestnik .course-title-link:hover {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-color: rgba(61, 92, 217, 0.35);
+}
 .pk-rozcestnik .card-large .course-title {
   font-size: 1.6rem;
 }

@@ -44,7 +44,9 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
             <article class:list={['training-list-item', course.featured && 'is-featured']}>
               <div class="training-list-main">
                 <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
-                <h3 class="course-title">{course.title}</h3>
+                <h3 class="course-title">
+                  <a href={course.href} class="course-title-link">{course.title}</a>
+                </h3>
                 <div class="course-subtitle">{course.subtitle}</div>
                 <div class="course-description">{course.description}</div>
                 {course.note && <div class="bonus-box">{course.note}</div>}
@@ -70,7 +72,9 @@ const specializedCourses = trainingCourses.filter((course) => course.category ==
           <article class:list={['training-list-item', course.featured && 'is-featured']}>
             <div class="training-list-main">
               <div class:list={['course-badge', course.badgeClass]}>{course.badge}</div>
-              <h3 class="course-title">{course.title}</h3>
+              <h3 class="course-title">
+                <a href={course.href} class="course-title-link">{course.title}</a>
+              </h3>
               <div class="course-subtitle">{course.subtitle}</div>
               <div class="course-description">{course.description}</div>
               {course.note && <div class="bonus-box">{course.note}</div>}
