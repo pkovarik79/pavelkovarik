@@ -13,6 +13,7 @@ const root = process.cwd();
 const fullPath = path.isAbsolute(filePath) ? filePath : path.join(root, filePath);
 const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
 const isHomepage = fullPath.endsWith('homepage-full.json');
+const slug = data?.slug ?? '';
 
 const logoMap: Record<string, string> = {
   'https://pavelkovarik.cz/wp-content/uploads/2025/04/pavel-kovarik-profile.webp': '/images/web/pavel-kovarik-profile.webp',
@@ -120,6 +121,11 @@ for (const [from, to] of Object.entries(routeMap)) {
 }
 
 content = content.replaceAll('https://pavelkovarik.cz', '');
+
+if (slug === 'skoleni-na-miru' && !content.includes('id="skoleni-na-miru"')) {
+  content = content.replace('</style>', '</style>\n<div id="skoleni-na-miru">');
+  content = `${content}\n</div>`;
+}
 
 const scripts: Array<{ body: string; type?: string }> = [];
 content = content.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (_match, attrs, scriptBody) => {
