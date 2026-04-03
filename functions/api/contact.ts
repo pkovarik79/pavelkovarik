@@ -63,13 +63,25 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     const to = 'mail@pavelkovarik.cz';
     const subject = `Nová poptávka školení AI – ${company || '-'} (${name})`;
 
+    const formatPhone = (value: string) => {
+      const digits = value.replace(/\s+/g, '');
+      if (digits.startsWith('+420') && digits.length === 13) {
+        return `+420 ${digits.slice(4, 7)} ${digits.slice(7, 10)} ${digits.slice(10)}`;
+      }
+      if (digits.length === 9 && !digits.startsWith('+')) {
+        return `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
+      }
+      return value;
+    };
+    const phonePretty = phone ? formatPhone(phone) : '-';
+
     const text = [
       'Nová poptávka z formuláře na pavelkovarik.cz',
       '',
       `Jméno: ${name}`,
-      `Firma / organizace: ${company || '-'}`,
+      `Firma: ${company || '-'}`,
       `E-mail: ${email}`,
-      `Telefon: ${phone || '-'}`,
+      `Telefon: ${phonePretty}`,
       `Velikost skupiny: ${teamSize || '-'}`,
       `Preferovaný termín: ${preferredDate || '-'}`,
       `Preferovaný formát: ${preferredFormat || '-'}`,
@@ -86,9 +98,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
           <p style="margin:0 0 18px;color:#6b7280">Zpráva z formuláře pavelkovarik.cz</p>
           <table style="width:100%;border-collapse:collapse;margin:0 0 18px">
             <tr><td style="padding:8px 0;color:#6b7280;width:190px">Jméno</td><td style="padding:8px 0;font-weight:700">${escapeHtml(name)}</td></tr>
-            <tr><td style="padding:8px 0;color:#6b7280">Firma / organizace</td><td style="padding:8px 0">${escapeHtml(company || '-')}</td></tr>
+            <tr><td style="padding:8px 0;color:#6b7280">Firma</td><td style="padding:8px 0">${escapeHtml(company || '-')}</td></tr>
             <tr><td style="padding:8px 0;color:#6b7280">E-mail</td><td style="padding:8px 0"><a href="mailto:${escapeHtml(email)}" style="color:#143f99">${escapeHtml(email)}</a></td></tr>
-            <tr><td style="padding:8px 0;color:#6b7280">Telefon</td><td style="padding:8px 0">${escapeHtml(phone || '-')}</td></tr>
+            <tr><td style="padding:8px 0;color:#6b7280">Telefon</td><td style="padding:8px 0">${escapeHtml(phonePretty)}</td></tr>
             <tr><td style="padding:8px 0;color:#6b7280">Velikost skupiny</td><td style="padding:8px 0">${escapeHtml(teamSize || '-')}</td></tr>
             <tr><td style="padding:8px 0;color:#6b7280">Preferovaný termín</td><td style="padding:8px 0">${escapeHtml(preferredDate || '-')}</td></tr>
             <tr><td style="padding:8px 0;color:#6b7280">Preferovaný formát</td><td style="padding:8px 0">${escapeHtml(preferredFormat || '-')}</td></tr>
@@ -157,7 +169,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
               <p style="margin:0 0 18px">Děkuji Vám za poptávku na školení AI. Ozvu se do 24 hodin s návrhem obsahu a termínu.</p>
               <div style="margin:18px 0 12px;font-weight:700;color:#0e2c6b">Shrnutí poptávky</div>
               <table style="width:100%;border-collapse:collapse;margin:0 0 16px">
-                <tr><td style="padding:6px 0;color:#6b7280;width:180px">Firma / organizace</td><td style="padding:6px 0">${escapeHtml(company || '-')}</td></tr>
+                <tr><td style="padding:6px 0;color:#6b7280;width:180px">Firma</td><td style="padding:6px 0">${escapeHtml(company || '-')}</td></tr>
                 <tr><td style="padding:6px 0;color:#6b7280">Počet lidí</td><td style="padding:6px 0">${escapeHtml(teamSize || '-')}</td></tr>
                 <tr><td style="padding:6px 0;color:#6b7280">Preferovaný termín</td><td style="padding:6px 0">${escapeHtml(preferredDate || '-')}</td></tr>
                 <tr><td style="padding:6px 0;color:#6b7280">Preferovaný formát</td><td style="padding:6px 0">${escapeHtml(preferredFormat || '-')}</td></tr>
