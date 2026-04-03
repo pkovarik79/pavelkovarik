@@ -332,7 +332,7 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ===== BLOG LIST ===== */
-.blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .95rem; }
+.blog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .95rem; }
 .blog-card {
   display: block;
   background: var(--pk-bg);
@@ -344,7 +344,7 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 4px 14px rgba(26,32,44,.045);
 }
 .blog-card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(26,32,44,.07); }
-.blog-card img { width: 100%; aspect-ratio: 16/6.4; object-fit: cover; }
+.blog-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
 .blog-card-body { padding: .72rem .82rem .88rem; }
 .blog-card time { display:block; font-size: .72rem; color: var(--pk-text-3); font-weight: 500; margin-bottom: .45rem; }
 .blog-card h3 { color: var(--pk-text); margin: 0 0 .42rem; font-size: clamp(.94rem, 1.3vw, 1.08rem); line-height: 1.16; }
@@ -369,6 +369,9 @@ p:last-child { margin-bottom: 0; }
 
 @media (max-width: 768px) {
   .blog-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 1100px) {
+  .blog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* Blog list (simple, for homepage) */
@@ -534,22 +537,22 @@ p:last-child { margin-bottom: 0; }
   border-bottom: none;
 }
 .article-glossary h4 {
-  font-size: 1rem;
+  font-size: .95rem;
 }
 .article-glossary p {
-  font-size: .98rem;
-  line-height: 1.6;
+  font-size: .92rem;
+  line-height: 1.55;
 }
 .article-faq-item h3,
 .article-faq-item h4 {
   margin: 0 0 .45rem;
   color: #0e2c6b;
-  font-size: 1rem;
+  font-size: .95rem;
 }
 .article-faq-item p {
   margin: 0;
-  font-size: .98rem;
-  line-height: 1.6;
+  font-size: .92rem;
+  line-height: 1.55;
 }
 .prose table {
   width: max-content;
@@ -2401,6 +2404,13 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: hidden;
+}
+.article-author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .article-author-name {
   font-size: 1rem;
