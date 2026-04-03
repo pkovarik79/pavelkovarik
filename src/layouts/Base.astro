@@ -9,6 +9,23 @@ interface Props {
 const { title, description = 'Lektor umělé inteligence pro firmy. Praktická školení AI nástrojů pro firemní týmy po celé ČR.' } = Astro.props;
 const path = Astro.url.pathname;
 const canonicalUrl = new URL(path, Astro.site).href;
+const isTraining = [
+  '/skoleni',
+  '/prakticke-skoleni-ai-pro-firmy',
+  '/ai-pro-verejnou-spravu',
+  '/microsoft-copilot-pro-firmy',
+  '/marketing-pr-ai',
+  '/workshop-vibe-codingu-pro-firmy',
+  '/ai-pro-manazery',
+  '/ai-pravo-bezpecnost-a-autorska-prava',
+  '/skoleni-na-miru',
+].some((p) => path === p || path.startsWith(`${p}/`));
+const isMaterials = [
+  '/materialy',
+  '/ai-nastroje',
+  '/prompty',
+  '/nepis-jako-robot',
+].some((p) => path === p || path.startsWith(`${p}/`));
 ---
 
 <!DOCTYPE html>
@@ -49,8 +66,8 @@ const canonicalUrl = new URL(path, Astro.site).href;
       <nav class="pk-nav" id="pk-mobile-menu">
         <ul class="pk-nav-list">
           <li><a href="/" class="pk-nav-link">Domů</a></li>
-          <li class="pk-menu-item-wrapper">
-            <a href="/skoleni/" class="pk-btn-training">
+          <li class={`pk-menu-item-wrapper ${isTraining ? 'is-active' : ''}`}>
+            <a href="/skoleni/" class={`pk-btn-training ${isTraining ? 'is-active' : ''}`}>
               Školení
               <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
@@ -63,8 +80,8 @@ const canonicalUrl = new URL(path, Astro.site).href;
                 <a href="/skoleni/" class="pk-dropdown-link">Všechna školení</a>
               </div>
           </li>
-          <li class="pk-menu-item-wrapper pk-mobile-collapse">
-            <a href="/materialy/" class="pk-nav-link pk-nav-link-dropdown">
+          <li class={`pk-menu-item-wrapper pk-mobile-collapse ${isMaterials ? 'is-active' : ''}`}>
+            <a href="/materialy/" class={`pk-nav-link pk-nav-link-dropdown ${isMaterials ? 'is-active' : ''}`}>
               Materiály
               <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
