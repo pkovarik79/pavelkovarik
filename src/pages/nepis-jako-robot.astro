@@ -417,15 +417,15 @@ const practicalUse = [
     .slop-note,
     .slop-toc,
     .slop-vocab-box {
-      border-radius: 16px;
-      padding: 1.4rem 1.5rem;
+      padding: 1.15rem 1.25rem;
     }
 
     .slop-note {
       margin-bottom: 1.4rem;
       border-left: 4px solid #e6a817;
+      border-radius: 0 12px 12px 0;
       background: #fcf8ee;
-      color: #444;
+      color: var(--pk-text-2);
       line-height: 1.75;
     }
 
@@ -434,16 +434,17 @@ const practicalUse = [
     }
 
     .slop-toc {
-      border-left: 4px solid #0e2c6b;
+      border: 1px solid #e0e7f3;
+      border-radius: 16px;
       background: #f6f8ff;
       margin-bottom: 2.6rem;
     }
 
     .slop-toc h2 {
-      font-size: .82rem;
-      letter-spacing: .12em;
+      font-size: .95rem;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      color: #0e2c6b;
+      color: #1f3d88;
       margin: 0 0 1rem;
     }
 
@@ -453,9 +454,9 @@ const practicalUse = [
     }
 
     .slop-toc li {
-      margin-bottom: .75rem;
-      font-size: 1rem;
-      line-height: 1.5;
+      margin-bottom: .35rem;
+      font-size: .96rem;
+      line-height: 1.55;
       font-weight: 600;
     }
 
@@ -464,7 +465,7 @@ const practicalUse = [
     }
 
     .slop-toc a {
-      color: #143f99;
+      color: #20449a;
       text-decoration: none;
     }
 
@@ -622,6 +623,7 @@ const practicalUse = [
 
     .slop-vocab-box {
       border-left: 4px solid #e6a817;
+      border-radius: 0 12px 12px 0;
       background: #fcf8ee;
     }
 
@@ -632,7 +634,7 @@ const practicalUse = [
     }
 
     .slop-vocab-box p {
-      color: #4b5563;
+      color: var(--pk-text-2);
       line-height: 1.75;
       margin: 0;
     }
@@ -686,7 +688,7 @@ const practicalUse = [
       .slop-note,
       .slop-toc,
       .slop-vocab-box {
-        padding: 1.1rem 1.15rem;
+        padding: 1.05rem 1.1rem;
       }
 
       .slop-item summary {
