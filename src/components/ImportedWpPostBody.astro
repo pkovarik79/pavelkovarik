@@ -12,6 +12,13 @@ const root = process.cwd();
 const fullPath = path.isAbsolute(filePath) ? filePath : path.join(root, filePath);
 const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
 
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+
 const routeMap: Record<string, string> = {
   'https://pavelkovarik.cz/': '/',
   'https://pavelkovarik.cz/blog/': '/blog/',
@@ -64,6 +71,9 @@ content = content.replace(
 );
 
 content = content.replaceAll('https://pavelkovarik.cz', '');
+
+const fallbackAlt = data?.title ? escapeHtml(String(data.title)) : 'Ilustrace k článku';
+content = content.replace(/<img([^>]*?)\salt=(\"|\')\2/gi, `<img$1 alt="${fallbackAlt}"`);
 
 const scripts: string[] = [];
 content = content.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, (_match, scriptBody) => {
