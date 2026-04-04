@@ -2786,6 +2786,10 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 4px 14px rgba(26,32,44,.05);
   transition: .2s ease;
 }
+.article-related-card,
+.article-related-card * {
+  text-decoration: none;
+}
 .article-related-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(26,32,44,.08);
