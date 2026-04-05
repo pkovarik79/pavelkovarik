@@ -1,0 +1,364 @@
+---
+layout: ../layouts/BlogPost.astro
+title: "Jak vibe coding mění práci a fungování firem"
+description: "Vibe coding mění způsob, jak ve firmách vznikají interní nástroje a automatizace. Co to znamená pro IT, bezpečnost, inovace a řízení firmy?"
+date: "2026-04-05"
+image: "/images/blog/vibe-coding-firmy-ai-interni-nastroj.webp"
+imageAlt: "Monitor s kódem a AI asistent při tvorbě interního firemního nástroje"
+---
+
+<style>
+{`#pk-super-wrapper {
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+  color: #333 !important;
+  background: transparent !important;
+  padding: 20px !important;
+}
+
+#pk-super-wrapper p {
+  text-align: left !important;
+  font-size: 18px !important;
+  line-height: 1.8 !important;
+  margin-bottom: 24px !important;
+  color: #333 !important;
+  font-weight: 400 !important;
+}
+
+#pk-super-wrapper section[id],
+#pk-super-wrapper h2,
+#pk-super-wrapper h3,
+#pk-super-wrapper h4 {
+  scroll-margin-top: 100px !important;
+}
+
+#pk-super-wrapper h2 {
+  font-size: 32px !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+  color: #0e2c6b !important;
+  margin-top: 50px !important;
+  margin-bottom: 24px !important;
+  clear: both !important;
+}
+
+#pk-super-wrapper h3 {
+  font-size: 24px !important;
+  line-height: 1.4 !important;
+  font-weight: 700 !important;
+  color: #0e2c6b !important;
+  margin-top: 36px !important;
+  margin-bottom: 18px !important;
+}
+
+#pk-super-wrapper ul, #pk-super-wrapper ol {
+  padding-left: 24px !important;
+  margin-bottom: 28px !important;
+  margin-top: 16px !important;
+}
+
+#pk-super-wrapper ul li, #pk-super-wrapper ol li {
+  margin-bottom: 10px !important;
+  line-height: 1.7 !important;
+  font-size: 18px !important;
+  color: #333 !important;
+  padding-left: 8px !important;
+}
+
+#pk-super-wrapper strong, #pk-super-wrapper b {
+  font-weight: 700 !important;
+  color: #111 !important;
+}
+
+#pk-super-wrapper a {
+  color: #143f99 !important;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(20, 63, 153, 0.3) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+#pk-super-wrapper a:hover {
+  color: #0e2c6b !important;
+  text-decoration-color: #0e2c6b !important;
+}
+
+#pk-super-wrapper hr {
+  margin: 40px 0 !important;
+  border: none !important;
+  border-top: 1px solid #eee !important;
+}
+
+/* META */
+#pk-super-wrapper .pk-meta {
+  color: #888 !important;
+  font-size: 14px !important;
+  margin-bottom: 30px !important;
+}
+
+/* TOC */
+#pk-super-wrapper .pk-toc {
+  display: block !important;
+  background-color: #f5f8ff !important;
+  border-left: 4px solid #0e2c6b !important;
+  padding: 30px !important;
+  margin: 40px 0 !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+#pk-super-wrapper .pk-toc h3 {
+  margin-top: 0 !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #0e2c6b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  margin-bottom: 15px !important;
+}
+#pk-super-wrapper .pk-toc ol { margin: 0 !important; padding-left: 20px !important; }
+#pk-super-wrapper .pk-toc li {
+  margin-bottom: 10px !important;
+  font-size: 17px !important;
+  line-height: 1.4 !important;
+  font-weight: 500 !important;
+}
+#pk-super-wrapper .pk-toc a { text-decoration: none !important; color: #143f99 !important; }
+#pk-super-wrapper .pk-toc a:hover { text-decoration: none !important; color: #0e2c6b !important; }
+
+/* WARN BOX */
+#pk-super-wrapper .pk-warn {
+  display: block !important;
+  border-left: 4px solid #e6a817 !important;
+  padding: 25px !important;
+  margin: 32px 0 !important;
+  background-color: #fefbf2 !important;
+  border-radius: 0 4px 4px 0 !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: #444 !important;
+}
+#pk-super-wrapper .pk-warn strong {
+  color: #111 !important;
+  display: inline !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+/* QUOTE */
+#pk-super-wrapper .pk-quote {
+  margin: 30px 0 !important;
+  padding: 0 40px !important;
+  font-style: italic !important;
+  color: #666 !important;
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+}
+#pk-super-wrapper .pk-quote-author {
+  display: block !important;
+  margin-top: 10px !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  color: #143f99 !important;
+  font-size: 15px !important;
+}
+
+/* TABLE */
+#pk-super-wrapper .pk-table-wrap { overflow-x: auto !important; margin: 40px 0 !important; }
+#pk-super-wrapper .pk-table {
+  width: 100% !important;
+  min-width: 500px !important;
+  border-collapse: collapse !important;
+  border: 1px solid #eef2f7 !important;
+}
+#pk-super-wrapper .pk-table th {
+  background-color: #0e2c6b !important;
+  color: #ffffff !important;
+  padding: 18px !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  border: none !important;
+}
+#pk-super-wrapper .pk-table td {
+  background-color: #ffffff !important;
+  padding: 14px 16px !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  color: #333 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  transition: background-color 0.15s ease !important;
+}
+#pk-super-wrapper .pk-table td:first-child {
+  font-weight: 700 !important;
+  color: #111 !important;
+}
+#pk-super-wrapper .pk-table tr:nth-child(even) td { background-color: #f9fbff !important; }
+#pk-super-wrapper .pk-table tr:hover td { background-color: #f1f5ff !important; cursor: default; }
+
+@media (max-width: 767px) {
+  #pk-super-wrapper h2 { font-size: 26px !important; }
+  #pk-super-wrapper h3 { font-size: 22px !important; }
+  #pk-super-wrapper p, #pk-super-wrapper ul li { font-size: 17px !important; }
+}`}
+</style>
+
+<div id="pk-super-wrapper">
+
+<p class="pk-meta">Aktualizováno: březen 2026 · Pavel Kovařík · pavelkovarik.cz</p>
+
+<div class="pk-warn">
+  Vibe coding mění způsob, jak ve firmách vznikají interní nástroje. To, co dřív muselo projít přes IT nebo dodavatele, si dnes lidé díky vibe codingu mohou vytvořit sami. Tím se zrychluje práce, ale zároveň roste potřeba jasně určit, co je ještě bezpečný experiment a co už vyžaduje dohled IT odborníků. Pro firmy je to jednoznačně příležitost s potenciálem zásadním způsobem zvýšit produktivitu.
+</div>
+
+<div class="pk-quote">
+  „Vibe coding umožní firmám rychle postoupit k minimálnímu životaschopnému produktu (MVP), levně experimentovat s nápady a na základě zpětné vazby je přijímat či upravovat. To snižuje utopené náklady, zvyšuje rozptyl rizika a umožňuje změnu směru (pivot), protože zdroje jsou vynakládány pouze na ověřené koncepty."
+  <span class="pk-quote-author">IBM</span>
+</div>
+
+<p>Pokud ještě nevíte, co přesně vibe coding je a jak funguje v praxi, začněte článkem <a href="https://pavelkovarik.cz/vibe-coding/">Co je vibe coding a jak si díky AI vytvářet vlastní pracovní nástroje</a>. V tomto textu na něj navazuji a zaměřuji se na to, co tento posun znamená pro fungování celé firmy.</p>
+
+<div class="pk-toc">
+  <h3>OBSAH</h3>
+  <ol>
+    <li><a href="#kontext">Proč se o vibe codingu mluví právě teď</a></li>
+    <li><a href="#it-hrdlo">Už žádné čekání v řadě na IT</a></li>
+    <li><a href="#pravidla">Kdy končí hra a začínají pravidla</a></li>
+    <li><a href="#jednorazovy-sw">Software s datem spotřeby</a></li>
+    <li><a href="#dovednosti">Dovednost která rozhoduje o úspěchu</a></li>
+    <li><a href="#efektivita">Efektivita, která se propíše do výsledků firmy</a></li>
+    <li><a href="#kultura">Nová firemní kultura: Od čekání k vlastním řešením</a></li>
+  </ol>
+</div>
+
+<hr />
+
+<section id="kontext">
+<h2>Proč se o vibe codingu mluví právě teď</h2>
+
+<p>Vibe coding se dostává do popředí díky tomu, že současné jazykové AI modely už zvládají logicky uvažovat na velmi vysoké úrovni. Spolu s jejich dostupností to vytváří situaci, kdy k tvorbě vlastního pracovního nástroje nepotřebujete znalosti programování, ale stačí vám k tomu jedno volné odpoledne.</p>
+
+<p>Že nejde o buzzword, ukazují čísla. Platforma Lovable dosáhla 100 milionů dolarů ročních příjmů za pouhých osm měsíců. Editor Cursor je oceněn na 9,9 miliardy dolarů. Gartner odhaduje, že v roce 2026 bude 60 % nového kódu generováno umělou inteligencí. A čtvrtina startupů z inkubátoru Y Combinator měla na přelomu let 2024 a 2025 kód z 95 % generovaný AI. Collins Dictionary zvolil vibe coding slovem roku 2025.</p>
+
+<p>Celý tento technologický posun si můžeme názorně ukázat na stupnici pěti úrovní práce s umělou inteligencí. Při jejím sestavení jsem se inspiroval v <a href="https://www.linkedin.com/pulse/5-stup%C5%88%C5%AF-pou%C5%BE%C3%ADv%C3%A1n%C3%AD-ai-marek-prokop-xo0df/">článku od Marka Prokopa</a>. Tato stupnice názorně ukazuje, jak se postupně mění naše nároky na to, co pro nás technologie v praxi dělají.</p>
+
+<ol>
+  <li><strong>AI jako partner pro naše otázky</strong> – chatboty využíváme hlavně pro rychlé dotazy, psaní textů nebo hledání nápadů.</li>
+  <li><strong>Digitální asistenti v aplikacích</strong> – nástroje přímo v Excelu nebo Outlooku, které nám pomáhají zrychlit každodenní rutinu.</li>
+  <li><strong>Delegování konkrétních úkolů</strong> – systém pod naším dohledem samostatně vykonává zadané kroky k dosažení konkrétního cíle.</li>
+  <li><strong>Samostatné řízení procesů</strong> – autonomní agenti, kteří už zvládnou odbavit celý proces bez nutnosti potvrzovat každý krok.</li>
+  <li><strong>Komplexní spolupráce agentů</strong> – propojené systémy AI pomocníků, kteří společně zajišťují chod klíčových firemních operací.</li>
+</ol>
+
+<p>Vibe coding přichází přesně v momentě, kdy se od digitálních asistentů posouváme k samostatným agentům. Je to zlom, kdy zaměstnanci přestanou AI vnímat jen jako rádce a začnou s její pomocí stavět vlastní funkční řešení. Právě tato změna ale přináší otázky, které už vyžadují jasný postoj vedení firmy, nikoliv pouze jednotlivců.</p>
+</section>
+
+<hr />
+
+<section id="it-hrdlo">
+<h2>Už žádné čekání v řadě na IT</h2>
+
+<p>IT oddělení dnes v mnoha firmách funguje jako věčný sběrač drobných úkolů. Místo velkých projektů se tam řeší, že někdo potřebuje lepší tabulku, jednoduchý formulář nebo drobnou automatizaci. Výsledek je takový, že zaměstnanci týdny čekají na banality a programátoři pálí čas na věcech, které je vlastně vůbec nebaví.</p>
+
+<p>Vibe coding tenhle koloběh rozbíjí. Člověk už nemusí posílat IT požadavek na každou drobnost. Prostě si ji s pomocí AI vyrobí sám a začne ji hned používat. IT se tím uvolní ruce na skutečně důležitou a náročnou práci, jako je propojování databází nebo stavba celkové architektury, kde je lidský vývojář pořád nenahraditelný.</p>
+</section>
+
+<hr />
+
+<section id="pravidla">
+<h2>Kdy končí hra a začínají pravidla</h2>
+
+<p>Když si každý začne „na koleně" skládat vlastní nástroje, firma nad tím může velmi rychle ztratit kontrolu. Nejde jen o to, že v počítačích vzniká digitální balast, který po měsíci nikdo nedokáže opravit. Hlavním tématem je bezpečnost.</p>
+
+<p>Kód z AI totiž často obsahuje chyby, které laik neuvidí. Může jít o špatně ošetřené přístupy k datům nebo riziko, že citlivé informace nevědomky utečou do veřejných modelů umělé inteligence. Analýza společnosti CodeRabbit z konce roku 2025 ostatně ukázala, že AI kód obsahuje téměř třikrát více bezpečnostních děr než ten od profesionálů.</p>
+
+<p>Skutečné riziko nastává hlavně tam, kde nástroj pracuje s registračními formuláři, hesly nebo daty o zákaznících. V těchto případech už nejde o osobní vychytávku, ale o digitální zdraví celého podniku. Bez jasných mantinelů se z užitečné pomůcky snadno stane past, která firmu ohrozí víc, než jí na začátku pomohla.</p>
+
+<p>Management proto musí jasně říct, kde končí experiment a začíná ostrý provoz. Pomůže jednoduché praktické vodítko: Pokud nástroj používá jeden člověk pro svou práci a nedotýká se citlivých dat, je to v pořádku. Jakmile ho ale začne využívat víc lidí, napojuje se na firemní systémy nebo na něm závisí důležitý proces, musí nastoupit dohled IT a jasná pravidla.</p>
+
+<p>Pokud vás zajímá širší pohled na to, jak AI aktivity sladit s celkovou firemní politikou, doporučuji můj článek <a href="https://pavelkovarik.cz/zavedeni-ai-2026/">Strategie implementace AI do firmy 2026</a>.</p>
+</section>
+
+<hr />
+
+<section id="jednorazovy-sw">
+<h2>Software s datem spotřeby</h2>
+
+<p>Díky vibe codingu už totiž software nemusí být robustní systém, který firma složitě vybírá a pořizuje na mnoho let dopředu. Nastupuje éra nástrojů, které vzniknou pro jeden konkrétní účel a po jeho splnění je prostě smažete.</p>
+
+<p>Typickým příkladem může být chytrý registrační formulář s výpočtem dopravy pro jeden konkrétní firemní večírek. Nebo šikovná pomůcka, která během náboru sjednotí poznámky z desítek pohovorů do jedné přehledné tabulky. Jakmile akce skončí nebo je pozice obsazená, nástroj ztratí svůj smysl a nikdo se o jeho další údržbu nemusí starat.</p>
+
+<p>V tom spočívá zásadní zlom. Dosud firmy software složitě implementovaly a lidé se na něj museli dlouho školit. Tento nový přístup celý proces obchází, protože je levný, rychlý a naprosto nezávazný. Právě u těchto dočasných aplikací ale musíme nejvíce hlídat, aby se s firemními daty zacházelo bezpečně i v tom krátkém čase, kdy jsou v provozu.</p>
+
+<p>Vibe coding tedy není jen o psaní kódu, ale o schopnosti přemýšlet o problémech úplně novým způsobem. Právě v tom se skrývá ta nejdůležitější dovednost pro blízkou budoucnost.</p>
+</section>
+
+<hr />
+
+<section id="dovednosti">
+<h2>Dovednost která rozhoduje o úspěchu</h2>
+
+<p>Schopnost postavit si funkční nástroj už dnes nepředstavuje tu hlavní překážku. Klíčovou kompetencí se stává umění přesně pojmenovat problém a předat umělé inteligenci správný kontext. Skutečnou výzvou je schopnost popsat své potřeby tak srozumitelně, aby výsledek odpovídal záměru a byl skutečně užitečný.</p>
+
+<p>Tento posun má přímý dopad na vzdělávání uvnitř firem. Školení zaměřená pouze na psaní jednoduchých dotazů do chatu už dávno nestačí. Zaměstnanci se musí naučit formulovat zadání pro mnohem složitější úkoly a kriticky vyhodnocovat správnost výstupu. Právě na tyto praktické dovednosti se zaměřuje můj <a href="https://pavelkovarik.cz/skoleni/">workshop Vibe codingu pro firmy</a>.</p>
+
+<p>Stejně důležité je vědět, kdy už jejich síly nestačí a je bezpečnější přenechat věc profesionálnímu programátorovi. Právě toto rozpoznání hranic mezi vlastním experimentem a rizikovým zásahem do systémů je v roce 2026 naprosto zásadní.</p>
+
+<p>Pokud se v možnostech současných technologií teprve orientujete, může vám pomoci můj <a href="https://pavelkovarik.cz/ai-nastroje/">přehled AI nástrojů pro firmy</a>. Ten vám napoví, kde začít a jaké řešení dává ve vaší situaci největší smysl.</p>
+</section>
+
+<hr />
+
+<section id="efektivita">
+<h2>Efektivita, která se propíše do výsledků firmy</h2>
+
+<p>Podle aktuálního reportu State of Visual Development 2025 uvádí skoro čtvrtina uživatelů, že jsou díky těmto nástrojům desetkrát i vícekrát rychlejší než u klasického postupu. U úplně nových projektů se navíc čas k prvnímu funkčnímu výsledku zkracuje v průměru o 55 %. To, na co se dříve čekalo dny, je dnes hotové za pár hodin.</p>
+
+<p>Programátorské týmy také hlásí o 40 % méně času stráveného psaním takzvaného balastu. Jde o stále se opakující kód bez vlastní logiky, který dříve programátory jen zbytečně zdržoval od tvůrčí práce.</p>
+
+<div class="pk-table-wrap">
+<table class="pk-table">
+  <thead>
+    <tr>
+      <th>Metrika</th>
+      <th>Změna díky AI a Vibe codingu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Rychlost dokončení úkolu</td>
+      <td>+51 %</td>
+    </tr>
+    <tr>
+      <td>Frekvence nahrávání kódu (commity)</td>
+      <td>1,4× až 1,9× vyšší</td>
+    </tr>
+    <tr>
+      <td>Spokojenost uživatelů a vývojářů</td>
+      <td>72 %</td>
+    </tr>
+    <tr>
+      <td>Podíl AI kódu v ostrém provozu</td>
+      <td>cca 27 %</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</section>
+
+<hr />
+
+<section id="kultura">
+<h2>Nová firemní kultura: Od čekání k vlastním řešením</h2>
+
+<h3>Vlastní nápady jako motor vaší firmy</h3>
+
+<p>Představte si, že každý užitečný nápad ve vaší firmě dostane okamžitě konkrétní podobu. Vibe coding dává lidem do rukou nástroj, se kterým si drobné překážky v obchodě nebo v provozu vyřeší hned sami. Místo dlouhého čekání na volné kapacity v technickém oddělení tak vzniká prostor pro okamžité zlepšení práce v každém týmu.</p>
+
+<p>Tato nová svoboda v tvoření přináší firmě obrovskou výhodu v rychlosti. Stačí nastavit jasný řád a pohlídat si bezpečí firemních dat. Pokud lidem dáte důvěru a správné mantinely, získáte tým, který dokáže reagovat na změny trhu v řádu hodin. Právě tato proměna z pasivního čekání na aktivní tvoření je základem moderní a úspěšné společnosti.</p>
+
+<p>Jak tento nový přístup bezpečně zavést a naplno využít jeho sílu, ukazuji na svém <a href="https://pavelkovarik.cz/skoleni/">workshopu Vibe codingu pro firmy</a>. Jdeme rovnou k věci a řešíme skutečné potřeby vašeho týmu.</p>
+
+<p>Vítězem totiž nebude ten, kdo do technologií nalije nejvíc peněz. Vyhraje ten, kdo naučí své lidi používat AI jako běžnou součást každodenního života. Tento náskok konkurence jen tak nedožene, protože se nedá jednoduše koupit. Skutečná síla totiž leží v lidech, kteří se už nebojí tvořit.</p>
+</section>
+
+</div>
