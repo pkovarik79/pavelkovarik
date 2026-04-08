@@ -1,6 +1,7 @@
 ---
 import Base from './Base.astro';
 import { importedPosts } from '../data/importedPosts';
+import { blogImageAlts } from '../data/blogImageAlts';
 
 const { frontmatter } = Astro.props;
 
@@ -25,15 +26,26 @@ const allPosts = [
 const currentUrl = Astro.url?.pathname ?? '';
 const relatedPosts = allPosts.filter((post) => post.url !== currentUrl).slice(0, 3);
 const displayPosts = relatedPosts.length > 0 ? relatedPosts : allPosts.slice(0, 3);
+
+const getImageAlt = (image: string | undefined, fallbackTitle: string) => {
+  if (!image) return fallbackTitle;
+  return blogImageAlts[image] ?? fallbackTitle;
+};
 ---
 
-<Base title={`${frontmatter.title} | Pavel Kovařík`} description={frontmatter.description}>
+<Base title={frontmatter.metaTitle ?? `${frontmatter.title} | Pavel Kovařík`} description={frontmatter.description}>
   <article class="article">
     <div class="article-shell">
       <header class="article-header">
         <h1>{frontmatter.title}</h1>
         <time datetime={frontmatter.date}>{new Date(frontmatter.date).toLocaleDateString('cs-CZ')}</time>
-        {frontmatter.image && <img class="article-cover" src={frontmatter.image} alt={frontmatter.title} />}
+        {frontmatter.image && (
+          <img
+            class="article-cover"
+            src={frontmatter.image}
+            alt={getImageAlt(frontmatter.image, frontmatter.title)}
+          />
+        )}
       </header>
       <div class="prose article-content">
         <slot />
@@ -55,7 +67,11 @@ const displayPosts = relatedPosts.length > 0 ? relatedPosts : allPosts.slice(0, 
             {displayPosts.map((post) => (
               <a href={post.url} class="article-related-card">
                 {post.frontmatter.image && (
-                  <img src={post.frontmatter.image} alt={post.frontmatter.title} loading="lazy" />
+                  <img
+                    src={post.frontmatter.image}
+                    alt={getImageAlt(post.frontmatter.image, post.frontmatter.title)}
+                    loading="lazy"
+                  />
                 )}
                 <div class="article-related-body">
                   <time datetime={post.frontmatter.date}>
