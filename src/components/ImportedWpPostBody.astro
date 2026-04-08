@@ -1,6 +1,7 @@
 ---
 import fs from 'node:fs';
 import path from 'node:path';
+import { blogImageAlts } from '../data/blogImageAlts';
 
 interface Props {
   filePath: string;
@@ -18,6 +19,8 @@ const escapeHtml = (value: string) =>
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;');
+
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const routeMap: Record<string, string> = {
   'https://pavelkovarik.cz/': '/',
@@ -72,8 +75,24 @@ content = content.replace(
 
 content = content.replaceAll('https://pavelkovarik.cz', '');
 
+for (const [imageSrc, imageAlt] of Object.entries(blogImageAlts)) {
+  const escapedSrc = escapeRegExp(imageSrc);
+  const imgRegex = new RegExp(`<img([^>]*?)\\ssrc=(["'])${escapedSrc}\\2([^>]*?)>`, 'gi');
+  content = content.replace(imgRegex, (match, before, quote, after) => {
+    const altValue = escapeHtml(imageAlt);
+    if (/\\salt=/i.test(match)) {
+      return match.replace(/\\salt=(["']).*?\\1/i, ` alt="${altValue}"`);
+    }
+    return `<img${before} src=${quote}${imageSrc}${quote}${after} alt="${altValue}">`;
+  });
+}
+
 const fallbackAlt = data?.title ? escapeHtml(String(data.title)) : 'Ilustrace k článku';
 content = content.replace(/<img([^>]*?)\salt=(\"|\')\2/gi, `<img$1 alt="${fallbackAlt}"`);
+
+// Ensure spacing around inline links to avoid joined words in rendered text.
+content = content.replace(/([\p{L}\p{N}])(<a\s)/gu, '$1 $2');
+content = content.replace(/(<\/a>)([\p{L}\p{N}])/gu, '$1 $2');
 
 const scripts: string[] = [];
 content = content.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gi, (_match, scriptBody) => {
