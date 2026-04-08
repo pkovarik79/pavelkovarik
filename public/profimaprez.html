@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI VE FIRMÁCH: DUBEN 2026 - Profima</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --p-red: #e30613;
+            --p-dark: #1a1a1a;
+            --p-white: #ffffff;
+            --p-gray: #f4f4f4;
+            --font-main: 'Inter', sans-serif;
+        }
 
+        /* Base Settings */
+        .reveal {
+            font-family: var(--font-main);
+            color: var(--p-dark);
+        }
+
+        /* -------------------------------------------
+           SLIDE TYPE: .shock (High Emotion / Contrast) 
+           ------------------------------------------- */
+        .reveal .slides section.shock {
+            height: 100%;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .reveal .slides section.shock h1 {
+            color: var(--p-white);
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 1.1;
+            margin: 0;
+            font-family: var(--font-main);
+            width: 90%;
+            text-align: center;
+        }
+
+        /* -------------------------------------------
+           SLIDE TYPE: .profima (Strategy / Branding) 
+           ------------------------------------------- */
+        .reveal .slides section.profima {
+            height: 100%;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            padding: 60px 100px;
+            box-sizing: border-box;
+        }
+        
+        .logo-profima {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            height: 60px;
+            z-index: 10;
+        }
+
+        .reveal .slides section.profima h2 {
+            color: var(--p-dark);
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+            border-bottom: 6px solid var(--p-red);
+            padding-bottom: 10px;
+            font-family: var(--font-main);
+            font-size: 3.5rem;
+        }
+        
+        .reveal .slides section.profima h3 {
+            color: var(--p-dark);
+            font-weight: 500;
+            font-family: var(--font-main);
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        .reveal .slides section.profima ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .reveal .slides section.profima li {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .reveal .slides section.profima li::before {
+            content: "■";
+            color: var(--p-red);
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* -------------------------------------------
+           COMPONENTS
+           ------------------------------------------- */
+        /* Video Container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Grid component for S4 */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            width: 100%;
+            margin-top: 50px;
+        }
+        
+        /* 2-Column Grid for S5 */
+        .col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .trick-card {
+            background-color: var(--p-white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--p-red);
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--p-red);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .trick-card p {
+            font-size: 1.4rem;
+            line-height: 1.4;
+            color: var(--p-dark);
+            margin: 0;
+        }
+
+        .source-text {
+            font-size: 1rem;
+            color: #888;
+            position: absolute;
+            bottom: 30px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section class="shock" data-background-color="var(--p-dark)">
+                <div class="video-container" style="width: 80%; margin: 0 auto;">
+                    <iframe src="https://www.youtube.com/embed/c9VATHJZyQA?modestbranding=1&rel=0&iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section class="shock" data-background-color="var(--p-red)">
+                <h1>CO KDYBY VÁŠ PÁTEK ZAČÍNAL UŽ VE STŘEDU?</h1>
+            </section>
+
+            <section class="profima" data-background-color="var(--p-white)">
+                <img src="https://cdn.knowspread.com/public/staticAssets/marketplaces/profima/Profima.png" alt="Profima Logo" class="logo-profima">
+                <div style="padding-left: 50px;">
+                    <h2>AI VE FIRMÁCH V DUBNU 2026</h2>
+                    <br>
+                    <h3>A JAK TO BUDE DÁL</h3>
+                </div>
+            </section>
+
+            <section class="shock" data-background-color="var(--p-dark)">
+                <h1>REALITA ČESKÝCH FIREM:<br>VŠICHNI MAJÍ PŘÍSTUP,<br><span style="color: var(--p-red);">MÁLOKDO MÁ VÝSLEDKY.</span></h1>
+            </section>
+
+            <section class="profima" data-background-color="var(--p-white)">
+                <img src="https://cdn.knowspread.com/public/staticAssets/marketplaces/profima/Profima.png" alt="Profima Logo" class="logo-profima">
+                <h2>REALITA V ČÍSLECH</h2>
+                
+                <div class="stat-grid">
+                    <div class="trick-card">
+                        <span class="stat-val">78 %</span>
+                        <p>českých firem letos spustí alespoň jeden nový AI projekt.</p>
+                    </div>
+                    <div class="trick-card">
+                        <span class="stat-val">80 %</span>
+                        <p>firem hlásí, že je brzdí nedostatek lidí a vnitřního know-how.</p>
+                    </div>
+                    <div class="trick-card">
+                        <span class="stat-val">6 %</span>
+                        <p>lídrů skutečně redesignuje spolupráci člověka a AI.</p>
+                    </div>
+                </div>
+                
+                <p class="source-text">Zdroje: ČAUI + Hospodářská komora ČR (AI MOMENTUM 2026), Deloitte (Global Human Capital Trends 2026).</p>
+            </section>
+
+            <section class="profima" data-background-color="var(--p-white)">
+                <img src="https://cdn.knowspread.com/public/staticAssets/marketplaces/profima/Profima.png" alt="Profima Logo" class="logo-profima">
+                <h2>NŮŽKY SE ROZEVÍRAJÍ</h2>
+                <h3>Trh se dělí na dvě skupiny (2026/2027)</h3>
+                
+                <div class="col-grid">
+                    <div>
+                        <h4 style="color: var(--p-dark); font-size: 2rem; font-weight: 800; margin-bottom: 10px;">PASIVNÍ PŘÍSTUP</h4>
+                        <ul>
+                            <li>Neřízená Shadow AI.</li>
+                            <li>Bezplatné nástroje bez kontroly.</li>
+                            <li>Individuální pokusy bez systému.</li>
+                        </ul>
+                        <p style="font-size: 1.5rem; margin-top: 20px;"><em>Výsledek: Nulová škálovatelnost</em></p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--p-red); font-size: 2rem; font-weight: 800; margin-bottom: 10px;">STRATEGICKÝ REDESIGN</h4>
+                        <ul>
+                            <li>Změna celého workflow.</li>
+                            <li>Pevná governance a bezpečnost.</li>
+                            <li>Nová role a práce manažerů.</li>
+                        </ul>
+                        <p style="font-size: 1.5rem; margin-top: 20px;"><strong>Výsledek: Reálná konkurenční výhoda</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="shock" data-background-color="var(--p-dark)">
+                <h1>80 % FIREM POUŽÍVÁ AI JAKO <span style="color: var(--p-red);">LEPŠÍ VYHLEDÁVAČ.</span></h1>
+                <p style="color: #888888; font-size: 2.5rem; margin-top: 30px; font-weight: 500;">Většinou jen bezplatný ChatGPT.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            transition: 'none', // Tohle zajistí ty "instant cuts" bez prolínání
+            controls: true,     // Šipky v rohu (můžeš dát na false, pokud budeš přepínat jen klávesnicí)
+            progress: false,    // Spodní lišta postupu (skrytá pro čistší design)
+            center: false,      // Vypnuto, protože si to centrujeme sami přes flexbox
+            hash: true,         // Přidá #/slide-cislo do URL pro snadné sdílení
+            width: 1920,
+            height: 1080,
+            margin: 0.04
+        });
+    </script>
+</body>
+</html>
