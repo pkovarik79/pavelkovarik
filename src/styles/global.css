@@ -2705,10 +2705,13 @@ p:last-child { margin-bottom: 0; }
   word-break: normal;
 }
 .article-content .article-disclaimer {
-  font-size: .88rem;
-  line-height: 1.65;
-  color: var(--pk-text-2);
-  margin-top: -0.35rem;
+  font-size: .9rem !important;
+  line-height: 1.6 !important;
+  color: #8a8f98 !important;
+  text-align: center !important;
+  margin-top: -0.35rem !important;
+  margin-bottom: 1.35rem !important;
+  font-weight: 400 !important;
 }
 .article-author-box {
   width: min(100%, 760px);
