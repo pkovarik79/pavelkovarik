@@ -67,7 +67,7 @@ content = content.replace(/<link\b[^>]*>/gi, '');
 // Style AI Act disclaimer as a subtle note.
 content = content.replace(
   /<p>(Tento článek má informativní a vzdělávací charakter\. Nepředstavuje právní poradenství ani právní posouzení konkrétní situace\. U konkrétního nasazení AI vždy záleží na účelu použití, typu dat, roli dodavatele a aktuálním výkladu pravidel\.)<\/p>/g,
-  '<p class="article-disclaimer">$1</p>',
+  '<p class="pk-meta article-disclaimer">$1</p>',
 );
 
 for (const [from, to] of Object.entries(routeMap)) {
