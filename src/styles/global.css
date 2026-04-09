@@ -2705,9 +2705,9 @@ p:last-child { margin-bottom: 0; }
   word-break: normal;
 }
 .article-content .article-disclaimer {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #7b838f;
+  font-size: .88rem;
+  line-height: 1.65;
+  color: var(--pk-text-2);
   margin-top: -0.35rem;
 }
 .article-author-box {
